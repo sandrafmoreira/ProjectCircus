@@ -8,17 +8,17 @@ import { RouterLink, RouterView } from 'vue-router'
     <div class="wrapper">
 
       <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-        <RouterLink to=""></RouterLink>
-        <RouterLink to=""></RouterLink>
-        <RouterLink to=""></RouterLink>
-        <RouterLink to=""></RouterLink>
-        <RouterLink to=""></RouterLink>
-        <RouterLink to=""></RouterLink>
-        <RouterLink to=""></RouterLink>
-        <RouterLink to=""></RouterLink>
-        <RouterLink to=""></RouterLink>
+        <RouterLink :to="{name: 'home'}">Home</RouterLink>
+        <RouterLink :to="{name: 'login'}">Iniciar Sessão</RouterLink>
+        <RouterLink :to="{name: 'signup'}">Criar Conta</RouterLink>
+        <RouterLink :to="{name: 'account'}">My Account</RouterLink>
+        <RouterLink :to="{name: 'pricing'}">Planeia a tua visita</RouterLink>
+        <RouterLink :to="{name: 'giftshop'}">Giftshop</RouterLink>
+        <RouterLink :to="{name: 'activities'}">Espetáculos e Workshops</RouterLink>
+        <RouterLink :to="{name: 'about'}">About</RouterLink> 
+        <!-- <RouterLink :to="{name: 'gallery'}">Galeria</RouterLink> -->
+        <!-- <RouterLink :to="{name: 'contacts'}">Contacte-nos</RouterLink> -->
+        <!-- <RouterLink :to="{name: 'faq'}">FAQ</RouterLink> -->
       </nav>
     </div>
   </header>

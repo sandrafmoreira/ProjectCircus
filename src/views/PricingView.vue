@@ -1,6 +1,6 @@
 <template>
     <div>
-        Pricing Page
+        <h1>Pricing Page 💸</h1>
     </div>
 </template>
 

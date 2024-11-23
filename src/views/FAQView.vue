@@ -1,6 +1,6 @@
 <template>
     <div>
-        FAQs Page!
+        <h1>FAQs Page!❔</h1>
     </div>
 </template>
 

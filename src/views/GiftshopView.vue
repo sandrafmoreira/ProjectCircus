@@ -1,6 +1,6 @@
 <template>
     <div>
-        Giftshop Page
+        <h1>Giftshop Page 🎁</h1>
     </div>
 </template>
 

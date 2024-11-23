@@ -1,6 +1,6 @@
 <template>
     <div>
-        Activities Page
+        <h1>Activities Page 🐘</h1>
     </div>
 </template>
 
