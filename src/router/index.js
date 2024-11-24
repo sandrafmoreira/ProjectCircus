@@ -23,7 +23,7 @@ const router = createRouter({
       path: '/account',
       name: 'account',
       component: () => import('../views/AccountView.vue'),
-      // meta: { requiresAuth: true }
+      meta: { requiresAuth: true }
     },
     {
       path: '/pricing',
@@ -49,6 +49,16 @@ const router = createRouter({
       component: () => import('../views/AboutView.vue'),
     },
   ],
+})
+
+router.beforeEach((to, from, next) => {
+  const isAuthenticated = localStorage.getItem("isAuthenticated")
+
+  if (to.meta.requiresAuth && !isAuthenticated) {
+    next({path: "/login", query: {from: to.path}});
+  } else {
+    next()
+  }
 })
 
 export default router

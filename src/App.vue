@@ -1,5 +1,24 @@
-<script setup>
+<script>
 import { RouterLink, RouterView } from 'vue-router'
+import { useAuthenticationStore } from '@/stores/authentication';
+
+export default {
+  data() {
+    return {
+      authenticationStore: useAuthenticationStore() //A store de authentication
+    }
+  },
+
+  methods: {
+    logout() {
+      this.authenticationStore.logout() //Chamar a função logout na store da authentication
+
+      this.$router.push({ name: "home" }); //Voltar para a homepage
+
+      alert("Logout feito!")
+    }
+  },
+};
 </script>
 
 <template>
@@ -11,7 +30,7 @@ import { RouterLink, RouterView } from 'vue-router'
         <RouterLink :to="{name: 'home'}">Home</RouterLink>
         <RouterLink :to="{name: 'login'}">Iniciar Sessão</RouterLink>
         <RouterLink :to="{name: 'signup'}">Criar Conta</RouterLink>
-        <RouterLink :to="{name: 'account'}">My Account</RouterLink>
+        <RouterLink v-if="authenticationStore.isAuthenticated" :to="{name: 'account'}">My Account</RouterLink>
         <RouterLink :to="{name: 'pricing'}">Planeia a tua visita</RouterLink>
         <RouterLink :to="{name: 'giftshop'}">Giftshop</RouterLink>
         <RouterLink :to="{name: 'activities'}">Espetáculos e Workshops</RouterLink>
@@ -19,6 +38,9 @@ import { RouterLink, RouterView } from 'vue-router'
         <!-- <RouterLink :to="{name: 'gallery'}">Galeria</RouterLink> -->
         <!-- <RouterLink :to="{name: 'contacts'}">Contacte-nos</RouterLink> -->
         <!-- <RouterLink :to="{name: 'faq'}">FAQ</RouterLink> -->
+
+        <!-- Para fazer log out-->
+        <button v-if="authenticationStore.isAuthenticated" @click="logout">Logout</button>
       </nav>
     </div>
   </header>
