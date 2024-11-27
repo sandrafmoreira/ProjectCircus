@@ -20,7 +20,7 @@ const router = createRouter({
       component: () => import('../views/SignUpView.vue'),
     },
     {
-      path: '/account',
+      path: '/account/:userEmail',
       name: 'account',
       component: () => import('../views/AccountView.vue'),
       meta: { requiresAuth: true }

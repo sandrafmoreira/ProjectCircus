@@ -5,7 +5,8 @@ import { useAuthenticationStore } from '@/stores/authentication';
 export default {
   data() {
     return {
-      authenticationStore: useAuthenticationStore() //A store de authentication
+      authenticationStore: useAuthenticationStore(), //A store de authentication
+      userInfo: JSON.parse(localStorage.getItem("userInfo")) //A sotre do userInfo, que é utilizada para salvar a informação sobre o user
     }
   },
 
@@ -28,9 +29,9 @@ export default {
 
       <nav>
         <RouterLink :to="{name: 'home'}">Home</RouterLink>
-        <RouterLink :to="{name: 'login'}">Iniciar Sessão</RouterLink>
-        <RouterLink :to="{name: 'signup'}">Criar Conta</RouterLink>
-        <RouterLink v-if="authenticationStore.isAuthenticated" :to="{name: 'account'}">My Account</RouterLink>
+        <RouterLink v-if="!authenticationStore.isAuthenticated" :to="{name: 'login'}">Iniciar Sessão</RouterLink>
+        <RouterLink v-if="!authenticationStore.isAuthenticated" :to="{name: 'signup'}">Criar Conta</RouterLink>
+        <RouterLink v-if="authenticationStore.isAuthenticated" :to="{name: 'account', params: {userEmail: userInfo.email}}">My Account</RouterLink>
         <RouterLink :to="{name: 'pricing'}">Planeia a tua visita</RouterLink>
         <RouterLink :to="{name: 'giftshop'}">Giftshop</RouterLink>
         <RouterLink :to="{name: 'activities'}">Espetáculos e Workshops</RouterLink>

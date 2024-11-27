@@ -33,10 +33,14 @@ export default {
             || this.email == "nuno@456" && this.password == "456" 
             || this.email == "sandra@789" && this.password == "789"
             ) {
-                this.authenticationStore.login() //Chamar a função login na store da authentication
-                
-                this.$router.push({ name: "account"}) //Ir para a página de perfil
+                let userInformation = {
+                    email: this.email,
+                    pass: this.password,
+                }
 
+                this.authenticationStore.login(userInformation) //Chamar a função login na store da authentication
+                
+                this.$router.push({ name: "account", params:{userEmail: userInformation.email}}) //Ir para a página de perfil
 
                 alert("Login feito!")
                 

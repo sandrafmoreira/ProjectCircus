@@ -5,14 +5,17 @@ export const useAuthenticationStore = defineStore("authentication", {
   state: () => {
     return{ 
       //Variavel que verifica se o utilizador está autenticado
-      isAuthenticated: JSON.parse(localStorage.getItem("isAuthenticated"))
+      isAuthenticated: JSON.parse(localStorage.getItem("isAuthenticated")),
+      userInfo: JSON.parse(localStorage.getItem("userInfo"))
     }
   },
 
   actions: {
-    login() {
+    login(userInformation) {
+      
       this.isAuthenticated = true;
       localStorage.setItem("isAuthenticated", true); //Para ficar também na localStorage
+      localStorage.setItem("userInfo", JSON.stringify(userInformation));
     },
 
     logout() {
