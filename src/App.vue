@@ -36,7 +36,7 @@ export default {
         <RouterLink :to="{name: 'giftshop'}">Giftshop</RouterLink>
         <RouterLink :to="{name: 'activities'}">Espetáculos e Workshops</RouterLink>
         <RouterLink :to="{name: 'about'}">About</RouterLink> 
-        <!-- <RouterLink :to="{name: 'gallery'}">Galeria</RouterLink> -->
+        <RouterLink :to="{name: 'gallery'}">Galeria</RouterLink>
         <!-- <RouterLink :to="{name: 'contacts'}">Contacte-nos</RouterLink> -->
         <!-- <RouterLink :to="{name: 'faq'}">FAQ</RouterLink> -->
 

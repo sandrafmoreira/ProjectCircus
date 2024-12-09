@@ -35,6 +35,12 @@ const router = createRouter({
       name: 'giftshop',
       component: () => import('../views/GiftshopView.vue'),
     },
+
+    {
+      path: '/giftshop/:id',
+      name: 'gift',
+      component: () => import('../views/GiftView.vue'),
+    },
     {
       path: '/activities',
       name: 'activities',
