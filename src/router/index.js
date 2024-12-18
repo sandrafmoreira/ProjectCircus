@@ -10,6 +10,29 @@ const router = createRouter({
       component: HomeView,
     },
     {
+      path: '/about',
+      name: 'about',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/AboutView.vue'),
+    },
+    {
+      path: '/gallery',
+      name: 'gallery',
+      component: () => import('../views/GalleryView.vue'),
+    },
+    {
+      path: '/activities',
+      name: 'activities',
+      component: () => import('../views/ActivitiesView.vue'),
+    },
+    {
+      path: '/pricing',
+      name: 'pricing',
+      component: () => import('../views/PricingView.vue'),
+    },
+    {
       path: '/login',
       name: 'login',
       component: () => import('../views/LoginView.vue'),
@@ -26,11 +49,6 @@ const router = createRouter({
       meta: { requiresAuth: true }
     },
     {
-      path: '/pricing',
-      name: 'pricing',
-      component: () => import('../views/PricingView.vue'),
-    },
-    {
       path: '/giftshop',
       name: 'giftshop',
       component: () => import('../views/GiftshopView.vue'),
@@ -42,17 +60,14 @@ const router = createRouter({
       component: () => import('../views/GiftView.vue'),
     },
     {
-      path: '/activities',
-      name: 'activities',
-      component: () => import('../views/ActivitiesView.vue'),
+      path: '/news',
+      name: 'news',
+      component: () => import('../views/NewsView.vue'),
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue'),
+      path: '/article/:id',
+      name: 'article',
+      component: () => import('../views/NewsArticleView.vue'),
     },
   ],
 })
