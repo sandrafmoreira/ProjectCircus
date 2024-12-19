@@ -6,7 +6,6 @@ export default {
   data() {
     return {
       authenticationStore: useAuthenticationStore(), //A store de authentication
-      userInfo: JSON.parse(localStorage.getItem("userInfo")) //A sotre do userInfo, que é utilizada para salvar a informação sobre o user
     }
   },
 
@@ -15,9 +14,22 @@ export default {
       this.authenticationStore.logout() //Chamar a função logout na store da authentication
 
       this.$router.push({ name: "home" }); //Voltar para a homepage
-
-      alert("Logout feito!")
     }
+  },
+
+  // computed: {
+  //   userInfo() {
+  //     return this.authenticationStore.userInfo
+  //   },
+
+  //   isAuthenticated() {
+  //     return this.authenticationStore.isAuthenticated
+  //   }
+  // },
+
+  created() {
+    localStorage.setItem("users", JSON.stringify(this.authenticationStore.users));
+    localStorage.setItem("isAuthenticated", JSON.stringify(this.authenticationStore.isAuthenticated));    
   },
 };
 </script>
@@ -29,19 +41,18 @@ export default {
 
       <nav>
         <RouterLink :to="{name: 'home'}">Home</RouterLink>
-        <RouterLink v-if="!authenticationStore.isAuthenticated" :to="{name: 'login'}">Iniciar Sessão</RouterLink>
-        <RouterLink v-if="!authenticationStore.isAuthenticated" :to="{name: 'signup'}">Criar Conta</RouterLink>
-        <!-- <RouterLink v-if="authenticationStore.isAuthenticated" :to="{name: 'account', params: {userEmail: userInfo.email}}">My Account</RouterLink> -->
         <RouterLink :to="{name: 'pricing'}">Planeia a tua visita</RouterLink>
         <RouterLink :to="{name: 'giftshop'}">Giftshop</RouterLink>
         <RouterLink :to="{name: 'activities'}">Espetáculos e Workshops</RouterLink>
         <RouterLink :to="{name: 'about'}">About</RouterLink> 
         <RouterLink :to="{name: 'gallery'}">Galeria</RouterLink>
         <RouterLink :to="{name: 'news'}">Destaques</RouterLink>
-        <!-- <RouterLink :to="{name: 'contacts'}">Contacte-nos</RouterLink> -->
-        <!-- <RouterLink :to="{name: 'faq'}">FAQ</RouterLink> -->
-
-        <!-- Para fazer log out-->
+        <RouterLink :to="{name: 'contacts'}">Contacte-nos</RouterLink>
+        <!--Links que aparecem apenas se o utilziador NAO estiver autenticado-->
+        <RouterLink v-if="!authenticationStore.isAuthenticated" :to="{name: 'login'}">Iniciar Sessão</RouterLink>
+        <RouterLink v-if="!authenticationStore.isAuthenticated" :to="{name: 'signup'}">Criar Conta</RouterLink>
+        <!--Links que apenas aparecem se o utilizador estiver autenticado-->
+        <RouterLink v-if="authenticationStore.isAuthenticated" :to="{name: 'account', params: {userEmail: authenticationStore.userInfo}}">My Account</RouterLink>
         <button v-if="authenticationStore.isAuthenticated" @click="logout">Logout</button>
       </nav>
     </div>

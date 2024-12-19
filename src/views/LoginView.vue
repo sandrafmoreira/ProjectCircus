@@ -4,12 +4,13 @@
 
         <form @submit.prevent="login">
             <input type="email" name="email" id="email" placeholder="Insira o seu email!" v-model="email">
-            <input type="password" name="pass" id="pass" placeholder="Insira a sua password!" v-model="password">
-            <button id="submitBtn">Submeter!</button>
+            <input type="password" name="pass" id="p    ass" placeholder="Insira a sua password!" v-model="password">
+            <input type="submit" value="Login" @click="login">
         </form>
 
         <!--Para mais tarde! :)-->
         <p v-if="error" style="color: red;">Informação inválida!</p>
+        <p v-if="missingData" style="color: red;">Preencha todos os campos!</p>
     </div>
 </template>
 
@@ -23,29 +24,26 @@ export default {
             email: "",
             password: "",
             error: false,
+            missingData: false,
             authenticationStore: useAuthenticationStore() //A store de authentication
         }
     },
 
     methods: {
         login() {
-            if (this.email == "ken@123" && this.password == "123"
-            || this.email == "nuno@456" && this.password == "456" 
-            || this.email == "sandra@789" && this.password == "789"
-            ) {
-                let userInformation = {
-                    email: this.email,
-                    pass: this.password,
-                }
+            //Verificar se todos os campos foram preenchidos
+            if (this.email == "" || this.password == "") {
+                this.missingData = true
+            }
 
-                this.authenticationStore.login(userInformation) //Chamar a função login na store da authentication
-                
-                this.$router.push({ name: "account", params:{userEmail: userInformation.email}}) //Ir para a página de perfil
-
-                alert("Login feito!")
-                
-            } else {
-                this.error = true //Mostrar a mensagem de erro
+            try {
+                //Tentar fazer login
+                this.authenticationStore.login(this.email, this.password)
+                //Se o login foi feito com sucesso, o utilizador é redirecionado para o seu perfil
+                this.$router.push({name: "account", params:{userEmail: this.email}})
+            } catch (error) {
+                //Se um erro foi detetado, uma mensagem vai ser mostrada
+                this.error = true
             }
     },
 }}
