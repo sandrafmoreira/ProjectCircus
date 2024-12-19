@@ -1,15 +1,20 @@
 <template>
     <div>
-        <h1>Gallery Page 📷</h1>
+      
     </div>
-</template>
-
-<script>
-    export default {
+  </template>
+  
+  <script>
+      import { photo } from '@/stores/photo'
+  
+      export default {
+          
+          computed: {
         
+          },
     }
-</script>
-
-<style lang="scss" scoped>
-
-</style>
+  </script>
+  
+  <style lang="scss" scoped>
+  
+  </style>
