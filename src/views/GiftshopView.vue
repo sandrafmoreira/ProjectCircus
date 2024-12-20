@@ -6,17 +6,12 @@
 </template>
 
 <script>
+import {useProductsStore} from '@/stores/products';
     export default {
      data() {
         return {
-             gifts: [
-                {
-                    name: "",
-                    description: '',
-                    price: 0,
-                    image: '',
-                    restricted: false, //despunivel apenas para utilizadores
-                }]}
+            productsStore: useProductsStore(),
+             }
      },
         
     }

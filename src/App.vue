@@ -2,6 +2,21 @@
 import { RouterLink, RouterView } from 'vue-router'
 import { useAuthenticationStore } from '@/stores/authentication';
 
+//vuetify
+
+import 'vuetify/styles'
+import { createVuetify } from 'vuetify'
+import * as components from 'vuetify/components'
+import * as directives from 'vuetify/directives'
+import { createApp } from 'vue';
+
+const vuetify = createVuetify({
+  components,
+  directives,
+})
+  //--------------
+createApp(App).use(vuetify).mount('#app')
+
 export default {
   data() {
     return {
