@@ -10,7 +10,7 @@ import {useProductStore} from '@/stores/products';
     export default {
      data() {
         return {
-            productsStore: useProductsStore(),
+            productsStore: useProductStore(),
              }
      },
         
