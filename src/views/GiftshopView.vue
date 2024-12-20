@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import {useProductsStore} from '@/stores/products';
+import {useProductStore} from '@/stores/products';
     export default {
      data() {
         return {
