@@ -1,104 +1,162 @@
 <template>
-    <div>
-        <h1>User Account Page 😊</h1>
-        <h2>Olá {{ this.userInfo.firstName }} {{ this.userInfo.lastName }} !!</h2>
+    <!--DUVIDA!!-->
+    <h2>Olá {{ this.userStore.fullName }} !!</h2>
 
-        <div>
-            <button @click="changeTab(1)" >A tua conta</button>
-            <button @click="changeTab(2)">Historico de Produtos</button>
-            <button @click="changeTab(3)">Partilhar Conteudo</button>
-            <button @click="changeTab(4)">Editar Conta</button>
-        </div>
-    </div>
+    <v-card class="w-100">
+        <v-toolbar color="primary" title="User Profile"></v-toolbar>
 
-    <section>
-        <div id="tab1" v-if="tabSelected == 1">
-            <h2>A tua conta</h2>
-        </div>
-        <div id="tab2" v-else-if="tabSelected == 2">
-            <h2>Historico de Produtos</h2>
-        </div>
-        <div id="tab3" v-else-if="tabSelected == 3">
-            <h2>Partilhar Conteudo</h2>
-        </div>
-        <div id="tab3" v-else-if="tabSelected == 4">
-            <h2>Editar Conta</h2>
+        <div class="d-flex flex-row">
+            <v-tabs v-model="tab" color="primary" direction="vertical">
+                <v-tab text="A tua conta" value="1"></v-tab>
+                <v-tab text="Histórico de Produtos" value="2"></v-tab>
+                <v-tab text="Partilhar Conteúdo" value="3"></v-tab>
+                <v-tab text="Editar Conta" value="4"></v-tab>
+            </v-tabs>
 
-            <form @submit.prevent="editInformation">
-                <input type="text" name="firstName" id="firstName" v-model="firstName">
-                <input type="text" name="lastName" id="lastName" v-model="lastName">
-                <input type="text" name="email" id="email" v-model="newEmail">
-                <input type="password" name="oldPassword" id="oldPassword" placeholder="Password Antiga" v-model="oldPassword">
-                <input type="password" name="newPassword" id="newPassword" placeholder="Password Nova" v-model="newPassword">
-                <input type="submit" value="Guardar" @click="editInformation">
+            <v-tabs-window v-model="tab">
+                <v-tabs-window-item value="1">
+                    <h2>A tua Conta!</h2>
+                    <v-card flat>
+                        <v-card :class='["card", badge1]' id="badge1" subtitle="Ganha um voucher de 20% para o próximo evento participando em todos os workshops">
+                            <p v-if="badge1 == 'obtained'">Obtido!</p>
+                            <p v-else>Não obtido ainda!</p>
+                        </v-card>
+                        <v-card :class='["card", badge2]' subtitle="Obtém o Pacote Familiar e mais 3 bilhetes adicionais para obteres acesso exclusivo aos bastidores!">
+                            <p v-if="badge2 == 'obtained'">Obtido!</p>
+                            <p v-else>Não obtido ainda!!</p>
+                        </v-card>
+                        <v-card :class='["card", badge3]' subtitle="Partilha até cinco fotos dos teus momentos durante o circo e ganha um desconto exclusivo no Catálogo">
+                            <p v-if="badge3 == 'obtained'">Obtido!</p>
+                            <p v-else>Não obtido ainda!</p>
+                        </v-card>
 
-                <button id="removeAccount" @click="removeAccount">Remover Conta</button>
-                <p>Antes de qualquer alteração, coloque a sua password para confirmar as alterações!</p>
-                <p v-if="error" style="color: red;">Preencha todos os campos!</p>
-            </form>
+                    </v-card>
+                </v-tabs-window-item>
+
+                <v-tabs-window-item value="2">
+                    <v-card flat>
+                        <h2>Histórico de Produtos!!</h2>
+                        <v-card-text><p>Texto</p></v-card-text>
+                    </v-card>
+                </v-tabs-window-item>
+
+                <v-tabs-window-item value="3">
+                    <v-card flat>
+                        <h2>Partilhar Conteúdo!!!</h2>
+                        <v-card-text><p>Texto</p></v-card-text>
+                    </v-card>
+                </v-tabs-window-item>
+
+                <v-tabs-window-item value="4">
+                    <v-card>
+                        <h2>Editar Conta!!!!</h2>
+                        <v-card-text>
+                            <p style="color: red;">Antes de qualquer alteração, coloque a sua password para confirmar as alterações!</p>
+                            <v-form @submit.prevent="editInformation" v-model="form">
+                                    <v-text-field v-model="firstName" :rules="[required]" label="Primeiro Nome" variant="underlined"></v-text-field>
+                                    <v-text-field v-model="lastName"  :rules="[required]" label="Apelido" variant="underlined"></v-text-field>
+                                    <v-text-field v-model="email"  :rules="[required]" label="Email" type="email" variant="underlined"></v-text-field>
+                                    <v-text-field v-model="oldPassword" :rules="[required]" label="Old Password" type="password" variant="underlined"></v-text-field>
+                                    <v-text-field v-model="newPassword" label="New Password" type="password" variant="underlined"></v-text-field>
+                                    <v-btn class="mt-2" type="submit" block>Guardar</v-btn>
+                                    <v-btn class="mt-2" type="submit" @click="removeAccount">Remover Conta</v-btn>
+                                    <p v-if="error">O email já está a ser utilizado!</p>
+                            </v-form>
+                        </v-card-text>
+                    </v-card>
+                </v-tabs-window-item>
+            </v-tabs-window>
         </div>
-
-        <RouterLink v-if="userInfo.adminPermission" :to="{name: 'admin'}">Admin</RouterLink>
-    </section>
+    </v-card>
+    <RouterLink v-if="userStore.userInfo.adminPermission" :to="{name: 'admin'}">Admin</RouterLink>
 </template>
 
 <script>
-import { useAuthenticationStore } from '@/stores/authentication';
+import { useUserStore } from '@/stores/users';
 
     export default {
         data() {
             return {
-                userInfo: JSON.parse(localStorage.getItem("userInfo")),
-                tabSelected: 1,
-                firstName: JSON.parse(localStorage.getItem("userInfo")).firstName,
-                lastName: JSON.parse(localStorage.getItem("userInfo")).lastName,
-                oldEmail: JSON.parse(localStorage.getItem("userInfo")).email,
-                newEmail: JSON.parse(localStorage.getItem("userInfo")).email,
+                form: false,
+                tab: 1,
+                id: 0,
+                firstName: '',
+                lastName: '',
+                email: '',
                 oldPassword: "",
                 newPassword: "",
-                authenticationStore: useAuthenticationStore(),
-                error: false
+                error: false,
+                badge1: 'not-obtained',
+                badge2: 'not-obtained',
+                badge3: 'not-obtained',
+                userStore: useUserStore(),
+            }
+        },
+
+        mounted () {
+            this.id = this.userStore.userInfo.id;
+            this.firstName = this.userStore.userInfo.firstName;
+            this.lastName = this.userStore.userInfo.lastName;
+            this.email = this.userStore.userInfo.email;
+
+            if (this.userStore.userInfo.badges.includes('badge1')) {
+                    this.badge1 = 'obtained'
+            }
+            if (this.userStore.userInfo.badges.includes('badge2')) {
+                this.badge2 = 'obtained'
+            }
+            if (this.userStore.userInfo.badges.includes('badge3')) {
+                this.badge3 = 'obtained'
             }
         },
 
         methods: {
-            changeTab(number) {
-                this.tabSelected = number
-            },
-
             editInformation() {
-                //Verificar se todos os campos (exceto a password nova) estejam preenchidos
-                if (this.firstName == "" || this.lastName == "" || this.oldEmail == "" || this.oldPassword == "") {
-                    this.error = true
-                    return
-                }
-
                 try {
                     //Se o utilizador quer atualizar a password, a nova password é passada como parametro:
-                    if (this.newPassword == "") {
-                        this.authenticationStore.editInformation(this.oldEmail, this.newEmail, this.firstName, this.lastName, this.oldPassword)
+                    if (this.newPassword) {
+                        this.userStore.editInformation(this.userStore.userInfo.id, this.email, this.firstName, this.lastName, this.newPassword)
                     //Se nao quiser a password antiga é passada como parametro:
                     } else {
-                        this.authenticationStore.editInformation(this.oldEmail, this.newEmail, this.firstName, this.lastName, this.newPassword)
+                        this.userStore.editInformation(this.userStore.userInfo.id, this.email, this.firstName, this.lastName, this.oldPassword)
                     }
                     //Atualizar a variavel `oldPassword` para que o utilizador volta a inseri-la ao editar as suas informações
-                    this.oldPassword = ""
-                    this.tabSelected = 1
+
+                    alert("Alterações feitas!")
+
                 } catch (error) {
                     this.error = true
                 }
             },
 
             removeAccount() {
-                this.authenticationStore.logout()
-                this.authenticationStore.removeAccount(this.oldEmail)
+                this.userStore.logout()
+                this.userStore.removeAccount(this.id)
                 this.$router.push('/')
-            }
+            },
+
+            required(v) {
+                //codigo do vuetify
+                return !!v || 'Campo é obrigatório'
+            },
         },
         
     }
 </script>
 
 <style lang="scss" scoped>
+
+.card{
+    width: 300px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.not-obtained{
+    background-color: white;
+}
+
+.obtained{
+    background-color: #FFF9E3;
+}
 
 </style>

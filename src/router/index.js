@@ -40,7 +40,7 @@ const router = createRouter({
       component: () => import('../views/SignUpView.vue'),
     },
     {
-      path: '/account/:userEmail',
+      path: '/account/:id',
       name: 'account',
       component: () => import('../views/AccountView.vue'),
       meta: { requiresAuth: true }
@@ -81,7 +81,12 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  const isAuthenticated = localStorage.getItem("isAuthenticated")
+  let isAuthenticated = ""
+  const storage = localStorage.getItem("user")
+  if (storage) {
+    isAuthenticated = JSON.parse(storage).isAuthenticated
+
+  }
 
   if (to.meta.requiresAuth && !isAuthenticated) {
     next({path: "/login", query: {from: to.path}});

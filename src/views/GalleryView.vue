@@ -6,7 +6,7 @@
   </template>
   
   <script>
-        import { useAuthenticationStore } from '@/stores/authentication' 
+        import { useUserStore } from '@/stores/users' 
       import { usePhotoStore } from '@/stores/photo'
     
     
@@ -14,7 +14,7 @@
            data() {
             return {
                 photosStore: usePhotoStore(),
-                userStore:useAuthenticationStore(),
+                userStore:useUserStore(),
             }
            },
 
