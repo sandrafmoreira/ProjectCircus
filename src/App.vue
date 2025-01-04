@@ -41,7 +41,7 @@ export default {
 
 <template>
   <header>
-    <h1> Project Circus! :D</h1>
+    
     <div class="wrapper">
 
       <nav>
