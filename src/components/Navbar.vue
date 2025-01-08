@@ -11,10 +11,10 @@
 
       <div>
         <RouterLink :to="{name: 'home'}">Home</RouterLink>
-        <RouterLink :to="{name: 'pricing'}">Planeia a tua visita</RouterLink>
+        <RouterLink :to="{name: 'pricing'}">Programa</RouterLink>
         <RouterLink :to="{name: 'giftshop'}">Giftshop</RouterLink>
-        <RouterLink :to="{name: 'activities'}">Espetáculos e Workshops</RouterLink>
-        <RouterLink :to="{name: 'about'}">About</RouterLink> 
+        <RouterLink :to="{name: 'activities'}">Atividades</RouterLink>
+        <RouterLink :to="{name: 'about'}">Illusionni</RouterLink> 
         <RouterLink :to="{name: 'gallery'}">Galeria</RouterLink>
         <RouterLink :to="{name: 'news'}">Destaques</RouterLink>
         <RouterLink :to="{name: 'contacts'}">Contacte-nos</RouterLink>
@@ -22,8 +22,8 @@
         <RouterLink v-if="!userStore.isAuthenticated" :to="{name: 'login'}">Iniciar Sessão</RouterLink>
         <RouterLink v-if="!userStore.isAuthenticated" :to="{name: 'signup'}">Criar Conta</RouterLink>
         <!-- Links que apenas aparecem se o utilizador estiver autenticado -->
-        <RouterLink v-if="userStore.isAuthenticated" :to="{name: 'account', params: {id: userStore.userInfo.id}}">My Account</RouterLink>
-        <button v-if="userStore.isAuthenticated" @click="logout">Logout</button>
+        <RouterLink v-if="userStore.isAuthenticated" :to="{name: 'account', params: {id: userStore.userInfo.id}}">A minha conta</RouterLink>
+        <button v-if="userStore.isAuthenticated" @click="logout">Sair</button>
         <Cart></Cart>
       </div>
     </nav>

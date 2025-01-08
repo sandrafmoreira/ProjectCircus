@@ -1,7 +1,9 @@
 <template>
-    <h1>Sign Up Page</h1>
+    
+    <div class="form">
+        <h1>Criar conta</h1>
+        <p>Cria uma conta e garante o teu acesso a produtos exlusivos do catálogo!</p>
 
-    <div>
         <v-form @submit.prevent="signUp" v-model="form">
             <v-text-field v-model="firstName" :rules="[required]" label="Primeiro Nome" variant="underlined"></v-text-field>
             <v-text-field v-model="lastName" :rules="[required]" label="Apelido" variant="underlined"></v-text-field>
@@ -10,9 +12,14 @@
             <v-btn :disabled="!form" color="success" type="submit">Criar Conta</v-btn>
         </v-form>
 
-        <!--Para mais tarde! :)-->
         <p v-if="emailUsed" style="color: red;">O email que inseriu já está a ser utilizado!</p>
     </div>
+
+    <div class="images">
+        <img src="/src/assets/SignUpView/Bolas.png" alt="">
+        <img src="/src/assets/SignUpView/Palhaco.png" alt="">
+    </div>
+    
 </template>
 
 <script>
@@ -28,7 +35,6 @@ export default {
             password: "",
             emailUsed: false,
             userStore: useUserStore(),
-
         }
     },
 
@@ -53,5 +59,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    template {
+        background-color: pink;
+    }
+
+    .form {
+        margin: auto;
+        width: 30vw;
+    }
+
+    .images {
+        display: flex;
+        justify-content: space-between;
+        margin-top: -200px;
+    }
+
 
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    {{ getArticle.text }} 🤡
+    {{ getArticle.text }} 
   </div>
 </template>
 

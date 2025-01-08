@@ -1,5 +1,4 @@
 <template>
-    <!--DUVIDA!!-->
     <h2>Olá {{ this.userStore.fullName }} !!</h2>
 
     <v-card class="w-100">
@@ -35,8 +34,18 @@
 
                 <v-tabs-window-item value="2">
                     <v-card flat>
-                        <h2>Histórico de Produtos!!</h2>
-                        <v-card-text><p>Texto</p></v-card-text>
+                        <h2>Bilhetes aquiridos</h2>
+                        <v-card-text>
+                            <ul>
+                                <li v-for="ticket in ticketStore.purchasedTickets" :key="ticket.id">
+                                    
+                                    <h3>{{ ticket.title }}</h3>
+                                    <p>{{ ticket.description }}</p>
+                                    <p>{{ ticket.price }}</p>
+                                    <p>{{ ticket.quantity }}</p>
+                                </li>
+                            </ul>
+                        </v-card-text>
                     </v-card>
                 </v-tabs-window-item>
 
@@ -73,6 +82,7 @@
 
 <script>
 import { useUserStore } from '@/stores/users';
+import { useTicketStore } from "@/stores/ticket";
 
     export default {
         data() {
@@ -90,6 +100,7 @@ import { useUserStore } from '@/stores/users';
                 badge2: 'not-obtained',
                 badge3: 'not-obtained',
                 userStore: useUserStore(),
+                ticketStore: useTicketStore(),
             }
         },
 
