@@ -22,8 +22,8 @@
             Partilhar
         </customBtn>
   
-        <div class="section-content gallery-img-container"> 
-            <div class="">
+        <div class="gallery-section-container "> 
+            <div class="gallery-img-container">
                 <v-row dense >
                 <!-- Renderiza cada imagem ocupando 2 colunas -->
                 <v-col
@@ -38,14 +38,16 @@
                 </v-col>
                 </v-row>
             </div>
+
+            <!-- <template>
+            <v-icon icon="mdi-home" />
+            </template> -->
+            <customBtn class="view_more ">
+                +
+            </customBtn>
             
         </div>
-        <template>
-            <v-icon icon="mdi-home" />
-        </template>
-        <customBtn>
-            +
-        </customBtn>
+     
         
      
 
@@ -138,6 +140,12 @@
   
   <style lang="scss" scoped>
 
+  .main-section-img,.main-section-text {
+  padding-bottom:8rem;
+  padding-top: 6rem;
+  height: 100%;
+}
+
   .main-section-img{
     background-image: url('/src/assets/img/gallery_clowns.svg');
     background-size:unset;
@@ -177,5 +185,9 @@
     padding: 0;
     margin: 0;
 
+  }
+
+  .gallery-img-container .view_more {
+    align-self: center;
   }
   </style>
