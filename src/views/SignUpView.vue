@@ -1,47 +1,26 @@
 <template>
-    
-    <section class="form-section">
-
-        <div class="form-content">
-
-            <div  class="form-text">
-                <h1 class="section-title">Criar conta</h1>
-                <p class="section-desc">Cria uma conta e garante o teu acesso a produtos exlusivos do catálogo!</p>
-
+    <div>
+        <v-form @submit.prevent="signUp" v-model="form">
+            <h1>Criar Conta</h1>
+            <p>Cria uma conta e garante o teu acesso a produtos exlusivos do catálogo!</p>
+            <div class="usernameInputs">
+                <v-text-field class="form-input" v-model="firstName" :rules="[required]" label="Primeiro Nome" variant="plain"></v-text-field>
+                <v-text-field class="form-input" v-model="lastName" :rules="[required]" label="Apelido" variant="plain"></v-text-field>
             </div>
+            <v-text-field class="form-input" v-model="email" :rules="[required]" label="Email" variant="plain" type="email"></v-text-field>
+            <v-text-field class="form-input" v-model="password" :rules="[required]" :append-icon="visible ? 'mdi-eye' : 'mdi-eye-off'" label="Password" :type="visible ? 'test' : 'password'" variant="plain" type="password" @click:append="visible = !visible"></v-text-field>
+            <label for="terms">Eu li e concordo com os termos de uso</label><input type="checkbox" name="terms" id="terms"><br>
+            <label for="newsletter">Subscrever a Newsletter</label><input type="checkbox" name="newsletter" id="newsletter">
 
-            <v-form @submit.prevent="signUp" v-model="form" class="sign-up-form">
-                <v-text-field v-model="firstName" :rules="[required]" label="Primeiro Nome" variant="underlined"></v-text-field >
-                <v-text-field v-model="lastName" :rules="[required]" label="Apelido" variant="underlined"></v-text-field>
-                <v-text-field v-model="email" :rules="[required]" label="Email" variant="underlined" type="email"></v-text-field>
-                <v-text-field v-model="password" :rules="[required]" label="Password" variant="underlined" type="password"></v-text-field>
-                <v-btn :disabled="!form" color="success" type="submit">Criar Conta</v-btn>
-            </v-form>
-
-            <p v-if="emailUsed" style="color: red;">O email que inseriu já está a ser utilizado!</p>
-            
-        </div>
-
-        
-
-        <!-- <div class="graphic-el-sing-up">
-            <svg width="329" height="168" viewBox="0 0 329 168" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M291.064 53.4054C405.635 411.26 235.416 162.14 95.8426 235.847C-144.377 249.766 -149.631 136.24 -135.77 68.7938C-51.4564 68.3509 8.70659 -20.725 57.4457 5.39386C146.489 86.2653 253.135 -65.0642 291.064 53.4054Z" fill="#121B43"/>
-            </svg>
-
-
-        </div> -->
-
-       
-
-    </section>
-
-    <div class="graphic-el-sing-up">
-            <img src="/src/assets/SignUpView/Bolas.png" alt="">
-            <img src="/src/assets/SignUpView/Palhaco.png" alt="">
-        </div>
-   
-    
+            <v-btn class="text-none" id="submitBtn" :disabled="!form" color="#E63946" type="submit">Registar
+                <img id="arrowIcon" src="@/assets/img/arrow.png" alt="Ícone de seta"/>
+            </v-btn>
+        </v-form>
+    </div>
+    <img id="image1" src="@/assets/img/malabarismo_signup.png" alt="">
+    <img id="image2" src="@/assets/img/forma1_signup.png" alt="">
+    <img id="image3" src="@/assets/img/forma2_signup.png" alt="">
+    <img id="image4" src="@/assets/img/clown_signup.png" alt="">
 </template>
 
 <script>
@@ -51,12 +30,13 @@ export default {
     data() {
         return {
             form: false,
+            visible: false,
             email: "",
             firstName: "",
             lastName: "",
             password: "",
-            emailUsed: false,
             userStore: useUserStore(),
+
         }
     },
 
@@ -82,44 +62,66 @@ export default {
 
 <style lang="scss" scoped>
 
-    .form-section {
-    padding-top: 8rem;
-    
-    
-    
-    }
+img{
+    position: absolute;
+}
 
-    .form-content {
+form{
+    margin: 80px auto;
+    width: 500px;
+}
 
-        margin: auto;
-        width: 30vw;
+form p{
+    margin: 10px 0;
+    font-weight: 400;
+}
 
-    }
+.usernameInputs{
+    display: flex;
+    gap: 15px;
+}
 
-    .form-text h1{
-        margin-bottom: 0.5rem;
-    }
+.v-text-field{
+    margin-top: 15px;
+}
 
-    .form-text p{
-        font-size: 1rem;
+#submitBtn{
+    display: block;
+    float: right;
+    height: 45px;
+    width: 135px;
+    border-radius: 20px;
+    margin-top: 50px;
+}
 
-    }
+#submitBtn:hover{
+    background-color: #B72636;
+}
 
-    .sign-up-form{
-        margin-top: 2rem;
-    }
+#arrowIcon{
+    position: relative;
+    width: 30px; 
+    height: 20px; 
+    margin-left: 8px;
+}
 
-    .graphic-el-sing-up {
-        position:absolute;
-        display: flex;
-        justify-content: space-between;
-        // margin-top: 200%;
-        z-index: -50;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        // transform: translateY(-12%);
-    }
+#terms, #newsletter{
+    appearance: none; /*Faz com que o estilo padrao de uma checkbox desapareça*/
+    width: 15px;
+    height: 15px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #F1DEC5;
+    transition: background-color 0.3s ease;
+    margin-left: 10px;
+    margin-top: 15px;
+}
 
+#terms:checked, #newsletter:checked{
+    background-color: #007bff; /* Cor de fundo marcada */
+}
 
+#image1{
+    top: 35%;
+}
 </style>
