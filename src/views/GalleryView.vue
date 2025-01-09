@@ -1,9 +1,9 @@
 <template>
 
-    <section class="main-section">
-        <div class="main-section-text" >
-            <h1 class="main-section-title">Momentos Inesquecíveis <br> do Nosso Circo</h1>
-            <p class="main-section-desc">Um espetáculo em imagens onde cada foto é uma acrobacia, <br>e cada momento, único.</p>
+    <section class="main-section-gallery">
+        <div class="section-texts" >
+            <h1 class="section-title">Momentos Inesquecíveis <br> do Nosso Circo</h1>
+            <p class="section-desc">Um espetáculo em imagens onde cada foto é uma acrobacia, <br>e cada momento, único.</p>
         </div>
         
         <div class="main-section-img">
@@ -11,9 +11,9 @@
         </div>
     </section>
 
-    <section class="section">
+    <section class="section-">
 
-        <div class="grafic-el-gallery">
+        <div class="graphic-el-gallery">
             <svg width="630" height="608" viewBox="0 0 730 808" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M72.4946 46.3968C300.743 -69.6917 560.133 56.0629 661.899 184.718C661.899 184.718 867.158 447.831 562.711 681.194C258.264 914.556 -12.3731 796.479 -108.744 547.048C-183.682 353.088 -155.754 162.485 72.4946 46.3968Z" fill="#E4CB66"/>
             </svg>
@@ -52,6 +52,8 @@
      
 
     </section>
+
+    <Footer></Footer>
 </template>
   
 <script>
@@ -59,11 +61,13 @@
         import customBtn from '@/components/customBtn.vue';
         import { useUserStore } from '@/stores/users' 
         import { usePhotoStore } from '@/stores/photo'
-    
+        import Footer from '@/components/Footer.vue';
+   
     
         export default {
             components:{
-            customBtn
+            customBtn,
+            Footer
            },
 
            data() {
@@ -140,9 +144,15 @@
   
   <style lang="scss" scoped>
 
+.main-section-gallery{
+    display: grid;
+  grid-template-columns: 50% 50%;
+  padding-top: 8rem;
+}
+
   .main-section-img,.main-section-text {
   padding-bottom:8rem;
-  padding-top: 6rem;
+  padding-top: 20rem;
   height: 100%;
 }
 
@@ -152,7 +162,7 @@
     background-position:center bottom;
   }
 
-  .grafic-el-gallery{
+  .graphic-el-gallery{
     position: absolute; /* ou absolute, dependendo do layout */
     z-index: -1;
     left: 0;

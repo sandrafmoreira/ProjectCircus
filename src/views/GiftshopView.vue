@@ -15,13 +15,17 @@
             </v-row>
         </v-container>
     </div>
+
+    <Footer></Footer>
 </template>
 
 <script>
 
-
+import Footer from '@/components/Footer.vue';
 import { useProductStore } from '@/stores/products';
     export default {
+        components: {
+            Footer,},
      data() {
         return {
             productStore: useProductStore(),

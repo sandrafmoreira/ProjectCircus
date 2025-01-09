@@ -247,15 +247,18 @@
             <button @click="addToCart">Adicionar ao carrinho</button>
         </div>
     </section>
-    
+    <Footer></Footer>
 </template>
 
 <script>
     import { RouterLink, RouterView } from 'vue-router'
-
+    import Footer from '@/components/Footer.vue';
     import { useTicketStore } from '@/stores/ticket'
 
     export default {
+        components:{
+            Footer
+        },
         data() {
             return {
                 tabSelected: 1,

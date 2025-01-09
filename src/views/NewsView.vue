@@ -1,22 +1,24 @@
 
 <template>
-    <div class="header">
+
+    <section class="main-section-news" >
+        <div class="header">
         <img src="/src/assets/NewsView/Leao.png" alt="">
-        <div>
+        <div class="newsletter-content" >
             <img class="header-img" src="/src/assets/NewsView/Header.png" alt="">
-            <div>
-                <h1>Subscreve a nossa Newsletter</h1> 
-                <p>Queres ser dos primeiros a conhecer as pré-vendas, experiências únicas, <br>ofertas e muito mais? Cria conta no nosso website agora e recebe <br>diretamente na tua caixa de entrada!</p>
+            <div class="section-text">
+                <h1 class="section-title">Subscreve a nossa Newsletter</h1> 
+                <p class="section-desc">Queres ser dos primeiros a conhecer as pré-vendas, experiências únicas, <br>ofertas e muito mais? Cria conta no nosso website agora e recebe <br>diretamente na tua caixa de entrada!</p>
             </div>
         </div>        
     </div>
 
-        <div class="articles">
-            <h2>Últimos Artigos</h2>
+        <div class="articles-content">
+            <h2 class="section-subtitle">Últimos Artigos</h2>
             <ul>
                 <li v-for="article in newsStore.articles" :key="article.id">
                     <img :src="article.src" alt="">
-                    <div>
+                    <div class="article">
                         <h3>{{ article.title }}</h3>
                         <p>{{ article.text }}</p>
                         <router-link :to="{name: 'article', params: {id: article.id}}">Detalhes</router-link>
@@ -25,13 +27,20 @@
             </ul>
         </div>
 
+       
+    </section>
+  
+    <Footer></Footer>
     
 </template>
 
 <script>
     import { useNewsStore } from '@/stores/news'
-
+    import Footer from '@/components/Footer.vue';
     export default {
+        components:{
+            Footer,
+        },
         data() {
             return {
                 newsStore: useNewsStore()

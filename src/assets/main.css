@@ -25,11 +25,13 @@ p{
 }
 
 #app {
-
-  /* max-width: 1480px; */
   width: 100%;
-  /* padding: 2rem 4rem; */
   font-weight: normal;
+  
+
+}
+section{
+  padding: 0rem 4rem;
 }
 
 a, 
@@ -48,23 +50,26 @@ a,
   
 }
 
-.main-section-text {
+.section-text {
   line-height:1.3;
-  font-size: 9rem;
   margin-bottom: 1.5rem;
  
   
  
 }
 
-.main-section-title {
+.section-title {
   font-size: 3rem;
   font-weight: bold;
   margin-bottom: 1.5rem;
   
 }
 
-.main-section-desc {
+.section-subtitle{
+  
+}
+
+.section-desc {
   font-size: 1.25rem;
   padding: 0;
   /* margin-bottom: 2rem; */

@@ -97,13 +97,17 @@
         
         </div>
     </div>
+    <Footer></Footer>
 </template>
 
 <script>
    import { RouterLink } from 'vue-router'
-
+    import Footer from '@/components/Footer.vue';
 
     export default {
+        components:{
+            Footer
+        },
         data() {
             return {
                 reveal: false,
