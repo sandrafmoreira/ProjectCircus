@@ -1,17 +1,27 @@
 <template>
-    <div>
-        <v-form @submit.prevent="login" v-model="form">
-            <h1>Iniciar Sessão</h1>
-            <p>Bem-vindo de volta! Continua a tua jornada mágica connosco!</p>
-            <v-text-field class="form-input" id="email" v-model="email" :rules="[required]" label="Email" type="email" variant="plain"></v-text-field>
-            <v-text-field class="form-input" id="password" :append-icon="visible ? 'mdi-eye' : 'mdi-eye-off'"  v-model="password" :rules="[required]" label="Password" :type="visible ? 'text' : 'password'" variant="plain" @click:append="visible = !visible"></v-text-field>
-            <v-btn class="text-none" id="submitBtn" :disabled="!form" color="#E63946" type="submit">Iniciar Sessão
-                <img id="arrowIcon" src="@/assets/img/arrow.png" alt="Ícone de seta"/>
+    <section class="form-section">
+        <div class="form-content">
+            <div  class="form-text">
+                <h1 class="section-title">Iniciar Sessão</h1>
+                <p class="section-desc">Bem-vindo de volta! Continua a tua jornada mágica connosco!</p>
+            </div>
+            <v-form  @submit.prevent="login" v-model="form" class="login-up-form">
+            <v-text-field id="email" v-model="email" :rules="[required]" label="Email" type="email" variant="underlined"></v-text-field>
+            <v-text-field id="password" :append-icon="visible ? 'mdi-eye' : 'mdi-eye-off'"  v-model="password" :rules="[required]" label="Password" :type="visible ? 'text' : 'password'" variant="underlined" @click:append="visible = !visible"></v-text-field>
+            <v-btn class="text-none " id="submitBtn" :disabled="!form" color="#E63946" type="submit">Iniciar Sessão
+                <v-icon  class="arrowIcon">
+                        mdi-arrow-right
+                    </v-icon>
             </v-btn>
-            <p id="loginRedirect">Ainda não tens uma conta?<RouterLink v-if="!userStore.isAuthenticated" :to="{name: 'signup'}">Criar Conta</RouterLink></p>
-        </v-form>
-        
-    </div>
+            <p class="loginRedirect">Ainda não tens uma conta?<RouterLink v-if="!userStore.isAuthenticated" :to="{name: 'signup'}">Criar Conta</RouterLink></p>
+            </v-form>
+        </div>
+    </section>
+
+    <div class="graphic-el-sing-up">
+            <img src="/src/assets/loginView/login_graphic_el.svg" alt="">
+        </div>
+
 </template>
 
 <script>
@@ -59,43 +69,82 @@ export default {
 
 <style lang="scss" scoped>
 
-form{
-    margin: 80px auto;
-    width: 500px;
+    .form-section {
+        padding-top: 8rem;
+
+    }
+
+    .form-content {
+        margin: auto;
+        width: 30vw;
+    }
+
+    .form-text h1{
+        margin-bottom: 0.5rem;
+    }
+    .form-text p{
+        font-size: 1rem;
+        font-weight: 380;
+    }
+    .login-up-form{
+        margin-top: 2rem;
+    }
+
+    .v-field__field {
+        cursor: text; 
+        color: #ffff;
+        background-color: antiquewhite !important; 
+        border-radius: 50px;
+        }
+
+    .graphic-el-sing-up {
+        position:absolute;
+        display: flex;
+        justify-content: space-between;
+
+      // margin-top: 200%;
+      z-index: -50;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        // transform: translateY(-12%);
+    } 
+
+
+
+// #submitBtn{
+//     display: block;
+//     float: left;
+//     height: 45px;
+//     width: 180px;
+//     border-radius: 50px;
+//     margin-top: 15px;
+// }
+
+.v-btn.v-btn--density-default {
+height: calc(var(--v-btn-height) + 1px);
+border-radius: 50px;
+margin-top: 35px;
+
 }
 
-form p{
-    margin: 10px 0;
-    font-weight: 400;
+.v-btn__content, .v-btn__prepend, .v-btn__append {
+    font-size: 16px;}
+    .v-btn .v-icon {
+    --v-icon-size-multiplier: 1;
+    margin-left: 10px;
+    line-height: 1; 
+    border-radius: 50px;
+    }
+
+.loginRedirect{
+    margin-top: 60px;
+    font-weight: 300;
 }
 
-.v-text-field{
-    margin-top: 15px;
-}
-
-#submitBtn{
-    display: block;
-    float: left;
-    height: 45px;
-    width: 180px;
-    border-radius: 20px;
-    margin-top: 15px;
-}
-
-#arrowIcon{
-    position: relative;
-    width: 30px; 
-    height: 20px; 
-    margin-left: 8px;
-}
-
-#loginRedirect{
-    margin-top: 80px;
-}
-
-#loginRedirect a{
-    color: #192657;
-    font-weight: 400;
+.loginRedirect a{
+    color: var(--color-blue-text);
+    font-weight: 600;
     text-decoration: underline;
 }
 </style>

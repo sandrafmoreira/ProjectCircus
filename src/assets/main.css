@@ -1,9 +1,11 @@
 @import './base.css';
-
+@import url('https://fonts.googleapis.com/css?family=Hind:300,400&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" );
+@import url("https://cdn.jsdelivr.net/npm/font-awesome@4.x/css/font-awesome.min.css");
 body{
   line-height: 1.4;
   background-color: var(--color-body);
-  color: #192657;
+  color: var( --color-blue-text);
   font-family: var(--font-Lexend);  
 }
 h1 {
@@ -20,7 +22,7 @@ h3 {
 }
 
 p{
-  font-weight: 300;
+  font-weight: 350;
   line-height: 1.4;
 }
 
@@ -66,7 +68,8 @@ a,
 }
 
 .section-subtitle{
-  
+  font-size: 35px;
+  margin-bottom: 2rem;
 }
 
 .section-desc {
@@ -85,7 +88,7 @@ a,
   gap: 1.5rem;
 }
 
-.form-input{
+.form-input {
   padding: 12px 25px;
   font-size: 16px;
   border: none;
@@ -96,6 +99,7 @@ a,
 }
 
 .btn-red{
+    
     font-family: var(--font-Lexend);
     text-transform: capitalize;
     min-width: 1% ; 
@@ -115,13 +119,13 @@ a,
 
 
 
-@media (hover: hover) {
+/* @media (hover: hover) {
   a:hover {
     background-color: hsla(0, 0%, 100%, 0.2);
     border-radius: 50px;
     width: 100%;
   }
-}
+} */
 
 @media (min-width: 1024px) {
   body {

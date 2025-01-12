@@ -11,7 +11,7 @@
         </div>
     </section>
 
-    <section class="section-">
+    <section class="section">
 
         <div class="graphic-el-gallery">
             <svg width="630" height="608" viewBox="0 0 730 808" fill="none" xmlns="http://www.w3.org/2000/svg">
