@@ -31,8 +31,10 @@
                     cols="4">
                 
                     <v-img
-                    :src="photo.src || photo.urls.full" alt="Imagem"
+                    :src="photo.src.original || photo.urls.full" alt="Imagem"
                     class="align-end gallery-img-card ma-2" 
+                    :aspectRatio="1.5"
+                    cover
                     ></v-img>
                     
                 </v-col>
@@ -42,7 +44,7 @@
             <!-- <template>
             <v-icon icon="mdi-home" />
             </template> -->
-            <customBtn class="view_more ">
+            <customBtn class="view_more " @click="loadPhotos">
                 +
             </customBtn>
             
@@ -70,58 +72,55 @@
             Footer
            },
 
+
            data() {
             return {
+                
                 photosStore: usePhotoStore(),
                 userStore:useUserStore(),
-                photos:[
-                {
-                  id: 0,
-                  src: '/src/assets/img/pexels-gesel-792764.jpg',
-                 
-              },
-               {
-                  id: 1,
-                  src: '/src/assets/img/pexels-gesel-792764.jpg',
-                  
-                  
-              },
-              {
-                  id: 2,
-                  src: '/src/assets/img/pexels-gesel-792764.jpg',
-                 
-              },
-              {
-                  id: 3,
-                  src: '/src/assets/img/pexels-gesel-792764.jpg',
-                  
-              },
-              {
-                  id: 4,
-                  src: '/src/assets/img/pexels-gesel-792764.jpg',
-                  
-              }
-                ]
+                photos:[],
+                maxPhotos:60,
             }
            },
 
+          //  async created() {
+          //   try {
+
+          //    await this.fetchPhotos()
+          //    console.log("ok")
+          //   } catch (error) {
+          //     alert(error.message);
+          //   }
+          // },
+
 
            methods:{
-                // async fetchPhotos() {      
-                //     try {
-                //         console.log("Fetching circus photos...")
-                //         await this.photosStore.fetchCircusPhotos('circus');
-                //         this.photos = this.photosStore.circusPhotos; // Atualiza o estado local
-                //     } catch (error) {
-                //         console.error('Erro ao buscar os photos:', error);
-                //         alert('Erro ao buscar imagens.');
-                //     }
-                // },
-
                 async fetchPhotos() {      
                 try {
-                    await this.photosStore.fetchTodos();
-                    this.photos = this.photosStore.circusPhotos; // Atualiza o estado local
+                  console.log('fff');
+                  
+                    await this.photosStore.pexelsFetchCircusPhotos();
+                    this.photos = this.photosStore.Photos; // Atualiza o estado local
+                     console.log("Fetched photos:", this.photos);
+                } catch (error) {
+                    console.error('Erro ao buscar os todos:', error);
+                }
+                },
+
+                async loadPhotos() {   
+                if (this.photosStore.Photos.length>=this.photosStore.maxPhotos) {
+                  return
+                  
+                }   
+                try {
+                  console.log('lll');
+                  
+                    await this.photosStore.pexelsFetchCircusPhotos();
+                    this.photos = this.photosStore.Photos; // Atualiza o estado local
+                     console.log("Fetched photos:", this.photos);
+                     if (this.photosStore.Photos.length<this.photosStore.maxPhotos) {
+                    this.photosStore.per_page +=10 
+                  }
                 } catch (error) {
                     console.error('Erro ao buscar os todos:', error);
                 }

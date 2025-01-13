@@ -48,87 +48,28 @@
        
   
     </section>
-
-    
-
-    <section class="section">
-        <div class="graphic-el-contacts">
-           <img src="/src/assets/ContactView/contacts_graphic_el.svg" alt="">
+    <div class="graphic-el-contacts">
+      <img src="/src/assets/ContactView/contacts_graphic_el.svg" alt="">
     </div>
-        <h2>As perguntas mais frequentes!</h2>
-        <div class="FQAs-container">
+   
+    <section>
+      <h2 class="section-subtitle">As perguntas mais frequentes</h2>
+      <v-row justify="center">
+        <v-expansion-panels flat="true" variant="inset" >
+          <v-expansion-panel
+            v-for="(fqs,i) in faqItems"
+        :key="i"
+          >
+            <v-expansion-panel-title>{{ fqs.question }} <hr>
+            </v-expansion-panel-title>
+            <v-expansion-panel-text>
+             <p>{{ fqs.answer }}</p>
+            </v-expansion-panel-text>
+          </v-expansion-panel>
+        </v-expansion-panels>
+      </v-row>
 
-            <div class="accordion">
-                <div class="accordion-item">
-                <button id="accordion-button-1" aria-expanded="false">
-                    <span class="accordion-title">Why is the moon sometimes out during the day?</span>
-                    <span class="icon" aria-hidden="true"></span>
-                </button>
-                <div class="accordion-content">
-                    <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut.
-                    Ut tortor pretium viverra suspendisse potenti.
-                    </p>
-                </div>
-                </div>
-                <div class="accordion-item">
-                <button id="accordion-button-2" aria-expanded="false">
-                    <span class="accordion-title">Why is the sky blue?</span>
-                    <span class="icon" aria-hidden="true"></span>
-                </button>
-                <div class="accordion-content">
-                    <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut.
-                    Ut tortor pretium viverra suspendisse potenti.
-                    </p>
-                </div>
-                </div>
-                <div class="accordion-item">
-                <button id="accordion-button-3" aria-expanded="false">
-                    <span class="accordion-title">Will we ever discover aliens?</span>
-                    <span class="icon" aria-hidden="true"></span>
-                </button>
-                <div class="accordion-content">
-                    <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut.
-                    Ut tortor pretium viverra suspendisse potenti.
-                    </p>
-                </div>
-                </div>
-                <div class="accordion-item">
-                <button id="accordion-button-4" aria-expanded="false">
-                    <span class="accordion-title">How much does the Earth weigh?</span>
-                    <span class="icon" aria-hidden="true"></span>
-                </button>
-                <div class="accordion-content">
-                    <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut.
-                    Ut tortor pretium viverra suspendisse potenti.
-                    </p>
-                </div>
-                </div>
-                <div class="accordion-item">
-                <button id="accordion-button-5" aria-expanded="false">
-                    <span class="accordion-title">How do airplanes stay up?</span>
-                    <span class="icon" aria-hidden="true"></span>
-                </button>
-                <div class="accordion-content">
-                    <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut.
-                    Ut tortor pretium viverra suspendisse potenti.
-                    </p>
-                </div>
-                </div>
-            </div>
-        </div>
-                
     </section>
-
 
     <Footer></Footer>
   
@@ -139,25 +80,31 @@
         components: {
         Footer,
     },
-    // methods:{
-    //     const items = document.querySelectorAll('.accordion button');
-    //     toggleAccordion() {
-    //         const itemToggle = this.getAttribute('aria-expanded');
 
-    // for (i = 0; i < items.length; i++) {
-    //     items[i].setAttribute('aria-expanded', 'false');
-    // }
+    data() {
+      return {
+        faqItems:[
+          {
+            question: "Que medidas de sustentabilidade o circo vai adotar para esta edição?",
+            answer: "O circo implementará práticas sustentáveis, como a utilização de materiais recicláveis, redução do uso de plástico, e programas de sensibilização ambiental para os visitantes."
+          },
+          {
+            question: "O circo possui opções de acessibilidade para pessoas com mobilidade reduzida?",
+            answer: "Sim, temos rampas de acesso, lugares reservados e apoio especializado para garantir uma experiência inclusiva a todos os visitantes."
+          },
+          {
+            question: "Há restrições de segurança ou itens proibidos no festival?",
+            answer: "Sim, itens perigosos como armas, materiais inflamáveis, e substâncias proibidas não são permitidos. Por favor, consulte a lista completa no nosso regulamento oficial."
+          },
+          {
+            question: "Posso trocar ou reembolsar o meu bilhete após a compra?",
+            answer: "Os bilhetes não são reembolsáveis após a compra, mas podem ser trocados por outra data disponível, sujeito à política de trocas do evento."
+          }
+          ]
 
-    // if (itemToggle == 'false') {
-    //     this.setAttribute('aria-expanded', 'true');
-    // }
-    //     }
-    //     items.forEach((item) => item.addEventListener('click', toggleAccordion));
-    // }
-
-       
-
-
+      }
+    },
+   
     }
 </script>
 
@@ -221,119 +168,38 @@
     top: 70%;
 }
 
-    
-// -------
 
+//--------
 
-
-* {
-  box-sizing: border-box;
-}
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-.container {
-  margin: 0 auto;
-  padding: 4rem;
-  width: 48rem;
+.v-expansion-panels{
+  cursor: pointer;
+  margin: 2rem 0rem 10rem;
+  
 }
 
-.accordion .accordion-item {
-  border-bottom: 1px solid #e5e5e5;
-}
+.v-expansion-panel{
+  // background-color: var(--color-body);s
+  background-color: transparentize($color: #ffffff, $amount: 1);
+  color: var(--color-blue-text);
 
-.accordion .accordion-item button[aria-expanded='true'] {
-  border-bottom: 1px solid var(--color-blue-text);
 }
-
-.accordion button {
-  position: relative;
-  display: block;
-  text-align: left;
-  width: 100%;
-  padding: 1em 0;
-  color: #7288a2;
-  font-size: 1.15rem;
+.v-expansion-panel-title{
+  font-family: var(--font-Lexend);
+  font-size: 1.18rem;
   font-weight: 400;
-  border: none;
-  background: none;
-  outline: none;
+  padding-bottom: 2rem;
+
 }
 
-.accordion button:hover,
-.accordion button:focus {
-  cursor: pointer;
-  color: #03b5d2;
+.v-expansion-panel-title__icon{
+  background-color: var( --color-red-btn);
+  color: #fff;
+  border-radius: 50px;
 }
 
-.accordion button:hover::after,
-.accordion button:focus::after {
-  cursor: pointer;
-  color: #03b5d2;
-  border: 1px solid #03b5d2;
-}
-
-.accordion button .accordion-title {
-  padding: 1em 1.5em 1em 0;
-}
-
-.accordion button .icon {
-  display: inline-block;
-  position: absolute;
-  top: 18px;
-  right: 0;
-  width: 22px;
-  height: 22px;
-  border: 1px solid;
-  border-radius: 22px;
-}
-
-.accordion button .icon::before {
-  display: block;
-  position: absolute;
-  content: '';
-  top: 9px;
-  left: 5px;
-  width: 10px;
-  height: 2px;
-  background: currentColor;
-}
-.accordion button .icon::after {
-  display: block;
-  position: absolute;
-  content: '';
-  top: 5px;
-  left: 9px;
-  width: 2px;
-  height: 10px;
-  background: currentColor;
-}
-
-.accordion button[aria-expanded='true'] {
-  color: #03b5d2;
-}
-.accordion button[aria-expanded='true'] .icon::after {
-  width: 0;
-}
-.accordion button[aria-expanded='true'] + .accordion-content {
-  opacity: 1;
-  max-height: 9em;
-  transition: all 200ms linear;
-  will-change: opacity, max-height;
-}
-.accordion .accordion-content {
-  opacity: 0;
-  max-height: 0;
-  overflow: hidden;
-  transition: opacity 200ms linear, max-height 200ms linear;
-  will-change: opacity, max-height;
-}
-.accordion .accordion-content p {
+.v-expansion-panel-text{
   font-size: 1rem;
-  font-weight: 300;
-  margin: 2em 0;
-}
 
+}
   
 </style>

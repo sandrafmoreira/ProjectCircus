@@ -1,54 +1,64 @@
-// import { ref, computed } from 'vue'
-import { defineStore } from 'pinia'
-// import * as pexelsApi from "../api/pexelsApi";
-import * as unsplashApi from "../api/unsplashApi";
+
+import { defineStore } from "pinia";
+import * as api from "../api/photosApi";
 
 const UNSPLASH_API_BASE_URL= 'https://api.unsplash.com'
+const PEXELS_API_BASE_URL= 'https://api.pexels.com/v1'
+
 
 export const usePhotoStore = defineStore("photoStore", {
   state: () => {
     return{ 
-      circusPhotos: [], // circus publications are different from users pub
+      Photos: [],
+      per_page:10, 
+      maxPhotos:60
     }
   },
-
   getters:{
-    getPhoto:(state)=>state.circusPhotos,
-    
-  },
-
+        getPhoto:(state)=>state.Photos,
+        
+      },
   actions: {
 
-    async fetchCircusPhotos() {
+    async unsplashFetchCircusPhotos() {
       try {
-        this.circusPhotos = await unsplashApi.get(UNSPLASH_API_BASE_URL, 'search/photos?page=1&query=office');
+
+        console.log("Fetching circus photos...");
+        // for (let i = 0; i< 10; i++) {
+        //   const unsplashData  = await api.get(UNSPLASH_API_BASE_URL, `search/photos?page=${i}&per_page=30&query=circus`);
+        //   this.Photos.push(...unsplashData.results)
+        // }
+        const unsplashData  = await api.get(UNSPLASH_API_BASE_URL, `search/photos?page=1&per_page=${this.per_page}&query=circus`);
+        this.Photos= unsplashData.results;
+        
+        console.log( this.Photos);
       } catch (error) {
-        throw new Error(`Erro ao obter os todos: ${error}`);
+        throw new Error(`Error fetching  'search/photos?page=1&query=circus': ${error}`);
       }
     },
 
-    // async fetchCircusPhotos(query) {
-    //   try {
-    //     console.log("Fetching circus photos...");
 
-    //     const pexelsData = await pexelsApi.get(query);
-    //     console.log('Pexels Data:', pexelsData); 
-    //     const pexelsCircusPhotos = pexelsData.photos;
+    async pexelsFetchCircusPhotos() {
+
+      // if (this.Photos.length>=this.maxPhotos) {
+      //   return
         
+      // }
+      try {
 
-    //     const unsplashData = await unsplashApi.get(query)
-    //     const insplashCircusPhotos = unsplashData.results;
-    //     console.log('Unsplash Data:', unsplashData);
+        console.log("Fetching circus photos...");
+        // for (let i = 0; i< 10; i++) {
+        //   const unsplashData  = await api.get(UNSPLASH_API_BASE_URL, `search/photos?page=${i}&per_page=30&query=circus`);
+        //   this.Photos.push(...unsplashData.results)
+        // }
+        const pexelsData  = await api.get(PEXELS_API_BASE_URL, `search?query=circus&page=1&per_page=${this.per_page}`);
+        this.Photos= pexelsData.photos;
+        
+        
+        console.log( this.Photos);
+      } catch (error) {
+        throw new Error(`Error fetching  'search?query=nature&per_page=1': ${error}`);
+      }
+    },
+}});
 
-    //     this.circusPhotos = [...pexelsCircusPhotos, ...insplashCircusPhotos];
-    //     console.log("Combined Circus Photos:", this.circusPhotos);
-    //   } catch (error) {
-    //     console.error("Error in store fetching circus photos:", error);
-    //     throw error;
-    //   }
-    // },
-    // addPhoto(photo) {
-    //   this.photos.push(photo)
-    // }
-  }
-})
