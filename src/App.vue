@@ -88,6 +88,5 @@ export default {
     display: flex;
     flex-direction: column;
     gap: 4rem; /* Espaçamento entre as seções */
-    padding: 2rem 4rem;
   }
 </style>

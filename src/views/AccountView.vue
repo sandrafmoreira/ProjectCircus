@@ -1,20 +1,22 @@
 <template>
-    <h2>Olá {{ this.userStore.fullName }} !!</h2>
-
+    
+    <div style="margin-top: 30px;"></div>
     <v-card class="w-100">
-        <v-toolbar color="primary" title="User Profile"></v-toolbar>
+        <!-- <v-toolbar color="primary" title="User Profile"></v-toolbar> -->
 
         <div class="d-flex flex-row">
-            <v-tabs v-model="tab" color="primary" direction="vertical">
+            <v-tabs v-model="tab" color="primary" direction="vertical" class="left-tabs">
                 <v-tab text="A tua conta" value="1"></v-tab>
                 <v-tab text="Histórico de Produtos" value="2"></v-tab>
                 <v-tab text="Partilhar Conteúdo" value="3"></v-tab>
                 <v-tab text="Editar Conta" value="4"></v-tab>
             </v-tabs>
 
-            <v-tabs-window v-model="tab">
+            <v-tabs-window v-model="tab" class="windows">
                 <v-tabs-window-item value="1">
-                    <h2>A tua Conta!</h2>
+                    <h2>{{ this.userStore.fullName }}</h2>
+                    <p>Aqui podes consultar e editar os dados da tua conta. <br>Rever os bilhetes e produtos adquiridos durante a nossa <br>estadia, assim como os workshops em que te inscreveste.</p>
+               
                     <v-card flat>
                         <v-card :class='["card", badge1]' id="badge1" subtitle="Ganha um voucher de 20% para o próximo evento participando em todos os workshops">
                             <p v-if="badge1 == 'obtained'">Obtido!</p>
@@ -33,8 +35,10 @@
                 </v-tabs-window-item>
 
                 <v-tabs-window-item value="2">
+                    
+                    <h2>Bilhetes adquiridos</h2>
+                    <p>Consulta aqui os teus bilhetes adquiridos</p>
                     <v-card flat>
-                        <h2>Bilhetes aquiridos</h2>
                         <v-card-text>
                             <ul>
                                 <li v-for="ticket in ticketStore.purchasedTickets" :key="ticket.id">
@@ -47,6 +51,10 @@
                             </ul>
                         </v-card-text>
                     </v-card>
+
+                    <h2>As minhas encomendas</h2>
+                    <p>Consulta aqui o estado das tuas encomendas</p>
+
                 </v-tabs-window-item>
 
                 <v-tabs-window-item value="3">
@@ -111,7 +119,7 @@ import { useTicketStore } from "@/stores/ticket";
             this.email = this.userStore.userInfo.email;
 
             if (this.userStore.userInfo.badges.includes('badge1')) {
-                    this.badge1 = 'obtained'
+                this.badge1 = 'obtained'
             }
             if (this.userStore.userInfo.badges.includes('badge2')) {
                 this.badge2 = 'obtained'
@@ -157,6 +165,21 @@ import { useTicketStore } from "@/stores/ticket";
 
 <style lang="scss" scoped>
 
+.w-100 {
+    background-color: #F4EDE4;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+h1, h2, h3, p {
+    color: #192657;
+}
+
+h2 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
 .card{
     width: 300px;
     transition: background-color 0.3s ease, color 0.3s ease;
@@ -169,5 +192,18 @@ import { useTicketStore } from "@/stores/ticket";
 .obtained{
     background-color: #FFF9E3;
 }
+
+.left-tabs {
+    width: 500px;
+    height: 500px;
+    padding:100px 100px;
+    background-image: url("/src/assets/AccountView/bg-tabs.png");
+}
+
+.windows {
+    margin-left: 50px;
+
+}
+
 
 </style>
