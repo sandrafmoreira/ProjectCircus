@@ -19,14 +19,19 @@
 
         </div>
     </div>
+
+    <Footer></Footer>
 </template>
 
 <script>
 import { useProductStore } from '@/stores/products';
 import { useUserStore } from '@/stores/users';
-
+import Footer from '@/components/Footer.vue';
 
     export default {
+        components: {
+            Footer,
+        },
         data() {
             return {
                 productStore: useProductStore(),

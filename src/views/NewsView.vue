@@ -1,8 +1,10 @@
 
 <template>
-    <div class="header">
+
+    <section class="main-section-news" >
+        <div class="header">
         <img src="/src/assets/NewsView/Leao.png" alt="">
-        <div>
+        <div class="newsletter-content" >
             <img class="header-img" src="/src/assets/NewsView/Header.png" alt="">
             <section>
                 <h1>Subscreve a nossa Newsletter</h1> 
@@ -25,13 +27,20 @@
             </ul>
         </div>
 
+       
+    </section>
+  
+    <Footer></Footer>
     
 </template>
 
 <script>
     import { useNewsStore } from '@/stores/news'
-
+    import Footer from '@/components/Footer.vue';
     export default {
+        components:{
+            Footer,
+        },
         data() {
             return {
                 newsStore: useNewsStore()

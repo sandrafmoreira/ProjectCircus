@@ -1,7 +1,7 @@
 <script>
 import { RouterLink, RouterView } from 'vue-router'
 // import { useUserStore } from '@/stores/users';
-import Footer from '@/components/Footer.vue';
+// import Footer from '@/components/Footer.vue';
 import Navbar from '@/components/Navbar.vue';
 
 //vuetify
@@ -21,7 +21,7 @@ const vuetify = createVuetify({
 
 export default {
   components: {
-    Footer,
+    
     Navbar,
   },
 
@@ -70,7 +70,7 @@ export default {
       <RouterView />
     </main>
     
-     <Footer></Footer>
+     
   </div>
 
  
@@ -84,7 +84,7 @@ export default {
   }
   
   main {
-    padding: 3rem 0rem;  /* Espaçamento em volta do conteúdo principal */
+    padding: 3rem 0rem 0rem;  /* Espaçamento em volta do conteúdo principal */
     display: flex;
     flex-direction: column;
     gap: 4rem; /* Espaçamento entre as seções */
