@@ -4,13 +4,17 @@ import { defineStore } from 'pinia'
 export const useTicketStore = defineStore("ticket", {
   state: () => {
     return {
-        purchasedTickets: []
+        purchasedTickets: [],
+        purchasedWorkshops: []
     }
   },
 
   actions: {
     addPurchasedTicket(ticket) {
         this.purchasedTickets.push(ticket)
+    },
+    addPurchasedWorkshop(workshop) {
+        this.purchasedWorkshops.push(workshop)
     }
   }
 

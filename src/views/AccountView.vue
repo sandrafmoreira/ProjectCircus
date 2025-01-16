@@ -49,6 +49,15 @@
                                     <p>{{ ticket.quantity }}</p>
                                 </li>
                             </ul>
+                            <ul>
+                                <li v-for="workshop in ticketStore.purchasedWorkshops" :key="workshop.id">
+                                    
+                                    <h3>{{ workshop.title }}</h3>
+                                    <p>{{ workshop.description }}</p>
+                                    <p>{{ workshop.price }}</p>
+                                    <p>{{ workshop.quantity }}</p>
+                                </li>
+                            </ul>
                         </v-card-text>
                     </v-card>
 
