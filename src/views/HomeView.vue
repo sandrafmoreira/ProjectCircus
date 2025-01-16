@@ -1,10 +1,18 @@
 <script >
 import { RouterLink } from 'vue-router';
 
+import Footer from '@/components/Footer.vue';
+
+export default {
+  components: {
+    Footer
+  },
+};
+
 </script>
 
 <template>
-  <main>
+  
     <div class="box">
       <div class="welcome-text">
           <h2>20ª Edição</h2>
@@ -48,54 +56,77 @@ import { RouterLink } from 'vue-router';
 
       </div>
     </div>
-    <h1>Sobre Evento</h1>
+    
 
-    <section class="about-event">
-      <p>Neste inverno a cidade do Porto será palco do Illusionni, um circo que transforma o ordinário em extraordinário! Com apresentações deslumbrantes e atividades para todas as idades.</p>
-      <p>Vem e surpreende-te com o circo do futuro, onde nesta edição cada detalhe é pensado para cuidar do planeta.</p>
-      <div class="about-event-details">
-        <div>
-          <p><b>20-26 jan, 2025</b></p>
-          <p>13h-19h</p>
+    <section class="about-event-section ">
+
+      <div class="about-event-container" >
+          <h1 class="section-subtitle">Sobre o Evento</h1>
+          <div class="section-desc">
+            <p >Neste inverno a cidade do Porto será palco do Illusionni, um circo que transforma o ordinário em extraordinário! Com apresentações deslumbrantes e atividades para todas as idades.</p>
+
+            <p >Vem e surpreende-te com o circo do futuro, onde nesta edição cada detalhe é pensado para cuidar do planeta.</p>
+          </div>
+        
+        <div class="about-event-details">
+          <div class="about-event-details-desc">
+            <p><b>20-26 jan, 2025</b></p>
+            <p>13h-21h</p>
+          </div>
+          <div class="about-event-details-desc">
+            <p><b>Localização</b></p>
+            <p>Parque da Cidade</p>
+          </div>
         </div>
-        <div>
-          <p><b>Localização</b></p>
-          <p>Parque da Cidade</p>
+
+          <button class="btn-red">
+            <RouterLink id="findMoreActivities" :to="{name: 'activities'}">Saber Mais 
+              <v-icon  class="arrowIcon">
+                        mdi-arrow-right
+              </v-icon>
+            </RouterLink>
+          </button>
+
+      </div>
+      <div class="home-graphic-el-about">
+        <img src="/src/assets/home_assets/graphic_el_balloon.svg" alt="">
+      </div>
+
+    </section>
+    
+    <section class="special-dates-section">
+        
+        <div class="special-dates-container">
+          <h3 >Datas Especiais</h3>
+          <div class="special-dates-texts"> 
+            <div class="special-dates-desc" >
+              <svg width="34" height="32" viewBox="0 0 34 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M31.9261 30.2644C32.1889 30.2644 32.4375 30.146 32.6029 29.9418C32.7684 29.7377 32.8329 29.4699 32.7786 29.2129L32.2299 26.6164C32.5424 26.3141 32.7388 25.892 32.7388 25.4228C32.7388 24.9288 32.5188 24.4906 32.1773 24.1862V15.1693L29.9778 16.5304V24.1862C29.6363 24.4906 29.4163 24.9288 29.4163 25.4228C29.4163 25.8921 29.6127 26.3142 29.9252 26.6164L29.3765 29.2129C29.3222 29.47 29.3868 29.7377 29.5522 29.9418C29.7176 30.1459 29.9662 30.2644 30.229 30.2644H31.9261ZM32.6717 9.90759L18.3629 1.05006C17.9439 0.791934 17.4715 0.662354 16.9991 0.662354C16.5267 0.662354 16.0539 0.791825 15.6374 1.05006L1.32849 9.90759C0.946411 10.144 0.714355 10.5616 0.714355 11.011C0.714355 11.4605 0.946411 11.8782 1.32849 12.115L15.6374 20.9726C16.0539 21.231 16.5266 21.3603 16.999 21.3603C17.4714 21.3603 17.9439 21.2308 18.3629 20.9726L32.6717 12.115C33.0537 11.8783 33.2858 11.4605 33.2858 11.011C33.2858 10.5616 33.0537 10.1439 32.6717 9.90759ZM16.999 23.5596C16.1077 23.5596 15.2378 23.3121 14.4795 22.8427L6.13306 17.6756V26.5729C6.13306 29.2062 11.0002 31.3379 16.999 31.3379C22.9999 31.3379 27.8667 29.2062 27.8667 26.5729V17.6756L19.5206 22.8427C18.7623 23.3121 17.8903 23.5596 16.999 23.5596Z" fill="#121B43"/>
+              </svg>
+              <p class="p_title">24 de Janeiro – Dia Mundial da Educação:</p>
+              <p class="p_desc">Neste dia, os nossos espetáculos e workshops serão dedicados ao poder transformador da aprendizagem. Uma celebração imperdível para crianças e adultos!</p>
+            </div>
+            <div  class="special-dates-desc">
+              <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12.0175 0.118652C11.7503 0.118652 11.492 0.180996 11.2575 0.284902C8.33919 1.60006 10.5331 10.0194 13.3475 16.9337C13.6236 14.0658 16.0609 11.8037 19 11.8037C20.232 11.8037 21.369 12.2252 22.3012 12.8962C22.3072 12.8991 22.319 12.8932 22.325 12.8962C19.3889 6.95865 14.9684 0.118652 12.0175 0.118652ZM22.325 12.8962C23.7411 13.9263 24.6762 15.5977 24.6762 17.4799C24.6762 19.7777 23.2957 21.7668 21.3275 22.6574C22.8564 22.7554 24.3615 22.8237 25.7925 22.8237C29.2956 22.8237 37.4745 22.4763 37.7862 19.3799C38.1068 16.2004 29.7172 13.9174 22.325 12.8962ZM21.3275 22.6574C21.3126 22.6633 21.2948 22.6515 21.28 22.6574C20.5793 22.9691 19.8134 23.1562 19 23.1562C15.8739 23.1562 13.3237 20.606 13.3237 17.4799C13.3237 17.2929 13.3534 17.1147 13.3712 16.9337C9.23278 23.1443 5.36153 30.9551 7.95622 32.8224C8.27981 33.054 8.67466 33.1787 9.11997 33.1787C12.1125 33.1787 17.5304 27.541 21.3275 22.6574ZM19 13.2999C16.6962 13.2999 14.82 15.1762 14.82 17.4799C14.82 19.7837 16.6962 21.6599 19 21.6599C21.3037 21.6599 23.18 19.7837 23.18 17.4799C23.18 15.1762 21.3037 13.2999 19 13.2999ZM19 15.5799C20.0479 15.5799 20.9 16.429 20.9 17.4799C20.9 18.5308 20.0479 19.3799 19 19.3799C17.949 19.3799 17.1 18.5308 17.1 17.4799C17.1 16.429 17.949 15.5799 19 15.5799ZM21.66 24.7949C20.1964 26.6088 18.142 29.0046 15.96 30.9937L15.4375 37.1687C15.4197 37.3794 15.482 37.5813 15.6275 37.7387C15.7729 37.896 15.9837 37.9999 16.1975 37.9999H21.8025C22.0132 37.9999 22.2062 37.893 22.3487 37.7387C22.4912 37.5843 22.5773 37.3794 22.5625 37.1687L21.66 24.7949Z" fill="#121B43"/>
+              </svg>
+              <p class="p_title">26 de Janeiro – Dia Mundial das Energias Limpas:</p>
+              <p class="p_desc">Vem descobrir como as energias limpas movimentam o nosso circo e inspire-se com atuações temáticas que mostram como inovação e sustentabilidade caminham juntas!</p>
+            </div>
+          </div>
+         
         </div>
-      </div>
-      <div class="about-event-findMore">
-        <button>
-          <RouterLink id="findMoreActivities" :to="{name: 'activities'}">Saber Mais 
-          <img id="arrowIcon" src="@/assets/img/arrow.png" alt="Ícone de seta"/>
-          </RouterLink>
-        </button>
-      </div>
-      <!-- <v-btn class="text-none" id="findMoreActivities" color="#E63946" type="submit">Saber Mais
-        <img id="arrowIcon" src="@/assets/img/arrow.png" alt="Ícone de seta"/>
-      </v-btn> -->
-    </section>
-    <img id="balloons" src="@/assets/img/baloes_homepage1.png" alt="">
 
-    <section class="special-dates">
-      <h1>Datas Especiais</h1>
-      <section class="special-dates-cards">
-      <div>
-        <img src="@/assets/img/icon1_homepage.png" alt="">
-        <p>24 de Janeiro – Dia Mundial da Educação:</p>
-        <p>Neste dia, os nossos espetáculos e workshops serão dedicados ao poder transformador da aprendizagem. Uma celebração imperdível para crianças e adultos!</p>
-      </div>
-      <div>
-        <img src="@/assets/img/icon2_homepage.png" alt="">
-        <p>26 de Janeiro – Dia Mundial das Energias Limpas:</p>
-        <p>Vem descobrir como as energias limpas movimentam o nosso circo e inspire-se com atuações temáticas que mostram como inovação e sustentabilidade caminham juntas!</p>
-      </div>
-      </section>
+        <div class="home-graphic-el-spacial-dates">
+            <img src="/src/assets/home_assets/home_yellow_graphic_el.svg" alt="">
+        </div>
     </section>
-    <img id="shape1" src="@/assets/img/forma1_homepage.png" alt="">
+    
+    <!-- <img id="shape1" src="@/assets/img/forma1_homepage.png" alt=""> -->
 
-    <section class="shows-info">
+    <section class="shows-info-section">
       <div class="shows-info-title">
-        <h1>Os nossos espetáculos</h1>
+        <h1 class="section-subtitle">Os nossos espetáculos</h1>
         <RouterLink id="findMoreShows" :to="{name: 'activities'}">
           <svg width="32px" height="32px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(0)">
             <g id="SVGRepo_bgCarrier" stroke-width="0"/>
@@ -106,43 +137,43 @@ import { RouterLink } from 'vue-router';
       </div>
       <div class="shows-available">
         <div class="show-card">
-          <img src="@/assets/img/show_image_effect.png" alt="" id="image_effect">
+         
           <img src="@/assets/img/show1_image.png" id="show_image" alt="">
           <h4>Luzes</h4>
         </div>
         <div class="show-card">
-          <img src="@/assets/img/show_image_effect.png" alt="" id="image_effect">
+          
           <img src="@/assets/img/show2_image.png" id="show_image" alt="">
           <h4>Circo Verde</h4>
         </div>
         <div class="show-card">
-          <img src="@/assets/img/show_image_effect.png" alt="" id="image_effect">
+          
           <img src="@/assets/img/show3_image.png" id="show_image" alt="">
           <h4>Asas de Seda</h4>
         </div>
         <div class="show-card">
-          <img src="@/assets/img/show_image_effect.png" alt="" id="image_effect">
+          
           <img src="@/assets/img/show4_image.png" id="show_image" alt="">
           <h4>Arte do Equilíbrio</h4>
         </div>
       </div>
     </section>
 
-    <section class="interactive-map">
+    <section class="interactive-map-section">
       <div>
-        <h1>Mapa Interativo</h1>
+        <h1 class="section-subtitle" >Mapa Interativo</h1>
         <p>Consulta o nosso mapa para localizar todas as áreas do recinto, incluindo workshops, espetáculos e serviços.</p>
-
-        <img src="@/assets/img/baloes_homepage2.png" alt="">
       </div>
-      <div>
-        <!--Mapa Interativo-->
+      <div class="interactive-map">
+        <img src="/src/assets/home_assets/home-interatve-map.svg" alt="">
       </div>
     </section>
 
-    <h1>Explora o nosso website</h1>
-    <section class="explore-website">
-      <div class="website-page">
+    
+    <section class="explore-website-section">
+      <h1 class="section-subtitle">Explora o nosso website</h1>
+      <div class=" explore-website-container"> 
+        <div class="website-page">
         <svg width="95" height="193" viewBox="0 0 95 193" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M69.9358 192.914C69.8436 192.889 69.6824 192.753 69.5903 192.729C62.1785 180.949 62.1216 162.362 62.7776 145.907L62.8722 142.236C63.5056 125.128 64.1854 107.478 59.0332 93.5317C58.8951 93.3099 59.0566 93.076 59.2871 92.953C59.5176 92.8299 59.7709 92.9902 59.909 93.212C65.1072 107.355 64.4043 125.092 63.7709 142.2L63.6763 145.87C63.0434 162.239 63.0543 180.629 70.328 192.187C70.4661 192.409 70.3968 192.668 70.1663 192.791C70.1432 192.877 70.0279 192.938 69.9358 192.914Z" fill="#E4CB66"/>
           <path id="balloon_color" d="M70.3135 66.783C76.2937 54.6976 79.0503 40.7551 74.8937 28.4924C70.7371 16.2298 58.3862 6.40763 44.3169 7.38434C28.1634 8.46487 14.5181 23.5741 12.5733 38.5069C10.6837 53.2337 18.2742 67.2996 29.4288 76.47C38.913 84.1994 50.7145 89.1277 63.2041 92.5847C65.3969 93.1723 65.2276 95.9969 62.9777 96.7187C55.3231 98.9727 46.81 100.776 52.9397 92.1525C59.0781 83.8626 65.3801 76.0581 70.3135 66.783Z" fill="#E9DED0"/>
@@ -263,11 +294,13 @@ import { RouterLink } from 'vue-router';
           <p>Leva para casa uma seleção de lembranças que capturam a essência do nosso circo</p>
         </div>
       </div>
+      </div>
+      
     </section>
 
     <section class="gallery">
       <div class="gallery-title">
-        <h1>Galeria</h1>
+        <h1 class="section-subtitle" >Galeria</h1>
         <RouterLink id="exploreGallery" :to="{name: 'gallery'}">
           <svg width="32px" height="32px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(0)">
             <g id="SVGRepo_bgCarrier" stroke-width="0"/>
@@ -276,13 +309,14 @@ import { RouterLink } from 'vue-router';
           </svg>
         </RouterLink>
       </div>
-      <div></div>
+
+      
     </section>
 
-    <section class="contacts">
+    <section class="volunteering-section">
       <h1>Voluntaria-te e vive o Circo!</h1>
       <p>Descobre a magia do circo por dentro e ajuda-nos a criar momentos inesquecíveis!
-      <br><br>Se és um especialista em técnicas circenses candidata-te como voluntário para ensinar nos nossos workshops. <br>Entra em contacto.</p>
+      <br> <br>Se és um especialista em técnicas circenses candidata-te como voluntário para ensinar nos nossos workshops. <br>Entra em contacto.</p>
       <button>
           <RouterLink id="findMoreActivities" :to="{name: 'contacts'}">Contactar
           <img id="arrowIcon" src="@/assets/img/arrow.png" alt="Ícone de seta"/>
@@ -325,11 +359,12 @@ import { RouterLink } from 'vue-router';
       <path d="M137.713 82.7783C133.679 72.8429 130.692 62.0655 131.289 50.6145C131.887 37.8163 136.667 25.8601 144.734 16.935C158.03 2.2845 179.393 -2.59902 196.423 1.27411C222.417 7.16801 239 31.4172 239 58.3607C239 84.6307 224.21 111.743 202.997 130.603C195.527 137.339 187.012 143.233 180.887 150.642C178.496 153.673 176.554 158.389 179.542 160.073C181.186 161.083 183.576 160.409 185.667 159.736C190.298 158.389 210.018 155.189 206.731 149.632C205.387 147.274 198.963 145.927 196.423 144.748C192.838 143.064 189.253 141.044 185.817 138.855C172.371 130.771 160.42 119.657 150.859 106.186C145.78 99.1128 141.298 91.1982 137.713 82.7783Z" fill="#E4CB66"/>
       <path d="M150.16 386.662C149.874 383.174 149.802 379.685 149.874 376.197C150.089 373.123 149.73 370.133 148.727 367.226C148.082 365.648 145.288 360.249 143.926 360.498C142.565 360.747 143.926 369.635 143.926 369.635C143.926 369.635 138.982 367.974 136.832 368.389C134.682 368.804 135.184 371.96 135.184 371.96C135.184 371.96 132.891 374.12 134.611 376.612C133.823 377.359 133.823 378.771 134.467 379.602C134.539 379.685 134.611 379.768 134.682 379.851C134.682 379.851 133.106 382.177 134.897 383.423C136.689 384.669 139.913 384.503 140.917 386.662H150.16Z" fill="white"/>
       <path d="M150.157 387.076H140.985C140.842 387.076 140.77 386.993 140.698 386.827C140.125 385.664 138.764 385.249 137.33 384.834C136.399 384.584 135.539 384.252 134.751 383.754C134.178 383.339 133.819 382.84 133.748 382.176C133.604 381.262 134.034 380.348 134.249 379.85C133.533 378.936 133.533 377.441 134.178 376.528C133.031 374.534 134.034 372.707 134.894 371.793C134.822 371.295 134.751 369.966 135.324 369.052C135.682 368.471 136.184 368.138 136.829 367.972C138.62 367.64 142.131 368.637 143.493 369.052C142.991 365.564 142.49 360.414 143.851 360.082C145.786 359.666 149.011 366.976 149.011 366.976C150.014 369.883 150.372 373.039 150.157 376.112C150.085 379.601 150.157 383.089 150.444 386.578C150.444 386.661 150.444 386.827 150.372 386.91C150.3 386.993 150.229 387.076 150.157 387.076ZM141.2 386.163H149.799C149.584 382.84 149.512 379.435 149.584 376.029C149.799 373.039 149.44 370.049 148.509 367.225C147.577 364.982 144.998 360.58 144.138 360.746C143.636 360.995 143.78 365.148 144.424 369.384C144.424 369.55 144.424 369.633 144.281 369.8C144.21 369.883 144.066 369.966 143.923 369.883C143.851 369.883 139.05 368.221 136.972 368.637C136.542 368.72 136.184 368.969 135.969 369.301C135.396 370.215 135.682 371.71 135.682 371.71C135.682 371.876 135.682 372.042 135.539 372.125C135.467 372.208 133.604 374.036 134.966 376.195C135.109 376.361 135.037 376.611 134.894 376.777C134.321 377.441 134.249 378.521 134.751 379.185C134.822 379.269 134.822 379.352 134.894 379.352C135.037 379.518 135.037 379.767 134.966 379.933C134.966 379.933 134.249 381.013 134.392 381.926C134.464 382.342 134.679 382.674 135.037 382.923C135.682 383.339 136.542 383.588 137.402 383.92C138.907 384.418 140.412 384.917 141.2 386.163Z" fill="#732A09"/>
-    </svg>
+      </svg>
     </section>
 
-    <Footer></Footer>
-  </main>
+    
+
+  <Footer></Footer>
 </template>
 
 
@@ -389,91 +424,142 @@ video{
 }
 
 /* Secção "Sobre Evento"*/
-.about-event{
-  width: 565px;
+.about-event-section {
+  display: grid;
+  grid-template-columns: 50% 30%;
+  padding-top: 8rem;
+  justify-content: space-between;
 }
 
-.about-event p:nth-of-type(1) {
-  margin-top: 25px;
+.section-desc{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 85%;
 }
-
-.about-event p:nth-of-type(2) {
-  margin-top: 10px;
-}
-
 .about-event-details{
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
-  width: 80%;
+  margin-top: 2rem;
+  width: 60%;
 }
 
-.about-event-details div{
-  display: flex;
+.about-event-details-desc{
+  display: flex; 
   flex-direction: column;
-  
 }
 
-.about-event-findMore{
+.btn-red{
   margin-top: 50px;
+  font-family: var(--font-Lexend);
+  text-transform: capitalize;
+  min-width: 1% ; 
+  background-color: var(--color-red-btn) ;
+  color: white; 
+  border-radius: 50px;
+  padding: 0.5rem 1rem;
+  max-width: 150px;
+  font-size: 1rem;
+  
+
+  transition: background-color 0.3s ease-in-out;
 }
 
-#findMoreActivities, #buyTickets{
-    background-color: #E63946;
-    color: white;
-    padding: 10px 15px;
-    border-radius: 20px;
+
+.btn-red a[data-v-b4e148ca] {
+text-decoration: none;
+color: hsl(0, 0%, 100%);
 }
 
-#findMoreActivities:hover, #buyTickets:hover, #findMoreShows:hover, #exploreGallery:hover{
-  background-color: #B72636;
-  transition: background-color 0.5s ease;
+.home-graphic-el-about img{
+  position: absolute; /* ou absolute, dependendo do layout */
+    z-index: -1;
+    
+    transform: translateY(-40%);
 }
 
-#findMoreActivities img{
-  padding-left: 10px;
-  padding-bottom: -10px;
-}
 
-#balloons{
-  position: absolute;
-  width: 261px;
-  height: 361px;
-  left: 70%;
-  top: 140%;
-}
+// #buyTickets:hover, #findMoreShows:hover, #exploreGallery:hover{
+//   background-color: #B72636;
+//   transition: background-color 0.5s ease;
+// }
+
+// #findMoreActivities img{
+//   padding-left: 10px;
+//   padding-bottom: -10px;
+// }
+
+// #balloons{
+//   position: absolute;
+//   width: 261px;
+//   height: 361px;
+//   left: 70%;
+//   top: 140%;
+// }
 
 /*Secção "Datas Especiais" */
-.special-dates{
-  width: 860px;
+.special-dates-section{
+  display: grid;
+  grid-template-columns: 70% 30%;
+  justify-content: space-between;
 }
 
-.special-dates h1{
-  margin: 30px 0;  
+.special-dates-container h3{
+  font-size: 25px;
+  padding-bottom: 1.5rem;
+  margin-top: 4rem;
 }
 
-.special-dates-cards{
-  display: flex;
-  gap: 55px;
-  
+.special-dates-texts{
+  display: grid;
+  grid-template-columns: 50% 50%;
+
+  justify-content: space-between;
+  margin: 0;
 }
 
-.special-dates-cards div p:nth-of-type(1) {
+.special-dates-texts .p_title{
   font-weight: 600;
-  margin-bottom: 10px;
+  width: 100%;
 }
 
-#shape1{
-  position: absolute;
-  width: 500px;
-  height: 615px;
-  left: 70%;
-  top: 200%;
+.special-dates-texts .p_desc{
+  width: 85%;
 }
+
+.special-dates-desc{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+ 
+}
+
+.home-graphic-el-spacial-dates{
+  // background-image: url('/src/assets/home_assets/home_yellow_graphic_el.svg');
+  position: absolute; /* ou absolute, dependendo do layout */
+    z-index: -1;
+    right: 0;
+    transform: translateY(-25%);
+}
+
+
+
+// .special-dates-cards div p:nth-of-type(1) {
+//   font-weight: 600;
+//   margin-bottom: 10px;
+// }
+
+// #shape1{
+//   position: absolute;
+//   width: 500px;
+//   height: 615px;
+//   left: 70%;
+//   top: 200%;
+// }
 
 /* Secção "Os Nossos Espetáculos" */
-.shows-info{
-  margin-top: 200px;
+.shows-info-section{
+  padding-top: 12rem;
 }
 
 .shows-info-title, .gallery-title{
@@ -495,23 +581,16 @@ video{
   margin: auto;
 }
 
-.show-card{
+.show-card {
   width: 295px;
   height: 400px;
   position: relative;
+  transition: opacity 0.3s ease; 
+  opacity: 0.7;
 }
 
-#show_image, #image_effect{
-  width: 295px;
-  height: 400px;
-}
-
-#image_effect{
-  position: absolute;
-}
-
-.show-card:hover #image_effect{
-  display: none;
+.show-card:hover{
+  opacity: 1;
 }
 
 .show-card h4{
@@ -522,32 +601,51 @@ video{
 }
 
 /* Secção "Mapa Interativo" */
-.interactive-map{
+.interactive-map-section{
   display: flex;
+  flex-direction: column;
+  padding: 0rem 0rem;
 }
-
-.interactive-map p{
+.interactive-map-section h1{
   width: 400px;
-  margin-top: 50px;
+  margin-top: 50px ;
+  margin-bottom: 1rem;
+  padding: 0rem 4rem;
 }
 
-.interactive-map img{
-  margin-top: 50px;
+.interactive-map-section p{
+  padding: 0rem 4rem;
+  width: 60%;
+  
+}
+
+.interactive-map {
+  margin-top: 50px ;
 }
 
 /* Secção "Explora o nosso website" */
-.explore-website{
+.explore-website-container{
   display: grid;
   grid-template-columns: auto auto auto;
   gap: 50px;
+  padding-top: 3rem;
 }
 
 .website-page{
-  display: flex;
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.website-page h5{
+
+ font-weight: 500;
+ font-size: 20px;
+ margin-bottom: 0.6rem;
 }
 
 .website-page p{
-  width: 200px;
+  margin: 0;
+  width: 70%;
 }
 
 .website-page svg:hover #balloon_color{
@@ -556,21 +654,25 @@ video{
 }
 
 /* Secção "Voluntaria-te e vive o Circo" */
-.contacts{
-  margin: auto;
+.volunteering-section{
+  margin: auto auto 8rem;
+  width: 45%;
+  
 }
 
-.contacts h1{
+.volunteering-section h1{
   text-align: center;
+  font-size: 2rem;
+  margin: 0;
 }
 
-.contacts p{
-  width: 500px;
-  margin-top: 15px;
+.volunteering-section p{
+  margin-top: 2rem;
+  font-size: 18px;
 }
 
-.contacts button{
-  margin-top: 80px;
+.volunteering-section button{
+  margin-top: 3rem;
 }
 
 #clown{

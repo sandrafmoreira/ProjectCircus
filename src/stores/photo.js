@@ -60,5 +60,17 @@ export const usePhotoStore = defineStore("photoStore", {
         throw new Error(`Error fetching  'search?query=nature&per_page=1': ${error}`);
       }
     },
+
+    async fetchPhotos() {      
+      try {
+        console.log('fff');
+        
+          await this.photosStore.pexelsFetchCircusPhotos();
+          this.photos = this.photosStore.Photos; // Atualiza o estado local
+           console.log("Fetched photos:", this.photos);
+      } catch (error) {
+          console.error('Erro ao buscar os todos:', error);
+      }
+      },
 }});
 
