@@ -23,14 +23,48 @@
         <div class="program-section-container" >
 
             <div class="program-graphic-el">
-                <img style="margin-left: 100px;" src="/src/assets/PricingView/palhaço.png" alt="">
+                <img src="/src/assets/PricingView/program_graphic_el.svg" alt="">
             </div>
             
             <div class="program-container">
                 <h2 class="section-subtitle">Programa geral</h2>
 
-                timeline
-                <img src="/src/assets/PricingView/programa.png" alt="">
+                <div>
+                    <v-timeline hideOpposite="true"
+                        
+                        >
+                        <v-timeline-item
+                            v-for="(time,i) in timetable"
+                            :key="i"
+                            dot-color="#E4CB66"
+                            small
+                        >
+                            <v-row class="pt-1">
+                            <v-col cols="3">
+                                <strong>{{time.time}}</strong>
+                            </v-col>
+                            <v-col>
+                                <strong>{{ time.title }}</strong>
+                                <div  v-if="time.description" class="text-caption">
+                                    {{ time.description }}
+                                </div>
+
+                                <ul v-if="time.items" class="text-caption">
+                                    <li v-for="(item,i) in time.items":key="i">{{ item }}
+
+                                    </li>{{ time.description }}
+
+                                </ul>
+                            </v-col>
+                            </v-row>
+                        </v-timeline-item>
+                    </v-timeline>
+                </div>
+                <span>
+                    *Programa para os 7 dias de espatáculo <br>
+                    **Atuações diferentes para cada dia de espetáculo
+                </span> 
+        
             </div>
         </div>
        
@@ -405,10 +439,8 @@
 
     .program {
         display: flex;
-        flex-wrap: wrap;
-        margin: 50px 0;
-        width: 95vw;
-        gap: 150px;
+        flex-direction: column;
+        align-items: center;
     }
 
     .program-title {
