@@ -68,22 +68,62 @@
 
                 <v-tabs-window-item value="3">
                     <v-card flat>
-                        <h2>Partilhar Conteúdo!!!</h2>
-                        <v-card-text><p>Texto</p></v-card-text>
+                        <h2>Partilhar Conteúdo</h2>
+                        <v-form ref="form" v-model="valid">
+                            <!-- Campo de Upload -->
+                            <v-file-input
+                            label="Upload de Foto"
+                            show-size
+                            truncate-length="15"
+                            accept="image/*"
+                            v-model="photo"
+                            ></v-file-input>
+
+                            <!-- Campo de Legenda -->
+                            <v-text-field
+                            label="Legenda"
+                            v-model="caption"
+                            ></v-text-field>
+
+                            <v-btn :disabled="!photo" @click="addPhoto" color="primary">Adicionar Foto</v-btn>
+                        </v-form>
                     </v-card>
+
+                            <!-- Galeria de Fotos -->
+                            <v-slide-group
+                                v-model="model"
+                                class="pa-4"
+                                selected-class="bg-success"
+                                show-arrows
+                                v-if="photos.length">
+                            <v-slide-group-item v-for="(photo, index) in photos" :key="index">
+                                <v-card width="200px">
+                                <v-img :src="photo.url" height="200px"></v-img>
+                                <v-card-text>
+                                    <p>{{ photo.caption }}</p>
+                                </v-card-text>
+                                <v-card-actions>
+                                    <v-btn color="red" @click="removePhoto(index)" icon>
+                                    <v-icon>mdi-delete</v-icon>
+                                    </v-btn>
+                                </v-card-actions>
+                                </v-card>
+                            </v-slide-group-item>
+                            </v-slide-group>
                 </v-tabs-window-item>
 
-                <v-tabs-window-item value="4">
-                    <v-card>
-                        <h2>Editar Conta!!!!</h2>
+                <v-tabs-window-item value="4" >
+                    <v-card :flat="true">
+                        <h2 class="section-title">Editar Conta</h2>
                         <v-card-text>
-                            <p style="color: red;">Antes de qualquer alteração, coloque a sua password para confirmar as alterações!</p>
+                            <!-- <p style="color: red;">Antes de qualquer alteração, coloque a sua password para confirmar as alterações!</p> -->
                             <v-form @submit.prevent="editInformation" v-model="form">
-                                    <v-text-field v-model="firstName" :rules="[required]" label="Primeiro Nome" variant="underlined"></v-text-field>
-                                    <v-text-field v-model="lastName"  :rules="[required]" label="Apelido" variant="underlined"></v-text-field>
-                                    <v-text-field v-model="email"  :rules="[required]" label="Email" type="email" variant="underlined"></v-text-field>
-                                    <v-text-field v-model="oldPassword" :rules="[required]" label="Old Password" type="password" variant="underlined"></v-text-field>
-                                    <v-text-field v-model="newPassword" label="New Password" type="password" variant="underlined"></v-text-field>
+                                    <v-text-field v-model="firstName" :rules="[required]"
+                                    variant="plain"></v-text-field>
+                                    <v-text-field  v-model="lastName"  :rules="[required]"  variant="plain"></v-text-field>
+                                    <v-text-field v-model="email"  :rules="[required]"  type="email" variant="plain"></v-text-field>
+                                    <v-text-field v-model="oldPassword" :rules="[required]" label="Old Password" type="password" variant="plain"></v-text-field>
+                                    <v-text-field v-model="newPassword" label="New Password" type="password" variant="plain"></v-text-field>
                                     <v-btn class="mt-2" type="submit" block>Guardar</v-btn>
                                     <v-btn class="mt-2" type="submit" @click="removeAccount">Remover Conta</v-btn>
                                     <p v-if="error">O email já está a ser utilizado!</p>
@@ -118,6 +158,12 @@ import { useTicketStore } from "@/stores/ticket";
                 badge3: 'not-obtained',
                 userStore: useUserStore(),
                 ticketStore: useTicketStore(),
+
+                photos: [
+                { url: '/src/assets/img/pexels-gesel-792764.jpg', caption: 'Foto de exemplo 1' },
+                { url: '/src/assets/img/pexels-gesel-792764.jpg', caption: 'Foto de exemplo 2' },
+                { url: '/src/assets/img/pexels-gesel-792764.jpg', caption: 'Foto de exemplo 3' }
+                ]
             }
         },
 
@@ -211,8 +257,23 @@ h2 {
 
 .windows {
     margin-left: 50px;
+    width: 40%;
 
 }
+
+// edit account
+
+.v-card{
+    background-color: transparentize($color: #f7f1f1, $amount: 1);
+}
+
+.v-form{
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
 
 
 </style>
