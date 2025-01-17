@@ -66,13 +66,15 @@
 
                 </v-tabs-window-item>
 
-                <v-tabs-window-item value="3">
-                    <v-card flat>
-                        <h2>Partilhar Conteúdo</h2>
+                <v-tabs-window-item value="3"class="shareContent-tab">
+                    <v-card flat class="share-section-container">
+
+                        <h2>Partilha aqui os teus momentos </h2>
+                        <p>Ao partilhares as tuas imagens, autorizas-nos a utilizá-las na nossa galeria e nas nossas redes sociais.</p>
                         <v-form ref="form" v-model="valid">
                             <!-- Campo de Upload -->
                             <v-file-input
-                            label="Upload de Foto"
+                            label="Partilhar de Foto"
                             show-size
                             truncate-length="15"
                             accept="image/*"
@@ -90,26 +92,30 @@
                     </v-card>
 
                             <!-- Galeria de Fotos -->
-                            <v-slide-group
-                                v-model="model"
-                                class="pa-4"
-                                selected-class="bg-success"
-                                show-arrows
-                                v-if="photos.length">
-                            <v-slide-group-item v-for="(photo, index) in photos" :key="index">
-                                <v-card width="200px">
-                                <v-img :src="photo.url" height="200px"></v-img>
-                                <v-card-text>
+                    <v-slide-group
+                        v-model="model"
+                        class="pa-4"
+                        selected-class="bg-success"
+                        show-arrows
+                        center-active="true"
+                        v-if="photos.length">
+                        <v-slide-group-item v-for="(photo, index) in photos" :key="index">
+                            <v-card width="200px"  variant:="plain" class="share-gallery-card" flat="true">
+                                <v-img :src="photo.url" ></v-img>
+                                <div class="share-gallery-card-actions">
+                                    <v-card-text>
                                     <p>{{ photo.caption }}</p>
-                                </v-card-text>
-                                <v-card-actions>
-                                    <v-btn color="red" @click="removePhoto(index)" icon>
-                                    <v-icon>mdi-delete</v-icon>
-                                    </v-btn>
-                                </v-card-actions>
-                                </v-card>
-                            </v-slide-group-item>
-                            </v-slide-group>
+                                    </v-card-text>
+                                    <v-card-actions>
+                                        <v-btn color="red" @click="removePhoto(index)" icon>
+                                        <v-icon>mdi-delete</v-icon>
+                                        </v-btn>
+                                    </v-card-actions>
+                                </div>
+                                
+                            </v-card>
+                        </v-slide-group-item>
+                    </v-slide-group>
                 </v-tabs-window-item>
 
                 <v-tabs-window-item value="4" >
@@ -162,7 +168,8 @@ import { useTicketStore } from "@/stores/ticket";
                 photos: [
                 { url: '/src/assets/img/pexels-gesel-792764.jpg', caption: 'Foto de exemplo 1' },
                 { url: '/src/assets/img/pexels-gesel-792764.jpg', caption: 'Foto de exemplo 2' },
-                { url: '/src/assets/img/pexels-gesel-792764.jpg', caption: 'Foto de exemplo 3' }
+                { url: '/src/assets/img/pexels-gesel-792764.jpg', caption: 'Foto de exemplo 3' },
+                { url: '/src/assets/img/pexels-gesel-792764.jpg', caption: 'Foto de exemplo 4' }
                 ]
             }
         },
@@ -256,10 +263,29 @@ h2 {
 }
 
 .windows {
-    margin-left: 50px;
-    width: 40%;
+    margin-left: 80px;
+    width: 100%;
 
 }
+
+// share content tab
+.shareContent-tab{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.share-gallery-card{
+    margin-left: 0.5rem;
+}
+.v-img{
+    border-radius: 0% 0% 57% 0% / 0% 47% 30% 0% ;
+}
+.v-card-text{
+    padding-bottom: 0;
+}
+
 
 // edit account
 

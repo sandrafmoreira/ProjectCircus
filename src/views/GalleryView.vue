@@ -98,24 +98,24 @@
            methods:{
                
 
-                async loadPhotos() {   
-                if (this.photosStore.Photos.length>=this.photosStore.maxPhotos) {
-                  return
+                // async loadPhotos() {   
+                // // if (this.photosStore.Photos.length>=this.photosStore.maxPhotos) {
+                // //   return
                   
-                }   
-                try {
-                  console.log('lll');
+                // // }   
+                // try {
+                //   console.log('lll');
                   
-                    await this.photosStore.pexelsFetchCircusPhotos();
-                    this.photos = this.photosStore.Photos; // Atualiza o estado local
-                     console.log("Fetched photos:", this.photos);
-                     if (this.photosStore.Photos.length<this.photosStore.maxPhotos) {
-                    this.photosStore.per_page +=10 
-                  }
-                } catch (error) {
-                    console.error('Erro ao buscar os todos:', error);
-                }
-                },
+                //     await this.photosStore.pexelsFetchCircusPhotos();
+                //     this.photos = this.photosStore.Photos; // Atualiza o estado local
+                //      console.log("Fetched photos:", this.photos);
+                //      if (this.photosStore.Photos.length<this.photosStore.maxPhotos) {
+                //     this.photosStore.per_page +=10 
+                //   }
+                // } catch (error) {
+                //     console.error('Erro ao buscar os todos:', error);
+                // }
+                // },
 
                 verifyAutentication(event){
                     if(this.userStore.isAuthenticated){

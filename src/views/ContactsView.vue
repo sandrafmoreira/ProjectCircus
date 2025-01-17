@@ -48,12 +48,13 @@
        
   
     </section>
-    <div class="graphic-el-contacts">
-      <img src="/src/assets/ContactView/contacts_graphic_el.svg" alt="">
-    </div>
+   
    
     <section>
       <h2 class="section-subtitle">As perguntas mais frequentes</h2>
+      <div class="graphic-el-contacts">
+      <img src="/src/assets/ContactView/contacts_graphic_el.svg" alt="">
+    </div>
       <v-row justify="center">
         <v-expansion-panels flat="true" variant="inset" >
           <v-expansion-panel
@@ -68,6 +69,8 @@
           </v-expansion-panel>
         </v-expansion-panels>
       </v-row>
+
+    
 
     </section>
 
@@ -165,7 +168,8 @@
     position: absolute; /* ou absolute, dependendo do layout */
     z-index: -1;
     right: 0;
-    top: 70%;
+    // top: 80%;
+    transform: translateY(-25%);
 }
 
 

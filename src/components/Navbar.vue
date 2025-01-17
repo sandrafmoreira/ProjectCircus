@@ -9,7 +9,7 @@
         
       </div>
 
-      <div>
+      <div class="navbar-links ">
         <RouterLink :to="{name: 'home'}">Home</RouterLink>
         <RouterLink :to="{name: 'pricing'}">Programa</RouterLink>
         <RouterLink :to="{name: 'giftshop'}">Giftshop</RouterLink>
@@ -72,10 +72,10 @@
     z-index: 1000;
   }
   
-  /* .navbar-links {
+  .navbar-links {
     list-style: none;
     display: flex;
-    gap: 1.5rem;
+    gap: 1rem;
     padding: 0;
     margin: 0;
   }
@@ -84,7 +84,7 @@
     color: white;
     text-decoration: none;
     font-size: 1rem;
-  } */
+  }
   
   </style>
   
