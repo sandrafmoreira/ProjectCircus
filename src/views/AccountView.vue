@@ -17,20 +17,23 @@
                     <h2>{{ this.userStore.fullName }}</h2>
                     <p>Aqui podes consultar e editar os dados da tua conta. <br>Rever os bilhetes e produtos adquiridos durante a nossa <br>estadia, assim como os workshops em que te inscreveste.</p>
                
-                    <v-card flat>
-                        <v-card :class='["card", badge1]' id="badge1" subtitle="Ganha um voucher de 20% para o próximo evento participando em todos os workshops">
-                            <p v-if="badge1 == 'obtained'">Obtido!</p>
-                            <p v-else>Não obtido ainda!</p>
-                        </v-card>
-                        <v-card :class='["card", badge2]' subtitle="Obtém o Pacote Familiar e mais 3 bilhetes adicionais para obteres acesso exclusivo aos bastidores!">
-                            <p v-if="badge2 == 'obtained'">Obtido!</p>
-                            <p v-else>Não obtido ainda!!</p>
-                        </v-card>
-                        <v-card :class='["card", badge3]' subtitle="Partilha até cinco fotos dos teus momentos durante o circo e ganha um desconto exclusivo no Catálogo">
-                            <p v-if="badge3 == 'obtained'">Obtido!</p>
-                            <p v-else>Não obtido ainda!</p>
-                        </v-card>
+                    <v-card class="badges-section" flat>
+                        <div>
+                            <img v-if="!badge1.obtained" src="@/assets/AccountView/badge1-not-obtained.svg" alt="">
+                            <img v-else src="@/assets/AccountView/badge1-obtained.svg" alt="">
+                            <p v-if="badge1.used">Já utilizaste este código!</p>
+                        </div>
 
+                        <div>
+                            <img v-if="!badge2.obtained" src="@/assets/AccountView/badge2-not-obtained.svg" alt="">
+                            <img v-else src="@/assets/AccountView/badge2-obtained.svg" alt="">
+                        </div>
+
+                        <div>
+                            <img v-if="!badge3.obtained" src="@/assets/AccountView/badge3-not-obtained.svg" alt="">
+                            <img v-else src="@/assets/AccountView/badge3-obtained.svg" alt="">
+                            <p v-if="badge3.used">Já utilizaste este código!</p>
+                        </div>
                     </v-card>
                 </v-tabs-window-item>
 
@@ -63,7 +66,26 @@
 
                     <h2>As minhas encomendas</h2>
                     <p>Consulta aqui o estado das tuas encomendas</p>
-
+                    <section class="products-history">
+                        <v-card class="product-card" v-for="(product, index) in userStore.userInfo.products">
+                            <div class="product-card-image">
+                                <img src="/src/assets/AccountView/product-history-background.svg" alt="Background da Card do Produto">
+                                <img :src="product.product.image" alt="">
+                            </div>
+                            <div class="product-card-details">
+                                <div class="product-card-details-order">
+                                    <h3>Encomenda nº{{ index + 1}}</h3>
+                                    <h3>A ser enviada</h3>
+                                </div>
+                                <h3 class="product-card-details-quantity">{{ product.units }}x {{ product.product.name }}</h3>
+                                <div class="product-card-details-price">
+                                    <h3>{{ (product.product.price).toFixed(2) }}€</h3>
+                                    <p>Pedido Efetuado a {{ product.date }}</p>
+                                </div>
+                                Ver Detalhes
+                            </div>
+                        </v-card>
+                    </section>
                 </v-tabs-window-item>
 
                 <v-tabs-window-item value="3"class="shareContent-tab">
@@ -78,16 +100,17 @@
                             show-size
                             truncate-length="15"
                             accept="image/*"
-                            v-model="photo"
+                            v-model="postImageSrc"
                             ></v-file-input>
 
                             <!-- Campo de Legenda -->
                             <v-text-field
-                            label="Legenda"
-                            v-model="caption"
+                            label="Legenda (Limite de 30 caracteres)"
+                            v-model="postCaption"
+                            maxlength="30"
                             ></v-text-field>
 
-                            <v-btn :disabled="!photo" @click="addPhoto" color="primary">Adicionar Foto</v-btn>
+                            <v-btn id="post-picture-btn" :disabled="!postImageSrc" @click="addPost" color="#E63946">Adicionar Foto</v-btn>
                         </v-form>
                     </v-card>
 
@@ -99,15 +122,15 @@
                         show-arrows
                         center-active="true"
                         v-if="photos.length">
-                        <v-slide-group-item v-for="(photo, index) in photos" :key="index">
+                        <v-slide-group-item v-for="(post, index) in userStore.userInfo.posts" :key="index">
                             <v-card width="200px"  variant:="plain" class="share-gallery-card" flat="true">
-                                <v-img :src="photo.url" ></v-img>
+                                <v-img :src="post.image" ></v-img>
                                 <div class="share-gallery-card-actions">
                                     <v-card-text>
-                                    <p>{{ photo.caption }}</p>
+                                    <p>{{ post.caption }}</p>
                                     </v-card-text>
                                     <v-card-actions>
-                                        <v-btn color="red" @click="removePhoto(index)" icon>
+                                        <v-btn color="red" @click="removePost(index)" icon>
                                         <v-icon>mdi-delete</v-icon>
                                         </v-btn>
                                     </v-card-actions>
@@ -150,6 +173,7 @@ import { useTicketStore } from "@/stores/ticket";
     export default {
         data() {
             return {
+                 //Editar informações do utilizador
                 form: false,
                 tab: 1,
                 id: 0,
@@ -159,9 +183,13 @@ import { useTicketStore } from "@/stores/ticket";
                 oldPassword: "",
                 newPassword: "",
                 error: false,
-                badge1: 'not-obtained',
-                badge2: 'not-obtained',
-                badge3: 'not-obtained',
+                //Medalhas do utilizador
+                badge1: {obtained: false, used: false},
+                badge2: {obtained: false, used: false},
+                badge3: {obtained: false, used: false},
+                //Publicações do utilizador
+                postCaption: '',
+                postImageSrc: '',
                 userStore: useUserStore(),
                 ticketStore: useTicketStore(),
 
@@ -179,16 +207,23 @@ import { useTicketStore } from "@/stores/ticket";
             this.firstName = this.userStore.userInfo.firstName;
             this.lastName = this.userStore.userInfo.lastName;
             this.email = this.userStore.userInfo.email;
+            this.userStore.verifyBadges()
 
-            if (this.userStore.userInfo.badges.includes('badge1')) {
-                this.badge1 = 'obtained'
-            }
-            if (this.userStore.userInfo.badges.includes('badge2')) {
-                this.badge2 = 'obtained'
-            }
-            if (this.userStore.userInfo.badges.includes('badge3')) {
-                this.badge3 = 'obtained'
-            }
+            this.userStore.userInfo.badges.forEach(badge => {
+                if (badge.id == 1) {
+                    this.badge1.obtained = true
+                    if(badge.used) {
+                        this.badge1.used = true
+                    }
+                } else if (badge.id == 2) {
+                    this.badge2.obtained = true
+                } else if (badge.id == 3) {
+                    this.badge3.obtained = true
+                    if(badge.used) {
+                        this.badge3.used = true
+                    }
+                }
+            });
         },
 
         methods: {
@@ -220,6 +255,51 @@ import { useTicketStore } from "@/stores/ticket";
                 //codigo do vuetify
                 return !!v || 'Campo é obrigatório'
             },
+
+            addPost() {    
+                this.uploadToAPI(); // Chama a função para fazer o upload da imagem
+                
+                this.userStore.addNewPost(this.userStore.fullName, this.postImageSrc.name, this.postCaption)
+                alert('Publicação feita com sucesso!')
+            },
+
+            async uploadToAPI() {
+                if (!this.postImageSrc) {
+                    alert("Por favor, selecione uma imagem.");
+                    return;
+                }
+
+                const formData = new FormData();
+                formData.append("image", this.postImageSrc); // Adiciona o arquivo à FormData                
+                formData.append("publicId", `user_${this.userStore.userInfo.id}`); // Adiciona um ID único, se necessário
+
+                for (let pair of formData.entries()) {
+                console.log(pair[0]+ ': ' + pair[1]);
+                }
+                try {
+                    const response = await fetch('/api/upload', {
+                        method: 'POST',
+                        body: formData, // Envia a FormData com o arquivo
+                    });
+
+                    if (response.ok) {
+                        const result = await response.json();
+                        alert(`Imagem enviada com sucesso! URL: ${result.url}`);
+                        // Adicionar a imagem ao sistema local
+                        this.postImageSrc = result.url // Passa a URL da imagem para a variavel `postImageSrc`
+                    } else {
+                        throw new Error("Erro no envio da imagem.");
+                    }
+                } catch (error) {
+                    console.error("Erro ao enviar imagem:", error);
+                    alert("Ocorreu um erro ao enviar a imagem.");
+                }
+            },
+
+            
+            removePost(aa) {
+                return
+            },
         },
         
     }
@@ -245,14 +325,6 @@ h2 {
 .card{
     width: 300px;
     transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.not-obtained{
-    background-color: white;
-}
-
-.obtained{
-    background-color: #FFF9E3;
 }
 
 .left-tabs {
@@ -300,6 +372,60 @@ h2 {
     gap: 1rem;
 }
 
+.products-history{
+    padding: 0;
+}
 
+.product-card{
+    display: flex;
+    margin: 40px 0;
+    width: 700px;
+    height: 180px;
+    border: 1px solid #F1DEC5;
+}
+
+.product-card-image{
+    margin-right: 60px;
+}
+
+.product-card-image img:nth-of-type(1) {
+    position: absolute;
+    z-index: -1;
+    height: 180px;
+}
+
+.product-card-image img:nth-of-type(2) {
+    margin-left: 20px;
+    margin-top: 10px;
+    width: 150px;
+}
+
+.product-card-details{
+    width: 450px;
+}
+
+.product-card-details-order{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.product-card-details-order h3:nth-of-type(2) {
+    background-color: white;
+    border-radius: 30px;
+    padding: 5px 20px;
+}
+
+.product-card-details-quantity{
+    margin-top: 15px;
+}
+
+.product-card-details-price{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+}
 
 </style>

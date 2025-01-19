@@ -1,23 +1,31 @@
 <template>
     <div>
-        <v-btn @click="back"><-</v-btn>
+        <div class="go-back-section">
+            <button @click="back"><img src="@/assets/GiftshopView/left-arrow.svg" alt=""></button>
+            <h2>Catálogo / {{ productName }}</h2>
+        </div>    
 
-        <div>
-            <img :src="productImage" alt="">
-            <h2>{{ productName }}</h2>
-            <h2>{{ (productPrice * (1 - (productDiscount / 100))).toFixed(2)}}€</h2>
-            <p>{{ productDesc }}</p>
-            <p v-if="productExclusivity">EXCLUSIVO!</p>
+        <div class="product">
+            <div class="product-image">
+                <img :src="productImage" alt="">
+            </div>
+            <div class="product-details">
+                <div class="product-details-name">
+                    <h2>{{ productName }}</h2>
+                    <h2>{{ (productPrice * (1 - (productDiscount / 100))).toFixed(2)}}€</h2>
+                </div>
+                <p>{{ productDesc }}</p>
+                <div class="product-details-buy-section">
+                    <div class="buy-section-units">
+                        <button @click="decrement">-</button>
+                        <p>{{ productUnits }}</p>
+                        <button @click="increment">+</button>
+                    </div>
+                    <button id="add-product" @click="addProduct">Adicionar ao carrinho</button>
+                </div>
+            </div>
         </div>            
 
-        <div>
-            <v-btn @click="decrement">-</v-btn>
-            <p>{{ productUnits }}</p>
-            <v-btn @click="increment">+</v-btn>
-
-            <v-btn @click="addProduct">Add to cart</v-btn>
-
-        </div>
     </div>
 
     <Footer></Footer>
@@ -34,8 +42,10 @@ import Footer from '@/components/Footer.vue';
         },
         data() {
             return {
+                //Stores
                 productStore: useProductStore(),
                 userStore: useUserStore(),
+                //Atributos de um produto
                 productName: '',
                 productDesc: '',
                 productImage: '',
@@ -48,6 +58,9 @@ import Footer from '@/components/Footer.vue';
         },
 
         mounted () {
+            /**
+             * Dependendo do id do produto selecionado, vai buscar todos os detalhes sobre esse produto
+             */
             this.productName = this.productStore.products.find(product => product.id == this.$route.params.id).name;
             this.productDesc = this.productStore.products.find(product => product.id == this.$route.params.id).description;
             this.productImage = this.productStore.products.find(product => product.id == this.$route.params.id).image;
@@ -58,19 +71,25 @@ import Footer from '@/components/Footer.vue';
 
         methods: {
             addProduct() {
+                /**
+                 * Adicionar um produto ao carrinho
+                 */
+                //Verificar se um produto é exclusivo, e se sim, verificar se o utilizador está autenticado
                 if (this.productExclusivity && !this.userStore.isAuthenticated) {
                     alert(`Precisa de se autenticar para ter acesso a este produto!`)
                     return
                 }
 
+                //Adicionar um produto ao carrinho
                 if (this.productUnits > 0) {
                     let newProduct = {
                         units: this.productUnits,
                         product: this.productStore.products.find(product => product.id == this.$route.params.id),
+                        date: ''
                     }
 
                     if (this.userStore.isAuthenticated) {
-                        this.userStore.userInfo.products.push(newProduct)
+                        this.userStore.userInfo.userCart.push(newProduct)
                     } else {
                         this.userStore.cart.push(newProduct)
                     }
@@ -81,14 +100,23 @@ import Footer from '@/components/Footer.vue';
             },
 
             back() {
+                /**
+                 * Voltar para a página da Giftshop
+                 */
                 this.$router.push({name: 'giftshop'})
             },
 
             increment() {
+                /**
+                 * Incrementar o nº de produtos para adicionar ao carrinho
+                 */
                 this.productUnits++
             },
 
             decrement() {
+                /**
+                 * Decrementar o nº de produtos para adicionar ao carrinho
+                 */
                 if (this.productUnits > 0) {
                     this.productUnits--
 
@@ -99,5 +127,94 @@ import Footer from '@/components/Footer.vue';
 </script>
 
 <style lang="scss" scoped>
+.go-back-section{
+    display: flex;
+    padding: 40px 50px;
+    gap: 30px;
+}
 
+.go-back-section button{
+    background-color: #E63946;
+    color: white;
+    width: 44px;
+    height: 44px;
+    border-radius: 30px;
+}
+
+.go-back-section button img{
+    width: 26px;
+    height: 26px;
+}
+
+.go-back-section button:hover {
+    background-color: #B72636;
+}
+
+.product{
+    display: flex;
+}
+
+.product-image, .product-details{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.product-image img{
+    width: 300px;
+    height: 300px;
+}
+
+.product-details{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+}
+
+.product-details-name{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.product-details-buy-section{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.buy-section-units{
+    display: flex;
+    align-items: center;
+}
+
+.buy-section-units button{
+    background-color: #E63946;
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 40px;
+    margin: 15px;
+}
+
+.buy-section-units button:hover{
+    background-color: #B72636;
+}
+
+.buy-section-units p{
+    font-size: 24px;
+}
+
+#add-product{
+    background-color: #E63946;
+    color: white;
+    width: 200px;
+    height: 40px;
+    border-radius: 30px;
+}
+
+#add-product:hover{
+    background-color: #B72636;
+}
 </style>

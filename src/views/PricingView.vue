@@ -531,6 +531,7 @@
         addTickets(tickets) {
             tickets.forEach(ticket => {
                 this.ticketStore.addPurchasedTicket(ticket);
+                this.userStore.addItem(ticket)
             });
         },
        
