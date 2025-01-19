@@ -71,7 +71,6 @@
     </section>
 
     <!-- Preços -->
-    
     <section class="prices">
         <h2 class="prices-title">Preços</h2>
         <img src="/src/assets/PricingView/bilheteAdulto.png" alt="">
@@ -96,23 +95,23 @@
         <!-- TAB1 - Escolher data e zona da bancada: -->
         <template v-if="tabSelected === 1" class="tab">
             <h3 style="font-size: 32px; font-weight: 300;">Faça a sua reserva</h3>
-            <div style="display: flex; justify-content: space-between;">
+            <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
                 <!-- data: -->
                 <div>
                     <p class="title-reserva">Escolher data:</p>
                     <div style="display: flex;">
                         <div class="btn-date">
                             <button disabled>12/01/24</button><br>
-                            <button @click="selectDate('16')">16/01/24</button><br>
-                            <button @click="selectDate('18')">18/01/24</button><br>
+                            <button @click="selectDate('16/01/24')" :style="highlightDateBtn('16/01/24')">16/01/24</button><br>
+                            <button @click="selectDate('18/01/24')" :style="highlightDateBtn('18/01/24')">18/01/24</button><br>
                             <button disabled>22/01/24</button><br>
-                            <button @click="selectDate('26')">26/01/24</button><br>
+                            <button @click="selectDate('26/01/24')" :style="highlightDateBtn('26/01/24')">26/01/24</button><br>
                         </div>
                         <div class="btn-date">
                             <button disabled>14/01/24</button><br>
-                            <button @click="selectDate('17')">17/01/24</button><br>
-                            <button @click="selectDate('19')">19/01/24</button><br>
-                            <button @click="selectDate('24')">24/01/24</button><br>
+                            <button @click="selectDate('17/01/24')" :style="highlightDateBtn('17/01/24')">17/01/24</button><br>
+                            <button @click="selectDate('19/01/24')" :style="highlightDateBtn('19/01/24')">19/01/24</button><br>
+                            <button @click="selectDate('24/01/24')" :style="highlightDateBtn('24/01/24')">24/01/24</button><br>
                             <button disabled>26/01/24</button><br>
                         </div>
                     </div>
@@ -121,39 +120,43 @@
                 <div>
                     <p class="title-reserva">Escolher zona:</p>
                     <div style="display: flex;">
-                        <div>
+                        <div style="margin: 60px 30px 0 0;">
                             <div style="display: flex;">
-                                <button class="btn-bancada" @click="selectZone('A')">A</button>
-                                <div>
+                                <button class="btn-bancada" @click="selectZone('A')" :style="highlightZoneBtn('A')">A</button>
+                                <div class="p-zone">
                                     <p>Adulto 20€</p>
                                     <p>Criança 15€</p>
                                 </div>
                             </div>
                             <br>
                             <div style="display: flex;">
-                                <button class="btn-bancada" @click="selectZone('B')">B</button>
-                                <div>
+                                <button class="btn-bancada" @click="selectZone('B')" :style="highlightZoneBtn('B')">B</button>
+                                <div class="p-zone">
                                     <p>Adulto 15€</p>
                                     <p>Criança 12€</p>
                                 </div>
                             </div>
                             <br>
                             <div style="display: flex;">
-                                <button class="btn-bancada" @click="selectZone('C')">C</button>
-                                <div>
+                                <button class="btn-bancada" @click="selectZone('C')" :style="highlightZoneBtn('C')">C</button>
+                                <div class="p-zone">
                                     <p>Adulto 12€</p>
                                     <p>Criança 8€</p>
                                 </div>
                             </div>
                         </div>
-                        <img src="/src/assets/PricingView/Mapa.png" alt="" width="300px">
+                        <img src="/src/assets/PricingView/Mapa.png" alt="" width="300px" style="margin-top: 60px;">
                     </div>
                 </div>
             </div>
 
             <!-- Botão de Continuar: -->
             <div style="display: flex; justify-content: flex-end; margin-top: 20px;">
-                <button :disabled="!selectedDate || !selectedZone" @click="changeTab(2)" style="align-self: flex-end;">Continuar</button>
+                <button 
+                    :disabled="!selectedDate || !selectedZone" 
+                    @click="changeTab(2)" 
+                    class="btn-continue">Continuar
+                </button>
             </div>
 
         </template>
@@ -161,50 +164,71 @@
         <!-- TAB2 - Escolher bilhetes: -->
         <template v-if="tabSelected === 2" class="tab">
             <!-- voltar para TAB anterior: -->
-            <button @click="changeTab(1)">
-                <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect y="50" width="50" height="50" rx="25" transform="rotate(-90 0 50)" fill="#E63946"/>
-                <path d="M36.6668 25L13.3335 25" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M24.9997 36.6665L13.333 24.9998L24.9997 13.3332" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </button>
-            <p>Programa / Adquirir bilhetes</p>
+            <div class="goBack">
+                <button @click="changeTab(1)">
+                    <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect y="50" width="50" height="50" rx="25" transform="rotate(-90 0 50)" fill="#E63946"/>
+                    <path d="M36.6668 25L13.3335 25" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M24.9997 36.6665L13.333 24.9998L24.9997 13.3332" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <p>Programa / Adquirir bilhetes</p>
+            </div>
             
             <div style="display: flex;justify-content: space-between;">
                 <!-- secção de itens selecionados: -->
                 <section>
+                    <div style="margin: 30px 0 30px 0;">
+                        <div style="display: flex; gap: 10px;">
+                            <h2>Circo Illusionni</h2>
+                            <svg width="26" height="32" viewBox="0 0 26 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M25.9973 17.8535C19.8905 17.8535 14.7699 11.3714 13.3505 6.07468V3.76244C14.6014 2.11986 15.8505 4.33432 17.0984 2.69174C15.8501 3.62052 14.6009 0.6912 13.3505 1.61946V1.32458C13.5381 1.19738 13.6637 0.973988 13.6637 0.718007C13.6637 0.321158 13.3661 0 12.9986 0C12.6303 0 12.3327 0.321158 12.3327 0.717482C12.3327 0.980295 12.4648 1.20737 12.6602 1.33247V6.02422C11.2598 11.3304 6.12539 17.8535 0 17.8535C0 18.9457 0.923336 19.8487 2.12918 20.0148L0 31.5376H3.54169L5.01184 18.2577C5.04 18.1263 5.0569 17.9912 5.0569 17.8529C9.39324 17.8529 12.139 8.70807 12.827 6.12934H12.9852C12.837 14.2829 10.1043 17.8529 10.1043 17.8529H5.0569C5.0569 19.0635 6.18865 20.0448 7.58513 20.0448C8.98162 20.0448 10.1129 19.0635 10.1129 17.8529L9.68311 25.6191C7.51234 28.7933 6.60764 28.9421 6.60764 28.9421C7.33209 31.5376 8.39321 31.5376 8.39321 31.5376C10.7195 31.5376 12.9882 20.0443 12.9882 20.0443L12.9648 20.0879L12.9921 20.0185L13.0125 20.0685C13.1139 20.5762 15.3297 31.5376 17.6032 31.5376C17.6032 31.5376 18.6643 31.5376 19.3888 28.9421C19.3888 28.9421 18.4845 28.7933 16.3137 25.6201L15.8843 17.8535C15.8843 19.064 17.0148 20.0453 18.4113 20.0453C19.8077 20.0453 20.9399 19.064 20.9399 17.8535H15.893C15.893 17.8535 13.1607 14.2834 13.0129 6.12987H13.1711C13.8591 8.70807 16.6036 17.8535 20.9399 17.8535C20.9399 17.9917 20.9568 18.1268 20.9854 18.2582L22.4556 31.5376H25.9973L23.8672 20.0148C25.0739 19.8487 25.9973 18.9457 25.9973 17.8535Z" fill="white" fill-opacity="0.5"/>
+                            </svg>
+                        </div>
+                        <p style="font-size: 19px;">20ª Edição - O circo e o planeta</p>
+                    </div>
+                    
                     <div class="selected-section">
                         <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M22.95 2.7H21.6V1.35C21.6 0.54 21.06 0 20.25 0C19.44 0 18.9 0.54 18.9 1.35V2.7H8.1V1.35C8.1 0.54 7.56 0 6.75 0C5.94 0 5.4 0.54 5.4 1.35V2.7H4.05C1.755 2.7 0 4.455 0 6.75V8.1H27V6.75C27 4.455 25.245 2.7 22.95 2.7ZM0 22.95C0 25.245 1.755 27 4.05 27H22.95C25.245 27 27 25.245 27 22.95V10.8H0V22.95ZM20.25 13.5C21.06 13.5 21.6 14.04 21.6 14.85C21.6 15.66 21.06 16.2 20.25 16.2C19.44 16.2 18.9 15.66 18.9 14.85C18.9 14.04 19.44 13.5 20.25 13.5ZM20.25 18.9C21.06 18.9 21.6 19.44 21.6 20.25C21.6 21.06 21.06 21.6 20.25 21.6C19.44 21.6 18.9 21.06 18.9 20.25C18.9 19.44 19.44 18.9 20.25 18.9ZM13.5 13.5C14.31 13.5 14.85 14.04 14.85 14.85C14.85 15.66 14.31 16.2 13.5 16.2C12.69 16.2 12.15 15.66 12.15 14.85C12.15 14.04 12.69 13.5 13.5 13.5ZM13.5 18.9C14.31 18.9 14.85 19.44 14.85 20.25C14.85 21.06 14.31 21.6 13.5 21.6C12.69 21.6 12.15 21.06 12.15 20.25C12.15 19.44 12.69 18.9 13.5 18.9ZM6.75 13.5C7.56 13.5 8.1 14.04 8.1 14.85C8.1 15.66 7.56 16.2 6.75 16.2C5.94 16.2 5.4 15.66 5.4 14.85C5.4 14.04 5.94 13.5 6.75 13.5ZM6.75 18.9C7.56 18.9 8.1 19.44 8.1 20.25C8.1 21.06 7.56 21.6 6.75 21.6C5.94 21.6 5.4 21.06 5.4 20.25C5.4 19.44 5.94 18.9 6.75 18.9Z" fill="white"/>
                         </svg>
-                        <p>{{ selectedDate }} de janeiro de 2025</p>
+                        <p class="p-selected-tickets">{{ selectedDate }} de janeiro de 2025</p>
                     </div>
                     <div class="selected-section">
                         <svg width="22" height="26" viewBox="0 0 22 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path opacity="0.9" d="M11 0C4.92525 0 0 4.36556 0 9.75C0 11.8702 0.784208 13.8157 2.08771 15.4091C2.11108 15.4472 2.11475 15.4899 2.14133 15.5265L9.47467 25.2765C9.81475 25.7286 10.3877 26 11 26C11.6123 26 12.1853 25.7286 12.5253 25.2765L19.8587 15.5265C19.8857 15.4899 19.8889 15.4472 19.9123 15.4091C21.2158 13.8157 22 11.8702 22 9.75C22 4.36556 17.0748 0 11 0ZM11 13C8.97508 13 7.33333 11.5448 7.33333 9.75C7.33333 7.95519 8.97508 6.5 11 6.5C13.0249 6.5 14.6667 7.95519 14.6667 9.75C14.6667 11.5448 13.0249 13 11 13Z" fill="white"/>
                         </svg>
-                        <p>Parque da Cidade, Porto</p>
+                        <p class="p-selected-tickets">Parque da Cidade, Porto</p>
                     </div>
+
+                   
                 </section>
+
                 <!-- selecionar bilhetes: -->
                 <div>
-                    <h2>Escolhe os bilhetes</h2>
+                    <p class="title-reserva">Escolher bilhetes:</p>
                     <ul style="display: flex;">
-                        <li v-for="ticket in availableTickets" :key="ticket.id">
-                            <h3>{{ ticket.title }}</h3>
-                            <h3>{{ ticket.description }}</h3>
-                            <h3>{{ ticket.price }}</h3>
-                            <button @click="decreaseTicket(ticket)">-</button>
-                            <span>{{ getTicketQuantity(ticket.id) }}</span>
-                            <button @click="increaseTicket(ticket)">+</button>
+                        <li class="buy-ticket" v-for="ticket in filteredTickets()" :key="ticket.id">
+                            <p>{{ ticket.title }}</p>
+                            <p  style="font-weight: lighter;">{{ ticket.description }}</p>
+                            <p>{{ ticket.price }}€</p>
+                            <div style="display: flex;">
+                                <button class="btn-select" @click="decreaseTicket(ticket)">-</button>
+                                <p>{{ getTicketQuantity(ticket.id) }}</p>
+                                <button class="btn-select" @click="increaseTicket(ticket)">+</button>
+                            </div>
                         </li>
                     </ul>
                 </div>
             </div>
 
             <!-- Botão para Continuar -->
-            <div style="display: flex; justify-content: flex-end; margin-top: 20px;">
-                    <button :disabled="!selectedTickets.length" @click="changeTab(3)" style="align-self: flex-end;">Continuar</button>
+            <div class="cont-btn-continue">
+                <button 
+                    :disabled="!selectedTickets.length" 
+                    @click="changeTab(3)"  
+                    class="btn-continue">Continuar
+                </button>
             </div>
 
         </template>
@@ -212,108 +236,215 @@
         <!-- TAB3 - Escolher workshops: -->
         <template v-if="tabSelected === 3" class="tab">
             <!-- voltar para TAB anterior: -->
-            <button @click="changeTab(2)">
-                <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect y="50" width="50" height="50" rx="25" transform="rotate(-90 0 50)" fill="#E63946"/>
-                <path d="M36.6668 25L13.3335 25" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M24.9997 36.6665L13.333 24.9998L24.9997 13.3332" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </button>
-            <p>Programa / Adquirir workshops</p>
-
+            <div class="goBack">
+                <button @click="changeTab(2)">
+                    <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect y="50" width="50" height="50" rx="25" transform="rotate(-90 0 50)" fill="#E63946"/>
+                    <path d="M36.6668 25L13.3335 25" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M24.9997 36.6665L13.333 24.9998L24.9997 13.3332" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <p>Programa / Adquirir workshops</p>
+            </div>
+        
             <div style="display: flex;justify-content: space-between;">
                 <!-- secção de itens selecionados: -->
                 <section>
+                    <div style="margin: 30px 0 30px 0;">
+                        <div style="display: flex; gap: 10px;">
+                            <h2>Circo Illusionni</h2>
+                            <svg width="26" height="32" viewBox="0 0 26 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M25.9973 17.8535C19.8905 17.8535 14.7699 11.3714 13.3505 6.07468V3.76244C14.6014 2.11986 15.8505 4.33432 17.0984 2.69174C15.8501 3.62052 14.6009 0.6912 13.3505 1.61946V1.32458C13.5381 1.19738 13.6637 0.973988 13.6637 0.718007C13.6637 0.321158 13.3661 0 12.9986 0C12.6303 0 12.3327 0.321158 12.3327 0.717482C12.3327 0.980295 12.4648 1.20737 12.6602 1.33247V6.02422C11.2598 11.3304 6.12539 17.8535 0 17.8535C0 18.9457 0.923336 19.8487 2.12918 20.0148L0 31.5376H3.54169L5.01184 18.2577C5.04 18.1263 5.0569 17.9912 5.0569 17.8529C9.39324 17.8529 12.139 8.70807 12.827 6.12934H12.9852C12.837 14.2829 10.1043 17.8529 10.1043 17.8529H5.0569C5.0569 19.0635 6.18865 20.0448 7.58513 20.0448C8.98162 20.0448 10.1129 19.0635 10.1129 17.8529L9.68311 25.6191C7.51234 28.7933 6.60764 28.9421 6.60764 28.9421C7.33209 31.5376 8.39321 31.5376 8.39321 31.5376C10.7195 31.5376 12.9882 20.0443 12.9882 20.0443L12.9648 20.0879L12.9921 20.0185L13.0125 20.0685C13.1139 20.5762 15.3297 31.5376 17.6032 31.5376C17.6032 31.5376 18.6643 31.5376 19.3888 28.9421C19.3888 28.9421 18.4845 28.7933 16.3137 25.6201L15.8843 17.8535C15.8843 19.064 17.0148 20.0453 18.4113 20.0453C19.8077 20.0453 20.9399 19.064 20.9399 17.8535H15.893C15.893 17.8535 13.1607 14.2834 13.0129 6.12987H13.1711C13.8591 8.70807 16.6036 17.8535 20.9399 17.8535C20.9399 17.9917 20.9568 18.1268 20.9854 18.2582L22.4556 31.5376H25.9973L23.8672 20.0148C25.0739 19.8487 25.9973 18.9457 25.9973 17.8535Z" fill="white" fill-opacity="0.5"/>
+                            </svg>
+                        </div>
+                        <p style="font-size: 19px;">20ª Edição - O circo e o planeta</p>
+                    </div>
+                    
                     <div class="selected-section">
                         <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M22.95 2.7H21.6V1.35C21.6 0.54 21.06 0 20.25 0C19.44 0 18.9 0.54 18.9 1.35V2.7H8.1V1.35C8.1 0.54 7.56 0 6.75 0C5.94 0 5.4 0.54 5.4 1.35V2.7H4.05C1.755 2.7 0 4.455 0 6.75V8.1H27V6.75C27 4.455 25.245 2.7 22.95 2.7ZM0 22.95C0 25.245 1.755 27 4.05 27H22.95C25.245 27 27 25.245 27 22.95V10.8H0V22.95ZM20.25 13.5C21.06 13.5 21.6 14.04 21.6 14.85C21.6 15.66 21.06 16.2 20.25 16.2C19.44 16.2 18.9 15.66 18.9 14.85C18.9 14.04 19.44 13.5 20.25 13.5ZM20.25 18.9C21.06 18.9 21.6 19.44 21.6 20.25C21.6 21.06 21.06 21.6 20.25 21.6C19.44 21.6 18.9 21.06 18.9 20.25C18.9 19.44 19.44 18.9 20.25 18.9ZM13.5 13.5C14.31 13.5 14.85 14.04 14.85 14.85C14.85 15.66 14.31 16.2 13.5 16.2C12.69 16.2 12.15 15.66 12.15 14.85C12.15 14.04 12.69 13.5 13.5 13.5ZM13.5 18.9C14.31 18.9 14.85 19.44 14.85 20.25C14.85 21.06 14.31 21.6 13.5 21.6C12.69 21.6 12.15 21.06 12.15 20.25C12.15 19.44 12.69 18.9 13.5 18.9ZM6.75 13.5C7.56 13.5 8.1 14.04 8.1 14.85C8.1 15.66 7.56 16.2 6.75 16.2C5.94 16.2 5.4 15.66 5.4 14.85C5.4 14.04 5.94 13.5 6.75 13.5ZM6.75 18.9C7.56 18.9 8.1 19.44 8.1 20.25C8.1 21.06 7.56 21.6 6.75 21.6C5.94 21.6 5.4 21.06 5.4 20.25C5.4 19.44 5.94 18.9 6.75 18.9Z" fill="white"/>
                         </svg>
-                        <p>{{ selectedDate }} de janeiro de 2025</p>
+                        <p class="p-selected-tickets">{{ selectedDate }} de janeiro de 2025</p>
                     </div>
                     <div class="selected-section">
                         <svg width="22" height="26" viewBox="0 0 22 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path opacity="0.9" d="M11 0C4.92525 0 0 4.36556 0 9.75C0 11.8702 0.784208 13.8157 2.08771 15.4091C2.11108 15.4472 2.11475 15.4899 2.14133 15.5265L9.47467 25.2765C9.81475 25.7286 10.3877 26 11 26C11.6123 26 12.1853 25.7286 12.5253 25.2765L19.8587 15.5265C19.8857 15.4899 19.8889 15.4472 19.9123 15.4091C21.2158 13.8157 22 11.8702 22 9.75C22 4.36556 17.0748 0 11 0ZM11 13C8.97508 13 7.33333 11.5448 7.33333 9.75C7.33333 7.95519 8.97508 6.5 11 6.5C13.0249 6.5 14.6667 7.95519 14.6667 9.75C14.6667 11.5448 13.0249 13 11 13Z" fill="white"/>
                         </svg>
-                        <p>Parque da Cidade, Porto</p>
+                        <p class="p-selected-tickets">Parque da Cidade, Porto</p>
+                    </div>
+
+                    <div class="selected-section">
+                        <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g opacity="0.9">
+                        <path d="M1.52226 12.9468L3.33103 11.9258L3.74392 0.0724674L2.17095 0.00138636C1.33854 -0.0363082 0.637758 0.699273 0.605559 1.64594L0.272215 11.1977C0.256116 11.6522 0.40006 12.0949 0.670903 12.4287C0.897236 12.7066 1.19838 12.8832 1.52226 12.9468Z" fill="white"/>
+                        <path d="M9.83652 8.05198L8.17075 6.05525C8.1054 5.97663 8.08457 5.86139 8.11771 5.75908C8.15086 5.65676 8.23135 5.58461 8.327 5.57384L10.7324 5.2852C10.8148 5.27551 10.8877 5.21951 10.9265 5.13766L12.0847 2.71982C12.1311 2.62397 12.2211 2.56581 12.3158 2.57012C12.4114 2.57443 12.4957 2.64012 12.5355 2.73921L13.5194 5.25397C13.5535 5.34013 13.6207 5.40152 13.7031 5.41875L14.5469 5.59753L19.1181 3.01922L19.1967 0.767246L5.58259 0.155518L5.20947 10.8672L9.89713 8.22214C9.8905 8.15968 9.8744 8.09937 9.83652 8.05198Z" fill="white"/>
+                        <path d="M22.5747 1.50995C23.0284 1.50995 23.463 1.61657 23.8598 1.80396C23.6117 1.29993 23.1515 0.946682 22.6069 0.921911L21.0349 0.85083L20.9961 1.96013L21.0889 1.90843C21.5472 1.64888 22.0624 1.50995 22.5747 1.50995Z" fill="white"/>
+                        <path d="M0.837241 15.6702C0.479274 15.8727 0.206538 16.2303 0.0786928 16.6578C-0.0491524 17.0876 -0.0197954 17.5593 0.156347 17.9664L4.55612 28.0481C4.81749 28.6512 5.35254 29.0001 5.90654 29.0001C6.13193 29.0001 6.36015 28.942 6.57512 28.8203L8.45397 27.7627L2.71609 14.6116L0.837241 15.6702Z" fill="white"/>
+                        <path d="M28.326 14.6371L23.9262 4.55435C23.6658 3.95124 23.1288 3.60229 22.5748 3.60229C22.3513 3.60229 22.1212 3.65937 21.9062 3.78215L20.0283 4.84191L25.7672 17.993L27.6451 16.9343C28.003 16.7318 28.2767 16.3754 28.4036 15.9467C28.5314 15.5159 28.504 15.0442 28.326 14.6371Z" fill="white"/>
+                        <path d="M4.36572 13.6792L10.1046 26.8292L24.1192 18.9219L18.3804 5.76978L4.36572 13.6792ZM18.8037 19.3883C18.7592 19.4852 18.6692 19.5455 18.5764 19.5444L15.7553 19.4701C15.6729 19.468 15.5953 19.5121 15.546 19.5875L13.8926 22.1852C13.8357 22.2724 13.741 22.3166 13.6463 22.2972C13.5516 22.2789 13.474 22.2024 13.4465 22.0958L12.6387 19.0221C12.616 18.9327 12.5544 18.8616 12.4758 18.8325L9.79204 17.8471C9.70113 17.8137 9.63389 17.7243 9.61969 17.6166C9.60548 17.5068 9.64715 17.4012 9.72575 17.3388L12.044 15.5165C12.1122 15.4637 12.1529 15.3754 12.1529 15.2806L12.1463 12.0734C12.1463 11.9646 12.2003 11.8644 12.2864 11.816C12.3717 11.7675 12.474 11.7783 12.5497 11.844L14.7922 13.7901C14.8576 13.8472 14.9437 13.8644 15.0223 13.8342L17.7042 12.837C17.7952 12.8036 17.8936 12.8316 17.9609 12.9091C18.0272 12.9867 18.0508 13.1019 18.0196 13.2042L17.0423 16.3705L18.7819 19.0813C18.8397 19.1739 18.8463 19.2924 18.8037 19.3883Z" fill="white"/>
+                        </g>
+                        </svg>
                         <ul>
-                            <li v-for="ticket in selectedTickets" :key="ticket.id">
-                                <h3>{{ ticket.title }}</h3>
-                                <p>{{ ticket.description }}</p>
-                                <p>{{ ticket.price }}</p>
-                                <p>quantity: {{ getTicketQuantity(ticket.id) }}</p>
+                            <li class="li-tickets" v-for="ticket in selectedTickets" :key="ticket.id">
+                                <p class="p-selected-tickets">{{ getTicketQuantity(ticket.id) }}x</p>
+                                <p class="p-selected-tickets">{{ ticket.title }}</p>
+                                <p class="p-selected-tickets">{{ ticket.price }}€</p>
                             </li>
                         </ul>
                     </div>
+
+                    <div class="total">
+                        <p>Total</p>
+                        <p>{{ this.price }}€</p>
+                    </div>
                 </section>
+                
                 <!-- selecionar workshops: -->
                 <div>
-                    <h2>Adiciona workshops</h2>
-                    <ul>
-                        <li v-for="workshop in availableWorkshops" :key="workshop.id">
-                            <h3>{{ workshop.title }}</h3>
-                            <h3>{{ workshop.description }}</h3>
-                            <h3>{{ workshop.price }}</h3>
-                            <button @click="decreaseWorkshop(workshop)">-</button>
-                            <span>{{ getWorkshopQuantity(workshop.id) }}</span>
-                            <button @click="increaseWorkshop(workshop)">+</button>
+                    <p class="title-reserva">Adiciona workshops (opcional):</p>
+                    <ul class="ul-workshops">
+                        <li class="li-workshops" v-for="workshop in availableWorkshops" :key="workshop.id">
+                            <div>
+                                <p>{{ workshop.title }}</p>
+                                <p>{{ workshop.description }}</p>
+                                <p>{{ workshop.price }}€</p>
+                            </div>
+                            <div style="display: flex;">
+                                <button class="btn-select" @click="decreaseWorkshop(workshop)">-</button>
+                                <p>{{ getWorkshopQuantity(workshop.id) }}</p>
+                                <button class="btn-select" @click="increaseWorkshop(workshop)">+</button>
+                            </div>
+                            
                         </li>
                     </ul>
                 </div>
             </div>
 
-            <button @click="changeTab(4)" :disabled="!selectedTickets.length && !selectedWorkshops.length">Continuar</button>   
+            <div class="cont-btn-continue">
+                <button 
+                    @click="changeTab(4)" 
+                    class="btn-continue">Continuar
+                </button> 
+            </div> 
         </template>
 
+        <!-- TAB4 - Adicionar bilhetes ao carrinho: -->
         <template v-if="tabSelected === 4" class="tab">
             <!-- voltar para TAB anterior: -->
-            <button @click="changeTab(2)">
-                <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect y="50" width="50" height="50" rx="25" transform="rotate(-90 0 50)" fill="#E63946"/>
-                <path d="M36.6668 25L13.3335 25" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M24.9997 36.6665L13.333 24.9998L24.9997 13.3332" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </button>
-            <p>Programa / </p>
+            <div class="goBack">
+                <button @click="changeTab(3)">
+                    <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect y="50" width="50" height="50" rx="25" transform="rotate(-90 0 50)" fill="#E63946"/>
+                    <path d="M36.6668 25L13.3335 25" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M24.9997 36.6665L13.333 24.9998L24.9997 13.3332" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <p>Programa / Adquirir bilhetes</p>
+            </div>
 
-            <div style="display: flex;justify-content: space-between;">
+            <div style="display: flex; justify-content: space-between;">
                 <!-- secção de itens selecionados: -->
                 <section>
+                    <div style="margin: 30px 0 30px 0;">
+                        <div style="display: flex; gap: 10px;">
+                            <h2>Circo Illusionni</h2>
+                            <svg width="26" height="32" viewBox="0 0 26 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M25.9973 17.8535C19.8905 17.8535 14.7699 11.3714 13.3505 6.07468V3.76244C14.6014 2.11986 15.8505 4.33432 17.0984 2.69174C15.8501 3.62052 14.6009 0.6912 13.3505 1.61946V1.32458C13.5381 1.19738 13.6637 0.973988 13.6637 0.718007C13.6637 0.321158 13.3661 0 12.9986 0C12.6303 0 12.3327 0.321158 12.3327 0.717482C12.3327 0.980295 12.4648 1.20737 12.6602 1.33247V6.02422C11.2598 11.3304 6.12539 17.8535 0 17.8535C0 18.9457 0.923336 19.8487 2.12918 20.0148L0 31.5376H3.54169L5.01184 18.2577C5.04 18.1263 5.0569 17.9912 5.0569 17.8529C9.39324 17.8529 12.139 8.70807 12.827 6.12934H12.9852C12.837 14.2829 10.1043 17.8529 10.1043 17.8529H5.0569C5.0569 19.0635 6.18865 20.0448 7.58513 20.0448C8.98162 20.0448 10.1129 19.0635 10.1129 17.8529L9.68311 25.6191C7.51234 28.7933 6.60764 28.9421 6.60764 28.9421C7.33209 31.5376 8.39321 31.5376 8.39321 31.5376C10.7195 31.5376 12.9882 20.0443 12.9882 20.0443L12.9648 20.0879L12.9921 20.0185L13.0125 20.0685C13.1139 20.5762 15.3297 31.5376 17.6032 31.5376C17.6032 31.5376 18.6643 31.5376 19.3888 28.9421C19.3888 28.9421 18.4845 28.7933 16.3137 25.6201L15.8843 17.8535C15.8843 19.064 17.0148 20.0453 18.4113 20.0453C19.8077 20.0453 20.9399 19.064 20.9399 17.8535H15.893C15.893 17.8535 13.1607 14.2834 13.0129 6.12987H13.1711C13.8591 8.70807 16.6036 17.8535 20.9399 17.8535C20.9399 17.9917 20.9568 18.1268 20.9854 18.2582L22.4556 31.5376H25.9973L23.8672 20.0148C25.0739 19.8487 25.9973 18.9457 25.9973 17.8535Z" fill="white" fill-opacity="0.5"/>
+                            </svg>
+                        </div>
+                        <p style="font-size: 19px;">20ª Edição - O circo e o planeta</p>
+                    </div>
+
                     <div class="selected-section">
                         <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M22.95 2.7H21.6V1.35C21.6 0.54 21.06 0 20.25 0C19.44 0 18.9 0.54 18.9 1.35V2.7H8.1V1.35C8.1 0.54 7.56 0 6.75 0C5.94 0 5.4 0.54 5.4 1.35V2.7H4.05C1.755 2.7 0 4.455 0 6.75V8.1H27V6.75C27 4.455 25.245 2.7 22.95 2.7ZM0 22.95C0 25.245 1.755 27 4.05 27H22.95C25.245 27 27 25.245 27 22.95V10.8H0V22.95ZM20.25 13.5C21.06 13.5 21.6 14.04 21.6 14.85C21.6 15.66 21.06 16.2 20.25 16.2C19.44 16.2 18.9 15.66 18.9 14.85C18.9 14.04 19.44 13.5 20.25 13.5ZM20.25 18.9C21.06 18.9 21.6 19.44 21.6 20.25C21.6 21.06 21.06 21.6 20.25 21.6C19.44 21.6 18.9 21.06 18.9 20.25C18.9 19.44 19.44 18.9 20.25 18.9ZM13.5 13.5C14.31 13.5 14.85 14.04 14.85 14.85C14.85 15.66 14.31 16.2 13.5 16.2C12.69 16.2 12.15 15.66 12.15 14.85C12.15 14.04 12.69 13.5 13.5 13.5ZM13.5 18.9C14.31 18.9 14.85 19.44 14.85 20.25C14.85 21.06 14.31 21.6 13.5 21.6C12.69 21.6 12.15 21.06 12.15 20.25C12.15 19.44 12.69 18.9 13.5 18.9ZM6.75 13.5C7.56 13.5 8.1 14.04 8.1 14.85C8.1 15.66 7.56 16.2 6.75 16.2C5.94 16.2 5.4 15.66 5.4 14.85C5.4 14.04 5.94 13.5 6.75 13.5ZM6.75 18.9C7.56 18.9 8.1 19.44 8.1 20.25C8.1 21.06 7.56 21.6 6.75 21.6C5.94 21.6 5.4 21.06 5.4 20.25C5.4 19.44 5.94 18.9 6.75 18.9Z" fill="white"/>
                         </svg>
-                        <p>{{ selectedDate }} de janeiro de 2025</p>
+                        <p class="p-selected-tickets">{{ selectedDate }} de janeiro de 2025</p>
                     </div>
                     <div class="selected-section">
                         <svg width="22" height="26" viewBox="0 0 22 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path opacity="0.9" d="M11 0C4.92525 0 0 4.36556 0 9.75C0 11.8702 0.784208 13.8157 2.08771 15.4091C2.11108 15.4472 2.11475 15.4899 2.14133 15.5265L9.47467 25.2765C9.81475 25.7286 10.3877 26 11 26C11.6123 26 12.1853 25.7286 12.5253 25.2765L19.8587 15.5265C19.8857 15.4899 19.8889 15.4472 19.9123 15.4091C21.2158 13.8157 22 11.8702 22 9.75C22 4.36556 17.0748 0 11 0ZM11 13C8.97508 13 7.33333 11.5448 7.33333 9.75C7.33333 7.95519 8.97508 6.5 11 6.5C13.0249 6.5 14.6667 7.95519 14.6667 9.75C14.6667 11.5448 13.0249 13 11 13Z" fill="white"/>
                         </svg>
-                        <p>Parque da Cidade, Porto</p>
+                        <p class="p-selected-tickets">Parque da Cidade, Porto</p>
+                    </div>
+
+                    <div class="selected-section">
+                        <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g opacity="0.9">
+                        <path d="M1.52226 12.9468L3.33103 11.9258L3.74392 0.0724674L2.17095 0.00138636C1.33854 -0.0363082 0.637758 0.699273 0.605559 1.64594L0.272215 11.1977C0.256116 11.6522 0.40006 12.0949 0.670903 12.4287C0.897236 12.7066 1.19838 12.8832 1.52226 12.9468Z" fill="white"/>
+                        <path d="M9.83652 8.05198L8.17075 6.05525C8.1054 5.97663 8.08457 5.86139 8.11771 5.75908C8.15086 5.65676 8.23135 5.58461 8.327 5.57384L10.7324 5.2852C10.8148 5.27551 10.8877 5.21951 10.9265 5.13766L12.0847 2.71982C12.1311 2.62397 12.2211 2.56581 12.3158 2.57012C12.4114 2.57443 12.4957 2.64012 12.5355 2.73921L13.5194 5.25397C13.5535 5.34013 13.6207 5.40152 13.7031 5.41875L14.5469 5.59753L19.1181 3.01922L19.1967 0.767246L5.58259 0.155518L5.20947 10.8672L9.89713 8.22214C9.8905 8.15968 9.8744 8.09937 9.83652 8.05198Z" fill="white"/>
+                        <path d="M22.5747 1.50995C23.0284 1.50995 23.463 1.61657 23.8598 1.80396C23.6117 1.29993 23.1515 0.946682 22.6069 0.921911L21.0349 0.85083L20.9961 1.96013L21.0889 1.90843C21.5472 1.64888 22.0624 1.50995 22.5747 1.50995Z" fill="white"/>
+                        <path d="M0.837241 15.6702C0.479274 15.8727 0.206538 16.2303 0.0786928 16.6578C-0.0491524 17.0876 -0.0197954 17.5593 0.156347 17.9664L4.55612 28.0481C4.81749 28.6512 5.35254 29.0001 5.90654 29.0001C6.13193 29.0001 6.36015 28.942 6.57512 28.8203L8.45397 27.7627L2.71609 14.6116L0.837241 15.6702Z" fill="white"/>
+                        <path d="M28.326 14.6371L23.9262 4.55435C23.6658 3.95124 23.1288 3.60229 22.5748 3.60229C22.3513 3.60229 22.1212 3.65937 21.9062 3.78215L20.0283 4.84191L25.7672 17.993L27.6451 16.9343C28.003 16.7318 28.2767 16.3754 28.4036 15.9467C28.5314 15.5159 28.504 15.0442 28.326 14.6371Z" fill="white"/>
+                        <path d="M4.36572 13.6792L10.1046 26.8292L24.1192 18.9219L18.3804 5.76978L4.36572 13.6792ZM18.8037 19.3883C18.7592 19.4852 18.6692 19.5455 18.5764 19.5444L15.7553 19.4701C15.6729 19.468 15.5953 19.5121 15.546 19.5875L13.8926 22.1852C13.8357 22.2724 13.741 22.3166 13.6463 22.2972C13.5516 22.2789 13.474 22.2024 13.4465 22.0958L12.6387 19.0221C12.616 18.9327 12.5544 18.8616 12.4758 18.8325L9.79204 17.8471C9.70113 17.8137 9.63389 17.7243 9.61969 17.6166C9.60548 17.5068 9.64715 17.4012 9.72575 17.3388L12.044 15.5165C12.1122 15.4637 12.1529 15.3754 12.1529 15.2806L12.1463 12.0734C12.1463 11.9646 12.2003 11.8644 12.2864 11.816C12.3717 11.7675 12.474 11.7783 12.5497 11.844L14.7922 13.7901C14.8576 13.8472 14.9437 13.8644 15.0223 13.8342L17.7042 12.837C17.7952 12.8036 17.8936 12.8316 17.9609 12.9091C18.0272 12.9867 18.0508 13.1019 18.0196 13.2042L17.0423 16.3705L18.7819 19.0813C18.8397 19.1739 18.8463 19.2924 18.8037 19.3883Z" fill="white"/>
+                        </g>
+                        </svg>
+
                         <ul>
-                            <li v-for="ticket in selectedTickets" :key="ticket.id">
-                                <h3>{{ ticket.title }}</h3>
-                                <p>{{ ticket.description }}</p>
-                                <p>{{ ticket.price }}</p>
-                                <p>quantity: {{ getTicketQuantity(ticket.id) }}</p>
-                            </li>
-                        </ul>
-                        <ul>
-                            <li v-for="workshop in selectedWorkshops" :key="workshop.id">
-                                <h3>{{ workshop.title }}</h3>
-                                <p>{{ workshop.description }}</p>
-                                <p>{{ workshop.price }}</p>
-                                <p>quantity: {{ getWorkshopQuantity(workshop.id) }}</p>
+                            <li class="li-tickets" v-for="ticket in selectedTickets" :key="ticket.id">
+                                <p class="p-selected-tickets">{{ getTicketQuantity(ticket.id) }}x</p>
+                                <p class="p-selected-tickets">{{ ticket.title }}</p>
+                                <p class="p-selected-tickets">{{ ticket.price }}€</p>
                             </li>
                         </ul>
                     </div>
+                    
+                    <div class="selected-section">
+                        <svg width="24" height="26" viewBox="0 0 24 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_0_7875)">
+                        <path d="M21.0058 20.8592L19.6334 19.178L18.2605 17.4953L16.8882 15.8147V15.814L15.54 14.1618V14.1611C13.5681 13.019 12.624 14.7276 11.6821 14.8734L12.0004 15.8077L14.5981 18.2949L16.1501 19.7816H16.1507L17.7027 21.269H17.7033L19.2546 22.7557H19.2553L20.7373 24.1759L21.9277 23.9885L22.316 22.4656L21.0058 20.8592Z" fill="#192657"/>
+                        <path d="M12.0005 7.41673C11.8953 7.56958 11.8013 7.7302 11.7163 7.89722C10.7333 9.82193 10.9985 12.5823 10.8202 13.9395L9.66405 14.2926L8.46091 14.161C8.04743 13.8999 7.6255 13.6048 7.20025 13.2779C6.28516 12.5745 5.35502 11.7261 4.45624 10.7524C0.784753 6.77495 -0.967716 2.22429 0.543066 0.587563C0.767128 0.344829 1.04993 0.179993 1.38175 0.0879774C1.38438 0.0879774 1.38635 0.0872664 1.38893 0.0865555C3.29622 -0.436339 6.80247 1.44308 9.92599 4.82688C10.3088 5.24085 10.6706 5.66188 11.0096 6.08504C11.0122 6.0886 11.0148 6.09139 11.0174 6.09494C11.3708 6.53435 11.6981 6.97661 12.0005 7.41673Z" fill="white"/>
+                        <path d="M12.3063 8.53617C11.222 10.2394 10.9939 12.6204 10.8202 13.9393L9.66405 14.2924L8.99585 14.7642C8.99322 14.7621 8.82597 14.4688 8.82335 14.4674L8.46091 14.1608C8.04743 13.8997 7.6255 13.6046 7.20025 13.2777C6.28516 12.5743 5.35502 11.7259 4.45624 10.7523C0.784753 6.77482 -0.967716 2.22416 0.543066 0.587434C0.767128 0.344699 1.04993 0.179863 1.38175 0.0878477C1.38438 0.0878477 1.38635 0.0871367 1.38893 0.0864258C0.906206 2.15266 2.64044 5.9511 5.76391 9.33562C6.50721 10.1409 7.27211 10.8591 8.03242 11.4818C8.40016 10.218 9.12128 8.76596 10.135 7.29061C10.408 6.89223 10.7026 6.49243 11.0175 6.09476C11.3709 6.53417 11.6981 6.97643 12.0005 7.4166C11.8953 7.56945 12.3912 8.3692 12.3063 8.53617Z" fill="white"/>
+                        <path d="M12.8676 14.2783L15.6018 17.2078L14.5978 18.2954L13.072 16.8342L11.7114 15.5308L12.8676 14.2783Z" fill="#192657"/>
+                        <path d="M23.7576 22.4195C24.081 22.7698 24.081 23.3387 23.7576 23.689L21.8673 25.7368C21.5434 26.0878 21.0188 26.0878 20.6949 25.7368L20.5819 25.6144C20.2579 25.2634 20.2579 24.6952 20.5819 24.3442L20.7373 24.1758L22.3161 22.4655L22.4721 22.2964C22.7955 21.9461 23.3206 21.9461 23.644 22.2964L23.7576 22.4195Z" fill="white"/>
+                        <path d="M9.66399 12.687L8.4608 14.1609L7.11197 15.8139L5.73966 17.4952L4.36735 19.1779L2.99433 20.8592L1.68408 22.4655L2.09396 24.0341L3.26278 24.1758L4.74554 22.7556L6.29747 21.2689L7.85007 19.7822L9.40271 18.2955L12.0004 15.8076L12.2891 15.5309L11.8156 14.1158L9.66399 12.687Z" fill="#192657"/>
+                        <path d="M19.6337 19.1777L21.0061 20.859L19.2556 22.7554H19.2549L17.7036 21.2687L19.6337 19.1777Z" fill="white"/>
+                        <path d="M16.8882 15.8145L18.2605 17.4951L16.1507 19.7813H16.1501L14.5981 18.2947L16.8882 15.8145Z" fill="white"/>
+                        <path d="M19.2554 22.7564L20.0131 21.9355L21.4167 23.4406L20.7381 24.1758L19.2554 22.7564Z" fill="#192657"/>
+                        <path d="M16.1499 19.7822L17.0722 18.7837L18.5425 20.3595L17.7032 21.2688L16.1499 19.7822Z" fill="#192657"/>
+                        <path d="M20.738 24.1756L21.4167 23.4404L22.7086 24.8252L21.8674 25.7367C21.544 26.0877 21.0189 26.0877 20.6955 25.7367L20.5819 25.6142C20.2585 25.2632 20.2585 24.695 20.5819 24.3441L20.738 24.1756Z" fill="white"/>
+                        <path d="M17.7036 21.2692L18.5429 20.3599L20.0132 21.9358L19.2556 22.7566L17.7036 21.2692Z" fill="white"/>
+                        <path d="M15.6021 17.208L17.0724 18.7839L16.1501 19.7823L14.5981 18.2956L15.6021 17.208Z" fill="white"/>
+                        <path d="M2.99433 20.8594L3.75202 21.6802L2.36274 23.2008L1.68408 22.4657L2.99433 20.8594Z" fill="#192657"/>
+                        <path d="M5.7395 17.4951L6.66116 18.4942L5.20648 20.0871L4.36719 19.1778L5.7395 17.4951Z" fill="#192657"/>
+                        <path d="M10.82 13.9395L8.11579 16.9015L7.11182 15.8139L8.46064 14.1609L9.66383 12.687L10.82 13.9395Z" fill="#192657"/>
+                        <path d="M3.41813 25.6145L3.30511 25.7369C2.98177 26.0879 2.45663 26.0879 2.13328 25.7369L0.243 23.689C-0.081 23.3387 -0.081 22.7698 0.243 22.4196L0.356016 22.2964C0.680016 21.9461 1.2045 21.9461 1.52845 22.2964L1.68389 22.4655L3.41808 24.3442C3.74208 24.6953 3.74208 25.2635 3.41813 25.6145Z" fill="white"/>
+                        <path d="M6.29728 21.2687L4.74534 22.7554L3.75183 21.6798L2.99414 20.859L4.36716 19.1777L5.20645 20.087L6.29728 21.2687Z" fill="white"/>
+                        <path d="M9.40279 18.2955L7.85015 19.7823L6.6614 18.4944L5.73975 17.4953L7.11206 15.814L8.11603 16.9015L9.40279 18.2955Z" fill="white"/>
+                        <path d="M1.68394 22.4656L2.36259 23.2008L1.08431 24.6005L0.243 23.689C-0.081 23.3387 -0.081 22.7698 0.243 22.4196L0.356016 22.2964C0.680016 21.9461 1.2045 21.9461 1.52845 22.2964L1.68394 22.4656Z" fill="white"/>
+                        <path d="M4.36716 19.1777L5.20645 20.087L3.75183 21.6798L2.99414 20.859L4.36716 19.1777Z" fill="white"/>
+                        <path d="M8.11603 16.9015L6.6614 18.4944L5.73975 17.4953L7.11206 15.814L8.11603 16.9015Z" fill="white"/>
+                        <path d="M23.4576 0.588195C24.9678 2.22421 23.2159 6.77482 19.5444 10.7523C18.2282 12.1782 16.8435 13.3372 15.5398 14.1609C14.3516 14.9117 13.2308 15.3851 12.2889 15.5308L9.66374 12.6869H9.66309C9.8571 11.2122 10.6834 9.33354 12.0002 7.41665C12.5952 6.54981 13.2915 5.67521 14.0747 4.8268C17.7462 0.849312 21.9468 -1.0492 23.4576 0.588195Z" fill="white"/>
+                        <path d="M13.434 8.96978C14.029 8.10295 14.7253 7.22834 15.5085 6.37994C18.5828 3.0495 22.0276 1.17725 23.954 1.61727C23.8752 1.21203 23.7164 0.868398 23.4708 0.602355C21.96 -1.03504 17.7594 0.863473 14.0879 4.84096C13.3047 5.68937 12.6084 6.56402 12.0134 7.43081C10.6966 9.34775 9.87029 11.2265 9.67627 12.7011H9.67693L11.097 14.2395C11.2911 12.7649 12.1173 10.8864 13.434 8.96978Z" fill="white"/>
+                        </g>
+                        <defs>
+                        <clipPath id="clip0_0_7875">
+                        <rect width="24" height="26" fill="white"/>
+                        </clipPath>
+                        </defs>
+                        </svg>
+
+                        <ul>
+                            <li class="li-tickets" v-for="workshop in selectedWorkshops" :key="workshop.id">
+                                <p class="p-selected-tickets">{{ getWorkshopQuantity(workshop.id) }}x</p>
+                                <p class="p-selected-tickets">{{ workshop.title }}</p>
+                                <p class="p-selected-tickets">{{ workshop.price }}€</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="total">
+                        <p>Total</p>
+                        <p>{{ this.price }}€</p>
+                    </div>
                 </section>
-                <!-- -->
-                <div>
-                   lalalala
-                </div>
+                
+                <img width="300px" height="300px" src="/src/assets/PricingView/workshops carrinho.png" alt="">
+                
+                <button @click="handleTickets()" class="btn-continue">Adicionar bilhetes ao carrinho</button> 
+                
             </div>
 
-            <button @click="handleTickets()">Adicionar bilhetes ao carrinho</button> 
             
         </template>
     </section>
@@ -329,40 +460,67 @@
     data() {
         return {
             tabSelected: 1,
-            selectedZone: "",
             ticketStore: useTicketStore(),
+            selectedZone: "",
             selectedDate: "",
+            price: 0,
             availableTickets: [
-                { id: 1, title: "Adulto", description: "Bilhete individual", price: "12.00€" },
-                { id: 2, title: "Criança", description: "Bilhete individual", price: "8.00€" },
-                { id: 3, title: "Pack Familiar", description: "2 adultos 2 crianças", price: "30.00€" },
+                { id: 1, zone:"C", title: "Adulto", description: "Bilhete individual", price: 12, quantity: 0 },
+                { id: 2, zone:"C", title: "Criança", description: "Bilhete individual", price: 8, quantity: 0 },
+                { id: 3, zone:"C", title: "Pack Familiar", description: "2 adultos 2 crianças", price: 30, quantity: 0 },
+                { id: 4, zone:"B", title: "Adulto", description: "Bilhete individual", price: 15, quantity: 0 },
+                { id: 5, zone:"B", title: "Criança", description: "Bilhete individual", price: 12, quantity: 0 },
+                { id: 6, zone:"B", title: "Pack Familiar", description: "2 adultos 2 crianças", price: 40, quantity: 0 },
+                { id: 7, zone:"A", title: "Adulto", description: "Bilhete individual", price: 20, quantity: 0 },
+                { id: 8, zone:"A", title: "Criança", description: "Bilhete individual", price: 15, quantity: 0 },
+                { id: 9, zone:"A", title: "Pack Familiar", description: "2 adultos 2 crianças", price: 50, quantity: 0 },
             ],
             availableWorkshops: [
-                { id: 1, title: "Malabarismo Sustentável", description: "Limite de pessoas: 30", price: "4.00€" },
-                { id: 2, title: "Oficina de Acrobacias", description: "Limite de pessoas: 15", price: "6.00€" },
-                { id: 3, title: "Técnicas de Palhaçaria", description: "Limite de pessoas: 30", price: "4.00€" },
+                { id: 1, title: "Malabarismo Sustentável", description: "Limite de pessoas: 30", price: 4, quantity: 0 },
+                { id: 2, title: "Oficina de Acrobacias", description: "Limite de pessoas: 15", price: 6, quantity: 0 },
+                { id: 3, title: "Técnicas de Palhaçaria", description: "Limite de pessoas: 30", price: 4, quantity: 0 },
             ],
             selectedTickets: [], //To store selected tickets before adding them to the cart
-            selectedWorkshops: [] //To store selected workshops before adding them to the cart
+            selectedWorkshops: [], //To store selected workshops before adding them to the cart
         }
     },
-    methods: {
+    methods: { 
         changeTab(number) {
             this.tabSelected = number;
+            this.getPrice()      
+            console.log(this.selectedWorkshops);
+               
+        },
+
+        /* Calculate prices logic */
+        getPrice() {
+            this.price = 0;
+            
+            this.selectedTickets.forEach(ticket => {
+                this.price += ticket.price * ticket.quantity                    
+            })
+            this.selectedWorkshops.forEach(workshop => {
+                this.price += workshop.price * workshop.quantity                    
+            })
+        },
+
+        /* Tickets logic */
+        filteredTickets() {
+            return this.availableTickets.filter(ticket => ticket.zone === this.selectedZone);
         },
         increaseTicket(ticket) {
-            const existingTicket = this.selectedTickets.find(t => t.id === ticket.id);
-            if (existingTicket) {
-                existingTicket.quantity++;
+            const existsTicket = this.selectedTickets.find(t => t.id === ticket.id);
+            if (existsTicket) {
+                existsTicket.quantity++;
             } else {
                 this.selectedTickets.push({ ...ticket, quantity: 1 });
             }
         },
         decreaseTicket(ticket) {
-            const existingTicket = this.selectedTickets.find(t => t.id === ticket.id);
-            if (existingTicket.quantity > 1) {
-                existingTicket.quantity--;
-            } else if (existingTicket) {
+            const existsTicket = this.selectedTickets.find(t => t.id === ticket.id);
+            if (existsTicket && existsTicket.quantity > 1) {
+                existsTicket.quantity--;
+            } else if (existsTicket && existsTicket.quantity === 1) {
                 this.selectedTickets = this.selectedTickets.filter(t => t.id !== ticket.id);
             }
         },
@@ -370,19 +528,27 @@
             const ticket = this.selectedTickets.find(t => t.id === ticketId);
             return ticket ? ticket.quantity : 0;
         },
+        addTickets(tickets) {
+            tickets.forEach(ticket => {
+                this.ticketStore.addPurchasedTicket(ticket);
+            });
+        },
+       
+
+        /* Workshops logic */
         increaseWorkshop(workshop) {
-            const existingWorkshop = this.selectedWorkshops.find(w => w.id === workshop.id);
-            if (existingWorkshop) {
-                existingWorkshop.quantity++;
+            const existsWorkshop = this.selectedWorkshops.find(w => w.id === workshop.id);
+            if (existsWorkshop) {
+                existsWorkshop.quantity++;
             } else {
                 this.selectedWorkshops.push({ ...workshop, quantity: 1 });
-            }
+            }   
         },
         decreaseWorkshop(workshop) {
-            const existingWorkshop = this.selectedWorkshops.find(w => w.id === workshop.id);
-            if (existingWorkshop.quantity > 1) {
-                existingWorkshop.quantity--;
-            } else if (existingWorkshop) {
+            const existsWorkshop = this.selectedWorkshops.find(w => w.id === workshop.id);
+            if (existsWorkshop.quantity > 1) {
+                existsWorkshop.quantity--;
+            } else if (existsWorkshop) {
                 this.selectedWorkshops = this.selectedWorkshops.filter(w => w.id !== workshop.id);
             }
         },
@@ -390,24 +556,56 @@
             const workshop = this.selectedWorkshops.find(w => w.id === workshopId);
             return workshop ? workshop.quantity : 0;
         },
-        selectDate(date) {
-            this.selectedDate = date;
-        },
-        selectZone(zone) {
-            this.selectedZone = zone;
-        },
-        addTickets(tickets) {
-            tickets.forEach(ticket => {
-                this.ticketStore.addPurchasedTicket(ticket);
-                console.log('Adicionando:', ticket.title);
-            });
-        },
         addWorkshops(workshops) {
             workshops.forEach(workshop => {
                 this.ticketStore.addPurchasedWorkshop(workshop);
-                console.log('Adicionando:', workshop.title);
             });
         },
+
+
+        /* Select date and seating zone with buttons logic*/
+        selectDate(date) {
+            if (this.selectedDate === date) {
+                this.selectedDate = ""; 
+            } else {
+                this.selectedDate = date; 
+            }
+        },
+        highlightDateBtn(date) {
+            return {
+                backgroundColor: this.selectedDate === date ? 'white' : '#121B43',
+                color: this.selectedDate === date ? '#121B43' : 'white',
+            };
+        },
+        selectZone(zone) {
+            if (this.selectedZone === zone) {
+                this.selectedZone = ""; 
+            } else {
+                this.selectedZone = zone; 
+            }
+        },
+        highlightZoneBtn(zone) {
+            return {
+                backgroundColor: this.getZoneBtnColor(zone), 
+                outline: this.selectedZone === zone ? '4px solid white' : 'none', 
+                color: 'white', 
+                borderRadius: '1000px', 
+                padding: '12px 20px', 
+                margin: '10px 10px 0 0', 
+                boxSizing: 'border-box', 
+            };
+        },
+        getZoneBtnColor(zone) {
+            const colors = {
+                A: '#5F977F', 
+                B: '#F39E60',
+                C: '#8EA9D2',
+            };
+            return colors[zone]
+        },
+
+        
+        /* Store tickets and workshops */
         handleTickets() {
             this.addTickets(this.selectedTickets);
             this.addWorkshops(this.selectedWorkshops);
@@ -417,7 +615,6 @@
 </script>
 
 <style scoped>
-
     .header {
         display: flex;
         flex-wrap: wrap;
@@ -460,7 +657,7 @@
         align-items: flex-start;
         gap: 30px
     }
- .prices > img {
+    .prices > img {
         width: 250px;
     }
 
@@ -478,8 +675,28 @@
         border-radius: 100px;
     }
 
+    .goBack {
+        display: flex; 
+        align-items: center; 
+        gap: 20px;
+    }
+
     .selected-section, .selected-ammount {
         display: flex;
+    }
+
+    .selected-section {
+        margin: 20px 0 20px 0;
+    }
+
+    .li-tickets {
+        display: flex;
+    }
+
+    .p-selected-tickets {
+        padding-left: 10px; 
+        font-weight: 200; 
+        font-size: 18px;
     }
 
     .tab {
@@ -495,8 +712,9 @@
         font-weight: 100;
         border: 1px solid white;
     }
+
     .btn-date > button {
-        padding: 8px 20px;
+        padding: 10px 20px;
         margin: 20px 20px 0 0;
         border: 3px solid white;
         border-radius: 100px;
@@ -510,5 +728,86 @@
     }
 
     .btn-bancada {
+        border: none; 
+        cursor: pointer;
+        box-sizing: border-box;
     } 
+
+    .p-zone p {
+        margin: 5px;
+    }
+
+    .cont-btn-continue {
+        display: flex; 
+        justify-content: flex-end; 
+        margin-top: 20px;
+    }
+    .btn-continue {
+        background-color: #E63946;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 100px;
+        border: none;
+        align-self: flex-end;
+    }
+    
+    .btn-continue:hover {
+        background-color: #b82834;
+    }
+
+    .buy-ticket {
+        background-color: #192657;
+        margin-right: 10px;
+        padding: 40px 20px;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .ul-workshops > li {
+        background-color: #192657;
+        margin-right: 10px;
+        padding: 20px 20px;
+        margin-bottom: 20px;
+        border-radius: 12px;
+        display: flex;
+        gap: 10px;
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .buy-ticket {
+        background-color: #192657;
+        margin-right: 10px;
+        padding: 40px 20px;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .ul-workshops {
+        display: flex; 
+        flex-direction: column;
+    }
+
+    .total {
+        display: flex;
+        justify-content: space-between;
+        margin: 50px 0;
+        font-size: 22px;
+
+    }
+
+    .btn-select {
+        background-color: #E63946;
+        border-radius: 100px;
+        height: 20px;
+        width: 25px;
+        margin: 0 10px;
+        padding-bottom: 25px;
+    }
+
+
 </style>

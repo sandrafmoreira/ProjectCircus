@@ -9,6 +9,15 @@ export const useTicketStore = defineStore("ticket", {
     }
   },
 
+  persist: {
+    storage: localStorage,
+    pick: ['purchasedTickets', 'purchasedWorkshops'],
+    serializer: {
+      deserialize: JSON.parse,
+      serialize: JSON.stringify
+    }
+  },
+
   actions: {
     addPurchasedTicket(ticket) {
         this.purchasedTickets.push(ticket)

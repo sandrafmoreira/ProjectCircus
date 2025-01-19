@@ -27,6 +27,19 @@
                         <v-divider></v-divider>
                     </v-list-item>
                 </v-list>
+
+                <v-list v-for="ticket in ticketStore.purchasedTickets" :key="ticket.id">
+                <v-list-item>
+                    <v-list-item-title>{{ ticket.title }}</v-list-item-title>
+                    <v-list-item-subtitle>{{ ticket.description }}</v-list-item-subtitle>
+                    <v-btn @click="decrement(ticket)">-</v-btn>
+                    <v-list-item-subtitle>{{ ticket.units }}</v-list-item-subtitle>
+                    <v-btn @click="increment(ticket)">+</v-btn>
+                    <v-btn @click="removeProduct(ticket)">Remover</v-btn>
+                    <v-divider></v-divider>
+                </v-list-item>
+            </v-list>
+
             </div>
 
             <div v-else>
@@ -39,6 +52,17 @@
                     <v-list-item-subtitle>{{ product.units }}</v-list-item-subtitle>
                     <v-btn @click="increment(product)">+</v-btn>
                     <v-btn @click="removeProduct(product)">Remover</v-btn>
+                    <v-divider></v-divider>
+                </v-list-item>
+            </v-list>
+
+            <v-list v-for="ticket in ticketStore.purchasedTickets" :key="ticket.id">
+                <v-list-item>
+                    <v-list-item-title>{{ ticket.title }}</v-list-item-title>
+                    <v-btn @click="decrement(ticket)">-</v-btn>
+                    <v-list-item-subtitle>{{ ticket.units }}</v-list-item-subtitle>
+                    <v-btn @click="increment(ticket)">+</v-btn>
+                    <v-btn @click="removeProduct(ticket)">Remover</v-btn>
                     <v-divider></v-divider>
                 </v-list-item>
             </v-list>
@@ -69,13 +93,14 @@
 <script>
     import { useUserStore } from '@/stores/users';
     import { useProductStore } from '@/stores/products';
-    
+    import { useTicketStore } from '@/stores/ticket';
 
     export default {
         data() {
             return {
                 userStore: useUserStore(),
                 productStore: useProductStore(),
+                ticketStore: useTicketStore(),
                 menu: false,
             }
         },
@@ -130,6 +155,8 @@
                 }
                 return
             }
+
+
         },
     }
 </script>
