@@ -2,7 +2,7 @@
 import { defineStore } from "pinia";
 import * as api from "../api/photosApi";
 
-const UNSPLASH_API_BASE_URL= 'https://api.unsplash.com'
+// const UNSPLASH_API_BASE_URL= 'https://api.unsplash.com'
 const PEXELS_API_BASE_URL= 'https://api.pexels.com/v1'
 
 
@@ -10,7 +10,7 @@ export const usePhotoStore = defineStore("photoStore", {
   state: () => {
     return{ 
       Photos: [],
-      per_page:10, 
+      per_page:9, 
       maxPhotos:60
     }
   },
@@ -20,22 +20,22 @@ export const usePhotoStore = defineStore("photoStore", {
       },
   actions: {
 
-    async unsplashFetchCircusPhotos() {
-      try {
+    // async unsplashFetchCircusPhotos() {
+    //   try {
 
-        console.log("Fetching circus photos...");
-        // for (let i = 0; i< 10; i++) {
-        //   const unsplashData  = await api.get(UNSPLASH_API_BASE_URL, `search/photos?page=${i}&per_page=30&query=circus`);
-        //   this.Photos.push(...unsplashData.results)
-        // }
-        const unsplashData  = await api.get(UNSPLASH_API_BASE_URL, `search/photos?page=1&per_page=${this.per_page}&query=circus`);
-        this.Photos= unsplashData.results;
+    //     console.log("Fetching circus photos...");
+    //     // for (let i = 0; i< 10; i++) {
+    //     //   const unsplashData  = await api.get(UNSPLASH_API_BASE_URL, `search/photos?page=${i}&per_page=30&query=circus`);
+    //     //   this.Photos.push(...unsplashData.results)
+    //     // }
+    //     const unsplashData  = await api.get(UNSPLASH_API_BASE_URL, `search/photos?page=1&per_page=${this.per_page}&query=circus`);
+    //     this.Photos= unsplashData.results;
         
-        console.log( this.Photos);
-      } catch (error) {
-        throw new Error(`Error fetching  'search/photos?page=1&query=circus': ${error}`);
-      }
-    },
+    //     console.log( this.Photos);
+    //   } catch (error) {
+    //     throw new Error(`Error fetching  'search/photos?page=1&query=circus': ${error}`);
+    //   }
+    // },
 
 
     async pexelsFetchCircusPhotos() {

@@ -66,24 +66,70 @@
 
                 </v-tabs-window-item>
 
-                <v-tabs-window-item value="3">
-                    <v-card flat>
-                        <h2>Partilhar Conteúdo!!!</h2>
-                        <v-card-text><p>Texto</p></v-card-text>
+                <v-tabs-window-item value="3"class="shareContent-tab">
+                    <v-card flat class="share-section-container">
+
+                        <h2>Partilha aqui os teus momentos </h2>
+                        <p>Ao partilhares as tuas imagens, autorizas-nos a utilizá-las na nossa galeria e nas nossas redes sociais.</p>
+                        <v-form ref="form" v-model="valid">
+                            <!-- Campo de Upload -->
+                            <v-file-input
+                            label="Partilhar de Foto"
+                            show-size
+                            truncate-length="15"
+                            accept="image/*"
+                            v-model="photo"
+                            ></v-file-input>
+
+                            <!-- Campo de Legenda -->
+                            <v-text-field
+                            label="Legenda"
+                            v-model="caption"
+                            ></v-text-field>
+
+                            <v-btn :disabled="!photo" @click="addPhoto" color="primary">Adicionar Foto</v-btn>
+                        </v-form>
                     </v-card>
+
+                            <!-- Galeria de Fotos -->
+                    <v-slide-group
+                        v-model="model"
+                        class="pa-4"
+                        selected-class="bg-success"
+                        show-arrows
+                        center-active="true"
+                        v-if="photos.length">
+                        <v-slide-group-item v-for="(photo, index) in photos" :key="index">
+                            <v-card width="200px"  variant:="plain" class="share-gallery-card" flat="true">
+                                <v-img :src="photo.url" ></v-img>
+                                <div class="share-gallery-card-actions">
+                                    <v-card-text>
+                                    <p>{{ photo.caption }}</p>
+                                    </v-card-text>
+                                    <v-card-actions>
+                                        <v-btn color="red" @click="removePhoto(index)" icon>
+                                        <v-icon>mdi-delete</v-icon>
+                                        </v-btn>
+                                    </v-card-actions>
+                                </div>
+                                
+                            </v-card>
+                        </v-slide-group-item>
+                    </v-slide-group>
                 </v-tabs-window-item>
 
-                <v-tabs-window-item value="4">
-                    <v-card>
-                        <h2>Editar Conta!!!!</h2>
+                <v-tabs-window-item value="4" >
+                    <v-card :flat="true">
+                        <h2 class="section-title">Editar Conta</h2>
                         <v-card-text>
-                            <p style="color: red;">Antes de qualquer alteração, coloque a sua password para confirmar as alterações!</p>
+                            <!-- <p style="color: red;">Antes de qualquer alteração, coloque a sua password para confirmar as alterações!</p> -->
                             <v-form @submit.prevent="editInformation" v-model="form">
-                                    <v-text-field v-model="firstName" :rules="[required]" label="Primeiro Nome" variant="underlined"></v-text-field>
-                                    <v-text-field v-model="lastName"  :rules="[required]" label="Apelido" variant="underlined"></v-text-field>
-                                    <v-text-field v-model="email"  :rules="[required]" label="Email" type="email" variant="underlined"></v-text-field>
-                                    <v-text-field v-model="oldPassword" :rules="[required]" label="Old Password" type="password" variant="underlined"></v-text-field>
-                                    <v-text-field v-model="newPassword" label="New Password" type="password" variant="underlined"></v-text-field>
+                                    <v-text-field v-model="firstName" :rules="[required]"
+                                    variant="plain"></v-text-field>
+                                    <v-text-field  v-model="lastName"  :rules="[required]"  variant="plain"></v-text-field>
+                                    <v-text-field v-model="email"  :rules="[required]"  type="email" variant="plain"></v-text-field>
+                                    <v-text-field v-model="oldPassword" :rules="[required]" label="Old Password" type="password" variant="plain"></v-text-field>
+                                    <v-text-field v-model="newPassword" label="New Password" type="password" variant="plain"></v-text-field>
                                     <v-btn class="mt-2" type="submit" block>Guardar</v-btn>
                                     <v-btn class="mt-2" type="submit" @click="removeAccount">Remover Conta</v-btn>
                                     <p v-if="error">O email já está a ser utilizado!</p>
@@ -118,6 +164,13 @@ import { useTicketStore } from "@/stores/ticket";
                 badge3: 'not-obtained',
                 userStore: useUserStore(),
                 ticketStore: useTicketStore(),
+
+                photos: [
+                { url: '/src/assets/img/pexels-gesel-792764.jpg', caption: 'Foto de exemplo 1' },
+                { url: '/src/assets/img/pexels-gesel-792764.jpg', caption: 'Foto de exemplo 2' },
+                { url: '/src/assets/img/pexels-gesel-792764.jpg', caption: 'Foto de exemplo 3' },
+                { url: '/src/assets/img/pexels-gesel-792764.jpg', caption: 'Foto de exemplo 4' }
+                ]
             }
         },
 
@@ -210,9 +263,43 @@ h2 {
 }
 
 .windows {
-    margin-left: 50px;
+    margin-left: 80px;
+    width: 100%;
 
 }
+
+// share content tab
+.shareContent-tab{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.share-gallery-card{
+    margin-left: 0.5rem;
+}
+.v-img{
+    border-radius: 0% 0% 57% 0% / 0% 47% 30% 0% ;
+}
+.v-card-text{
+    padding-bottom: 0;
+}
+
+
+// edit account
+
+.v-card{
+    background-color: transparentize($color: #f7f1f1, $amount: 1);
+}
+
+.v-form{
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
 
 
 </style>
