@@ -10,6 +10,7 @@
                 <v-tab text="Histórico de Produtos" value="2"></v-tab>
                 <v-tab text="Partilhar Conteúdo" value="3"></v-tab>
                 <v-tab text="Editar Conta" value="4"></v-tab>
+                <v-tab v-if="userStore.userInfo.adminPermission" text="Administradores" value="5"></v-tab>
             </v-tabs>
 
             <v-tabs-window v-model="tab" class="windows">
@@ -82,7 +83,6 @@
                                     <h3>{{ (product.product.price).toFixed(2) }}€</h3>
                                     <p>Pedido Efetuado a {{ product.date }}</p>
                                 </div>
-                                Ver Detalhes
                             </div>
                         </v-card>
                     </section>
@@ -163,7 +163,6 @@
             </v-tabs-window>
         </div>
     </v-card>
-    <RouterLink v-if="userStore.userInfo.adminPermission" :to="{name: 'admin'}">Admin</RouterLink>
 </template>
 
 <script>
@@ -224,6 +223,14 @@ import { useTicketStore } from "@/stores/ticket";
                     }
                 }
             });
+        },
+
+        watch: {
+            tab(newValue) {
+                if (newValue == 5) {
+                    this.$router.push({name: 'admin'})
+                }
+            }
         },
 
         methods: {
@@ -338,6 +345,12 @@ h2 {
     margin-left: 80px;
     width: 100%;
 
+}
+
+//badges tab
+.badges-section{
+    display: flex;
+    justify-content: start;
 }
 
 // share content tab

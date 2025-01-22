@@ -455,12 +455,14 @@
     import { RouterLink, RouterView } from 'vue-router'
     import Footer from '@/components/Footer.vue';
     import { useTicketStore } from '@/stores/ticket'
+    import { useUserStore } from '@/stores/users';
 
     export default {
     data() {
         return {
             tabSelected: 1,
             ticketStore: useTicketStore(),
+            userStore: useUserStore(),
             selectedZone: "",
             selectedDate: "",
             price: 0,
@@ -532,6 +534,12 @@
             tickets.forEach(ticket => {
                 this.ticketStore.addPurchasedTicket(ticket);
                 this.userStore.addItem(ticket)
+
+                if (this.userStore.isAuthenticated) {
+                    this.userStore.userInfo.userCart.push(ticket)
+                } else {
+                    this.userStore.cart.push(ticket)
+                }
             });
         },
        
@@ -560,6 +568,12 @@
         addWorkshops(workshops) {
             workshops.forEach(workshop => {
                 this.ticketStore.addPurchasedWorkshop(workshop);
+                this.userStore.addItem(workshop)
+                if (this.userStore.isAuthenticated) {
+                    this.userStore.userInfo.userCart.push(workshop)
+                } else {
+                    this.userStore.cart.push(workshop)
+                }
             });
         },
 

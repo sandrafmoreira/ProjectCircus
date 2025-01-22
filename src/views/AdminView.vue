@@ -48,7 +48,7 @@
                                     <v-text-field v-model="productName" label="Nome" required></v-text-field>
                                 </v-col>
                                 <v-col cols="12">
-                                    <v-file-input label="Foto" show-size truncate-length="15" accept="image/*" v-model="productImage" required></v-file-input>
+                                    <v-file-input v-model="productImage" label="Foto" show-size truncate-length="15" accept="image/*" required></v-file-input>
                                 </v-col>
                                 <v-col cols="6">
                                     <v-text-field v-model="productPrice" label="Preço" type="number" required></v-text-field>
@@ -136,7 +136,82 @@
                 
                 <!--Tab de Notícias-->
                 <v-tabs-window-item value="4">
-                    Gerir Notícias
+                    <h2>Nº total de notícias: {{ this.newsStore.articles.length }}</h2>
+                    <h2>Lista de Artigos:</h2>
+                    <v-container class="bg-surface-variant">
+                        <v-row no-gutters v-for="article in newsStore.articles">
+                            <v-col cols="12">
+                                {{ article.title }}
+                                <v-btn @click="removeArticle(article.id, article.title)">Remover Artigo</v-btn>
+                            </v-col>
+                        </v-row>
+                    </v-container>
+
+                    <h2>Adicionar Artigo:</h2>
+                    <v-form @submit.prevent="addArticle">
+                        <v-container>
+                            <v-row>
+                                <v-col cols="12">
+                                    <v-text-field v-model="articleTitle" label="Título" required></v-text-field>
+                                </v-col>
+                                <v-col cols="12">
+                                    <v-file-input v-model="articleImage" label="Foto" show-size truncate-length="15" accept="image/*" required></v-file-input>
+                                </v-col>
+                                <v-col cols="6">
+                                    <v-text-field v-model="articleDate" label="Data" required></v-text-field>
+                                </v-col>
+                                <v-col cols="6">
+                                    <v-text-field v-model="articleAuthor" label="Autor(a)" required></v-text-field>
+                                </v-col>
+                                <v-col cols="12">
+                                    <v-textarea v-model="articleText" label="Texto" required></v-textarea>
+                                </v-col>
+                                <v-col cols="12">
+                                    <v-btn @click="addArticle" type="submit">Adicionar Artigo</v-btn>
+                                </v-col>
+                            </v-row>
+                        </v-container>
+                    </v-form>
+
+                    <h2>Editar Artigo:</h2>
+                    <v-form @submit.prevent="editArticle">
+                        <v-container class="bg-surface-variant">
+                            <v-select
+                            v-model="selectedArticle"
+                            label="Selecionar Artigo"
+                            :items="newsStore.articles"
+                            item-title="title"
+                            item-value="id"
+                            @update:modelValue="searchForArticle">
+                            </v-select>
+
+                            <v-col cols="12">
+                                <v-text-field v-model="articleTitleEdit" label="Título" required></v-text-field>
+                            </v-col>
+                            <v-col cols="12">
+                                <v-file-input v-model="articleImageEdit" show-size truncate-length="15" accept="image/*" label="Foto" required></v-file-input>
+                                <v-img
+                                v-if="articleImageEdit"
+                                :src="articleImageEdit"
+                                max-width="200"
+                                max-height="200"
+                                class="mt-4"
+                                ></v-img>
+                            </v-col>
+                            <v-col cols="6">
+                                <v-text-field v-model="articleDateEdit" label="Data" required></v-text-field>
+                            </v-col>
+                            <v-col cols="6">
+                                <v-text-field v-model="articleAuthorEdit" label="Autor(a)" required></v-text-field>
+                            </v-col>
+                            <v-col cols="12">
+                                <v-textarea v-model="articleTextEdit" label="Texto" required></v-textarea>
+                            </v-col>
+                            <v-cols cols="12">
+                                <v-btn @click="editArticle(selectedArticle)" type="submit" block>Editar Artigo</v-btn>
+                            </v-cols>
+                        </v-container>
+                    </v-form>
                 </v-tabs-window-item>
             </v-tabs-window>
         </div>
@@ -147,6 +222,7 @@
 <script>
     import { useUserStore } from '@/stores/users';
     import { useProductStore } from '@/stores/products';
+    import { useNewsStore } from '@/stores/news';
 
     export default {
         data() {
@@ -154,6 +230,7 @@
                 //Stores
                 userStore: useUserStore(),
                 productStore: useProductStore(),
+                newsStore: useNewsStore(),
                 tab: 1,
                 //Adicionar um produto novo
                 productName: "",
@@ -171,7 +248,20 @@
                 productImageEdit: "",
                 productPriceEdit: "",
                 productExclusivityEdit: false,
-                productDiscountEdit: 0
+                productDiscountEdit: 0,
+                //Adicionar um artigo novo
+                articleImage: "",
+                articleAuthor: "",
+                articleDate: "",
+                articleTitle: "",
+                articleText: "",
+                //Editar um artigo existente
+                selectedArticle: 0,
+                articleImageEdit: "",
+                articleAuthorEdit: "",
+                articleDateEdit: "",
+                articleTitleEdit: "",
+                articleTextEdit: "",
             }
         },
 
@@ -236,11 +326,9 @@
             },
 
             //Editar detalhes do produto
-            editProduct(id) {  
-                console.log(id);
-                              
+            editProduct(id) {                                
                 try {
-                    this.productStore.editProduct(id, this.productNameEdit, this.productDescriptionEdit, this.productPriceEdit, this.productExclusivityEdit, this.productImageEdit, this.productDiscountEdit)
+                    this.productStore.editProduct(id, this.productNameEdit, this.productDescriptionEdit, this.productPriceEdit, this.productExclusivityEdit, this.productImageEdit.name, this.productDiscountEdit)
                 } catch (error) {
                 }
             },
@@ -251,6 +339,41 @@
                     this.productStore.addDiscount(this.selectedProduct, parseInt(this.productDiscount))
                 } else {
                     alert(`Desconto inválido! Tente de novo!`)
+                }
+            },
+
+            //Adicionar um novo artigo aos Destaques
+            addArticle() {
+                try {
+                    this.newsStore.addArticle(this.articleTitle, this.articleText, this.articleAuthor, this.articleDate, this.articleImage.name)
+                } catch (error) {
+                    alert(`Este artigo já existe!`)
+                }
+            },
+
+            //Remover um artigo
+            removeArticle(id, title) {
+                this.newsStore.removeArticle(id)
+                alert(`O artigo '${title}' foi removido com sucesso!`)
+            },
+
+            //Encontrar os detalhes sobre o artigo selecionado no form para Editar o Artigo
+            searchForArticle(id) {
+                let articleSelected = this.newsStore.articles.find(article => article.id == id)
+
+                this.articleTitleEdit = articleSelected.title
+                this.articleTextEdit = articleSelected.text
+                this.articleDateEdit = articleSelected.date
+                this.articleAuthorEdit = articleSelected.author
+                this.articleImageEdit = articleSelected.src
+            },
+            
+            //Editar detalhes do artigo
+            editArticle(id) {
+                try {
+                    this.newsStore.editArticle(id, this.articleTitleEdit, this.articleTextEdit, this.articleAuthorEdit, this.articleDateEdit, this.articleImageEdit.name)
+                } catch (error) {
+                    
                 }
             }
         },
