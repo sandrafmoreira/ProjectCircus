@@ -19,10 +19,30 @@
             <!--Se o utilizador estiver autenticado-->
             <div v-if="userStore.isAuthenticated">
                 <v-list v-for="product in userStore.userInfo.userCart">
-                    <v-list-item>
+                    <v-list-item v-if="product.title == 'Malabarismo Sustentável' || product.title == 'Oficina de Acrobacias' || product.title == 'Técnicas de Palhaçaria'" >
+                        <!-- <v-img :src="product.product.image" alt="" max-width="50"/> -->
+                        <v-list-item-title>{{ product.title }}</v-list-item-title>
+                        <v-list-item-subtitle>{{  (product.quantity * product.price).toFixed(2)}} €</v-list-item-subtitle>
+                        <v-btn @click="decrement(product)">-</v-btn>
+                        <v-list-item-subtitle>{{ product.quantity }}</v-list-item-subtitle>
+                        <v-btn @click="increment(product)">+</v-btn>
+                        <v-btn @click="removeProduct(product)">Remover</v-btn>
+                        <v-divider></v-divider>
+                    </v-list-item>
+                    <v-list-item v-else-if="product.title == 'Adulto' || product.title == 'Criança' || product.title == 'Pack Familiar'" >
+                        <!-- <v-img :src="product.product.image" alt="" max-width="50"/> -->
+                        <v-list-item-title>{{ product.title }}</v-list-item-title>
+                        <v-list-item-subtitle>{{  (product.quantity * product.price).toFixed(2)}} €</v-list-item-subtitle>
+                        <v-btn @click="decrement(product)">-</v-btn>
+                        <v-list-item-subtitle>{{ product.quantity }}</v-list-item-subtitle>
+                        <v-btn @click="increment(product)">+</v-btn>
+                        <v-btn @click="removeProduct(product)">Remover</v-btn>
+                        <v-divider></v-divider>
+                    </v-list-item>
+                    <v-list-item v-else>
                         <v-img :src="product.product.image" alt="" max-width="50"/>
                         <v-list-item-title>{{ product.product.name }}</v-list-item-title>
-                        <v-list-item-subtitle>{{  (product.units * product.product.price * (1 - (product.product.discount / 100))).toFixed(2)}} €</v-list-item-subtitle>
+                        <v-list-item-subtitle>{{  (product.units * product.product.price).toFixed(2)}} €</v-list-item-subtitle>
                         <v-btn @click="decrement(product)">-</v-btn>
                         <v-list-item-subtitle>{{ product.units }}</v-list-item-subtitle>
                         <v-btn @click="increment(product)">+</v-btn>
@@ -30,6 +50,7 @@
                         <v-divider></v-divider>
                     </v-list-item>
                 </v-list>
+                
 
                
                 <v-list v-for="ticket in ticketStore.purchasedTickets" :key="ticket.id">
