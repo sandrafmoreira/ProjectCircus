@@ -51,19 +51,27 @@
                     </v-list-item>
                 </v-list>
                 
-
-               
+                <!-- Bilhetes adicionados -->
                 <v-list v-for="ticket in ticketStore.purchasedTickets" :key="ticket.id">
-                <v-list-item>
-                    <v-list-item-title>{{ ticket.title }}</v-list-item-title>
-                    <v-list-item-subtitle>{{ ticket.description }}</v-list-item-subtitle>
-                    <v-btn @click="decrement(ticket)">-</v-btn>
-                    <v-list-item-subtitle>{{ ticket.units }}</v-list-item-subtitle>
-                    <v-btn @click="increment(ticket)">+</v-btn>
-                    <v-btn @click="removeProduct(ticket)">Remover</v-btn>
-                    <v-divider></v-divider>
-                </v-list-item>
-            </v-list>
+                    <img src="/src/assets/Bilhetes.png" alt="">
+                    <v-list-item>
+                        <v-list-item-title>{{ ticket.title }}</v-list-item-title>
+                        <v-list-item-subtitle>{{ ticket.description }}</v-list-item-subtitle>
+                        <v-list-item-subtitle>{{ ticket.units }}</v-list-item-subtitle>
+                        <v-btn @click="removeProduct(ticket)">Remover</v-btn>
+                        <v-divider></v-divider>
+                    </v-list-item>
+                </v-list>
+                <!-- Workshops adicionados -->
+                <v-list v-for="workshop in ticketStore.purchasedWorkshops" :key="workshop.id">
+                    <v-list-item>
+                        <v-list-item-title>{{ workshop.title }}</v-list-item-title>
+                        <v-list-item-subtitle>{{ workshop.description }}</v-list-item-subtitle>
+                        <v-list-item-subtitle>{{ workshop.units }}</v-list-item-subtitle>
+                        <v-btn @click="removeProduct(workshop)">Remover</v-btn>
+                        <v-divider></v-divider>
+                    </v-list-item>
+                </v-list>
 
             </div>
 
@@ -222,7 +230,6 @@
                     this.userStore.cart.splice(productIndex, 1)
                 }
             },
-
             verifyDiscount()  {
                 /**
                  * Antes de poder usar um código, vai se verificar se o utilizador está apto para o utiilizar
