@@ -1,6 +1,6 @@
 <template>
 
-  <div style="display: flex; margin: 100px 0 0;">
+  <div class="go-back">
     <button @click="back">
       <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect y="50" width="50" height="50" rx="25" transform="rotate(-90 0 50)" fill="#E63946"/>
@@ -14,12 +14,12 @@
 
 
   <div class="article-container">
+    <h1>{{ getArticle.title }} </h1>
     <img :src="getArticle.src" alt="Article image">
-    <div>
+    <div class="article-container-details">
       <h2>{{ getArticle.author }}</h2>
       <h2>{{ getArticle.date }}</h2>
     </div>
-    <h1>{{ getArticle.title }} </h1>
     <p>{{ getArticle.text }} </p>
   </div>
   <Footer></Footer>
@@ -54,24 +54,33 @@
 </script>
 
 <style lang="scss" scoped>
+.go-back{
+  display: flex; 
+  align-items: center;
+  gap: 20px;
+  margin: 100px 30px 0;
+}
 
-  .article-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center; 
-      width: 50vw;
-      margin: auto;
-  }
+.article-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50vw;
+    margin: auto;
+    gap: 5px;
+}
 
-  h1 {
-    margin-bottom: 20px;
-    align-self: flex-start;
-  }
+.article-container-details{
+  margin-bottom: 10px;
+}
 
-  img {
-    margin-bottom: 20px;
-    width: 100%;
-  }
+h1 {
+  margin-bottom: 20px;
+  align-self: flex-start;
+}
+
+img {
+  margin-bottom: 20px;
+  width: 100%;
+}
 </style>

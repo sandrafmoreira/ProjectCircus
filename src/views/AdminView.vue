@@ -1,6 +1,8 @@
 <template>
-    <h1>Dashboard de Admins!</h1>
-
+    <div class="go-back-section">
+        <button @click="back"><img src="@/assets/GiftshopView/left-arrow.svg" alt="Icone de Seta"></button>
+    </div>
+    <h1 id="admin-title">Dashboard de Admins!</h1>
     <v-card class="w-100">
         <div class="d-flex flex-row">
             <v-tabs v-model="tab" color="primary" direction="vertical" class="left-tabs">
@@ -13,7 +15,7 @@
             <v-tabs-window v-model="tab" class="windows">
                 <!--Tab de Utilizadores-->
                 <v-tabs-window-item value="1">
-                    <h2>Gerir utilizadores</h2>
+                    <h2>Gerir Utilizadores</h2>
                     <h3>Nº total de utilizadores: {{ this.userStore.usersNum }}</h3>
                     <v-container class="bg-surface-variant">
                         <v-row no-gutters v-for="user in userStore.users">
@@ -131,7 +133,25 @@
 
                 <!--Tab de Publicações-->
                 <v-tabs-window-item value="3">
-                    Gerir Publicações
+                    <h2>Gerir Publicações</h2>
+                    <h3>Nº total de publicações: {{this.userStore.postsNum}}</h3>
+                    <v-container class="bg-surface-variant">
+                        <v-row no-gutters v-for="post in userStore.userPosts" :key="post.id" cols="3">
+                            <v-col cols="4">
+                                <v-card width="250px" variant:="plain" flat="true" color="white">
+                                    <v-img :src="post.image"></v-img>
+                                    <v-card-text>
+                                        <p>{{ post.author }}</p>
+                                    </v-card-text>
+                                    <v-card-actions>
+                                        <v-btn color="red" @click="this.userStore.removePost(true, post.id)" icon>
+                                            <v-icon>mdi-delete</v-icon>
+                                        </v-btn>
+                                    </v-card-actions>
+                                </v-card>
+                            </v-col>
+                        </v-row>
+                    </v-container>
                 </v-tabs-window-item>
                 
                 <!--Tab de Notícias-->
@@ -265,6 +285,10 @@
             }
         },
 
+        created () {
+            this.userStore.getAllPosts;
+        },
+
         computed: {
             //Para encontrar o produto selecionado na store dos produtos (para depois poder se encontrar o preço do produto selecionado)
             findProductSelected() {
@@ -375,12 +399,35 @@
                 } catch (error) {
                     
                 }
-            }
+            },
+
+            back() {
+                /**
+                 * Voltar para a página do perfil
+                 */
+                this.$router.push({name: 'account', params: {id: this.userStore.userInfo.id}})
+            },
         },
     }
 </script>
 
 <style lang="scss" scoped>
+#admin-title{
+    padding: 10px;
+}
+
+.go-back-section{
+    padding: 40px 10px;
+}
+
+.go-back-section button{
+    background-color: #e63946;
+    color: white;
+    width: 44px;
+    height: 44px;
+    border-radius: 30px;
+}
+
 .w-100 {
     background-color: #F4EDE4;
     border: none !important;

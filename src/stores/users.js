@@ -8,17 +8,18 @@ export const useUserStore = defineStore("user", {
       userInfo: [], //Guarda as informações do utilizador
       //Array de utilizadores
       cart: [], //se o utilizador nao tiver conta, este array servirá para guardar os produtos que deseja comprar
-      users: [{id: 1, email: "ken@123", firstName: "ken", lastName: "lukau", password: "123", badges: [], adminPermission: true, products: [], tickets: [], posts: [], userCart: []},
-      {id: 2, email: "nuno@456", firstName: "nuno", lastName: "nogueira", password: "456", badges: [{id: 3, used: false, code: '#vida_social'}], adminPermission: true, products: [], tickets: [], posts: [], userCart: []},
-      {id: 3, email: "sandra@789", firstName: "sandra", lastName: "moreira", password: "789", badges: [], adminPermission: true, products: [], tickets: [], posts: [], userCart: []},
+      users: [{id: 1, email: "ken@123", firstName: "ken", lastName: "lukau", password: "123", badges: [{id: 1, used: false, code: 'fa_de_workshops'},{id: 2, used: false},{id: 3, used: false, code: '#vida_social'}], adminPermission: true, products: [], tickets: [], posts: [], userCart: []},
+      {id: 2, email: "nuno@456", firstName: "nuno", lastName: "nogueira", password: "456", badges: [{id: 1, used: false, code: 'fa_de_workshops'},{id: 2, used: false},{id: 3, used: false, code: '#vida_social'}], adminPermission: true, products: [], tickets: [], posts: [], userCart: []},
+      {id: 3, email: "sandra@789", firstName: "sandra", lastName: "moreira", password: "789", badges: [{id: 1, used: false, code: 'fa_de_workshops'},{id: 2, used: false},{id: 3, used: false, code: '#vida_social'}], adminPermission: true, products: [], tickets: [], posts: [], userCart: []},
       {id: 4, email: "sofia_monteiro@g", firstName: "sofia", lastName: "monteiro", password: "planta123", badges: [], adminPermission: false, products: [], tickets: [], posts: [], userCart: []},
-      {id: 5, email: "isabel_almeida@g", firstName: "isabel", lastName: "almeida", password: "filhoPreferido", badges: [], adminPermission: false, products: [], tickets: [], posts: [], userCart: []} 
+      {id: 5, email: "isabel_almeida@g", firstName: "isabel", lastName: "almeida", password: "circo", badges: [], adminPermission: false, products: [], tickets: [], posts: [], userCart: []} 
     ],
+      userPosts: []
   }
     },
     persist: {
       storage: localStorage,
-      pick: ['isAuthenticated','userInfo','users', 'cart'],
+      pick: ['isAuthenticated','userInfo','users', 'cart','userPosts'],
       serializer: {
         deserialize: JSON.parse,
         serialize: JSON.stringify
@@ -29,7 +30,7 @@ export const useUserStore = defineStore("user", {
     fullName: (state) => state.userInfo.firstName + " " + state.userInfo.lastName, //Obter o nome completo do utilizador
     usersNum: (state) => state.users.length, //Numero total de utilizadores
     findLastUser: (state) => state.users[state.users.length - 1].id, //ID do utilizador na ultima posicao da store
-    findLastPost: (state) => state.userInfo.posts.length
+    postsNum: (state) => state.userPosts.length
 
   },  
 
@@ -129,9 +130,13 @@ export const useUserStore = defineStore("user", {
       // Adicionar uma nova publicação que pode ser vista tanto na tab "Partilhar Conteudo" no perfil do utilizador
       // como na galeria do website
       //  */      
+      
       let userFound = false
+
+      this.getAllPosts() //Atualizar o nº de publicações existentes
+
       let newPost = {
-        id: this.findLastPost + 1,
+        id: this.postsNum + 1,
         author: fullName,
         image: postImage,
         caption: postCaption,
@@ -150,6 +155,30 @@ export const useUserStore = defineStore("user", {
           user.posts = this.userInfo.posts
         }
       });
+      this.getAllPosts()
+    },
+
+    removePost(admin, id) {
+      if (admin) {
+        this.users.forEach(user => {
+          user.posts = user.posts.filter(post => post.id != id)
+        });
+      } else {
+        this.userInfo.posts = this.userInfo.posts.filter(post => post.id != id)
+      }
+      this.getAllPosts()
+    },
+
+    getAllPosts() {
+      this.userPosts = []
+      this.users.forEach(user => {
+        if(user.posts) {
+          for (let post of user.posts) {
+            this.userPosts.push(post)
+          }
+        }
+        
+      });            
     },
 
     addItem(item) {
