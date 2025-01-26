@@ -1,9 +1,6 @@
-import { mount } from '@vue/test-utils'
-import router from '@/router'
-import GiftshopView from '@/views/GiftshopView.vue'
+
 import { createPinia } from 'pinia'
 import { vi } from 'vitest'
-import { useProductStore } from '@/stores/products'
 import { setActivePinia, createPinia } from 'pinia'
 import { useNewsStore } from '@/stores/news'
 
