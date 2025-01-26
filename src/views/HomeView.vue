@@ -49,7 +49,7 @@
   </div>
   
 
-  <section class="about-event-section ">
+  <section class="about-event-section " style="margin-left:60px;">
 
     <div class="about-event-container" >
         <h1 class="section-subtitle">Sobre o Evento</h1>
@@ -80,12 +80,12 @@
 
     </div>
     <div class="home-graphic-el-about">
-      <img src="/src/assets/home_assets/graphic_el_balloon.svg" alt="">
+      <img src="/src/assets/home_assets/graphic_el_balloon.svg"alt="">
     </div>
 
   </section>
   
-  <section class="special-dates-section">
+  <section class="special-dates-section"  style="margin-left:60px;">
       
       <div class="special-dates-container">
         <h3 >Datas Especiais</h3>
@@ -116,7 +116,7 @@
   
   <!-- <img id="shape1" src="@/assets/img/forma1_homepage.png" alt=""> -->
 
-  <section class="shows-info-section">
+  <section class="shows-info-section"  style="margin-left:60px; margin-right: 60px;">
     <div class="shows-info-title">
       <h1 class="section-subtitle">Os nossos espetáculos</h1>
       <RouterLink id="findMoreShows" :to="{name: 'activities'}">
@@ -243,7 +243,7 @@
   </section>
 
   
-  <section class="explore-website-section">
+  <section class="explore-website-section" style="margin-left:60px;">
     <h1 class="section-subtitle">Explora o nosso website</h1>
     <div class=" explore-website-container"> 
       <div class="website-page">
@@ -371,7 +371,7 @@
     
   </section>
 
-  <section class="gallery">
+  <section class="gallery"  style="margin-left:60px; margin-right: 60px;">
     <div class="gallery-title">
       <h1 class="section-subtitle" >Galeria</h1>
       <RouterLink id="exploreGallery" :to="{name: 'gallery'}">
@@ -427,7 +427,7 @@
     <p>Descobre a magia do circo por dentro e ajuda-nos a criar momentos inesquecíveis!
     <br> <br>Se és um especialista em técnicas circenses candidata-te como voluntário para ensinar nos nossos workshops. <br>Entra em contacto.</p>
     <button>
-        <RouterLink id="findMoreActivities" :to="{name: 'contacts'}">Contactar
+        <RouterLink id="findMoreActivities" :to="{name: 'contacts'}" class="btn-contact">Contactar
         <img id="arrowIcon" src="@/assets/img/arrow.png" alt="Ícone de seta"/>
         </RouterLink>
     </button>
@@ -436,7 +436,7 @@
 
   
 
-<Footer></Footer>
+<Footer style="margin-top: 150px;"></Footer>
 </template>
 
 <script >
@@ -841,7 +841,7 @@ margin-top: 4rem;
 display: none;
 position: absolute;
 background-image: url('@/assets/post-background.svg');
-width: 443px;
+width: 390px;
 height: 50px;
 margin-top: -58px;
 margin-left: 7px;
@@ -884,4 +884,14 @@ position: absolute;
 margin-left: 30%;
 margin-top: -8%;
 }
+
+.btn-contact {
+        background-color: #E63946;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 100px;
+        font-weight: 50px;
+        text-decoration: none;
+    }
+
 </style>

@@ -1,10 +1,10 @@
 <template>
-  <div class="main-section-graphic-el">
+  <div class="main-section-graphic-el" >
      <svg width="795" height="571" viewBox="0 0 795 571" fill="none" xmlns="http://www.w3.org/2000/svg">
      <path d="M666.959 487.31C444.981 631.343 136.989 565.484 -1.00004 468.989V9.07377C231.659 9.07377 754.878 -11.3421 754.878 9.07377C754.878 9.07377 888.937 343.277 666.959 487.31Z" fill="#121B43"/>
      </svg>
    </div>
-<section class="main-section-about">
+<section class="main-section-about" style="margin-left: 60px;">
    
    <div class="section-texts" >
        
@@ -19,7 +19,7 @@
 </section>
 
 
-<section class="mission-section">
+<section class="mission-section"  style="margin-left: 60px; margin-right: 60px;">
 <div class="mission-section-container">
  <!-- <h2 class="section-subtitle">A nossa missão para esta edição!</h2> -->
  <div class="mission-goals">
@@ -44,7 +44,7 @@
 </div>
 </section>
 
-<section class="our-history-section">
+<section class="our-history-section" >
 <div class="our-history-container">
  <div class="history-graphic-el-about">
      <img src="/src/assets/about_assets/history_graphic_el.svg" alt="">
@@ -60,7 +60,7 @@
 </div>
  
 </section>
-<section class="editions-section">
+<section class="editions-section"  style="margin-left: 60px; margin-right: 60px;" >
 <h2 class="section-subtitle">Edições anteriores</h2>
  <div class="editions-timeline-content">
    <v-timeline direction="horizontal">

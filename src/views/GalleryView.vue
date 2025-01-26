@@ -1,6 +1,6 @@
 <template>
 
-  <section class="main-section-gallery">
+  <section class="main-section-gallery"  style="margin-left: 60px;">
       <div class="section-texts" >
           <h1 class="section-title">Momentos Inesquecíveis <br> do Nosso Circo</h1>
           <p class="section-desc">Um espetáculo em imagens onde cada foto é uma acrobacia, <br>e cada momento, único.</p>
@@ -11,7 +11,7 @@
       </div>
   </section>
 
-  <section class="section">
+  <section class="section"  style="margin-left: 60px; margin-right: 60px;">
 
       <div class="graphic-el-gallery">
           <svg width="630" height="608" viewBox="0 0 730 808" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -213,7 +213,7 @@ align-self: center;
 display: none;
 position: absolute;
 background-image: url('@/assets/post-background.svg');
-width: 443px;
+width: 390px;
 height: 50px;
 margin-top: -58px;
 margin-left: 7px;

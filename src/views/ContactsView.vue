@@ -1,6 +1,6 @@
 <template>
 
-    <section class="main-section-contacts">
+    <section class="main-section-contacts" style="margin-left: 60px;">
         <div class="">
             <div class="section-text" >
             <h1 class="section-title">Entra em contacto connosco!</h1>
@@ -50,7 +50,7 @@
     </section>
    
    
-    <section>
+    <section style="margin-left: 60px; margin-right: 60px;">
       <h2 class="section-subtitle">As perguntas mais frequentes</h2>
       <div class="graphic-el-contacts">
       <img src="/src/assets/ContactView/contacts_graphic_el.svg" alt="">

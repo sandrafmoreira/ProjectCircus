@@ -13,7 +13,7 @@
         </div>        
     </div>
 
-        <h2>Últimos Artigos</h2>
+        <h2 style="margin-left: 300px; margin-bottom: 30px; font-size: 32px;">Últimos Artigos</h2>
         <div class="articles">
             <ul>
                 <li v-for="article in newsStore.articles" :key="article.id">
@@ -97,5 +97,6 @@
         font-weight: 300;
         padding: 8px 12px;
         margin: 10px 0 0 20px;
+        text-decoration: none;
     }
 </style>

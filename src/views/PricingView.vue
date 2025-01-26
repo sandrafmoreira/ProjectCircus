@@ -1,5 +1,12 @@
 <template>
-    <div class="main-section-graphic-el">
+    <div class="main-section-pricing">
+        <section>
+            <div>
+                <h1 class="first-title">Reserva a tua diversão!</h1>
+                <p class="desc-header">Explore os nossos pacotes de bilhetes, workshops <br>e descontos exclusivos para famílias e escolas. <br>Organize o seu dia no circo de forma fácil e acessível!</p>
+            </div>
+            
+        </section>
         <svg width="585" height="535" viewBox="0 0 585 535" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M99.7802 117.216C54.8993 -335.269 224.333 -36.6663 469.547 -107.088C853.457 -49.2291 909.916 81.941 790.771 214.526C647.661 270.206 520.487 328.696 452.364 271.068C339.1 113.22 119.663 317.668 99.7802 117.216Z" fill="#E4CB66"/>
             <path d="M328.773 493.477C328.483 493.477 328.194 493.322 328.049 492.856C323.123 475.302 324.862 453.554 326.455 438.641C327.18 432.272 328.049 425.903 328.773 419.69C330.512 406.486 332.25 392.971 332.829 379.301C333.843 355.378 330.222 335.805 322.834 323.999C322.544 323.688 322.544 323.222 322.834 322.912C323.123 322.601 323.558 322.601 323.848 322.912C323.848 322.912 323.848 323.067 323.992 323.067C331.67 335.184 335.292 355.067 334.278 379.301C333.699 392.971 331.96 406.641 330.222 419.845C329.353 426.059 328.483 432.583 327.904 438.797C326.31 453.554 324.717 475.147 329.497 492.39C329.642 492.856 329.353 493.166 329.063 493.322C328.773 493.322 328.773 493.322 328.773 493.477Z" fill="#E4CB66"/>
@@ -8,89 +15,51 @@
             <path d="M210.591 326.759C199.788 310.016 193.643 290.152 198.276 271.81C202.908 253.468 220.379 237.582 241.973 237.136C266.761 236.565 289.676 256.679 294.721 278.088C299.653 299.204 290.034 320.617 274.297 335.4C260.908 347.87 243.594 356.583 225.026 363.253C221.763 364.395 222.415 368.471 225.947 369.22C237.935 371.477 251.17 372.966 240.621 361.266C230.105 350.051 219.407 339.562 210.591 326.759Z" fill="#121B43"/>
             <path d="M278.648 328.502C266.624 318.715 257.932 305.045 257.208 289.356C256.484 273.511 265.176 255.647 280.821 246.326C300.379 234.676 326.165 238.87 339.927 253.161C353.69 267.453 355.863 288.89 350.358 308.463C345.722 325.395 335.871 340.929 324.571 355.221C323.123 357.085 325.006 359.26 327.324 358.483L337.899 355.065C341.666 353.823 342.245 349.162 338.624 348.23C336.306 347.454 333.843 346.832 331.38 346.677C326.02 346.832 321.529 348.386 316.169 347.454C302.841 345.124 288.355 336.424 278.648 328.502Z" fill="#5F977F"/>
             <path d="M334.9 248.734C330.022 239.998 326.069 230.39 325.508 219.826C324.813 208.026 328.237 196.603 335.132 187.651C346.503 172.951 366.625 166.451 383.437 168.396C409.097 171.348 427.502 192.033 430.178 216.757C432.787 240.863 421.214 267.139 402.624 286.45C396.088 293.337 388.459 299.55 383.287 306.928C381.282 309.935 379.877 314.445 382.927 315.708C384.612 316.48 386.851 315.636 388.802 314.82C393.135 313.146 411.839 308.347 408.117 303.558C406.586 301.522 400.256 300.893 397.689 300.051C394.063 298.845 390.404 297.329 386.872 295.645C373.099 289.498 360.467 280.429 349.906 268.97C344.304 262.96 339.194 256.121 334.9 248.734Z" fill="#192657"/>
-            </svg>
-      </div>
-    <section class="main-section-pricing">
-        <div>
-            <h1 class="first-title">Reserva a tua diversão!</h1>
-            <p class="desc-header">Explore os nossos pacotes de bilhetes, workshops <br>e descontos exclusivos para famílias e escolas. <br>Organize o seu dia no circo de forma fácil e acessível!</p>
-        </div>
-        
-    </section>
+        </svg>
+    </div>
+    
 
     <!-- Programa Geral -->
     <section class="program-section">
-        <div class="program-section-container" >
-
-            <div class="program-graphic-el">
-                <img src="/src/assets/PricingView/program_graphic_el.svg" alt="">
-            </div>
-            
+        <div class="program-section-container">
+            <img src="/src/assets/PricingView/program_graphic_el.svg" 
+                alt=""
+                style="margin-left: 90px;">
             <div class="program-container">
-                <h2 class="section-subtitle">Programa geral</h2>
-
-                <div>
-                    <v-timeline hideOpposite="true"
-                        
-                        >
-                        <v-timeline-item
-                            v-for="(time,i) in timetable"
-                            :key="i"
-                            dot-color="#E4CB66"
-                            small
-                        >
-                            <v-row class="pt-1">
-                            <v-col cols="3">
-                                <strong>{{time.time}}</strong>
-                            </v-col>
-                            <v-col>
-                                <strong>{{ time.title }}</strong>
-                                <div  v-if="time.description" class="text-caption">
-                                    {{ time.description }}
-                                </div>
-
-                                <ul v-if="time.items" class="text-caption">
-                                    <li v-for="(item,i) in time.items":key="i">{{ item }}
-
-                                    </li>{{ time.description }}
-
-                                </ul>
-                            </v-col>
-                            </v-row>
-                        </v-timeline-item>
-                    </v-timeline>
-                </div>
-                <span>
-                    *Programa para os 7 dias de espatáculo <br>
-                    **Atuações diferentes para cada dia de espetáculo
-                </span> 
-        
+                    <h2 class="section-subtitle">Programa geral</h2>
+                    <img src="/src/assets/PricingView/programa.png" alt="">
+                    <span 
+                        style="font-size: 14px; font-weight: light; margin-left:100px">
+                        *Programa para os 7 dias de espatáculo <br>
+                        **Atuações diferentes para cada dia de espetáculo
+                    </span> 
             </div>
         </div>
-       
     </section>
 
     <!-- Preços -->
     <section class="prices">
         <h2 class="prices-title">Preços</h2>
-        <img src="/src/assets/PricingView/bilheteAdulto.png" alt="">
-        <img src="/src/assets/PricingView/bilheteCrianca.png" alt="">
-        <img src="/src/assets/PricingView/bilhetePacote.png" alt="">
-        <div class="cont-bilhete-instituicoes" style="width: 250px;">
-            <img src="/src/assets/PricingView/bilheteInstituicoes.png" alt="" style="width: 250px;">
-                <RouterLink :to="{name: 'contacts'}" class="btn-contactos">
-                    Entrar em contacto
-                    <img src="" alt="icon arrow">
-                </RouterLink>
-                
+        <div class="prices-static">
+            <img class="img-prices" src="/src/assets/PricingView/bilheteAdulto.png" alt="">
+            <img class="img-prices" src="/src/assets/PricingView/bilheteCrianca.png" alt="">
+            <img class="img-prices" src="/src/assets/PricingView/bilhetePacote.png" alt="">
+            <div class="cont-bilhete-instituicoes" style="width: 250px;">
+                <img class="img-prices" src="/src/assets/PricingView/bilheteInstituicoes.png" alt="" style="width: 250px;">
+                    <RouterLink :to="{name: 'contacts'}" class="btn-contactos">
+                        Entrar em contacto
+                    </RouterLink>
+                    
+            </div>
         </div>
+        
     </section>
 
     <!-- Workshops -->
-     <img style="width: 90vw; margin: 100px 0;" src="/src/assets/PricingView/workshops.png" alt="">
+     <img class="workshops-static" src="/src/assets/PricingView/workshops.png" alt="">
 
     <!-- Agendar Reserva -->
-    <section class="buy" style="background-color: #121B43;"> 
+    <section class="buy" style="background-color: #121B43; margin-top: 50px;"> 
 
         <!-- TAB1 - Escolher data e zona da bancada: -->
         <template v-if="tabSelected === 1" class="tab">
@@ -303,7 +272,7 @@
                 <div>
                     <p class="title-reserva">Adiciona workshops (opcional):</p>
                     <ul class="ul-workshops">
-                        <li class="li-workshops" v-for="workshop in availableWorkshops" :key="workshop.id">
+                        <li class="li-workshops" v-for="workshop in this.ticketStore.availableWorkshops" :key="workshop.id">
                             <div>
                                 <p>{{ workshop.title }}</p>
                                 <p>{{ workshop.description }}</p>
@@ -439,16 +408,20 @@
                     </div>
                 </section>
                 
-                <img width="300px" height="300px" src="/src/assets/PricingView/workshops carrinho.png" alt="">
+                <div style="display: flex; flex-direction: column;">
+                    <img width="300px" height="300px" src="/src/assets/PricingView/workshops carrinho.png" class="clown" alt="">
+                    <button @click="handleTickets()" class="btn-continue">Adicionar bilhetes ao carrinho</button> 
+                </div>
                 
-                <button @click="handleTickets()" class="btn-continue">Adicionar bilhetes ao carrinho</button> 
                 
             </div>
 
-            
         </template>
     </section>
+
     
+    <Footer class="footer"></Footer>
+
     </template>
 
     <script>
@@ -457,7 +430,11 @@
     import { useTicketStore } from '@/stores/ticket'
     import { useUserStore } from '@/stores/users';
 
+
     export default {
+        components: {
+            Footer
+        },  
     data() {
         return {
             tabSelected: 1,
@@ -466,32 +443,16 @@
             selectedZone: "",
             selectedDate: "",
             price: 0,
-            availableTickets: [
-                { id: 1, zone:"C", title: "Adulto", description: "Bilhete individual", price: 12, quantity: 0 },
-                { id: 2, zone:"C", title: "Criança", description: "Bilhete individual", price: 8, quantity: 0 },
-                { id: 3, zone:"C", title: "Pack Familiar", description: "2 adultos 2 crianças", price: 30, quantity: 0 },
-                { id: 4, zone:"B", title: "Adulto", description: "Bilhete individual", price: 15, quantity: 0 },
-                { id: 5, zone:"B", title: "Criança", description: "Bilhete individual", price: 12, quantity: 0 },
-                { id: 6, zone:"B", title: "Pack Familiar", description: "2 adultos 2 crianças", price: 40, quantity: 0 },
-                { id: 7, zone:"A", title: "Adulto", description: "Bilhete individual", price: 20, quantity: 0 },
-                { id: 8, zone:"A", title: "Criança", description: "Bilhete individual", price: 15, quantity: 0 },
-                { id: 9, zone:"A", title: "Pack Familiar", description: "2 adultos 2 crianças", price: 50, quantity: 0 },
-            ],
-            availableWorkshops: [
-                { id: 1, title: "Malabarismo Sustentável", description: "Limite de pessoas: 30", price: 4, quantity: 0 },
-                { id: 2, title: "Oficina de Acrobacias", description: "Limite de pessoas: 15", price: 6, quantity: 0 },
-                { id: 3, title: "Técnicas de Palhaçaria", description: "Limite de pessoas: 30", price: 4, quantity: 0 },
-            ],
-            selectedTickets: [], //To store selected tickets before adding them to the cart
-            selectedWorkshops: [], //To store selected workshops before adding them to the cart
+            selectedTickets: [], //to store selected tickets before adding them to the cart
+            selectedWorkshops: [], //to store selected workshops before adding them to the cart
         }
     },
     methods: { 
         changeTab(number) {
             this.tabSelected = number;
-            this.getPrice()      
-            console.log(this.selectedWorkshops);
-               
+            this.getPrice()   
+            console.log(this.selectedDate);
+                              
         },
 
         /* Calculate prices logic */
@@ -508,14 +469,14 @@
 
         /* Tickets logic */
         filteredTickets() {
-            return this.availableTickets.filter(ticket => ticket.zone === this.selectedZone);
+            return this.ticketStore.availableTickets.filter(ticket => ticket.zone === this.selectedZone);
         },
         increaseTicket(ticket) {
             const existsTicket = this.selectedTickets.find(t => t.id === ticket.id);
             if (existsTicket) {
                 existsTicket.quantity++;
             } else {
-                this.selectedTickets.push({ ...ticket, quantity: 1 });
+                this.selectedTickets.push({ ...ticket, quantity: 1, selectedDate: this.selectedDate });
             }
         },
         decreaseTicket(ticket) {
@@ -550,7 +511,7 @@
             if (existsWorkshop) {
                 existsWorkshop.quantity++;
             } else {
-                this.selectedWorkshops.push({ ...workshop, quantity: 1 });
+                this.selectedWorkshops.push({ ...workshop, quantity: 1, selectedDate: this.selectedDate  });
             }   
         },
         decreaseWorkshop(workshop) {
@@ -569,6 +530,7 @@
             workshops.forEach(workshop => {
                 this.ticketStore.addPurchasedWorkshop(workshop);
                 this.userStore.addItem(workshop)
+                
                 if (this.userStore.isAuthenticated) {
                     this.userStore.userInfo.userCart.push(workshop)
                 } else {
@@ -624,6 +586,9 @@
         handleTickets() {
             this.addTickets(this.selectedTickets);
             this.addWorkshops(this.selectedWorkshops);
+            alert("Bilhetes adicionados ao carrinho!")
+            console.log(this.selectedWorkshops);
+            
         }
     }
 }
@@ -639,6 +604,17 @@
 
     .first-title, .desc-header {
         color: #121B43;
+    }
+
+    .first-title {
+        font-size: 46px;
+        margin-bottom: 30px;
+        margin-left: 60px;
+    }
+
+    .desc-header {
+        line-height: 28px;
+        margin-left: 60px;
     }
 
     h1, h2, h3, p, button {
@@ -662,17 +638,27 @@
     }
 
     .prices-title {
-        margin: 150px 0 20px 0;
         color: #121B43;
+        font-size: 32px;
     }
     .prices {
         display: flex;  
+        flex-direction: column;
         flex-wrap: wrap;
         justify-content: space-around; 
         align-items: flex-start;
-        gap: 30px
+        gap: 30px;
+        margin-left: 60px;
     }
-    .prices > img {
+
+    .prices-static {
+        width: 100vw;
+        display: flex;
+        justify-content: space-between;
+        width: 90vw;
+        margin-bottom: 80px;
+    }
+    .img-prices {
         width: 250px;
     }
 
@@ -688,6 +674,11 @@
         color: white;
         padding: 10px 20px;
         border-radius: 100px;
+        font-weight: 50px;
+        text-decoration: none;
+        margin: auto;
+        margin-left: 25px;
+        margin-bottom: 20px;
     }
 
     .goBack {
@@ -815,6 +806,12 @@
 
     }
 
+    .section-subtitle {
+        color:#121B43;
+        margin-left: 180px;
+        margin-top: 20px;
+    }
+
     .btn-select {
         background-color: #E63946;
         border-radius: 100px;
@@ -822,6 +819,48 @@
         width: 25px;
         margin: 0 10px;
         padding-bottom: 25px;
+    }
+
+    .tabs-bg {
+        width: 100vw;
+        height:500px;
+        background-color: #121B43;
+        margin-top: -50px;
+        position: absolute;
+    }
+
+    .footer {
+        position: relative;
+        background-color: #121B43;
+        margin-top: -100px;
+    }
+
+    .workshops-static {
+        padding-left:60px;
+        width: 80vw;
+        margin: auto;
+    }
+
+    .main-section-pricing {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .program-section-container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .program-container {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .clown {
+        width: 380px;
+        height:330px
     }
 
 

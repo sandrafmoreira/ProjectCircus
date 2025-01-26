@@ -2,12 +2,12 @@
     <div>
         <section class="header">
             <img id="header-shape" src="@/assets/GiftshopView/header-shape.png" alt="">
-            <div>
-                <h1>Leva um pedacinho do nosso circo para casa!</h1>
+            <div  style="margin-left: 60px;">
+                <h1 style="font-size: 50px; margin-top: 50px;">Leva um pedaçinho <br>do nosso circo para casa!</h1>
                 <br>
-                <p>Encontre o presente perfeito e leve um pedacinho do nosso circo consigo!</p>
+                <p style="font-size: 20px;">Encontre o presente perfeito e leve um pedacinho do nosso circo consigo!</p>
             </div>
-            <div>
+            <div style="margin-left: 120px;">
                 <img src="@/assets/GiftshopView/caneca-palhaço.svg" alt="">
                 <img src="@/assets/GiftshopView/chapeu.svg" alt="">
                 <img src="@/assets/GiftshopView/exclusive1.svg" alt="">
@@ -15,15 +15,15 @@
         </section>
 
 
-        <h1 id="catalog-title">Catálogo</h1>
-        <section class="catalog">
+        <h1 id="catalog-title" style="margin-bottom: 30px;">Catálogo</h1>
+        <section class="catalog" style="margin-left: 60px;margin-right: 60px;">
             <div class="product-card" v-for="product in productStore.products">
                 <img src="@/assets/GiftshopView/card-background.svg" alt="" id="card-background-img">
                 <img id="card-product-img" :src="product.image" alt="">
                 <img v-if="product.exclusive" src="@/assets/GiftshopView/exclusive2.svg" alt="" id="exclusive-icon">
                 <div class="card-details">
                     <h4 id="card-title">{{ product.name }}</h4>
-                    <h3>{{ (product.price * (1 - (product.discount / 100))).toFixed(2)}} €</h3>
+                    <p>{{ (product.price * (1 - (product.discount / 100))).toFixed(2)}} €</p>
                 </div>
                 <div class="card-add-product">
                     <button id="card-btn">
@@ -143,7 +143,7 @@ import { useUserStore } from '@/stores/users';
 
 #catalog-title{
     margin-top: 250px;
-    margin-left: 100px;
+    margin-left: 60px;
 }
 
 .catalog{
@@ -208,6 +208,7 @@ import { useUserStore } from '@/stores/users';
 
 #card-btn-routerlink{
     display: flex;
+    text-decoration: none;
     color: white;
 }
 
@@ -226,7 +227,8 @@ import { useUserStore } from '@/stores/users';
     align-items: center;
     background-color: #E63946;
     width: 40px;
-    border-radius: 100px;
+    border-radius: 1000px;
+    padding: 8px 0;
 }
 
 #card-cart-icon img{

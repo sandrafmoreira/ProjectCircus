@@ -1,19 +1,21 @@
 <template>
     <div>
         <section class="header">
-            <div>
+            <div style="margin-left: 60px;">
                 <h1 class="parag">20ª Edição</h1>
                 <h2 class="title">O Circo em Harmonia <br>com o Planeta</h2>
                 <p class="header-desc">No nosso circo, os artistas trazem alegria e aprendizado! Nesta 20ª edição, <br>com muita criatividade, eles encontram formas divertidas de ensinar as crianças <br>que cuidar do planeta pode ser divertido, inspirador e cheio de magia.</p>
-                <RouterLink :to="{name: 'pricing'}" class="link">Ver Programa</RouterLink>
+                <RouterLink :to="{name: 'pricing'}" class="link"
+                    style="text-decoration: none;"
+                    >Ver Programa</RouterLink>
             </div>
             <img src="/src/assets/ActivitiesView/Header.png" alt="" class="header-img">
         </section>
 
-        <h2 style="font-size: 40px;">Os Nossos Espetáculos</h2>
+        <h2 style="font-size: 40px; margin-left: 60px; margin-bottom: 50px;">Os Nossos Espetáculos</h2>
         
         <!-- Cards -->
-        <div class="cards">
+        <div class="cards"  style="margin-left: 60px; margin-right: 60px; margin-bottom: 100px;">
             <v-card
                 v-for="card in this.cards"
                 class="mx-auto"
@@ -22,15 +24,9 @@
                 <img class="card-img" :src="card.src" alt="">  
 
                 <v-card-text class="text">
-                <!-- <div>Word of the Day</div> -->
 
                 <p id="card-title">{{card.title}}</p>
 
-                <!-- <p>adjective</p> -->
-                <!-- <div class="text-medium-emphasis">
-                    relating to or dependent on charity; charitable; charitable donations. Pertaining to alms.<br>
-                    "an eleemosynary educational institution."
-                </div> -->
                 </v-card-text>
 
                 <v-card-actions>
@@ -70,20 +66,21 @@
             </v-card>
         </div>
 
-        <div class="cont-workshops">
+        <div class="cont-workshops" >
 
-            <div class="workshops-intro">
+            <div class="workshops-intro"  style="margin-left: 60px;">
                 <div class="workshops-intro-text">
                     <h2 class="w-title">Cria e inspira-te <br>com os Workshops</h2>
                     <p style="margin-top: 20px">Além dos espetáculos, oferecemos workshops <br>exclusivos para te tornares num palhaço “verde”.</p>
                     <p style="margin-bottom: 30px">Idealizados para crianças e adultos, combina-se <br>a arte, aprendizado e sustentabilidade num único <br>ambiente criativo.</p>
-                    <RouterLink :to="{name: 'pricing'}" class="link">Verificar Preços</RouterLink>
+                    <RouterLink :to="{name: 'pricing'}" class="link"
+                        style="text-decoration: none;">Verificar Preços</RouterLink>
                 </div>
-                <img src="/src/assets/ActivitiesView/Palhacos.png" alt="">
+                <img style="margin-top: 150px; margin-right: 60px;" src="/src/assets/ActivitiesView/Palhacos.png" alt="">
             </div>
             
 
-            <div class="workshops-content" style="margin-top: 60px">
+            <div class="workshops-content" style="margin-top: 60px; margin-left: 60px; margin-right: 60px; padding-bottom: 100px;">
                 <div>
                     <h4>Malabarismo Sustentável</h4>
                     <p>O malabarismo pode ser uma arte <br>acessível e ecológica, promovendo a <br>reutilização criativa de materiais enquanto <br>são desenvolvidas habilidades motoras <br>e de concentração.</p>
@@ -100,7 +97,7 @@
         
         </div>
     </div>
-    <Footer></Footer>
+    <Footer class="footer"></Footer>
 </template>
 
 <script>
@@ -240,4 +237,11 @@
     .link:hover, .btn:hover {
         background-color: #A90505;
     }
+    .footer {
+        position: relative;
+        background-color:#FFF9E3;
+        margin-top: -90px;
+    }
+
+    
 </style>
