@@ -1,186 +1,173 @@
 
 <template>
   
-    <div class="home-main-section">
-      <div class="welcome-text">
-          <h2>20ª Edição</h2>
-          <h1 class="section-title">Illusionni <br> chega ao Porto</h1>
-          <h3 class="section-desc">De 12 a 26 de janeiro, prepare-se para viver <br> experiências illusiónicas no nosso circo!</h3>
-          <!-- <RouterLink id="buyTickets" :to="{name: 'pricing'}">Reserve já os seus bilhetes 
-            <svg width="32px" height="32px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(0)">
-            <g id="SVGRepo_bgCarrier" stroke-width="0"/>
-            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
-            <g id="SVGRepo_iconCarrier"> <path d="M6 12H18M18 12L13 7M18 12L13 17" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
-            </svg>
-          </RouterLink> -->
-      </div>
-
-      <div class="video-container">
-        <!--Video-->
-        <video autoplay muted loop playsinline poster="/src/assets/home_assets/poster.svg" id="myVideo">
-          <source src="/homepage_video.mp4" type="video/mp4">
-          Seu navegador não suporta vídeo em HTML5.
-        </video>
-
-        <!--Forma para o vídeo--> 
-        <svg width="1440" height="1047" viewBox="0 0 1440 1047" fill="none" xmlns="http://www.w3.org/2000/svg">
-
-          <defs>
-          <clipPath id="videoShape" clipPathUnits="userSpaceOnUse">
-            <path d="M727.5 928.132C894.942 876.562 1000.05 710.965 1131 690.038C1261.95 669.11 1443 750.15 1443 750.15L1443 -82L1 -82L1 1027.79C150.864 1088.98 128.273 980.498 279.903 929.972C421.633 882.744 560.058 979.701 727.5 928.132Z" fill="#121B43" fill-opacity="0.5" />
-          </clipPath>
-          </defs>
-        </svg>
-
-        <!--Gradiente-->
-        <div class="gradient">
-          <svg width="1200" height="1050" viewBox="0 0 1200 1050" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M68.8759 1007.82C37.8672 1006.9 -0.166061 991.405 -0.166061 991.405L-3 3.22803L607.948 0.913371C607.948 0.913371 974.659 735.924 807.406 863.035C674.979 963.68 477.498 879.688 322.995 887.969C210.644 893.992 154.378 1010.37 68.8759 1007.82Z" fill="url(#paint0_linear_1397_16858)"/>
-            <defs>
-            <linearGradient id="gradient" x1="103.574" y1="696.703" x2="756.58" y2="694.573" gradientUnits="userSpaceOnUse">
-            <stop offset="0.725" stop-color="#121B43" stop-opacity="0.65"/>
-            <stop offset="1" stop-color="#121B43" stop-opacity="0.15"/>
-            </linearGradient>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#gradient)" />
+  <div class="home-main-section">
+    <div class="welcome-text">
+        <h2>20ª Edição</h2>
+        <h1 class="section-title">Illusionni <br> chega ao Porto</h1>
+        <h3 class="section-desc">De 12 a 26 de janeiro, prepare-se para viver <br> experiências illusiónicas no nosso circo!</h3>
+        <!-- <RouterLink id="buyTickets" :to="{name: 'pricing'}">Reserve já os seus bilhetes 
+          <svg width="32px" height="32px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(0)">
+          <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+          <g id="SVGRepo_iconCarrier"> <path d="M6 12H18M18 12L13 7M18 12L13 17" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
           </svg>
-        </div>
+        </RouterLink> -->
+    </div>
+
+    <div class="video-container">
+      <!--Video-->
+      <video autoplay muted loop playsinline poster="/src/assets/home_assets/poster.svg" id="myVideo">
+        <source src="/homepage_video.mp4" type="video/mp4">
+        Seu navegador não suporta vídeo em HTML5.
+      </video>
+
+      <!--Forma para o vídeo--> 
+      <svg width="1440" height="1047" viewBox="0 0 1440 1047" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+        <defs>
+        <clipPath id="videoShape" clipPathUnits="userSpaceOnUse">
+          <path d="M727.5 928.132C894.942 876.562 1000.05 710.965 1131 690.038C1261.95 669.11 1443 750.15 1443 750.15L1443 -82L1 -82L1 1027.79C150.864 1088.98 128.273 980.498 279.903 929.972C421.633 882.744 560.058 979.701 727.5 928.132Z" fill="#121B43" fill-opacity="0.5" />
+        </clipPath>
+        </defs>
+      </svg>
+
+      <!--Gradiente-->
+      <div class="gradient">
+        <svg width="1200" height="1050" viewBox="0 0 1200 1050" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M68.8759 1007.82C37.8672 1006.9 -0.166061 991.405 -0.166061 991.405L-3 3.22803L607.948 0.913371C607.948 0.913371 974.659 735.924 807.406 863.035C674.979 963.68 477.498 879.688 322.995 887.969C210.644 893.992 154.378 1010.37 68.8759 1007.82Z" fill="url(#paint0_linear_1397_16858)"/>
+          <defs>
+          <linearGradient id="gradient" x1="103.574" y1="696.703" x2="756.58" y2="694.573" gradientUnits="userSpaceOnUse">
+          <stop offset="0.725" stop-color="#121B43" stop-opacity="0.65"/>
+          <stop offset="1" stop-color="#121B43" stop-opacity="0.15"/>
+          </linearGradient>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#gradient)" />
+        </svg>
       </div>
     </div>
-    
+  </div>
+  
 
-    <section class="about-event-section ">
+  <section class="about-event-section ">
 
-      <div class="about-event-container" >
-          <h1 class="section-subtitle">Sobre o Evento</h1>
-          <div class="about-event-desc">
-            <p >Neste inverno a cidade do Porto será palco do Illusionni, um circo que transforma o ordinário em extraordinário! Com apresentações deslumbrantes e atividades para todas as idades.</p>
+    <div class="about-event-container" >
+        <h1 class="section-subtitle">Sobre o Evento</h1>
+        <div class="about-event-desc">
+          <p >Neste inverno a cidade do Porto será palco do Illusionni, um circo que transforma o ordinário em extraordinário! Com apresentações deslumbrantes e atividades para todas as idades.</p>
 
-            <p >Vem e surpreende-te com o circo do futuro, onde nesta edição cada detalhe é pensado para cuidar do planeta.</p>
-          </div>
-        
-        <div class="about-event-details">
-          <div class="about-event-details-desc">
-            <p><b>20-26 jan, 2025</b></p>
-            <p>13h-21h</p>
-          </div>
-          <div class="about-event-details-desc">
-            <p><b>Localização</b></p>
-            <p>Parque da Cidade</p>
-          </div>
+          <p >Vem e surpreende-te com o circo do futuro, onde nesta edição cada detalhe é pensado para cuidar do planeta.</p>
         </div>
-
-          <button class="btn-red">
-            <RouterLink id="findMoreActivities" :to="{name: 'activities'}">Saber Mais 
-              <v-icon  class="arrowIcon">
-                        mdi-arrow-right
-              </v-icon>
-            </RouterLink>
-          </button>
-
-      </div>
-      <div class="home-graphic-el-about">
-        <img src="/src/assets/home_assets/graphic_el_balloon.svg" alt="">
-      </div>
-
-    </section>
-    
-    <section class="special-dates-section">
-        
-        <div class="special-dates-container">
-          <h3 >Datas Especiais</h3>
-          <div class="special-dates-texts"> 
-            <div class="special-dates-desc" >
-              <svg width="34" height="32" viewBox="0 0 34 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M31.9261 30.2644C32.1889 30.2644 32.4375 30.146 32.6029 29.9418C32.7684 29.7377 32.8329 29.4699 32.7786 29.2129L32.2299 26.6164C32.5424 26.3141 32.7388 25.892 32.7388 25.4228C32.7388 24.9288 32.5188 24.4906 32.1773 24.1862V15.1693L29.9778 16.5304V24.1862C29.6363 24.4906 29.4163 24.9288 29.4163 25.4228C29.4163 25.8921 29.6127 26.3142 29.9252 26.6164L29.3765 29.2129C29.3222 29.47 29.3868 29.7377 29.5522 29.9418C29.7176 30.1459 29.9662 30.2644 30.229 30.2644H31.9261ZM32.6717 9.90759L18.3629 1.05006C17.9439 0.791934 17.4715 0.662354 16.9991 0.662354C16.5267 0.662354 16.0539 0.791825 15.6374 1.05006L1.32849 9.90759C0.946411 10.144 0.714355 10.5616 0.714355 11.011C0.714355 11.4605 0.946411 11.8782 1.32849 12.115L15.6374 20.9726C16.0539 21.231 16.5266 21.3603 16.999 21.3603C17.4714 21.3603 17.9439 21.2308 18.3629 20.9726L32.6717 12.115C33.0537 11.8783 33.2858 11.4605 33.2858 11.011C33.2858 10.5616 33.0537 10.1439 32.6717 9.90759ZM16.999 23.5596C16.1077 23.5596 15.2378 23.3121 14.4795 22.8427L6.13306 17.6756V26.5729C6.13306 29.2062 11.0002 31.3379 16.999 31.3379C22.9999 31.3379 27.8667 29.2062 27.8667 26.5729V17.6756L19.5206 22.8427C18.7623 23.3121 17.8903 23.5596 16.999 23.5596Z" fill="#121B43"/>
-              </svg>
-              <p class="p_title">24 de Janeiro – Dia Mundial da Educação:</p>
-              <p class="p_desc">Neste dia, os nossos espetáculos e workshops serão dedicados ao poder transformador da aprendizagem. Uma celebração imperdível para crianças e adultos!</p>
-            </div>
-            <div  class="special-dates-desc">
-              <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12.0175 0.118652C11.7503 0.118652 11.492 0.180996 11.2575 0.284902C8.33919 1.60006 10.5331 10.0194 13.3475 16.9337C13.6236 14.0658 16.0609 11.8037 19 11.8037C20.232 11.8037 21.369 12.2252 22.3012 12.8962C22.3072 12.8991 22.319 12.8932 22.325 12.8962C19.3889 6.95865 14.9684 0.118652 12.0175 0.118652ZM22.325 12.8962C23.7411 13.9263 24.6762 15.5977 24.6762 17.4799C24.6762 19.7777 23.2957 21.7668 21.3275 22.6574C22.8564 22.7554 24.3615 22.8237 25.7925 22.8237C29.2956 22.8237 37.4745 22.4763 37.7862 19.3799C38.1068 16.2004 29.7172 13.9174 22.325 12.8962ZM21.3275 22.6574C21.3126 22.6633 21.2948 22.6515 21.28 22.6574C20.5793 22.9691 19.8134 23.1562 19 23.1562C15.8739 23.1562 13.3237 20.606 13.3237 17.4799C13.3237 17.2929 13.3534 17.1147 13.3712 16.9337C9.23278 23.1443 5.36153 30.9551 7.95622 32.8224C8.27981 33.054 8.67466 33.1787 9.11997 33.1787C12.1125 33.1787 17.5304 27.541 21.3275 22.6574ZM19 13.2999C16.6962 13.2999 14.82 15.1762 14.82 17.4799C14.82 19.7837 16.6962 21.6599 19 21.6599C21.3037 21.6599 23.18 19.7837 23.18 17.4799C23.18 15.1762 21.3037 13.2999 19 13.2999ZM19 15.5799C20.0479 15.5799 20.9 16.429 20.9 17.4799C20.9 18.5308 20.0479 19.3799 19 19.3799C17.949 19.3799 17.1 18.5308 17.1 17.4799C17.1 16.429 17.949 15.5799 19 15.5799ZM21.66 24.7949C20.1964 26.6088 18.142 29.0046 15.96 30.9937L15.4375 37.1687C15.4197 37.3794 15.482 37.5813 15.6275 37.7387C15.7729 37.896 15.9837 37.9999 16.1975 37.9999H21.8025C22.0132 37.9999 22.2062 37.893 22.3487 37.7387C22.4912 37.5843 22.5773 37.3794 22.5625 37.1687L21.66 24.7949Z" fill="#121B43"/>
-              </svg>
-              <p class="p_title">26 de Janeiro – Dia Mundial das Energias Limpas:</p>
-              <p class="p_desc">Vem descobrir como as energias limpas movimentam o nosso circo e inspire-se com atuações temáticas que mostram como inovação e sustentabilidade caminham juntas!</p>
-            </div>
-          </div>
-         
+      
+      <div class="about-event-details">
+        <div class="about-event-details-desc">
+          <p><b>20-26 jan, 2025</b></p>
+          <p>13h-21h</p>
         </div>
-
-        <div class="home-graphic-el-spacial-dates">
-            <img src="/src/assets/home_assets/home_yellow_graphic_el.svg" alt="">
-        </div>
-    </section>
-    
-    <!-- <img id="shape1" src="@/assets/img/forma1_homepage.png" alt=""> -->
-
-    <section class="shows-info-section">
-      <div class="shows-info-title">
-        <h1 class="section-subtitle">Os nossos espetáculos</h1>
-        <RouterLink id="findMoreShows" :to="{name: 'activities'}">
-          <svg width="32px" height="32px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(0)">
-            <g id="SVGRepo_bgCarrier" stroke-width="0"/>
-            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
-            <g id="SVGRepo_iconCarrier"> <path d="M6 12H18M18 12L13 7M18 12L13 17" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
-          </svg>
-        </RouterLink>
-      </div>
-      <div class="shows-available">
-        <div class="show-card">
-         
-          <img src="@/assets/img/show1_image.png" id="show_image" alt="">
-          <h4>Luzes</h4>
-        </div>
-        <div class="show-card">
-          
-          <img src="@/assets/img/show2_image.png" id="show_image" alt="">
-          <h4>Circo Verde</h4>
-        </div>
-        <div class="show-card">
-          
-          <img src="@/assets/img/show3_image.png" id="show_image" alt="">
-          <h4>Asas de Seda</h4>
-        </div>
-        <div class="show-card">
-          
-          <img src="@/assets/img/show4_image.png" id="show_image" alt="">
-          <h4>Arte do Equilíbrio</h4>
+        <div class="about-event-details-desc">
+          <p><b>Localização</b></p>
+          <p>Parque da Cidade</p>
         </div>
       </div>
-    </section>
 
-    <section class="interactive-map-section">
-      <div>
-        <h1 class="section-subtitle" >Mapa Interativo</h1>
-        <p>Consulta o nosso mapa para localizar todas as áreas do recinto, incluindo workshops, espetáculos e serviços.</p>
-      </div>
-      <div class="interactive-map">
-        <!-- Iterar sobre todos os icones dinamicamente-->
-        <v-tooltip v-for="(icon, index) in icons" :key="index" location="bottom">
-          <template #activator="{ props }">
-            <div class="interactive-map-icon" :id="icon.id" v-html="icon.svg" v-bind="props"></div>
-          </template>
-        
+        <button class="btn-red">
+          <RouterLink id="findMoreActivities" :to="{name: 'activities'}">Saber Mais 
+            <v-icon  class="arrowIcon">
+                      mdi-arrow-right
+            </v-icon>
+          </RouterLink>
+        </button>
 
-          <!--Tooltip-->
-            <div class="custom-tooltip">
-              <img src="@/assets/home_assets/tooltip-background.svg" alt="Background do Tooltip" class="tooltip-background">
-              <p>{{ icon.text }}</p>
-            </div>
-        </v-tooltip>
+    </div>
+    <div class="home-graphic-el-about">
+      <img src="/src/assets/home_assets/graphic_el_balloon.svg" alt="">
+    </div>
 
-        <!--Imagem do Mapa Interativo-->
-        <img src="/src/assets/home_assets/home-interactive-map.svg" class="img-fluid img-responsive rounded d-block" alt="Imagem da Área do Circo">
-        <v-tooltip text="Tenda Principal" location="bottom">
-          <template v-slot:activator="{ props }">
-            <svg v-bind="props" class="interactive-map-icon" id="main-tent" width="60" height="60" viewBox="0 0 60 60"  fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect id="icon-color" width="60" height="60" rx="30" fill="#E63946"/>
-              <path d="M49.5 27.2288C40.6912 27.2288 33.305 19.5212 31.2575 13.2231V10.4738C33.0619 8.52063 34.8638 11.1537 36.6638 9.20062C34.8631 10.305 33.0613 6.82187 31.2575 7.92562V7.575C31.5281 7.42375 31.7094 7.15812 31.7094 6.85375C31.7094 6.38187 31.28 6 30.75 6C30.2188 6 29.7894 6.38188 29.7894 6.85312C29.7894 7.16562 29.98 7.43562 30.2619 7.58437V13.1631C28.2419 19.4725 20.8356 27.2288 12 27.2288C12 28.5275 13.3319 29.6012 15.0712 29.7987L12 43.5H17.1087L19.2294 27.7094C19.27 27.5531 19.2944 27.3925 19.2944 27.2281C25.5494 27.2281 29.51 16.3544 30.5025 13.2881H30.7306C30.5169 22.9831 26.575 27.2281 26.575 27.2281H19.2944C19.2944 28.6675 20.9269 29.8344 22.9412 29.8344C24.9556 29.8344 26.5875 28.6675 26.5875 27.2281L25.9675 36.4625C22.8362 40.2369 21.5312 40.4137 21.5312 40.4137C22.5763 43.5 24.1069 43.5 24.1069 43.5C27.4625 43.5 30.735 29.835 30.735 29.8337L30.7013 29.8856L30.7406 29.8031L30.77 29.8625C30.9163 30.4662 34.1125 43.5 37.3919 43.5C37.3919 43.5 38.9225 43.5 39.9675 40.4137C39.9675 40.4137 38.6631 40.2369 35.5319 36.4638L34.9125 27.2288C34.9125 28.6681 36.5431 29.835 38.5575 29.835C40.5719 29.835 42.205 28.6681 42.205 27.2288H34.925C34.925 27.2288 30.9838 22.9837 30.7706 13.2887H30.9987C31.9912 16.3544 35.95 27.2288 42.205 27.2288C42.205 27.3931 42.2294 27.5537 42.2706 27.71L44.3913 43.5H49.5L46.4275 29.7987C48.1681 29.6012 49.5 28.5275 49.5 27.2288Z" fill="white"/>
+  </section>
+  
+  <section class="special-dates-section">
+      
+      <div class="special-dates-container">
+        <h3 >Datas Especiais</h3>
+        <div class="special-dates-texts"> 
+          <div class="special-dates-desc" >
+            
+            <svg width="34" height="32" viewBox="0 0 34 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M31.9261 30.2644C32.1889 30.2644 32.4375 30.146 32.6029 29.9418C32.7684 29.7377 32.8329 29.4699 32.7786 29.2129L32.2299 26.6164C32.5424 26.3141 32.7388 25.892 32.7388 25.4228C32.7388 24.9288 32.5188 24.4906 32.1773 24.1862V15.1693L29.9778 16.5304V24.1862C29.6363 24.4906 29.4163 24.9288 29.4163 25.4228C29.4163 25.8921 29.6127 26.3142 29.9252 26.6164L29.3765 29.2129C29.3222 29.47 29.3868 29.7377 29.5522 29.9418C29.7176 30.1459 29.9662 30.2644 30.229 30.2644H31.9261ZM32.6717 9.90759L18.3629 1.05006C17.9439 0.791934 17.4715 0.662354 16.9991 0.662354C16.5267 0.662354 16.0539 0.791825 15.6374 1.05006L1.32849 9.90759C0.946411 10.144 0.714355 10.5616 0.714355 11.011C0.714355 11.4605 0.946411 11.8782 1.32849 12.115L15.6374 20.9726C16.0539 21.231 16.5266 21.3603 16.999 21.3603C17.4714 21.3603 17.9439 21.2308 18.3629 20.9726L32.6717 12.115C33.0537 11.8783 33.2858 11.4605 33.2858 11.011C33.2858 10.5616 33.0537 10.1439 32.6717 9.90759ZM16.999 23.5596C16.1077 23.5596 15.2378 23.3121 14.4795 22.8427L6.13306 17.6756V26.5729C6.13306 29.2062 11.0002 31.3379 16.999 31.3379C22.9999 31.3379 27.8667 29.2062 27.8667 26.5729V17.6756L19.5206 22.8427C18.7623 23.3121 17.8903 23.5596 16.999 23.5596Z" fill="#121B43"/>
             </svg>
-          </template>
-        </v-tooltip>
-        <svg class="interactive-map-icon" id="workshops" width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <p class="p_title">24 de Janeiro – Dia Mundial da Educação:</p>
+            <p class="p_desc">Neste dia, os nossos espetáculos e workshops serão dedicados ao poder transformador da aprendizagem. Uma celebração imperdível para crianças e adultos!</p>
+          </div>
+          <div  class="special-dates-desc">
+            <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.0175 0.118652C11.7503 0.118652 11.492 0.180996 11.2575 0.284902C8.33919 1.60006 10.5331 10.0194 13.3475 16.9337C13.6236 14.0658 16.0609 11.8037 19 11.8037C20.232 11.8037 21.369 12.2252 22.3012 12.8962C22.3072 12.8991 22.319 12.8932 22.325 12.8962C19.3889 6.95865 14.9684 0.118652 12.0175 0.118652ZM22.325 12.8962C23.7411 13.9263 24.6762 15.5977 24.6762 17.4799C24.6762 19.7777 23.2957 21.7668 21.3275 22.6574C22.8564 22.7554 24.3615 22.8237 25.7925 22.8237C29.2956 22.8237 37.4745 22.4763 37.7862 19.3799C38.1068 16.2004 29.7172 13.9174 22.325 12.8962ZM21.3275 22.6574C21.3126 22.6633 21.2948 22.6515 21.28 22.6574C20.5793 22.9691 19.8134 23.1562 19 23.1562C15.8739 23.1562 13.3237 20.606 13.3237 17.4799C13.3237 17.2929 13.3534 17.1147 13.3712 16.9337C9.23278 23.1443 5.36153 30.9551 7.95622 32.8224C8.27981 33.054 8.67466 33.1787 9.11997 33.1787C12.1125 33.1787 17.5304 27.541 21.3275 22.6574ZM19 13.2999C16.6962 13.2999 14.82 15.1762 14.82 17.4799C14.82 19.7837 16.6962 21.6599 19 21.6599C21.3037 21.6599 23.18 19.7837 23.18 17.4799C23.18 15.1762 21.3037 13.2999 19 13.2999ZM19 15.5799C20.0479 15.5799 20.9 16.429 20.9 17.4799C20.9 18.5308 20.0479 19.3799 19 19.3799C17.949 19.3799 17.1 18.5308 17.1 17.4799C17.1 16.429 17.949 15.5799 19 15.5799ZM21.66 24.7949C20.1964 26.6088 18.142 29.0046 15.96 30.9937L15.4375 37.1687C15.4197 37.3794 15.482 37.5813 15.6275 37.7387C15.7729 37.896 15.9837 37.9999 16.1975 37.9999H21.8025C22.0132 37.9999 22.2062 37.893 22.3487 37.7387C22.4912 37.5843 22.5773 37.3794 22.5625 37.1687L21.66 24.7949Z" fill="#121B43"/>
+            </svg>
+            <p class="p_title">26 de Janeiro – Dia Mundial das Energias Limpas:</p>
+            <p class="p_desc">Vem descobrir como as energias limpas movimentam o nosso circo e inspire-se com atuações temáticas que mostram como inovação e sustentabilidade caminham juntas!</p>
+          </div>
+        </div>
+       
+      </div>
+
+      <div class="home-graphic-el-spacial-dates">
+          <img src="/src/assets/home_assets/home_yellow_graphic_el.svg" alt="">
+      </div>
+  </section>
+  
+  <!-- <img id="shape1" src="@/assets/img/forma1_homepage.png" alt=""> -->
+
+  <section class="shows-info-section">
+    <div class="shows-info-title">
+      <h1 class="section-subtitle">Os nossos espetáculos</h1>
+      <RouterLink id="findMoreShows" :to="{name: 'activities'}">
+        <svg width="32px" height="32px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(0)">
+          <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+          <g id="SVGRepo_iconCarrier"> <path d="M6 12H18M18 12L13 7M18 12L13 17" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
+        </svg>
+      </RouterLink>
+    </div>
+    <div class="shows-available">
+      <div class="show-card">
+       
+        <img src="@/assets/img/show1_image.png" id="show_image" alt="">
+        <h4>Luzes</h4>
+      </div>
+      <div class="show-card">
+        
+        <img src="@/assets/img/show2_image.png" id="show_image" alt="">
+        <h4>Circo Verde</h4>
+      </div>
+      <div class="show-card">
+        
+        <img src="@/assets/img/show3_image.png" id="show_image" alt="">
+        <h4>Asas de Seda</h4>
+      </div>
+      <div class="show-card">
+        
+        <img src="@/assets/img/show4_image.png" id="show_image" alt="">
+        <h4>Arte do Equilíbrio</h4>
+      </div>
+    </div>
+  </section>
+
+  <section class="interactive-map-section">
+    <div>
+      <h1 class="section-subtitle" >Mapa Interativo</h1>
+      <p>Consulta o nosso mapa para localizar todas as áreas do recinto, incluindo workshops, espetáculos e serviços.</p>
+    </div>
+    <!--Mapa Interativo & Icones-->
+    <div class="interactive-map">
+      <div class="tooltip" id="main-tent">
+        <svg class="interactive-map-icon" width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect id="icon-color" width="60" height="60" rx="30" fill="#E63946"/>
+          <path d="M49.5 27.2288C40.6912 27.2288 33.305 19.5212 31.2575 13.2231V10.4738C33.0619 8.52063 34.8638 11.1537 36.6638 9.20062C34.8631 10.305 33.0613 6.82187 31.2575 7.92562V7.575C31.5281 7.42375 31.7094 7.15812 31.7094 6.85375C31.7094 6.38187 31.28 6 30.75 6C30.2188 6 29.7894 6.38188 29.7894 6.85312C29.7894 7.16562 29.98 7.43562 30.2619 7.58437V13.1631C28.2419 19.4725 20.8356 27.2288 12 27.2288C12 28.5275 13.3319 29.6012 15.0712 29.7987L12 43.5H17.1087L19.2294 27.7094C19.27 27.5531 19.2944 27.3925 19.2944 27.2281C25.5494 27.2281 29.51 16.3544 30.5025 13.2881H30.7306C30.5169 22.9831 26.575 27.2281 26.575 27.2281H19.2944C19.2944 28.6675 20.9269 29.8344 22.9412 29.8344C24.9556 29.8344 26.5875 28.6675 26.5875 27.2281L25.9675 36.4625C22.8362 40.2369 21.5312 40.4137 21.5312 40.4137C22.5763 43.5 24.1069 43.5 24.1069 43.5C27.4625 43.5 30.735 29.835 30.735 29.8337L30.7013 29.8856L30.7406 29.8031L30.77 29.8625C30.9163 30.4662 34.1125 43.5 37.3919 43.5C37.3919 43.5 38.9225 43.5 39.9675 40.4137C39.9675 40.4137 38.6631 40.2369 35.5319 36.4638L34.9125 27.2288C34.9125 28.6681 36.5431 29.835 38.5575 29.835C40.5719 29.835 42.205 28.6681 42.205 27.2288H34.925C34.925 27.2288 30.9838 22.9837 30.7706 13.2887H30.9987C31.9912 16.3544 35.95 27.2288 42.205 27.2288C42.205 27.3931 42.2294 27.5537 42.2706 27.71L44.3913 43.5H49.5L46.4275 29.7987C48.1681 29.6012 49.5 28.5275 49.5 27.2288Z" fill="white"/>
+        </svg>
+        <span class="tooltipText">Tenda Principal</span>
+      </div>
+
+      <div class="tooltip" id="workshops">
+        <svg class="interactive-map-icon" width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect id="icon-color" width="60" height="60" rx="30" fill="#E63946"/>
           <g clip-path="url(#clip0_2080_3666)">
           <path d="M42.2571 39.6526L40.5417 37.8268L38.8255 35.9994L37.1101 34.1744V34.1736L35.4249 32.3793V32.3785C32.9599 31.1382 31.7799 32.9938 30.6025 33.1521L31.0004 34.1667L34.2475 36.8678L36.1875 38.4823H36.1883L38.1282 40.0975H38.129L40.0681 41.712H40.0689L41.9215 43.2543L43.4095 43.0508L43.8949 41.397L42.2571 39.6526Z" fill="#E63946"/>
@@ -214,7 +201,11 @@
           </clipPath>
           </defs>
         </svg>
-        <svg class="interactive-map-icon" id="ticket-office" width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <span class="tooltipText">Workshops</span>
+      </div>
+
+      <div class="tooltip" id="ticket-office">
+        <svg class="interactive-map-icon" width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect id="icon-color" width="60" height="60" rx="30" fill="#E63946"/>
           <path d="M15.4252 29.5717L17.7113 28.3043L18.2332 13.59L16.2451 13.5017C15.193 13.4549 14.3073 14.3681 14.2666 15.5432L13.8453 27.4005C13.8249 27.9647 14.0069 28.5142 14.3492 28.9286C14.6353 29.2736 15.0159 29.4928 15.4252 29.5717Z" fill="white"/>
           <path d="M25.9336 23.4958L23.8282 21.0171C23.7456 20.9195 23.7193 20.7765 23.7612 20.6494C23.8031 20.5224 23.9048 20.4329 24.0257 20.4195L27.0659 20.0612C27.17 20.0492 27.2621 19.9796 27.3112 19.878L28.775 16.8766C28.8337 16.7576 28.9474 16.6854 29.0671 16.6908C29.188 16.6961 29.2945 16.7777 29.3448 16.9007L30.5884 20.0224C30.6315 20.1294 30.7164 20.2056 30.8206 20.227L31.887 20.4489L37.6645 17.2483L37.7639 14.4527L20.557 13.6934L20.0854 26.9905L26.0102 23.707C26.0018 23.6295 25.9815 23.5546 25.9336 23.4958Z" fill="white"/>
@@ -223,6 +214,10 @@
           <path d="M49.3018 31.6702L43.741 19.1538C43.4118 18.4051 42.7332 17.9719 42.033 17.9719C41.7505 17.9719 41.4596 18.0428 41.1879 18.1952L38.8145 19.5107L46.0678 35.8361L48.4412 34.5219C48.8937 34.2705 49.2396 33.828 49.4 33.2959C49.5616 32.7611 49.5268 32.1755 49.3018 31.6702Z" fill="white"/>
           <path d="M19.0186 30.4813L26.2719 46.8053L43.985 36.9895L36.7317 20.6628L19.0186 30.4813ZM37.2667 37.5684C37.2105 37.6887 37.0968 37.7636 36.9795 37.7623L33.4139 37.67C33.3097 37.6673 33.2116 37.7222 33.1493 37.8157L31.0595 41.0404C30.9877 41.1487 30.868 41.2035 30.7483 41.1795C30.6286 41.1568 30.5305 41.0618 30.4958 40.9295L29.4748 37.1139C29.4461 37.0029 29.3683 36.9147 29.2689 36.8786L25.8769 35.6553C25.762 35.6138 25.677 35.5028 25.659 35.3692C25.6411 35.2328 25.6938 35.1018 25.7931 35.0242L28.7231 32.7621C28.8093 32.6966 28.8608 32.587 28.8608 32.4693L28.8524 28.4879C28.8524 28.3529 28.9206 28.2286 29.0296 28.1684C29.1373 28.1082 29.2665 28.1216 29.3623 28.2032L32.1966 30.619C32.2792 30.6899 32.3881 30.7113 32.4874 30.6738L35.8771 29.4358C35.992 29.3944 36.1165 29.4291 36.2015 29.5254C36.2853 29.6217 36.3152 29.7647 36.2757 29.8917L35.0405 33.8223L37.2392 37.1874C37.3122 37.3024 37.3206 37.4494 37.2667 37.5684Z" fill="white"/>
         </svg>
+        <span class="tooltipText">Bilheteira</span>
+      </div>
+
+      <div class="tooltip" id="giftshop">
         <svg class="interactive-map-icon" id="giftshop" width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect id="icon-color" width="60" height="60" rx="30" fill="#E63946"/>
           <path d="M29.4058 15.9166C23.254 15.9226 20.0711 16.0327 18.0518 18.052C16.0326 20.0712 15.9225 23.2542 15.9165 29.4059H23.0821C22.5702 28.7666 22.1878 28.0125 21.9792 27.1783C21.1943 24.0385 24.0383 21.1944 27.1782 21.9794C28.0124 22.1879 28.7665 22.5703 29.4058 23.0822V15.9166Z" fill="white"/>
@@ -232,225 +227,250 @@
           <path d="M26.6479 24.1016C28.2689 24.5068 29.4061 25.9633 29.4061 27.6341V29.406H27.6342C25.9634 29.406 24.507 28.2687 24.1017 26.6478C23.7173 25.11 25.1102 23.7172 26.6479 24.1016Z" fill="white"/>
           <path d="M31.5933 27.6341V29.406H33.365C35.0358 29.406 36.4922 28.2687 36.8975 26.6478C37.2819 25.11 35.8891 23.7172 34.3514 24.1016C32.7303 24.5068 31.5933 25.9633 31.5933 27.6341Z" fill="white"/>
         </svg>
+        <span class="tooltipText">Giftshop</span>
+      </div>
+
+      <div class="tooltip" id="food-court">
         <svg class="interactive-map-icon" id="food-court" width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect id="icon-color" width="60" height="60" rx="30" fill="#E63946"/>
           <path d="M38.2636 42.5H40.5273C41.6727 42.5 42.6136 41.6136 42.75 40.4955L45 18.0227H38.1818V12.5H35.4955V18.0227H28.7182L29.1273 21.2136C31.4591 21.8545 33.6409 23.0136 34.95 24.2955C36.9136 26.2318 38.2636 28.2364 38.2636 31.5091V42.5ZM15 41.1364V39.7727H35.4955V41.1364C35.4955 41.8727 34.8818 42.5 34.0909 42.5H16.3636C15.6136 42.5 15 41.8727 15 41.1364ZM35.4955 31.5909C35.4955 20.6818 15 20.6818 15 31.5909H35.4955ZM15 34.3182H35.4545V37.0455H15V34.3182Z" fill="white"/>
         </svg>
-        <img src="/src/assets/home_assets/home-interactive-map.svg" class="img-fluid img-responsive rounded d-block" alt="Imagem da Área do Circo">
+        <span class="tooltipText">Praça da Alimentação</span>
       </div>
-    </section>
+      
+      <img src="/src/assets/home_assets/home-interactive-map.svg" class="img-fluid img-responsive rounded d-block" alt="Imagem da Área do Circo">
+    </div>
+  </section>
 
+  
+  <section class="explore-website-section">
+    <h1 class="section-subtitle">Explora o nosso website</h1>
+    <div class=" explore-website-container"> 
+      <div class="website-page">
+      <svg width="95" height="193" viewBox="0 0 95 193" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M69.9358 192.914C69.8436 192.889 69.6824 192.753 69.5903 192.729C62.1785 180.949 62.1216 162.362 62.7776 145.907L62.8722 142.236C63.5056 125.128 64.1854 107.478 59.0332 93.5317C58.8951 93.3099 59.0566 93.076 59.2871 92.953C59.5176 92.8299 59.7709 92.9902 59.909 93.212C65.1072 107.355 64.4043 125.092 63.7709 142.2L63.6763 145.87C63.0434 162.239 63.0543 180.629 70.328 192.187C70.4661 192.409 70.3968 192.668 70.1663 192.791C70.1432 192.877 70.0279 192.938 69.9358 192.914Z" fill="#E4CB66"/>
+        <path id="balloon_color" d="M70.3135 66.783C76.2937 54.6976 79.0503 40.7551 74.8937 28.4924C70.7371 16.2298 58.3862 6.40763 44.3169 7.38434C28.1634 8.46487 14.5181 23.5741 12.5733 38.5069C10.6837 53.2337 18.2742 67.2996 29.4288 76.47C38.913 84.1994 50.7145 89.1277 63.2041 92.5847C65.3969 93.1723 65.2276 95.9969 62.9777 96.7187C55.3231 98.9727 46.81 100.776 52.9397 92.1525C59.0781 83.8626 65.3801 76.0581 70.3135 66.783Z" fill="#E9DED0"/>
+        <path d="M41.5039 29H28.0879V41.2166H35.0629C38.2624 39.4547 41.5039 32.3553 41.5039 29Z" fill="#121B43"/>
+        <path d="M28.0879 43.0154V59.5025C30.6566 59.5025 31.5131 57.8541 34.3683 58.9035C37.2236 59.953 39.0784 58.6032 39.0784 58.6032C39.0784 58.6032 36.901 48.3767 35.3194 43.0154H28.0879Z" fill="#121B43"/>
+        <path d="M49.6719 29C49.6719 32.3553 52.9133 39.4547 56.1129 41.2166H63.0879V29H49.6719Z" fill="#121B43"/>
+        <path d="M52.0972 58.6032C52.0972 58.6032 53.952 59.9529 56.8073 58.9035C59.6624 57.8541 60.519 59.5025 63.0877 59.5025V43.0154H55.8562C54.2746 48.3767 52.0972 58.6032 52.0972 58.6032Z" fill="#121B43"/>
+        <path d="M42.2337 36.1383L41.5398 39.5302L38.1489 40.2231L41.5398 40.9159L42.2337 44.3073L42.9266 40.9159L46.3175 40.2231L42.9266 39.5302L42.2337 36.1383Z" fill="#121B43"/>
+        <path d="M51.141 46.0258L50.6287 43.5226L50.1175 46.0258L47.6138 46.5367L50.1175 47.0487L50.6287 49.5524L51.141 47.0487L53.6439 46.5367L51.141 46.0258Z" fill="#121B43"/>
+        <path d="M41.7809 51.6694L41.3838 53.6118L39.4404 54.0092L41.3838 54.4065L41.7809 56.3495L42.1778 54.4065L44.1218 54.0092L42.1778 53.6118L41.7809 51.6694Z" fill="#121B43"/>
+      </svg>
+      <div>
+        <h5>Espetáculos</h5>
+        <p>A unir arte, criatividade e educação  numa experiência única!</p>
+      </div>
+    </div>
+    <div class="website-page middle">
+      <svg width="95" height="193" viewBox="0 0 95 193" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M24.6248 192.914C24.7169 192.889 24.8781 192.753 24.9703 192.729C32.3821 180.949 32.439 162.362 31.7829 145.907L31.6883 142.236C31.0549 125.128 30.3751 107.478 35.5273 93.5317C35.6654 93.3099 35.504 93.076 35.2735 92.953C35.043 92.8299 34.7896 92.9902 34.6515 93.212C29.4533 107.355 30.1563 125.092 30.7897 142.2L30.8843 145.87C31.5172 162.239 31.5062 180.629 24.2326 192.187C24.0945 192.409 24.1638 192.668 24.3943 192.791C24.4174 192.877 24.5326 192.938 24.6248 192.914Z" fill="#E4CB66"/>
+        <path id="balloon_color" d="M24.247 66.783C18.2669 54.6976 15.5102 40.7551 19.6668 28.4924C23.8234 16.2298 36.1743 6.40763 50.2436 7.38434C66.3972 8.46487 80.0424 23.5741 81.9872 38.5069C83.8768 53.2337 76.2863 67.2996 65.1318 76.47C55.6476 84.1994 43.846 89.1277 31.3565 92.5847C29.1637 93.1723 29.333 95.9969 31.5828 96.7187C39.2374 98.9727 47.7505 100.776 41.6208 92.1525C35.4825 83.8626 29.1804 76.0581 24.247 66.783Z" fill="#E9DED0"/>
+        <g clip-path="url(#clip0_2066_2935)">
+        <path d="M60.5593 57.0741L58.8439 54.9725L57.1277 52.8691L55.4123 50.7684V50.7675L53.7271 48.7022V48.7013C51.2622 47.2737 50.0821 49.4095 48.9048 49.5918L49.3026 50.7596L52.5498 53.8687L54.4897 55.727H54.4905L56.4304 57.5863H56.4313L58.3704 59.4446H58.3712L60.2237 61.2198L61.7118 60.9856L62.1972 59.082L60.5593 57.0741Z" fill="#F4EDE4"/>
+        <path d="M49.3027 40.2708C49.1713 40.4619 49.0537 40.6626 48.9475 40.8714C47.7188 43.2773 48.0502 46.7278 47.8273 48.4243L46.3822 48.8656L44.8783 48.7011C44.3614 48.3747 43.834 48.0058 43.3024 47.5973C42.1586 46.718 40.9959 45.6575 39.8724 44.4404C35.2831 39.4686 33.0925 33.7802 34.981 31.7343C35.261 31.4309 35.6145 31.2249 36.0293 31.1098C36.0326 31.1098 36.0351 31.109 36.0383 31.1081C38.4224 30.4545 42.8052 32.8037 46.7096 37.0335C47.1881 37.5509 47.6404 38.0772 48.0641 38.6062C48.0674 38.6106 48.0706 38.6141 48.0739 38.6186C48.5156 39.1678 48.9247 39.7206 49.3027 40.2708Z" fill="#121B43"/>
+        <path d="M49.685 41.6703C48.3297 43.7993 48.0445 46.7756 47.8273 48.4243L46.3822 48.8657L45.5469 49.4554C45.5437 49.4527 45.3346 49.0862 45.3313 49.0844L44.8783 48.7011C44.3614 48.3747 43.834 48.0059 43.3024 47.5973C42.1586 46.7181 40.9959 45.6576 39.8724 44.4405C35.2831 39.4687 33.0925 33.7803 34.981 31.7344C35.261 31.431 35.6145 31.225 36.0293 31.1099C36.0326 31.1099 36.0351 31.109 36.0383 31.1082C35.4349 33.691 37.6027 38.439 41.507 42.6696C42.4361 43.6762 43.3923 44.574 44.3427 45.3524C44.8023 43.7726 45.7037 41.9576 46.9709 40.1134C47.3122 39.6154 47.6804 39.1157 48.074 38.6186C48.5157 39.1678 48.9247 39.7207 49.3027 40.2709C49.1713 40.4619 49.7912 41.4616 49.685 41.6703Z" fill="#121B43"/>
+        <path d="M50.3871 48.848L53.8048 52.5099L52.5499 53.8694L50.6426 52.0429L48.9419 50.4136L50.3871 48.848Z" fill="#F4EDE4"/>
+        <path d="M63.9991 59.0244C64.4032 59.4622 64.4032 60.1734 63.9991 60.6112L61.6362 63.171C61.2312 63.6097 60.5755 63.6097 60.1706 63.171L60.0293 63.0179C59.6243 62.5792 59.6243 61.869 60.0293 61.4303L60.2236 61.2198L62.1971 59.0819L62.3922 58.8705C62.7964 58.4326 63.4528 58.4326 63.857 58.8705L63.9991 59.0244Z" fill="#121B43"/>
+        <path d="M46.3821 46.8588L44.8781 48.7012L43.1921 50.7674L41.4767 52.869L39.7613 54.9724L38.045 57.074L36.4072 59.0819L36.9196 61.0427L38.3806 61.2197L40.234 59.4445L42.174 57.5861L44.1147 55.7278L46.0555 53.8694L49.3026 50.7595L49.6635 50.4136L49.0716 48.6448L46.3821 46.8588Z" fill="#F4EDE4"/>
+        <path d="M58.8438 54.9724L60.5592 57.074L58.3711 59.4445H58.3703L56.4312 57.5861L58.8438 54.9724Z" fill="#121B43"/>
+        <path d="M55.4123 50.7683L57.1278 52.8691L54.4905 55.7269H54.4897L52.5498 53.8686L55.4123 50.7683Z" fill="#121B43"/>
+        <path d="M58.3711 59.4455L59.3182 58.4194L61.0728 60.3008L60.2245 61.2198L58.3711 59.4455Z" fill="#F4EDE4"/>
+        <path d="M54.4897 55.7278L55.6426 54.4797L57.4805 56.4495L56.4314 57.5862L54.4897 55.7278Z" fill="#F4EDE4"/>
+        <path d="M60.2249 61.2197L61.0732 60.3007L62.6882 62.0317L61.6366 63.1709C61.2324 63.6097 60.576 63.6097 60.1718 63.1709L60.0297 63.0179C59.6255 62.5792 59.6255 61.8689 60.0297 61.4302L60.2249 61.2197Z" fill="#121B43"/>
+        <path d="M56.4312 57.5861L57.4803 56.4495L59.3182 58.4193L58.3711 59.4454L56.4312 57.5861Z" fill="#121B43"/>
+        <path d="M53.8047 52.5099L55.6426 54.4797L54.4897 55.7278L52.5498 53.8694L53.8047 52.5099Z" fill="#121B43"/>
+        <path d="M38.045 57.074L38.9921 58.1L37.2555 60.0008L36.4072 59.0819L38.045 57.074Z" fill="#F4EDE4"/>
+        <path d="M41.4766 52.869L42.6287 54.1179L40.8104 56.109L39.7612 54.9724L41.4766 52.869Z" fill="#F4EDE4"/>
+        <path d="M47.8271 48.4244L44.4469 52.1269L43.1919 50.7674L44.8779 48.7012L46.3819 46.8588L47.8271 48.4244Z" fill="#F4EDE4"/>
+        <path d="M38.5749 63.0179L38.4336 63.171C38.0295 63.6097 37.373 63.6097 36.9688 63.171L34.606 60.6112C34.201 60.1733 34.201 59.4622 34.606 59.0243L34.7473 58.8704C35.1523 58.4325 35.8079 58.4325 36.2128 58.8704L36.4071 59.0818L38.5748 61.4301C38.9798 61.869 38.9798 62.5793 38.5749 63.0179Z" fill="#121B43"/>
+        <path d="M42.1738 57.5861L40.2339 59.4445L38.992 58.1L38.0449 57.074L39.7612 54.9724L40.8103 56.109L42.1738 57.5861Z" fill="#121B43"/>
+        <path d="M46.0554 53.8694L44.1146 55.7278L42.6286 54.118L41.4766 52.8691L43.192 50.7675L44.4469 52.1269L46.0554 53.8694Z" fill="#121B43"/>
+        <path d="M36.4072 59.0819L37.2555 60.0009L35.6576 61.7504L34.606 60.6112C34.201 60.1733 34.201 59.4622 34.606 59.0243L34.7473 58.8704C35.1523 58.4325 35.8079 58.4325 36.2128 58.8704L36.4072 59.0819Z" fill="#121B43"/>
+        <path d="M39.7612 54.9724L40.8103 56.109L38.992 58.1L38.0449 57.074L39.7612 54.9724Z" fill="#121B43"/>
+        <path d="M44.4469 52.1269L42.6286 54.118L41.4766 52.8691L43.192 50.7675L44.4469 52.1269Z" fill="#121B43"/>
+        <path d="M63.6245 31.7354C65.5122 33.7804 63.3224 39.4687 58.733 44.4405C57.0878 46.2228 55.3569 47.6717 53.7272 48.7013C52.242 49.6398 50.841 50.2315 49.6636 50.4137L46.3822 46.8588H46.3813C46.6239 45.0154 47.6567 42.667 49.3027 40.2709C50.0465 39.1874 50.9169 38.0941 51.8958 37.0336C56.4852 32.0618 61.736 29.6886 63.6245 31.7354Z" fill="#121B43"/>
+        <path d="M51.0946 42.2121C51.8384 41.1286 52.7088 40.0353 53.6877 38.9748C57.5306 34.8118 61.8366 32.4714 64.2446 33.0215C64.1461 32.5149 63.9476 32.0854 63.6406 31.7528C61.7521 29.7061 56.5014 32.0792 51.912 37.0511C50.933 38.1116 50.0626 39.2049 49.3188 40.2884C47.6728 42.6846 46.64 45.0329 46.3975 46.8762H46.3983L48.1733 48.7992C48.416 46.956 49.4487 44.6079 51.0946 42.2121Z" fill="#121B43"/>
+        </g>
+        <defs>
+        <clipPath id="clip0_2066_2935">
+        <rect width="30" height="32.5" fill="white" transform="translate(34.3022 31)"/>
+        </clipPath>
+        </defs>
+      </svg>
+      <div>
+        <h5>Workshops</h5>
+        <p>Atividades que mostram como arte e ecologia podem caminhar juntas</p>
+      </div>
+    </div>
+    <div class="website-page">
+      <svg width="95" height="193" viewBox="0 0 95 193" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M69.9358 192.914C69.8436 192.889 69.6824 192.753 69.5903 192.729C62.1785 180.949 62.1216 162.362 62.7776 145.907L62.8722 142.236C63.5056 125.128 64.1854 107.478 59.0332 93.5317C58.8951 93.3099 59.0566 93.076 59.2871 92.953C59.5176 92.8299 59.7709 92.9902 59.909 93.212C65.1072 107.355 64.4043 125.092 63.7709 142.2L63.6763 145.87C63.0434 162.239 63.0543 180.629 70.328 192.187C70.4661 192.409 70.3968 192.668 70.1663 192.791C70.1432 192.877 70.0279 192.938 69.9358 192.914Z" fill="#E4CB66"/>
+        <path id="balloon_color" d="M70.3135 66.783C76.2937 54.6976 79.0503 40.7551 74.8937 28.4924C70.7371 16.2298 58.3862 6.40763 44.3169 7.38434C28.1634 8.46487 14.5181 23.5741 12.5733 38.5069C10.6837 53.2337 18.2742 67.2996 29.4288 76.47C38.913 84.1994 50.7145 89.1277 63.2041 92.5847C65.3969 93.1723 65.2276 95.9969 62.9777 96.7187C55.3231 98.9727 46.81 100.776 52.9397 92.1525C59.0781 83.8626 65.3801 76.0581 70.3135 66.783Z" fill="#E9DED0"/>
+        <path d="M56.6685 31.8846H55.1685V30.4423C55.1685 29.5769 54.5685 29 53.6685 29C52.7685 29 52.1685 29.5769 52.1685 30.4423V31.8846H40.1685V30.4423C40.1685 29.5769 39.5685 29 38.6685 29C37.7685 29 37.1685 29.5769 37.1685 30.4423V31.8846H35.6685C33.1185 31.8846 31.1685 33.7596 31.1685 36.2115V37.6538H61.1685V36.2115C61.1685 33.7596 59.2185 31.8846 56.6685 31.8846ZM31.1685 53.5192C31.1685 55.9712 33.1185 57.8462 35.6685 57.8462H56.6685C59.2185 57.8462 61.1685 55.9712 61.1685 53.5192V40.5385H31.1685V53.5192ZM53.6685 43.4231C54.5685 43.4231 55.1685 44 55.1685 44.8654C55.1685 45.7308 54.5685 46.3077 53.6685 46.3077C52.7685 46.3077 52.1685 45.7308 52.1685 44.8654C52.1685 44 52.7685 43.4231 53.6685 43.4231ZM53.6685 49.1923C54.5685 49.1923 55.1685 49.7692 55.1685 50.6346C55.1685 51.5 54.5685 52.0769 53.6685 52.0769C52.7685 52.0769 52.1685 51.5 52.1685 50.6346C52.1685 49.7692 52.7685 49.1923 53.6685 49.1923ZM46.1685 43.4231C47.0685 43.4231 47.6685 44 47.6685 44.8654C47.6685 45.7308 47.0685 46.3077 46.1685 46.3077C45.2685 46.3077 44.6685 45.7308 44.6685 44.8654C44.6685 44 45.2685 43.4231 46.1685 43.4231ZM46.1685 49.1923C47.0685 49.1923 47.6685 49.7692 47.6685 50.6346C47.6685 51.5 47.0685 52.0769 46.1685 52.0769C45.2685 52.0769 44.6685 51.5 44.6685 50.6346C44.6685 49.7692 45.2685 49.1923 46.1685 49.1923ZM38.6685 43.4231C39.5685 43.4231 40.1685 44 40.1685 44.8654C40.1685 45.7308 39.5685 46.3077 38.6685 46.3077C37.7685 46.3077 37.1685 45.7308 37.1685 44.8654C37.1685 44 37.7685 43.4231 38.6685 43.4231ZM38.6685 49.1923C39.5685 49.1923 40.1685 49.7692 40.1685 50.6346C40.1685 51.5 39.5685 52.0769 38.6685 52.0769C37.7685 52.0769 37.1685 51.5 37.1685 50.6346C37.1685 49.7692 37.7685 49.1923 38.6685 49.1923Z" fill="#121B43"/>
+      </svg>
+      <div>
+        <h5>Programa</h5>
+        <p>Cada momento mágico foi pensado para oferecer uma experiência inesquecível</p>
+      </div>
+    </div>
+    <div class="website-page">
+      <svg width="95" height="193" viewBox="0 0 95 193" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M24.6248 192.914C24.7169 192.889 24.8781 192.753 24.9703 192.729C32.3821 180.949 32.439 162.362 31.7829 145.907L31.6883 142.236C31.0549 125.128 30.3751 107.478 35.5273 93.5317C35.6654 93.3099 35.504 93.076 35.2735 92.953C35.043 92.8299 34.7896 92.9902 34.6515 93.212C29.4533 107.355 30.1563 125.092 30.7897 142.2L30.8843 145.87C31.5172 162.239 31.5062 180.629 24.2326 192.187C24.0945 192.409 24.1638 192.668 24.3943 192.791C24.4174 192.877 24.5326 192.938 24.6248 192.914Z" fill="#E4CB66"/>
+        <path id="balloon_color" d="M24.247 66.783C18.2669 54.6976 15.5102 40.7551 19.6668 28.4924C23.8234 16.2298 36.1743 6.40763 50.2436 7.38434C66.3972 8.46487 80.0424 23.5741 81.9872 38.5069C83.8768 53.2337 76.2863 67.2996 65.1318 76.47C55.6476 84.1994 43.846 89.1277 31.3565 92.5847C29.1637 93.1723 29.333 95.9969 31.5828 96.7187C39.2374 98.9727 47.7505 100.776 41.6208 92.1525C35.4825 83.8626 29.1804 76.0581 24.247 66.783Z" fill="#E9DED0"/>
+        <g opacity="0.9">
+        <path d="M33.8715 47.8843L36.0942 46.6317L36.6015 32.0889L34.6687 32.0017C33.6458 31.9555 32.7847 32.8579 32.7451 34.0194L32.3355 45.7385C32.3157 46.2961 32.4926 46.8392 32.8254 47.2488C33.1035 47.5897 33.4736 47.8064 33.8715 47.8843Z" fill="#121B43"/>
+        <path d="M44.0876 41.8789L42.0407 39.4292C41.9604 39.3327 41.9348 39.1913 41.9755 39.0658C42.0162 38.9403 42.1151 38.8517 42.2327 38.8385L45.1884 38.4844C45.2897 38.4725 45.3793 38.4038 45.427 38.3034L46.8501 35.3369C46.9072 35.2193 47.0177 35.148 47.1341 35.1533C47.2516 35.1585 47.3552 35.2392 47.4041 35.3607L48.6131 38.4461C48.655 38.5518 48.7376 38.6271 48.8389 38.6482L49.8757 38.8676L55.4928 35.7043L55.5894 32.9413L38.8603 32.1908L38.4019 45.3329L44.1621 42.0877C44.1539 42.0111 44.1341 41.9371 44.0876 41.8789Z" fill="#121B43"/>
+        <path d="M59.7401 33.8526C60.2975 33.8526 60.8317 33.9834 61.3193 34.2133C61.0144 33.5949 60.4488 33.1615 59.7797 33.1312L57.848 33.0439L57.8003 34.4049L57.9143 34.3415C58.4776 34.0231 59.1106 33.8526 59.7401 33.8526Z" fill="#121B43"/>
+        <path d="M33.0288 51.2258C32.5889 51.4742 32.2538 51.9129 32.0967 52.4374C31.9396 52.9647 31.9757 53.5434 32.1921 54.0429L37.5986 66.4121C37.9197 67.152 38.5772 67.5801 39.258 67.5801C39.5349 67.5801 39.8154 67.5088 40.0795 67.3595L42.3883 66.0619L35.3375 49.9269L33.0288 51.2258Z" fill="#121B43"/>
+        <path d="M66.807 49.9584L61.4005 37.5879C61.0805 36.8479 60.4207 36.4198 59.74 36.4198C59.4653 36.4198 59.1826 36.4898 58.9184 36.6405L56.6108 37.9407L63.6627 54.0757L65.9703 52.7768C66.4102 52.5284 66.7465 52.091 66.9024 51.5651C67.0595 51.0366 67.0257 50.4578 66.807 49.9584Z" fill="#121B43"/>
+        <path d="M37.3647 48.783L44.4166 64.9167L61.6379 55.2153L54.586 39.079L37.3647 48.783ZM55.1062 55.7875C55.0515 55.9064 54.9409 55.9804 54.8269 55.9791L51.3603 55.8879C51.259 55.8852 51.1636 55.9394 51.1031 56.0319L49.0713 59.219C49.0015 59.326 48.8851 59.3802 48.7688 59.3564C48.6524 59.334 48.557 59.2401 48.5232 59.1093L47.5306 55.3382C47.5027 55.2285 47.4271 55.1413 47.3305 55.1056L44.0326 53.8966C43.9209 53.8556 43.8383 53.746 43.8208 53.6138C43.8034 53.4791 43.8546 53.3496 43.9512 53.2729L46.7998 51.0372C46.8836 50.9725 46.9337 50.8641 46.9337 50.7478L46.9255 46.8128C46.9255 46.6794 46.9918 46.5565 47.0977 46.497C47.2025 46.4376 47.3281 46.4508 47.4212 46.5314L50.1768 48.9191C50.2571 48.9891 50.363 49.0103 50.4596 48.9733L53.7551 47.7497C53.8668 47.7087 53.9879 47.7431 54.0705 47.8382C54.1519 47.9333 54.181 48.0747 54.1426 48.2003L52.9417 52.085L55.0794 55.4109C55.1504 55.5245 55.1585 55.6699 55.1062 55.7875Z" fill="#121B43"/>
+        </g>
+      </svg>
+      <div>
+        <h5>Bilhetes</h5>
+        <p>Escolhe o bilhete que combina mais contigo e vem fazer parte deste evento único</p>
+      </div>
+    </div>
+    <div class="website-page middle">
+      <svg width="95" height="193" viewBox="0 0 95 193" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M69.9358 192.914C69.8436 192.889 69.6824 192.753 69.5903 192.729C62.1785 180.949 62.1216 162.362 62.7776 145.907L62.8722 142.236C63.5056 125.128 64.1854 107.478 59.0332 93.5317C58.8951 93.3099 59.0566 93.076 59.2871 92.953C59.5176 92.8299 59.7709 92.9902 59.909 93.212C65.1072 107.355 64.4043 125.092 63.7709 142.2L63.6763 145.87C63.0434 162.239 63.0543 180.629 70.328 192.187C70.4661 192.409 70.3968 192.668 70.1663 192.791C70.1432 192.877 70.0279 192.938 69.9358 192.914Z" fill="#E4CB66"/>
+        <path id="balloon_color" d="M70.3135 66.783C76.2937 54.6976 79.0503 40.7551 74.8937 28.4924C70.7371 16.2298 58.3862 6.40763 44.3169 7.38434C28.1634 8.46487 14.5181 23.5741 12.5733 38.5069C10.6837 53.2337 18.2742 67.2996 29.4288 76.47C38.913 84.1994 50.7145 89.1277 63.2041 92.5847C65.3969 93.1723 65.2276 95.9969 62.9777 96.7187C55.3231 98.9727 46.81 100.776 52.9397 92.1525C59.0781 83.8626 65.3801 76.0581 70.3135 66.783Z" fill="#E9DED0"/>
+        <g clip-path="url(#clip0_2066_2938)">
+        <path d="M57.0208 30.762H33.0208C32.6672 30.762 32.3281 30.9075 32.078 31.1664C31.828 31.4254 31.6875 31.7767 31.6875 32.1429V57.0001C31.6875 57.3663 31.828 57.7176 32.078 57.9765C32.3281 58.2355 32.6672 58.381 33.0208 58.381H57.0208C57.3745 58.381 57.7136 58.2355 57.9636 57.9765C58.2137 57.7176 58.3542 57.3663 58.3542 57.0001V32.1429C58.3542 31.7767 58.2137 31.4254 57.9636 31.1664C57.7136 30.9075 57.3745 30.762 57.0208 30.762ZM37.0208 39.0477C37.0208 38.6814 37.1613 38.3302 37.4114 38.0712C37.6614 37.8122 38.0005 37.6667 38.3542 37.6667H42.3542C42.7078 37.6667 43.0469 37.8122 43.297 38.0712C43.547 38.3302 43.6875 38.6814 43.6875 39.0477V44.5715C43.6875 44.9377 43.547 45.289 43.297 45.548C43.0469 45.8069 42.7078 45.9524 42.3542 45.9524H38.3542C38.0005 45.9524 37.6614 45.8069 37.4114 45.548C37.1613 45.289 37.0208 44.9377 37.0208 44.5715V39.0477ZM51.6875 51.4762H38.3542C38.0005 51.4762 37.6614 51.3308 37.4114 51.0718C37.1613 50.8128 37.0208 50.4615 37.0208 50.0953C37.0208 49.729 37.1613 49.3778 37.4114 49.1188C37.6614 48.8598 38.0005 48.7143 38.3542 48.7143H51.6875C52.0411 48.7143 52.3803 48.8598 52.6303 49.1188C52.8804 49.3778 53.0208 49.729 53.0208 50.0953C53.0208 50.4615 52.8804 50.8128 52.6303 51.0718C52.3803 51.3308 52.0411 51.4762 51.6875 51.4762ZM51.6875 45.9524H47.6875C47.3339 45.9524 46.9947 45.8069 46.7447 45.548C46.4946 45.289 46.3542 44.9377 46.3542 44.5715C46.3542 44.2052 46.4946 43.854 46.7447 43.595C46.9947 43.336 47.3339 43.1905 47.6875 43.1905H51.6875C52.0411 43.1905 52.3803 43.336 52.6303 43.595C52.8804 43.854 53.0208 44.2052 53.0208 44.5715C53.0208 44.9377 52.8804 45.289 52.6303 45.548C52.3803 45.8069 52.0411 45.9524 51.6875 45.9524ZM51.6875 40.4286H47.6875C47.3339 40.4286 46.9947 40.2831 46.7447 40.0242C46.4946 39.7652 46.3542 39.4139 46.3542 39.0477C46.3542 38.6814 46.4946 38.3302 46.7447 38.0712C46.9947 37.8122 47.3339 37.6667 47.6875 37.6667H51.6875C52.0411 37.6667 52.3803 37.8122 52.6303 38.0712C52.8804 38.3302 53.0208 38.6814 53.0208 39.0477C53.0208 39.4139 52.8804 39.7652 52.6303 40.0242C52.3803 40.2831 52.0411 40.4286 51.6875 40.4286Z" fill="#121B43"/>
+        </g>
+        <defs>
+        <clipPath id="clip0_2066_2938">
+        <rect width="32" height="33.1429" fill="white" transform="translate(29.021 28)"/>
+        </clipPath>
+        </defs>
+      </svg>
+      <div>
+        <h5>Notícias</h5>
+        <p>Explora artigos, bastidores e atualizações que mostram a nossa paixão pelo circo</p>
+      </div>
+    </div>
+    <div class="website-page">
+      <svg width="95" height="193" viewBox="0 0 95 193" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M24.6248 192.914C24.7169 192.889 24.8781 192.753 24.9703 192.729C32.3821 180.949 32.439 162.362 31.7829 145.907L31.6883 142.236C31.0549 125.128 30.3751 107.478 35.5273 93.5317C35.6654 93.3099 35.504 93.076 35.2735 92.953C35.043 92.8299 34.7896 92.9902 34.6515 93.212C29.4533 107.355 30.1563 125.092 30.7897 142.2L30.8843 145.87C31.5172 162.239 31.5062 180.629 24.2326 192.187C24.0945 192.409 24.1638 192.668 24.3943 192.791C24.4174 192.877 24.5326 192.938 24.6248 192.914Z" fill="#E4CB66"/>
+        <path id="balloon_color" d="M24.247 66.783C18.2669 54.6976 15.5102 40.7551 19.6668 28.4924C23.8234 16.2298 36.1743 6.40763 50.2436 7.38434C66.3972 8.46487 80.0424 23.5741 81.9872 38.5069C83.8768 53.2337 76.2863 67.2996 65.1318 76.47C55.6476 84.1994 43.846 89.1277 31.3565 92.5847C29.1637 93.1723 29.333 95.9969 31.5828 96.7187C39.2374 98.9727 47.7505 100.776 41.6208 92.1525C35.4825 83.8626 29.1804 76.0581 24.247 66.783Z" fill="#E9DED0"/>
+        <path d="M48.0204 30.8334C42.0444 30.8392 38.9524 30.9461 36.9908 32.9077C35.0292 34.8693 34.9223 37.9613 34.9165 43.9373H41.8773C41.3801 43.3162 41.0086 42.5836 40.806 41.7733C40.0435 38.7232 42.8063 35.9604 45.8564 36.7229C46.6668 36.9255 47.3993 37.297 48.0204 37.7942V30.8334Z" fill="#121B43"/>
+        <path d="M34.9165 46.0623C34.9223 52.0382 35.0292 55.1301 36.9908 57.0917C38.9524 59.0532 42.0444 59.1602 48.0204 59.166V48.0082C46.9158 50.2144 44.6346 51.7289 41.9995 51.7289C41.4127 51.7289 40.937 51.2532 40.937 50.6664C40.937 50.0796 41.4127 49.6039 41.9995 49.6039C44.1766 49.6039 46.0008 48.0928 46.4805 46.0623H34.9165Z" fill="#121B43"/>
+        <path d="M50.145 59.166C56.1209 59.1602 59.2128 59.0532 61.1745 57.0917C63.136 55.1301 63.243 52.0382 63.2488 46.0623H51.6848C52.1645 48.0928 53.9887 49.6039 56.1659 49.6039C56.7526 49.6039 57.2284 50.0796 57.2284 50.6664C57.2284 51.2532 56.7526 51.7289 56.1659 51.7289C53.5307 51.7289 51.2495 50.2144 50.145 48.0082V59.166Z" fill="#121B43"/>
+        <path d="M63.2488 43.9373C63.243 37.9613 63.136 34.8693 61.1745 32.9077C59.2128 30.9461 56.1209 30.8392 50.145 30.8334V37.7942C50.7661 37.297 51.4986 36.9255 52.3088 36.7229C55.3591 35.9604 58.1218 38.7232 57.3593 41.7733C57.1567 42.5836 56.7852 43.3162 56.288 43.9373H63.2488Z" fill="#121B43"/>
+        <path d="M45.3409 38.7844C46.9155 39.1781 48.0203 40.5929 48.0203 42.216V43.9372H46.299C44.6759 43.9372 43.2611 42.8325 42.8674 41.2579C42.494 39.7641 43.8471 38.411 45.3409 38.7844Z" fill="#121B43"/>
+        <path d="M50.145 42.216V43.9372H51.8661C53.4892 43.9372 54.904 42.8325 55.2977 41.2579C55.6712 39.7641 54.3181 38.411 52.8244 38.7844C51.2496 39.1781 50.145 40.5929 50.145 42.216Z" fill="#121B43"/>
+      </svg>
+      <div>
+        <h5>Giftshop</h5>
+        <p>Leva para casa uma seleção de lembranças que capturam a essência do nosso circo</p>
+      </div>
+    </div>
+    </div>
     
-    <section class="explore-website-section">
-      <h1 class="section-subtitle">Explora o nosso website</h1>
-      <div class=" explore-website-container"> 
-        <div class="website-page">
-        <svg width="95" height="193" viewBox="0 0 95 193" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M69.9358 192.914C69.8436 192.889 69.6824 192.753 69.5903 192.729C62.1785 180.949 62.1216 162.362 62.7776 145.907L62.8722 142.236C63.5056 125.128 64.1854 107.478 59.0332 93.5317C58.8951 93.3099 59.0566 93.076 59.2871 92.953C59.5176 92.8299 59.7709 92.9902 59.909 93.212C65.1072 107.355 64.4043 125.092 63.7709 142.2L63.6763 145.87C63.0434 162.239 63.0543 180.629 70.328 192.187C70.4661 192.409 70.3968 192.668 70.1663 192.791C70.1432 192.877 70.0279 192.938 69.9358 192.914Z" fill="#E4CB66"/>
-          <path id="balloon_color" d="M70.3135 66.783C76.2937 54.6976 79.0503 40.7551 74.8937 28.4924C70.7371 16.2298 58.3862 6.40763 44.3169 7.38434C28.1634 8.46487 14.5181 23.5741 12.5733 38.5069C10.6837 53.2337 18.2742 67.2996 29.4288 76.47C38.913 84.1994 50.7145 89.1277 63.2041 92.5847C65.3969 93.1723 65.2276 95.9969 62.9777 96.7187C55.3231 98.9727 46.81 100.776 52.9397 92.1525C59.0781 83.8626 65.3801 76.0581 70.3135 66.783Z" fill="#E9DED0"/>
-          <path d="M41.5039 29H28.0879V41.2166H35.0629C38.2624 39.4547 41.5039 32.3553 41.5039 29Z" fill="#121B43"/>
-          <path d="M28.0879 43.0154V59.5025C30.6566 59.5025 31.5131 57.8541 34.3683 58.9035C37.2236 59.953 39.0784 58.6032 39.0784 58.6032C39.0784 58.6032 36.901 48.3767 35.3194 43.0154H28.0879Z" fill="#121B43"/>
-          <path d="M49.6719 29C49.6719 32.3553 52.9133 39.4547 56.1129 41.2166H63.0879V29H49.6719Z" fill="#121B43"/>
-          <path d="M52.0972 58.6032C52.0972 58.6032 53.952 59.9529 56.8073 58.9035C59.6624 57.8541 60.519 59.5025 63.0877 59.5025V43.0154H55.8562C54.2746 48.3767 52.0972 58.6032 52.0972 58.6032Z" fill="#121B43"/>
-          <path d="M42.2337 36.1383L41.5398 39.5302L38.1489 40.2231L41.5398 40.9159L42.2337 44.3073L42.9266 40.9159L46.3175 40.2231L42.9266 39.5302L42.2337 36.1383Z" fill="#121B43"/>
-          <path d="M51.141 46.0258L50.6287 43.5226L50.1175 46.0258L47.6138 46.5367L50.1175 47.0487L50.6287 49.5524L51.141 47.0487L53.6439 46.5367L51.141 46.0258Z" fill="#121B43"/>
-          <path d="M41.7809 51.6694L41.3838 53.6118L39.4404 54.0092L41.3838 54.4065L41.7809 56.3495L42.1778 54.4065L44.1218 54.0092L42.1778 53.6118L41.7809 51.6694Z" fill="#121B43"/>
-        </svg>
-        <div>
-          <h5>Espetáculos</h5>
-          <p>A unir arte, criatividade e educação  numa experiência única!</p>
-        </div>
-      </div>
-      <div class="website-page middle">
-        <svg width="95" height="193" viewBox="0 0 95 193" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M24.6248 192.914C24.7169 192.889 24.8781 192.753 24.9703 192.729C32.3821 180.949 32.439 162.362 31.7829 145.907L31.6883 142.236C31.0549 125.128 30.3751 107.478 35.5273 93.5317C35.6654 93.3099 35.504 93.076 35.2735 92.953C35.043 92.8299 34.7896 92.9902 34.6515 93.212C29.4533 107.355 30.1563 125.092 30.7897 142.2L30.8843 145.87C31.5172 162.239 31.5062 180.629 24.2326 192.187C24.0945 192.409 24.1638 192.668 24.3943 192.791C24.4174 192.877 24.5326 192.938 24.6248 192.914Z" fill="#E4CB66"/>
-          <path id="balloon_color" d="M24.247 66.783C18.2669 54.6976 15.5102 40.7551 19.6668 28.4924C23.8234 16.2298 36.1743 6.40763 50.2436 7.38434C66.3972 8.46487 80.0424 23.5741 81.9872 38.5069C83.8768 53.2337 76.2863 67.2996 65.1318 76.47C55.6476 84.1994 43.846 89.1277 31.3565 92.5847C29.1637 93.1723 29.333 95.9969 31.5828 96.7187C39.2374 98.9727 47.7505 100.776 41.6208 92.1525C35.4825 83.8626 29.1804 76.0581 24.247 66.783Z" fill="#E9DED0"/>
-          <g clip-path="url(#clip0_2066_2935)">
-          <path d="M60.5593 57.0741L58.8439 54.9725L57.1277 52.8691L55.4123 50.7684V50.7675L53.7271 48.7022V48.7013C51.2622 47.2737 50.0821 49.4095 48.9048 49.5918L49.3026 50.7596L52.5498 53.8687L54.4897 55.727H54.4905L56.4304 57.5863H56.4313L58.3704 59.4446H58.3712L60.2237 61.2198L61.7118 60.9856L62.1972 59.082L60.5593 57.0741Z" fill="#F4EDE4"/>
-          <path d="M49.3027 40.2708C49.1713 40.4619 49.0537 40.6626 48.9475 40.8714C47.7188 43.2773 48.0502 46.7278 47.8273 48.4243L46.3822 48.8656L44.8783 48.7011C44.3614 48.3747 43.834 48.0058 43.3024 47.5973C42.1586 46.718 40.9959 45.6575 39.8724 44.4404C35.2831 39.4686 33.0925 33.7802 34.981 31.7343C35.261 31.4309 35.6145 31.2249 36.0293 31.1098C36.0326 31.1098 36.0351 31.109 36.0383 31.1081C38.4224 30.4545 42.8052 32.8037 46.7096 37.0335C47.1881 37.5509 47.6404 38.0772 48.0641 38.6062C48.0674 38.6106 48.0706 38.6141 48.0739 38.6186C48.5156 39.1678 48.9247 39.7206 49.3027 40.2708Z" fill="#121B43"/>
-          <path d="M49.685 41.6703C48.3297 43.7993 48.0445 46.7756 47.8273 48.4243L46.3822 48.8657L45.5469 49.4554C45.5437 49.4527 45.3346 49.0862 45.3313 49.0844L44.8783 48.7011C44.3614 48.3747 43.834 48.0059 43.3024 47.5973C42.1586 46.7181 40.9959 45.6576 39.8724 44.4405C35.2831 39.4687 33.0925 33.7803 34.981 31.7344C35.261 31.431 35.6145 31.225 36.0293 31.1099C36.0326 31.1099 36.0351 31.109 36.0383 31.1082C35.4349 33.691 37.6027 38.439 41.507 42.6696C42.4361 43.6762 43.3923 44.574 44.3427 45.3524C44.8023 43.7726 45.7037 41.9576 46.9709 40.1134C47.3122 39.6154 47.6804 39.1157 48.074 38.6186C48.5157 39.1678 48.9247 39.7207 49.3027 40.2709C49.1713 40.4619 49.7912 41.4616 49.685 41.6703Z" fill="#121B43"/>
-          <path d="M50.3871 48.848L53.8048 52.5099L52.5499 53.8694L50.6426 52.0429L48.9419 50.4136L50.3871 48.848Z" fill="#F4EDE4"/>
-          <path d="M63.9991 59.0244C64.4032 59.4622 64.4032 60.1734 63.9991 60.6112L61.6362 63.171C61.2312 63.6097 60.5755 63.6097 60.1706 63.171L60.0293 63.0179C59.6243 62.5792 59.6243 61.869 60.0293 61.4303L60.2236 61.2198L62.1971 59.0819L62.3922 58.8705C62.7964 58.4326 63.4528 58.4326 63.857 58.8705L63.9991 59.0244Z" fill="#121B43"/>
-          <path d="M46.3821 46.8588L44.8781 48.7012L43.1921 50.7674L41.4767 52.869L39.7613 54.9724L38.045 57.074L36.4072 59.0819L36.9196 61.0427L38.3806 61.2197L40.234 59.4445L42.174 57.5861L44.1147 55.7278L46.0555 53.8694L49.3026 50.7595L49.6635 50.4136L49.0716 48.6448L46.3821 46.8588Z" fill="#F4EDE4"/>
-          <path d="M58.8438 54.9724L60.5592 57.074L58.3711 59.4445H58.3703L56.4312 57.5861L58.8438 54.9724Z" fill="#121B43"/>
-          <path d="M55.4123 50.7683L57.1278 52.8691L54.4905 55.7269H54.4897L52.5498 53.8686L55.4123 50.7683Z" fill="#121B43"/>
-          <path d="M58.3711 59.4455L59.3182 58.4194L61.0728 60.3008L60.2245 61.2198L58.3711 59.4455Z" fill="#F4EDE4"/>
-          <path d="M54.4897 55.7278L55.6426 54.4797L57.4805 56.4495L56.4314 57.5862L54.4897 55.7278Z" fill="#F4EDE4"/>
-          <path d="M60.2249 61.2197L61.0732 60.3007L62.6882 62.0317L61.6366 63.1709C61.2324 63.6097 60.576 63.6097 60.1718 63.1709L60.0297 63.0179C59.6255 62.5792 59.6255 61.8689 60.0297 61.4302L60.2249 61.2197Z" fill="#121B43"/>
-          <path d="M56.4312 57.5861L57.4803 56.4495L59.3182 58.4193L58.3711 59.4454L56.4312 57.5861Z" fill="#121B43"/>
-          <path d="M53.8047 52.5099L55.6426 54.4797L54.4897 55.7278L52.5498 53.8694L53.8047 52.5099Z" fill="#121B43"/>
-          <path d="M38.045 57.074L38.9921 58.1L37.2555 60.0008L36.4072 59.0819L38.045 57.074Z" fill="#F4EDE4"/>
-          <path d="M41.4766 52.869L42.6287 54.1179L40.8104 56.109L39.7612 54.9724L41.4766 52.869Z" fill="#F4EDE4"/>
-          <path d="M47.8271 48.4244L44.4469 52.1269L43.1919 50.7674L44.8779 48.7012L46.3819 46.8588L47.8271 48.4244Z" fill="#F4EDE4"/>
-          <path d="M38.5749 63.0179L38.4336 63.171C38.0295 63.6097 37.373 63.6097 36.9688 63.171L34.606 60.6112C34.201 60.1733 34.201 59.4622 34.606 59.0243L34.7473 58.8704C35.1523 58.4325 35.8079 58.4325 36.2128 58.8704L36.4071 59.0818L38.5748 61.4301C38.9798 61.869 38.9798 62.5793 38.5749 63.0179Z" fill="#121B43"/>
-          <path d="M42.1738 57.5861L40.2339 59.4445L38.992 58.1L38.0449 57.074L39.7612 54.9724L40.8103 56.109L42.1738 57.5861Z" fill="#121B43"/>
-          <path d="M46.0554 53.8694L44.1146 55.7278L42.6286 54.118L41.4766 52.8691L43.192 50.7675L44.4469 52.1269L46.0554 53.8694Z" fill="#121B43"/>
-          <path d="M36.4072 59.0819L37.2555 60.0009L35.6576 61.7504L34.606 60.6112C34.201 60.1733 34.201 59.4622 34.606 59.0243L34.7473 58.8704C35.1523 58.4325 35.8079 58.4325 36.2128 58.8704L36.4072 59.0819Z" fill="#121B43"/>
-          <path d="M39.7612 54.9724L40.8103 56.109L38.992 58.1L38.0449 57.074L39.7612 54.9724Z" fill="#121B43"/>
-          <path d="M44.4469 52.1269L42.6286 54.118L41.4766 52.8691L43.192 50.7675L44.4469 52.1269Z" fill="#121B43"/>
-          <path d="M63.6245 31.7354C65.5122 33.7804 63.3224 39.4687 58.733 44.4405C57.0878 46.2228 55.3569 47.6717 53.7272 48.7013C52.242 49.6398 50.841 50.2315 49.6636 50.4137L46.3822 46.8588H46.3813C46.6239 45.0154 47.6567 42.667 49.3027 40.2709C50.0465 39.1874 50.9169 38.0941 51.8958 37.0336C56.4852 32.0618 61.736 29.6886 63.6245 31.7354Z" fill="#121B43"/>
-          <path d="M51.0946 42.2121C51.8384 41.1286 52.7088 40.0353 53.6877 38.9748C57.5306 34.8118 61.8366 32.4714 64.2446 33.0215C64.1461 32.5149 63.9476 32.0854 63.6406 31.7528C61.7521 29.7061 56.5014 32.0792 51.912 37.0511C50.933 38.1116 50.0626 39.2049 49.3188 40.2884C47.6728 42.6846 46.64 45.0329 46.3975 46.8762H46.3983L48.1733 48.7992C48.416 46.956 49.4487 44.6079 51.0946 42.2121Z" fill="#121B43"/>
-          </g>
-          <defs>
-          <clipPath id="clip0_2066_2935">
-          <rect width="30" height="32.5" fill="white" transform="translate(34.3022 31)"/>
-          </clipPath>
-          </defs>
-        </svg>
-        <div>
-          <h5>Workshops</h5>
-          <p>Atividades que mostram como arte e ecologia podem caminhar juntas</p>
-        </div>
-      </div>
-      <div class="website-page">
-        <svg width="95" height="193" viewBox="0 0 95 193" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M69.9358 192.914C69.8436 192.889 69.6824 192.753 69.5903 192.729C62.1785 180.949 62.1216 162.362 62.7776 145.907L62.8722 142.236C63.5056 125.128 64.1854 107.478 59.0332 93.5317C58.8951 93.3099 59.0566 93.076 59.2871 92.953C59.5176 92.8299 59.7709 92.9902 59.909 93.212C65.1072 107.355 64.4043 125.092 63.7709 142.2L63.6763 145.87C63.0434 162.239 63.0543 180.629 70.328 192.187C70.4661 192.409 70.3968 192.668 70.1663 192.791C70.1432 192.877 70.0279 192.938 69.9358 192.914Z" fill="#E4CB66"/>
-          <path id="balloon_color" d="M70.3135 66.783C76.2937 54.6976 79.0503 40.7551 74.8937 28.4924C70.7371 16.2298 58.3862 6.40763 44.3169 7.38434C28.1634 8.46487 14.5181 23.5741 12.5733 38.5069C10.6837 53.2337 18.2742 67.2996 29.4288 76.47C38.913 84.1994 50.7145 89.1277 63.2041 92.5847C65.3969 93.1723 65.2276 95.9969 62.9777 96.7187C55.3231 98.9727 46.81 100.776 52.9397 92.1525C59.0781 83.8626 65.3801 76.0581 70.3135 66.783Z" fill="#E9DED0"/>
-          <path d="M56.6685 31.8846H55.1685V30.4423C55.1685 29.5769 54.5685 29 53.6685 29C52.7685 29 52.1685 29.5769 52.1685 30.4423V31.8846H40.1685V30.4423C40.1685 29.5769 39.5685 29 38.6685 29C37.7685 29 37.1685 29.5769 37.1685 30.4423V31.8846H35.6685C33.1185 31.8846 31.1685 33.7596 31.1685 36.2115V37.6538H61.1685V36.2115C61.1685 33.7596 59.2185 31.8846 56.6685 31.8846ZM31.1685 53.5192C31.1685 55.9712 33.1185 57.8462 35.6685 57.8462H56.6685C59.2185 57.8462 61.1685 55.9712 61.1685 53.5192V40.5385H31.1685V53.5192ZM53.6685 43.4231C54.5685 43.4231 55.1685 44 55.1685 44.8654C55.1685 45.7308 54.5685 46.3077 53.6685 46.3077C52.7685 46.3077 52.1685 45.7308 52.1685 44.8654C52.1685 44 52.7685 43.4231 53.6685 43.4231ZM53.6685 49.1923C54.5685 49.1923 55.1685 49.7692 55.1685 50.6346C55.1685 51.5 54.5685 52.0769 53.6685 52.0769C52.7685 52.0769 52.1685 51.5 52.1685 50.6346C52.1685 49.7692 52.7685 49.1923 53.6685 49.1923ZM46.1685 43.4231C47.0685 43.4231 47.6685 44 47.6685 44.8654C47.6685 45.7308 47.0685 46.3077 46.1685 46.3077C45.2685 46.3077 44.6685 45.7308 44.6685 44.8654C44.6685 44 45.2685 43.4231 46.1685 43.4231ZM46.1685 49.1923C47.0685 49.1923 47.6685 49.7692 47.6685 50.6346C47.6685 51.5 47.0685 52.0769 46.1685 52.0769C45.2685 52.0769 44.6685 51.5 44.6685 50.6346C44.6685 49.7692 45.2685 49.1923 46.1685 49.1923ZM38.6685 43.4231C39.5685 43.4231 40.1685 44 40.1685 44.8654C40.1685 45.7308 39.5685 46.3077 38.6685 46.3077C37.7685 46.3077 37.1685 45.7308 37.1685 44.8654C37.1685 44 37.7685 43.4231 38.6685 43.4231ZM38.6685 49.1923C39.5685 49.1923 40.1685 49.7692 40.1685 50.6346C40.1685 51.5 39.5685 52.0769 38.6685 52.0769C37.7685 52.0769 37.1685 51.5 37.1685 50.6346C37.1685 49.7692 37.7685 49.1923 38.6685 49.1923Z" fill="#121B43"/>
-        </svg>
-        <div>
-          <h5>Programa</h5>
-          <p>Cada momento mágico foi pensado para oferecer uma experiência inesquecível</p>
-        </div>
-      </div>
-      <div class="website-page">
-        <svg width="95" height="193" viewBox="0 0 95 193" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M24.6248 192.914C24.7169 192.889 24.8781 192.753 24.9703 192.729C32.3821 180.949 32.439 162.362 31.7829 145.907L31.6883 142.236C31.0549 125.128 30.3751 107.478 35.5273 93.5317C35.6654 93.3099 35.504 93.076 35.2735 92.953C35.043 92.8299 34.7896 92.9902 34.6515 93.212C29.4533 107.355 30.1563 125.092 30.7897 142.2L30.8843 145.87C31.5172 162.239 31.5062 180.629 24.2326 192.187C24.0945 192.409 24.1638 192.668 24.3943 192.791C24.4174 192.877 24.5326 192.938 24.6248 192.914Z" fill="#E4CB66"/>
-          <path id="balloon_color" d="M24.247 66.783C18.2669 54.6976 15.5102 40.7551 19.6668 28.4924C23.8234 16.2298 36.1743 6.40763 50.2436 7.38434C66.3972 8.46487 80.0424 23.5741 81.9872 38.5069C83.8768 53.2337 76.2863 67.2996 65.1318 76.47C55.6476 84.1994 43.846 89.1277 31.3565 92.5847C29.1637 93.1723 29.333 95.9969 31.5828 96.7187C39.2374 98.9727 47.7505 100.776 41.6208 92.1525C35.4825 83.8626 29.1804 76.0581 24.247 66.783Z" fill="#E9DED0"/>
-          <g opacity="0.9">
-          <path d="M33.8715 47.8843L36.0942 46.6317L36.6015 32.0889L34.6687 32.0017C33.6458 31.9555 32.7847 32.8579 32.7451 34.0194L32.3355 45.7385C32.3157 46.2961 32.4926 46.8392 32.8254 47.2488C33.1035 47.5897 33.4736 47.8064 33.8715 47.8843Z" fill="#121B43"/>
-          <path d="M44.0876 41.8789L42.0407 39.4292C41.9604 39.3327 41.9348 39.1913 41.9755 39.0658C42.0162 38.9403 42.1151 38.8517 42.2327 38.8385L45.1884 38.4844C45.2897 38.4725 45.3793 38.4038 45.427 38.3034L46.8501 35.3369C46.9072 35.2193 47.0177 35.148 47.1341 35.1533C47.2516 35.1585 47.3552 35.2392 47.4041 35.3607L48.6131 38.4461C48.655 38.5518 48.7376 38.6271 48.8389 38.6482L49.8757 38.8676L55.4928 35.7043L55.5894 32.9413L38.8603 32.1908L38.4019 45.3329L44.1621 42.0877C44.1539 42.0111 44.1341 41.9371 44.0876 41.8789Z" fill="#121B43"/>
-          <path d="M59.7401 33.8526C60.2975 33.8526 60.8317 33.9834 61.3193 34.2133C61.0144 33.5949 60.4488 33.1615 59.7797 33.1312L57.848 33.0439L57.8003 34.4049L57.9143 34.3415C58.4776 34.0231 59.1106 33.8526 59.7401 33.8526Z" fill="#121B43"/>
-          <path d="M33.0288 51.2258C32.5889 51.4742 32.2538 51.9129 32.0967 52.4374C31.9396 52.9647 31.9757 53.5434 32.1921 54.0429L37.5986 66.4121C37.9197 67.152 38.5772 67.5801 39.258 67.5801C39.5349 67.5801 39.8154 67.5088 40.0795 67.3595L42.3883 66.0619L35.3375 49.9269L33.0288 51.2258Z" fill="#121B43"/>
-          <path d="M66.807 49.9584L61.4005 37.5879C61.0805 36.8479 60.4207 36.4198 59.74 36.4198C59.4653 36.4198 59.1826 36.4898 58.9184 36.6405L56.6108 37.9407L63.6627 54.0757L65.9703 52.7768C66.4102 52.5284 66.7465 52.091 66.9024 51.5651C67.0595 51.0366 67.0257 50.4578 66.807 49.9584Z" fill="#121B43"/>
-          <path d="M37.3647 48.783L44.4166 64.9167L61.6379 55.2153L54.586 39.079L37.3647 48.783ZM55.1062 55.7875C55.0515 55.9064 54.9409 55.9804 54.8269 55.9791L51.3603 55.8879C51.259 55.8852 51.1636 55.9394 51.1031 56.0319L49.0713 59.219C49.0015 59.326 48.8851 59.3802 48.7688 59.3564C48.6524 59.334 48.557 59.2401 48.5232 59.1093L47.5306 55.3382C47.5027 55.2285 47.4271 55.1413 47.3305 55.1056L44.0326 53.8966C43.9209 53.8556 43.8383 53.746 43.8208 53.6138C43.8034 53.4791 43.8546 53.3496 43.9512 53.2729L46.7998 51.0372C46.8836 50.9725 46.9337 50.8641 46.9337 50.7478L46.9255 46.8128C46.9255 46.6794 46.9918 46.5565 47.0977 46.497C47.2025 46.4376 47.3281 46.4508 47.4212 46.5314L50.1768 48.9191C50.2571 48.9891 50.363 49.0103 50.4596 48.9733L53.7551 47.7497C53.8668 47.7087 53.9879 47.7431 54.0705 47.8382C54.1519 47.9333 54.181 48.0747 54.1426 48.2003L52.9417 52.085L55.0794 55.4109C55.1504 55.5245 55.1585 55.6699 55.1062 55.7875Z" fill="#121B43"/>
-          </g>
-        </svg>
-        <div>
-          <h5>Bilhetes</h5>
-          <p>Escolhe o bilhete que combina mais contigo e vem fazer parte deste evento único</p>
-        </div>
-      </div>
-      <div class="website-page middle">
-        <svg width="95" height="193" viewBox="0 0 95 193" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M69.9358 192.914C69.8436 192.889 69.6824 192.753 69.5903 192.729C62.1785 180.949 62.1216 162.362 62.7776 145.907L62.8722 142.236C63.5056 125.128 64.1854 107.478 59.0332 93.5317C58.8951 93.3099 59.0566 93.076 59.2871 92.953C59.5176 92.8299 59.7709 92.9902 59.909 93.212C65.1072 107.355 64.4043 125.092 63.7709 142.2L63.6763 145.87C63.0434 162.239 63.0543 180.629 70.328 192.187C70.4661 192.409 70.3968 192.668 70.1663 192.791C70.1432 192.877 70.0279 192.938 69.9358 192.914Z" fill="#E4CB66"/>
-          <path id="balloon_color" d="M70.3135 66.783C76.2937 54.6976 79.0503 40.7551 74.8937 28.4924C70.7371 16.2298 58.3862 6.40763 44.3169 7.38434C28.1634 8.46487 14.5181 23.5741 12.5733 38.5069C10.6837 53.2337 18.2742 67.2996 29.4288 76.47C38.913 84.1994 50.7145 89.1277 63.2041 92.5847C65.3969 93.1723 65.2276 95.9969 62.9777 96.7187C55.3231 98.9727 46.81 100.776 52.9397 92.1525C59.0781 83.8626 65.3801 76.0581 70.3135 66.783Z" fill="#E9DED0"/>
-          <g clip-path="url(#clip0_2066_2938)">
-          <path d="M57.0208 30.762H33.0208C32.6672 30.762 32.3281 30.9075 32.078 31.1664C31.828 31.4254 31.6875 31.7767 31.6875 32.1429V57.0001C31.6875 57.3663 31.828 57.7176 32.078 57.9765C32.3281 58.2355 32.6672 58.381 33.0208 58.381H57.0208C57.3745 58.381 57.7136 58.2355 57.9636 57.9765C58.2137 57.7176 58.3542 57.3663 58.3542 57.0001V32.1429C58.3542 31.7767 58.2137 31.4254 57.9636 31.1664C57.7136 30.9075 57.3745 30.762 57.0208 30.762ZM37.0208 39.0477C37.0208 38.6814 37.1613 38.3302 37.4114 38.0712C37.6614 37.8122 38.0005 37.6667 38.3542 37.6667H42.3542C42.7078 37.6667 43.0469 37.8122 43.297 38.0712C43.547 38.3302 43.6875 38.6814 43.6875 39.0477V44.5715C43.6875 44.9377 43.547 45.289 43.297 45.548C43.0469 45.8069 42.7078 45.9524 42.3542 45.9524H38.3542C38.0005 45.9524 37.6614 45.8069 37.4114 45.548C37.1613 45.289 37.0208 44.9377 37.0208 44.5715V39.0477ZM51.6875 51.4762H38.3542C38.0005 51.4762 37.6614 51.3308 37.4114 51.0718C37.1613 50.8128 37.0208 50.4615 37.0208 50.0953C37.0208 49.729 37.1613 49.3778 37.4114 49.1188C37.6614 48.8598 38.0005 48.7143 38.3542 48.7143H51.6875C52.0411 48.7143 52.3803 48.8598 52.6303 49.1188C52.8804 49.3778 53.0208 49.729 53.0208 50.0953C53.0208 50.4615 52.8804 50.8128 52.6303 51.0718C52.3803 51.3308 52.0411 51.4762 51.6875 51.4762ZM51.6875 45.9524H47.6875C47.3339 45.9524 46.9947 45.8069 46.7447 45.548C46.4946 45.289 46.3542 44.9377 46.3542 44.5715C46.3542 44.2052 46.4946 43.854 46.7447 43.595C46.9947 43.336 47.3339 43.1905 47.6875 43.1905H51.6875C52.0411 43.1905 52.3803 43.336 52.6303 43.595C52.8804 43.854 53.0208 44.2052 53.0208 44.5715C53.0208 44.9377 52.8804 45.289 52.6303 45.548C52.3803 45.8069 52.0411 45.9524 51.6875 45.9524ZM51.6875 40.4286H47.6875C47.3339 40.4286 46.9947 40.2831 46.7447 40.0242C46.4946 39.7652 46.3542 39.4139 46.3542 39.0477C46.3542 38.6814 46.4946 38.3302 46.7447 38.0712C46.9947 37.8122 47.3339 37.6667 47.6875 37.6667H51.6875C52.0411 37.6667 52.3803 37.8122 52.6303 38.0712C52.8804 38.3302 53.0208 38.6814 53.0208 39.0477C53.0208 39.4139 52.8804 39.7652 52.6303 40.0242C52.3803 40.2831 52.0411 40.4286 51.6875 40.4286Z" fill="#121B43"/>
-          </g>
-          <defs>
-          <clipPath id="clip0_2066_2938">
-          <rect width="32" height="33.1429" fill="white" transform="translate(29.021 28)"/>
-          </clipPath>
-          </defs>
-        </svg>
-        <div>
-          <h5>Notícias</h5>
-          <p>Explora artigos, bastidores e atualizações que mostram a nossa paixão pelo circo</p>
-        </div>
-      </div>
-      <div class="website-page">
-        <svg width="95" height="193" viewBox="0 0 95 193" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M24.6248 192.914C24.7169 192.889 24.8781 192.753 24.9703 192.729C32.3821 180.949 32.439 162.362 31.7829 145.907L31.6883 142.236C31.0549 125.128 30.3751 107.478 35.5273 93.5317C35.6654 93.3099 35.504 93.076 35.2735 92.953C35.043 92.8299 34.7896 92.9902 34.6515 93.212C29.4533 107.355 30.1563 125.092 30.7897 142.2L30.8843 145.87C31.5172 162.239 31.5062 180.629 24.2326 192.187C24.0945 192.409 24.1638 192.668 24.3943 192.791C24.4174 192.877 24.5326 192.938 24.6248 192.914Z" fill="#E4CB66"/>
-          <path id="balloon_color" d="M24.247 66.783C18.2669 54.6976 15.5102 40.7551 19.6668 28.4924C23.8234 16.2298 36.1743 6.40763 50.2436 7.38434C66.3972 8.46487 80.0424 23.5741 81.9872 38.5069C83.8768 53.2337 76.2863 67.2996 65.1318 76.47C55.6476 84.1994 43.846 89.1277 31.3565 92.5847C29.1637 93.1723 29.333 95.9969 31.5828 96.7187C39.2374 98.9727 47.7505 100.776 41.6208 92.1525C35.4825 83.8626 29.1804 76.0581 24.247 66.783Z" fill="#E9DED0"/>
-          <path d="M48.0204 30.8334C42.0444 30.8392 38.9524 30.9461 36.9908 32.9077C35.0292 34.8693 34.9223 37.9613 34.9165 43.9373H41.8773C41.3801 43.3162 41.0086 42.5836 40.806 41.7733C40.0435 38.7232 42.8063 35.9604 45.8564 36.7229C46.6668 36.9255 47.3993 37.297 48.0204 37.7942V30.8334Z" fill="#121B43"/>
-          <path d="M34.9165 46.0623C34.9223 52.0382 35.0292 55.1301 36.9908 57.0917C38.9524 59.0532 42.0444 59.1602 48.0204 59.166V48.0082C46.9158 50.2144 44.6346 51.7289 41.9995 51.7289C41.4127 51.7289 40.937 51.2532 40.937 50.6664C40.937 50.0796 41.4127 49.6039 41.9995 49.6039C44.1766 49.6039 46.0008 48.0928 46.4805 46.0623H34.9165Z" fill="#121B43"/>
-          <path d="M50.145 59.166C56.1209 59.1602 59.2128 59.0532 61.1745 57.0917C63.136 55.1301 63.243 52.0382 63.2488 46.0623H51.6848C52.1645 48.0928 53.9887 49.6039 56.1659 49.6039C56.7526 49.6039 57.2284 50.0796 57.2284 50.6664C57.2284 51.2532 56.7526 51.7289 56.1659 51.7289C53.5307 51.7289 51.2495 50.2144 50.145 48.0082V59.166Z" fill="#121B43"/>
-          <path d="M63.2488 43.9373C63.243 37.9613 63.136 34.8693 61.1745 32.9077C59.2128 30.9461 56.1209 30.8392 50.145 30.8334V37.7942C50.7661 37.297 51.4986 36.9255 52.3088 36.7229C55.3591 35.9604 58.1218 38.7232 57.3593 41.7733C57.1567 42.5836 56.7852 43.3162 56.288 43.9373H63.2488Z" fill="#121B43"/>
-          <path d="M45.3409 38.7844C46.9155 39.1781 48.0203 40.5929 48.0203 42.216V43.9372H46.299C44.6759 43.9372 43.2611 42.8325 42.8674 41.2579C42.494 39.7641 43.8471 38.411 45.3409 38.7844Z" fill="#121B43"/>
-          <path d="M50.145 42.216V43.9372H51.8661C53.4892 43.9372 54.904 42.8325 55.2977 41.2579C55.6712 39.7641 54.3181 38.411 52.8244 38.7844C51.2496 39.1781 50.145 40.5929 50.145 42.216Z" fill="#121B43"/>
-        </svg>
-        <div>
-          <h5>Giftshop</h5>
-          <p>Leva para casa uma seleção de lembranças que capturam a essência do nosso circo</p>
-        </div>
-      </div>
-      </div>
-      
-    </section>
+  </section>
 
-    <section class="gallery">
-      <div class="gallery-title">
-        <h1 class="section-subtitle" >Galeria</h1>
-        <RouterLink id="exploreGallery" :to="{name: 'gallery'}">
-          <svg width="32px" height="32px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(0)">
-            <g id="SVGRepo_bgCarrier" stroke-width="0"/>
-            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
-            <g id="SVGRepo_iconCarrier"> <path d="M6 12H18M18 12L13 7M18 12L13 17" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
-          </svg>
-        </RouterLink>
-      </div>
-      
-      <div class="gallery-section-container "> 
-            <div class="gallery-img-container">
-                <v-row dense >
-                <!-- Renderiza cada imagem ocupando 2 colunas -->
+  <section class="gallery">
+    <div class="gallery-title">
+      <h1 class="section-subtitle" >Galeria</h1>
+      <RouterLink id="exploreGallery" :to="{name: 'gallery'}">
+        <svg width="32px" height="32px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(0)">
+          <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+          <g id="SVGRepo_iconCarrier"> <path d="M6 12H18M18 12L13 7M18 12L13 17" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
+        </svg>
+      </RouterLink>
+    </div>
+    
+    <div class="gallery-section-container "> 
+          <div class="gallery-img-container">
+              <v-row dense >
+              <!-- Renderiza cada imagem ocupando 2 colunas -->
+              <v-col v-for="post in userStore.userPosts" :key="post.id" cols="4">
+                  <div class="post-container">
+                  <v-img :src="post.image" alt="Imagem"
+                    class="align-end gallery-img-card ma-2" 
+                    id="post-img"
+                    :aspectRatio="1.5"
+                    cover></v-img>
+                  <div class="post-details">
+                    <p><b>{{ post.author }}</b></p>
+                    <p><b>{{ post.caption }}</b></p>
+                  </div>
+                  </div>
+                </v-col>
                 <v-col
                     v-for="photo in photos" :key="photo.id"
                     cols="4">
-                
-                    <v-img
-                    :src="photo.src.original || photo.urls.full" alt="Imagem"
-                    class="align-end gallery-img-card ma-2" 
-                    :aspectRatio="1.5"
-                    cover
-                    ></v-img>
-                    
-                </v-col>
-                </v-row>
-            </div>   
-        </div>
-      
-    </section>
-
-    <section class="volunteering-section">
-      <h1>Voluntaria-te e vive o Circo!</h1>
-      <p>Descobre a magia do circo por dentro e ajuda-nos a criar momentos inesquecíveis!
-      <br> <br>Se és um especialista em técnicas circenses candidata-te como voluntário para ensinar nos nossos workshops. <br>Entra em contacto.</p>
-      <button>
-          <RouterLink id="findMoreActivities" :to="{name: 'contacts'}">Contactar
-          <img id="arrowIcon" src="@/assets/img/arrow.png" alt="Ícone de seta"/>
-          </RouterLink>
-      </button>
-      <img src="/src/assets/home_assets/palhaço_homepage.svg" alt="" class="home-page-clown">
-    </section>
-
+                    <div class="post-container">
+                      <v-img
+                      :src="photo.src.original || photo.urls.full" alt="Imagem"
+                      class="align-end gallery-img-card ma-2" 
+                      :aspectRatio="1.5"
+                      cover
+                      ></v-img>
+                      <div class="post-details">
+                      <p><b>Circo Illusioni</b></p>
+                      <p><b>O nosso circo!</b></p>
+                    </div>
+                  </div>
+              </v-col>
+              </v-row>
+          </div>   
+      </div>
     
+  </section>
 
-  <Footer></Footer>
+  <section class="volunteering-section">
+    <h1>Voluntaria-te e vive o Circo!</h1>
+    <p>Descobre a magia do circo por dentro e ajuda-nos a criar momentos inesquecíveis!
+    <br> <br>Se és um especialista em técnicas circenses candidata-te como voluntário para ensinar nos nossos workshops. <br>Entra em contacto.</p>
+    <button>
+        <RouterLink id="findMoreActivities" :to="{name: 'contacts'}">Contactar
+        <img id="arrowIcon" src="@/assets/img/arrow.png" alt="Ícone de seta"/>
+        </RouterLink>
+    </button>
+    <img src="/src/assets/home_assets/palhaço_homepage.svg" alt="" class="home-page-clown">
+  </section>
+
+  
+
+<Footer></Footer>
 </template>
 
 <script >
 import { usePhotoStore } from '@/stores/photo'
+import { useUserStore } from '@/stores/users'
 import { RouterLink } from 'vue-router';
 import Footer from '@/components/Footer.vue';
 
 export default {
-  components: {
-    Footer
+components: {
+  Footer
+},
+
+data() {
+  return {
+      userStore: useUserStore(),
+      photosStore: usePhotoStore(),
+      photos:[],
+
+  }
   },
 
-  data() {
-    return {
-        
-        photosStore: usePhotoStore(),
-        photos:[],
-  
-    }
-    },
+  async created() {
+  try {
 
-    async created() {
-    try {
+    await this.photosStore.pexelsFetchCircusPhotos()
+    this.photos=this.photosStore.Photos
+    console.log("ok")
+  } catch (error) {
+    alert(error.message);
+  }
+},
 
-      await this.photosStore.pexelsFetchCircusPhotos()
-      this.photos=this.photosStore.Photos
-      console.log("ok")
-    } catch (error) {
-      alert(error.message);
-    }
-  },
-
-        
+      
 };
 
 </script>
@@ -458,82 +478,73 @@ export default {
 <style lang="scss" scoped>
 /* Hero Section */
 .home-main-section{
-  position: relative;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  padding: 8rem 0 38rem;
-  color: #fff;
+position: relative;
+justify-content: center;
+align-items: center;
+flex-wrap: wrap;
+padding: 8rem 0 38rem;
+color: #fff;
 }
 
 .home-main-section h2{
-  font-weight: 500;
-  font-size: 40px;
+font-weight: 500;
+font-size: 40px;
 }
 
 .home-main-section h1{
-  font-weight:800;
-  font-size: 70px;
+font-weight:800;
+font-size: 70px;
 }
 
 .home-main-section h3{
-  font-weight:200;
-  font-size: 22px;
-  
+font-weight:200;
+font-size: 22px;
+
 }
 
 .welcome-text{
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  padding: 0rem 4rem;
+display: flex;
+flex-direction: column;
+gap: 0.5rem;
+padding: 0rem 4rem;
 }
 
-// #myVideo {
-//   position: absolute;
-//   right: 0;
-//   bottom: 0;
-//   min-width: 100%;
-//   max-height: 50%;
-
-// }
-
 .video-container{
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-    z-index: -1;
-    left: 0;
-    // transform: translateY(-42%);
-    // background-image: url('src/assets/home_assets/forma_video.svg');
+position: absolute;
+width: 100%;
+height: 100%;
+top: 0;
+  z-index: -1;
+  left: 0;
+  // transform: translateY(-42%);
+  // background-image: url('src/assets/home_assets/forma_video.svg');
 }
 
 #myVideo{
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  clip-path: url(#videoShape);
-  -webkit-clip-path: url(#videoShape); /* Compatibilidade */
-  // mask-image: url(#videoShape); /* Compatível com navegadores modernos */
-  // -webkit-mask-image: url(#videoShape); /* Compatível com Safari */
-  // mask-type: alpha; /* Usa o canal alfa para definir a opacidade */
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+object-fit: cover;
+clip-path: url(#videoShape);
+-webkit-clip-path: url(#videoShape); /* Compatibilidade */
+// mask-image: url(#videoShape); /* Compatível com navegadores modernos */
+// -webkit-mask-image: url(#videoShape); /* Compatível com Safari */
+// mask-type: alpha; /* Usa o canal alfa para definir a opacidade */
 
 }
 
 .gradient{
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  clip-path: url(#videoShape);
-  -webkit-clip-path: url(#videoShape);
+position: absolute;
+z-index: 1;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+object-fit: cover;
+clip-path: url(#videoShape);
+-webkit-clip-path: url(#videoShape);
 }
 
 // #buyTickets svg{
@@ -542,44 +553,44 @@ export default {
 
 /* Secção "Sobre Evento"*/
 .about-event-section {
-  display: grid;
-  grid-template-columns: 50% 30%;
-  // padding-top: 8rem;
-  justify-content: space-between;
+display: grid;
+grid-template-columns: 50% 30%;
+// padding-top: 8rem;
+justify-content: space-between;
 }
 
 .about-event-desc{
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 85%;
+display: flex;
+flex-direction: column;
+gap: 10px;
+width: 85%;
 }
 .about-event-details{
-  display: flex;
-  justify-content: space-between;
-  margin-top: 2rem;
-  width: 60%;
+display: flex;
+justify-content: space-between;
+margin-top: 2rem;
+width: 60%;
 }
 
 .about-event-details-desc{
-  display: flex; 
-  flex-direction: column;
+display: flex; 
+flex-direction: column;
 }
 
 .btn-red{
-  margin-top: 50px;
-  font-family: var(--font-Lexend);
-  text-transform: capitalize;
-  min-width: 1% ; 
-  background-color: var(--color-red-btn) ;
-  color: white; 
-  border-radius: 50px;
-  padding: 0.5rem 1rem;
-  max-width: 150px;
-  font-size: 1rem;
-  
+margin-top: 50px;
+font-family: var(--font-Lexend);
+text-transform: capitalize;
+min-width: 1% ; 
+background-color: var(--color-red-btn) ;
+color: white; 
+border-radius: 50px;
+padding: 0.5rem 1rem;
+max-width: 150px;
+font-size: 1rem;
 
-  transition: background-color 0.3s ease-in-out;
+
+transition: background-color 0.3s ease-in-out;
 }
 
 
@@ -589,10 +600,10 @@ color: hsl(0, 0%, 100%);
 }
 
 .home-graphic-el-about img{
-  position: absolute; /* ou absolute, dependendo do layout */
-    z-index: -1;
-    
-    transform: translateY(-40%);
+position: absolute; /* ou absolute, dependendo do layout */
+  z-index: -1;
+  
+  transform: translateY(-40%);
 }
 
 
@@ -616,237 +627,261 @@ color: hsl(0, 0%, 100%);
 
 /*Secção "Datas Especiais" */
 .special-dates-section{
-  display: grid;
-  grid-template-columns: 70% 30%;
-  justify-content: space-between;
+display: grid;
+grid-template-columns: 70% 30%;
+justify-content: space-between;
 }
 
 .special-dates-container h3{
-  font-size: 25px;
-  padding-bottom: 1.5rem;
-  margin-top: 2rem;
+font-size: 25px;
+padding-bottom: 1.5rem;
+margin-top: 2rem;
 }
 
 .special-dates-texts{
-  display: grid;
-  grid-template-columns: 50% 50%;
+display: grid;
+grid-template-columns: 50% 50%;
 
-  justify-content: space-between;
-  margin: 0;
+justify-content: space-between;
+margin: 0;
 }
 
 .special-dates-texts .p_title{
-  font-weight: 600;
-  width: 100%;
+font-weight: 600;
+width: 100%;
 }
 
 .special-dates-texts .p_desc{
-  width: 85%;
+width: 85%;
 }
 
 .special-dates-desc{
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
- 
+display: flex;
+flex-direction: column;
+gap: 1rem;
+
 }
 
 .home-graphic-el-spacial-dates{
-  // background-image: url('/src/assets/home_assets/home_yellow_graphic_el.svg');
-  position: absolute; /* ou absolute, dependendo do layout */
-    z-index: -1;
-    right: 0;
-    transform: translateY(-25%);
+position: absolute; /* ou absolute, dependendo do layout */
+z-index: -1;
+right: 0;
+transform: translateY(-25%);
 }
-
-
-
-// .special-dates-cards div p:nth-of-type(1) {
-//   font-weight: 600;
-//   margin-bottom: 10px;
-// }
-
-// #shape1{
-//   position: absolute;
-//   width: 500px;
-//   height: 615px;
-//   left: 70%;
-//   top: 200%;
-// }
 
 /* Secção "Os Nossos Espetáculos" */
 .shows-info-section{
-  padding-top: 12rem;
+padding-top: 12rem;
 }
 
 .shows-info-title, .gallery-title{
-  display: flex;
-  margin-bottom: 20px;
+display: flex;
+margin-bottom: 20px;
 }
 
 #findMoreShows, #exploreGallery{
-  background-color: #E63946;
-  width: 40px;
-  height: 40px;
-  border-radius: 100px;
-  margin-left: 10px;
+background-color: #E63946;
+width: 40px;
+height: 40px;
+border-radius: 100px;
+margin-left: 10px;
 }
 
 .shows-available{
-  display: grid;
-  grid-template-columns: auto auto auto auto;
-  margin: auto;
+display: grid;
+grid-template-columns: auto auto auto auto;
+margin: auto;
 }
 
 .show-card {
-  width: 295px;
-  height: 400px;
-  position: relative;
-  transition: opacity 0.3s ease; 
-  opacity: 0.7;
+width: 295px;
+height: 400px;
+position: relative;
+transition: opacity 0.3s ease; 
+opacity: 0.7;
 }
 
 .show-card:hover{
-  opacity: 1;
+opacity: 1;
 }
 
 .show-card h4{
-  position: absolute;
-  color: white;
-  margin-top: -15%;
-  margin-left: 5%;
+position: absolute;
+color: white;
+margin-top: -15%;
+margin-left: 5%;
 }
 
 /* Secção "Mapa Interativo" */
 .interactive-map-section{
-  display: flex;
-  flex-direction: column;
-  padding: 0rem 0rem;
+display: flex;
+flex-direction: column;
+padding: 0rem 0rem;
 }
 .interactive-map-section h1{
-  width: 400px;
-  margin-top: 50px ;
-  margin-bottom: 1rem;
-  padding: 0rem 4rem;
+width: 400px;
+margin-top: 50px ;
+margin-bottom: 1rem;
+padding: 0rem 4rem;
 }
 
 .interactive-map-section p{
-  padding: 0rem 4rem;
-  width: 60%; 
+padding: 0rem 4rem;
+width: 60%; 
 }
 
-.interactive-map {
-  margin-top: 50px ;
+.tooltip{
+position: absolute;
+}
+
+.tooltip .tooltipText{
+visibility: hidden;
+width: 140px;
+background-color: white;
+color: #B72636;
+text-align: center;
+border-radius: 6px;
+padding: 10px 0;
+position: absolute;
+z-index: 1;
+margin-left: -38px;
+margin-top: 60px;
+}
+
+.tooltip .tooltipText::after{
+/* Propriedades do tooltip */
+content: "";
+position: absolute;
+bottom: 100%;
+left: 50%;
+margin-left: -5px;
+border-width: 5px;
+border-style: solid;
+border-color: transparent transparent white transparent;
+}
+
+.tooltip:hover .tooltipText{
+visibility: visible;
 }
 
 .interactive-map-icon{
-  position: absolute;
+position: absolute;
 }
 
-.interactive-map-icon:hover svg #icon-color{
-  fill: #B72636;
-}
-
-
-// .custom-tooltip p{
-//   color: #B72636;
-// }
-
-.tooltip-background {
-  position: absolute;
-  height: 100%;
-  z-index: -1;
+.interactive-map-icon:hover #icon-color{
+fill: #B72636;
 }
 
 #main-tent{
-  margin-top: 22%;
-  margin-left: 43%;
+margin-top: 22%;
+margin-left: 43%;
 }
 
 #workshops{
-  margin-top: 14%;
-  margin-left: 24%;
+margin-top: 14%;
+margin-left: 24%;
 }
 
 #ticket-office{
-  margin-top: 6%;
-  margin-left: 51%;
+margin-top: 6%;
+margin-left: 51%;
 }
 
 #giftshop{
-  margin-top: 28.5%;
-  margin-left: 74%;
+margin-top: 28.5%;
+margin-left: 74%;
 }
 
 #food-court{
-  margin-top: 17%;
-  margin-left: 83.5%;
+margin-top: 17%;
+margin-left: 83.5%;
 }
 
 /* Secção "Explora o nosso website" */
 .explore-website-container{
-  display: grid;
-  grid-template-columns: auto auto auto;
-  gap: 50px;
-  padding-top: 3rem;
+display: grid;
+grid-template-columns: auto auto auto;
+gap: 50px;
+padding-top: 3rem;
 }
 
 .website-page{
-  display: grid;
-  grid-template-columns: auto auto;
+display: grid;
+grid-template-columns: auto auto;
 }
 
 .website-page h5{
 
- font-weight: 500;
- font-size: 20px;
- margin-bottom: 0.6rem;
+font-weight: 500;
+font-size: 20px;
+margin-bottom: 0.6rem;
 }
 
 .website-page p{
-  margin: 0;
-  width: 70%;
+margin: 0;
+width: 70%;
 }
 
 .website-page svg:hover #balloon_color{
-  fill: #E4CB66;
-  transition: fill 0.5s ease;
+fill: #E4CB66;
+transition: fill 0.5s ease;
 }
 
 .middle{
-  margin-top: 4rem;
+margin-top: 4rem;
 }
 /* gallerry section */
 
 .gallery-img-card{
-    border-radius: 2%;
-  }
+  border-radius: 2%;
+}
+
+
+.post-details{
+display: none;
+position: absolute;
+background-image: url('@/assets/post-background.svg');
+width: 443px;
+height: 50px;
+margin-top: -58px;
+margin-left: 7px;
+}
+
+.post-container:hover .post-details{
+display: flex;
+justify-content: space-between;
+}
+
+.post-details p{
+margin-top: 22px;
+padding: 0 10px;
+}
 
 /* Secção "Voluntaria-te e vive o Circo" */
 .volunteering-section{
-  margin: 8rem auto ;
-  width: 45%;
-  
+margin: 8rem auto ;
+width: 45%;
+
 }
 
 .volunteering-section h1{
-  text-align: center;
-  font-size: 2rem;
-  margin: 0;
+text-align: center;
+font-size: 2rem;
+margin: 0;
 }
 
 .volunteering-section p{
-  margin-top: 2rem;
-  font-size: 18px;
+margin-top: 2rem;
+font-size: 18px;
 }
 
 .volunteering-section button{
-  margin-top: 3rem;
+margin-top: 3rem;
 }
 
 .home-page-clown{
-  position: absolute;
-  margin-left: 30%;
-  margin-top: -8%;
+position: absolute;
+margin-left: 30%;
+margin-top: -8%;
 }
 </style>

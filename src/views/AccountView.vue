@@ -20,20 +20,26 @@
                
                     <v-card class="badges-section" flat>
                         <div>
-                            <img v-if="!badge1.obtained" src="@/assets/AccountView/badge1-not-obtained.svg" alt="">
-                            <img v-else src="@/assets/AccountView/badge1-obtained.svg" alt="">
-                            <p v-if="badge1.used">Já utilizaste este código!</p>
+                            <img v-if="!badge1.obtained" src="@/assets/AccountView/badge1-not-obtained.svg" alt="Medalha nº1 não obtida">
+                            <img v-else src="@/assets/AccountView/badge1-obtained.svg" alt="Medalha nº1 obtida">
+                            <div class="badge-usage">
+                                <p v-if="badge1.used" id="badge-used">Já utilizaste este código!</p>
+                                <p v-else id="badge-not-used">Código: <b>"fa_de_workshops"</b></p>
+                            </div>
                         </div>
 
                         <div>
-                            <img v-if="!badge2.obtained" src="@/assets/AccountView/badge2-not-obtained.svg" alt="">
-                            <img v-else src="@/assets/AccountView/badge2-obtained.svg" alt="">
+                            <img v-if="!badge2.obtained" src="@/assets/AccountView/badge2-not-obtained.svg" alt="Medalha nº2 não obtida">
+                            <img v-else src="@/assets/AccountView/badge2-obtained.svg" alt="Medalha nº2 obtida">
                         </div>
 
                         <div>
-                            <img v-if="!badge3.obtained" src="@/assets/AccountView/badge3-not-obtained.svg" alt="">
-                            <img v-else src="@/assets/AccountView/badge3-obtained.svg" alt="">
-                            <p v-if="badge3.used">Já utilizaste este código!</p>
+                            <img v-if="!badge3.obtained" src="@/assets/AccountView/badge3-not-obtained.svg" alt="Medalha nº3 não obtida">
+                            <img v-else src="@/assets/AccountView/badge3-obtained.svg" alt="Medalha nº3 obtida">
+                            <div class="badge-usage">
+                                <p v-if="badge3.used" id="badge-used">Já utilizaste este código!</p>
+                                <p v-else id="badge-not-used">Código: <b>"#vida_social"</b></p>
+                            </div>
                         </div>
                     </v-card>
                 </v-tabs-window-item>
@@ -96,7 +102,7 @@
                         <v-form ref="form" v-model="valid">
                             <!-- Campo de Upload -->
                             <v-file-input
-                            label="Partilhar de Foto"
+                            label="Partilhar Foto"
                             show-size
                             truncate-length="15"
                             accept="image/*"
@@ -127,11 +133,11 @@
                                 <v-img :src="post.image" ></v-img>
                                 <div class="share-gallery-card-actions">
                                     <v-card-text>
-                                    <p>{{ post.caption }}</p>
+                                        <p>{{ post.caption }}</p>
                                     </v-card-text>
                                     <v-card-actions>
-                                        <v-btn color="red" @click="removePost(index)" icon>
-                                        <v-icon>mdi-delete</v-icon>
+                                        <v-btn color="red" @click="this.userStore.removePost(false, post.id)" icon>
+                                            <v-icon>mdi-delete</v-icon>
                                         </v-btn>
                                     </v-card-actions>
                                 </div>
@@ -263,50 +269,26 @@ import { useTicketStore } from "@/stores/ticket";
                 return !!v || 'Campo é obrigatório'
             },
 
-            addPost() {    
-                this.uploadToAPI(); // Chama a função para fazer o upload da imagem
-                
-                this.userStore.addNewPost(this.userStore.fullName, this.postImageSrc.name, this.postCaption)
-                alert('Publicação feita com sucesso!')
+
+            addPost() {
+                const reader = new FileReader();
+
+                // Quando o arquivo for lido, atualiza a variável postImageSrc com o conteúdo da imagem
+                reader.onload = (e) => {
+                    this.postImageSrc = e.target.result;  // Agora postImageSrc contém a URL de dados base64 da imagem
+                    console.log('Imagem lida:', this.postImageSrc);  // Verifica se a imagem foi lida corretamente
+                    
+                    // Adiciona a publicação
+                    this.userStore.addNewPost(this.userStore.fullName, this.postImageSrc, this.postCaption);
+                    
+                    // Limpar os campos após adicionar
+                    this.postImageSrc = '';  // Limpa a imagem
+                    this.postCaption = '';   // Limpa a legenda
+                };
+
+                reader.readAsDataURL(this.postImageSrc);
             },
-
-            async uploadToAPI() {
-                if (!this.postImageSrc) {
-                    alert("Por favor, selecione uma imagem.");
-                    return;
-                }
-
-                const formData = new FormData();
-                formData.append("image", this.postImageSrc); // Adiciona o arquivo à FormData                
-                formData.append("publicId", `user_${this.userStore.userInfo.id}`); // Adiciona um ID único, se necessário
-
-                for (let pair of formData.entries()) {
-                console.log(pair[0]+ ': ' + pair[1]);
-                }
-                try {
-                    const response = await fetch('/api/upload', {
-                        method: 'POST',
-                        body: formData, // Envia a FormData com o arquivo
-                    });
-
-                    if (response.ok) {
-                        const result = await response.json();
-                        alert(`Imagem enviada com sucesso! URL: ${result.url}`);
-                        // Adicionar a imagem ao sistema local
-                        this.postImageSrc = result.url // Passa a URL da imagem para a variavel `postImageSrc`
-                    } else {
-                        throw new Error("Erro no envio da imagem.");
-                    }
-                } catch (error) {
-                    console.error("Erro ao enviar imagem:", error);
-                    alert("Ocorreu um erro ao enviar a imagem.");
-                }
-            },
-
-            
-            removePost(aa) {
-                return
-            },
+        
         },
         
     }
@@ -351,6 +333,10 @@ h2 {
 .badges-section{
     display: flex;
     justify-content: start;
+}
+
+.badge-usage p{
+    text-align: center;
 }
 
 // share content tab

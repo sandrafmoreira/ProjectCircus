@@ -225,19 +225,30 @@
 
             verifyDiscount()  {
                 /**
-                 * Antes de poder um código, vai se verificar se o utilizador está apto para o utiilizar
+                 * Antes de poder usar um código, vai se verificar se o utilizador está apto para o utiilizar
                  * ou seja, se desbloqueou a oferta para o respetivo código, e também se ainda não o utilizou
                  */
                 let verifyBadge = this.userStore.userInfo.badges.filter(badge => !badge.used)
 
                 //verificar se o código de desconto esta correto
+                if (this.promoCode == 'fa_de_workshops') {
+                    verifyBadge.forEach(badge => {
+                        //verificar se o utilizador já usou o código
+                        if (badge.id == 1 && !badge.used) {
+                            this.usePromoCode = true
+                            this.promoCodeValue = 20
+                        } else if (badge.id == 1 && badge.used) {
+                            alert('Já usaste este código!')
+                        }
+                    });
+                }
                 if (this.promoCode == '#vida_social') {
                     verifyBadge.forEach(badge => {
                         //verificar se o utilizador já usou o código
                         if (badge.id == 3 && !badge.used) {
                             this.usePromoCode = true
                             this.promoCodeValue = 20
-                        } else if (badge.id == 3 && badge.used || badge.id == 1 && badge.used) {
+                        } else if (badge.id == 3 && badge.used) {
                             alert('Já usaste este código!')
                         }
                     });
@@ -249,9 +260,13 @@
                  * Depois de se verificar o código, calcula-se o desconto que é dado, dependendo do produto que
                  * o utilizador seleciona onde usar o desconto
                  */
-                let productSelected = this.userStore.userInfo.userCart.find(product => product.product.id == id)                
-                
-                this.discount = (productSelected.product.price -((1 - (this.promoCodeValue / 100)) * productSelected.product.price)).toFixed(2)
+                if (this.promoCode == 'fa_de_workshops') {
+                    let ticketSelected = this.userStore.userInfo.userCart.find()
+                } else if (this.promoCode == '#vida_social') {
+                    let productSelected = this.userStore.userInfo.userCart.find(product => product.product.id == id)                
+                    
+                    this.discount = (productSelected.product.price -((1 - (this.promoCodeValue / 100)) * productSelected.product.price)).toFixed(2)
+                }
             },
 
             confirmOrder() {
@@ -260,14 +275,24 @@
                  * e se sim, expirar o respetivo código 
                  */
                 let verifyBadge = this.userStore.userInfo.badges.filter(badge => !badge.used)
-                
-                if (this.promoCode == '#vida_social') {
+                let badgeFound = false
+
+                if (this.promoCode == '#fa_de_workshops') {
                     verifyBadge.forEach(badge => {
                         if (badge.id == 1 && !badge.used) {
                             this.userStore.useBadge(badge.id)
-                        } else if (badge.id == 3 && !badge.used) {
+                            badgeFound = true
+                        } else if(badge.id == 3 && !badgeFound) {
+                            alert('Já usaste este código!')
+                            return
+                        }
+                    });
+                } else if (this.promoCode == '#vida_social') {
+                    verifyBadge.forEach(badge => {
+                        if (badge.id == 3 && !badge.used) {
                             this.userStore.useBadge(badge.id)
-                        }else {
+                            badgeFound = true
+                        } else if(badge.id == 3 && !badgeFound) {
                             alert('Já usaste este código!')
                             return
                         }

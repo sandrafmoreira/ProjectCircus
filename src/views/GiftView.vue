@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="go-back-section">
-            <button @click="back"><img src="@/assets/GiftshopView/left-arrow.svg" alt=""></button>
+            <button @click="back"><img src="@/assets/GiftshopView/left-arrow.svg" alt="Icone de Seta"></button>
             <h2>Catálogo / {{ productName }}</h2>
         </div>    
 
