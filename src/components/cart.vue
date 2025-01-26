@@ -2,15 +2,18 @@
     <v-menu v-model="menu" :close-on-content-click="false" location="end" min-width="536">
         <!--Mostra o nº de produtos que estão no carrinho-->
         <template v-slot:activator="{ props }">
+
             <!--Se o utilizador estiver autenticado-->
             <v-badge v-if="userStore.isAuthenticated" :content="countTotalProducts">
-                <v-btn class="cart-button" v-bind="props" color="#E63946" rounded="xl"></v-btn>
-                <img class="cart-icon" src="../assets/shopping-cart.png" alt="">
+                <button class="cart-button" v-bind="props" color="#F4EDE4">
+                    <img class="cart-icon" src="../assets/nav_img/cart-icon.svg" alt="">
+                </button>
             </v-badge>
             <!--Se o utilizador não estiver autenticado-->
             <v-badge v-else :content="countTotalProducts">
-                <v-btn class="cart-button" v-bind="props" color="#E63946" rounded="xl"></v-btn>
-                <img class="cart-icon" src="../assets/shopping-cart.png" alt="">
+                <button class="cart-button" v-bind="props" color="#F4EDE4">
+                    <img class="cart-icon" src="../assets/nav_img/cart-icon.svg" alt="">
+                </button>
             </v-badge>
         </template>
 
@@ -19,7 +22,7 @@
             <!--Se o utilizador estiver autenticado-->
             <div v-if="userStore.isAuthenticated" class="cart-list">
                 <!--Produtos da giftshop adicionado-->
-                <v-list v-for="product in userStore.userInfo.userCart" class="cart-item">
+                <v-list v-for="product in userStore.userInfo.userCart.giftshop" class="cart-item">
                     <v-list-item class="cart-item-image">
                         <v-img :src="product.product.image" alt="Imagem de produto da giftshop"/>
                     </v-list-item>
@@ -40,7 +43,7 @@
                 </v-list>
                 
                 <!-- Bilhetes adicionados -->
-                <v-list v-for="ticket in ticketStore.purchasedTickets" :key="ticket.id" class="cart-item">
+                <v-list v-for="ticket in userStore.userInfo.userCart.tickets" :key="ticket.id" class="cart-item">
                     <v-list-tem class="cart-item-image">
                         <img src="/src/assets/tickets-icon.svg" alt="Icone de bilhete">
                     </v-list-tem>
@@ -61,7 +64,7 @@
                     </v-list-item>
                 </v-list>
                 <!-- Workshops adicionados -->
-                <v-list v-for="workshop in ticketStore.purchasedWorkshops" :key="workshop.id" class="cart-item">
+                <v-list v-for="workshop in userStore.userInfo.userCart.workshops" :key="workshop.id" class="cart-item">
                     <v-list-item class="cart-item-image">
                         <img src="/src/assets/giftshop-ticket-icon.svg" alt="">
                     </v-list-item>
@@ -85,7 +88,7 @@
 
             <!--Se o utilizador não estiver autenticado-->
             <div v-if="!userStore.isAuthenticated">
-            <v-list v-for="product in userStore.cart" class="cart-item">
+            <v-list v-for="product in userStore.cart.giftshop" class="cart-item">
                 <v-list-item class="cart-item-image">
                         <v-img :src="product.product.image" alt="Imagem de produto da giftshop"/>
                     </v-list-item>
@@ -105,7 +108,7 @@
                     </v-list-item>
             </v-list>
 
-            <v-list v-for="ticket in ticketStore.purchasedTickets" :key="ticket.id" class="cart-item">
+            <v-list v-for="ticket in userStore.cart.tickets" :key="ticket.id" class="cart-item">
                 <v-list-tem class="cart-item-image">
                     <img src="/src/assets/tickets-icon.svg" alt="Icone de bilhete">
                 </v-list-tem>
@@ -126,7 +129,7 @@
                 </v-list-item>
             </v-list>
 
-            <v-list v-for="workshop in ticketStore.purchasedWorkshops" :key="workshop.id" class="cart-item">
+            <v-list v-for="workshop in userStore.cart.workshops" :key="workshop.id" class="cart-item">
                 <v-list-item class="cart-item-image">
                     <img src="/src/assets/giftshop-ticket-icon.svg" alt="">
                 </v-list-item>
@@ -150,9 +153,9 @@
 
             <v-divider></v-divider>
 
-            <v-form @submit.prevent>
-                <div class="form-inputs">
-                    <input type="text" label="Código de desconto" :disabled="!userStore.isAuthenticated" v-model="promoCode" class="promocode-input" placeholder="Código de Desconto"></input>
+            <v-form @submit.prevent v-if="userStore.isAuthenticated">
+                <div class="form-inputs" >
+                    <input type="text" label="Código de desconto" :disabled="!userStore.isAuthenticated" v-model="promoCode" class="promocode-input" placeholder="Código de Desconto">
                     <button @click="verifyDiscount">Adicionar</button>
                 </div>      
                 <v-select v-if="usePromoCode1" v-model="selectTicket"
@@ -167,6 +170,7 @@
                 item-title="name"
                 item-value="id"
                 @update:modelValue="useDiscount"></v-select>
+            </v-form>
                 <div class="order-details">
                     <p>Desconto(s) de código(s) promocional(s) </p>
                     <p>-{{ discount }}€</p>
@@ -190,7 +194,6 @@
                         </v-icon>
                     </v-btn>
                 </div>
-            </v-form>
         </v-card>
     </v-menu>
 </template>
@@ -228,14 +231,13 @@
                 let subtotal = 0;
                 //Multiplicar o nº de cada produto pelo seu preço e fazer a soma de tudo
                 if (this.userStore.isAuthenticated) {
-
                     //Produtos da Giftshop
-                    this.userStore.userInfo.userCart.forEach(product => {
+                    this.userStore.userInfo.userCart.giftshop.forEach(product => {
                         subtotal += product.units * (product.product.price * (1 - (product.product.discount / 100)))
                     });
                     
                     //Bilhetes
-                    this.ticketStore.purchasedTickets.forEach(ticket => {
+                    this.userStore.userInfo.userCart.tickets.forEach(ticket => {
                         if (ticket.discount) {
                             subtotal += ticket.quantity * (ticket.price * (1 - (ticket.discount / 100)))
                         } else {
@@ -244,15 +246,28 @@
                     })
 
                     //Workshops 
-                    this.ticketStore.purchasedWorkshops.forEach(ticket => {
+                    this.userStore.userInfo.userCart.workshops.forEach(ticket => {
+                        subtotal += ticket.quantity * ticket.price
+                    })
+                } else {
+                    //Produtos da Giftshop
+                    this.userStore.cart.giftshop.forEach(product => {
+                        subtotal += product.units * (product.product.price * (1 - (product.product.discount / 100)))
+                    });
+                    
+                    //Bilhetes
+                    this.userStore.cart.tickets.forEach(ticket => {
                         if (ticket.discount) {
                             subtotal += ticket.quantity * (ticket.price * (1 - (ticket.discount / 100)))
                         } else {
                             subtotal += ticket.quantity * ticket.price
                         }
                     })
-                } else {
-                    subtotal = this.userStore.cart.reduce((sum, product) => sum + (product.units * (product.product.price * (1 - (product.product.discount / 100)))), 0)
+
+                    //Workshops 
+                    this.userStore.cart.workshops.forEach(ticket => {
+                        subtotal += ticket.quantity * ticket.price
+                    })
                 }
                 subtotal -= this.discount
 
@@ -275,11 +290,11 @@
                 let productsList = []
                 
                 if (this.promoCode == '#vida_social') {
-                    this.userStore.userInfo.userCart.forEach(product => {                        
+                    this.userStore.userInfo.userCart.giftshop.forEach(product => {                        
                         productsList.push(product.product)
                     });
                 } else if (this.promoCode == 'fa_de_workshops') {
-                    this.ticketStore.purchasedTickets.forEach(ticket => {                        
+                    this.userStore.userInfo.userCart.tickets.forEach(ticket => {                        
                         productsList.push(ticket)
                     });
                 }
@@ -292,12 +307,10 @@
                  */
                 let count = 0;
 
-                count += this.ticketStore.purchasedTickets.length
-                count += this.ticketStore.purchasedWorkshops.length
                 if (this.userStore.isAuthenticated) {
-                    count += this.userStore.userInfo.userCart.length
+                    count = this.userStore.userInfo.userCart.giftshop.length + this.userStore.userInfo.userCart.workshops.length + this.userStore.userInfo.userCart.tickets.length
                 } else {
-                    count += this.userStore.cart.length
+                    count = this.userStore.cart.giftshop.length + this.userStore.cart.workshops.length + this.userStore.cart.tickets.length
                 }
 
                 return count
@@ -336,22 +349,34 @@
 
                 if (type == 'giftshop') {
                     if (this.userStore.isAuthenticated) {
-                        productIndex = this.userStore.userInfo.userCart.indexOf(product)
+                        productIndex = this.userStore.userInfo.userCart.giftshop.indexOf(product)
 
-                        this.userStore.userInfo.userCart.splice(productIndex, 1)
+                        this.userStore.userInfo.userCart.giftshop.splice(productIndex, 1)
                     } else {
-                        productIndex = this.userStore.cart.indexOf(product)
+                        productIndex = this.userStore.cart.giftshop.indexOf(product)
 
-                        this.userStore.cart.splice(productIndex, 1)
+                        this.userStore.cart.giftshop.splice(productIndex, 1)
                     }
                 } else if (type == 'ticket') {
-                    productIndex = this.ticketStore.purchasedTickets.indexOf(product)
+                    if (this.userStore.isAuthenticated) {
+                        productIndex = this.userStore.userInfo.userCart.tickets.indexOf(product)
 
-                    this.ticketStore.purchasedTickets.splice(productIndex, 1)
+                        this.userStore.userInfo.userCart.tickets.splice(productIndex, 1)
+                    } else {
+                        productIndex = this.userStore.cart.tickets.indexOf(product)
+
+                        this.userStore.cart.tickets.splice(productIndex, 1)
+                    }
                 } else if (type == 'workshop') {
-                    productIndex = this.ticketStore.purchasedWorkshops.indexOf(product)
+                    if (this.userStore.isAuthenticated) {
+                        productIndex = this.userStore.userInfo.userCart.workshops.indexOf(product)
 
-                    this.ticketStore.purchasedWorkshops.splice(productIndex, 1)
+                        this.userStore.userInfo.userCart.workshops.splice(productIndex, 1)
+                    } else {
+                        productIndex = this.userStore.cart.workshops.indexOf(product)
+
+                        this.userStore.cart.workshops.splice(productIndex, 1)
+                    }
                 }
                 
             },
@@ -395,11 +420,11 @@
                  * o utilizador seleciona onde usar o desconto
                  */
                 if (this.promoCode == 'fa_de_workshops') {
-                    let ticketSelected = this.ticketStore.purchasedTickets.find(ticket => ticket.id == id)
+                    let ticketSelected = this.userStore.userInfo.tickets.find(ticket => ticket.id == id)
 
                     this.discount = ((ticketSelected.price - (1 - (this.promoCodeValue / 100)) * ticketSelected.price) * ticketSelected.quantity).toFixed(2)
                 } else if (this.promoCode == '#vida_social') {
-                    let productSelected = this.userStore.userInfo.userCart.find(product => product.product.id == id)                
+                    let productSelected = this.userStore.userInfo.userCart.giftshop.find(product => product.product.id == id)                
                     
                     this.discount = ((productSelected.product.price - (1 - (this.promoCodeValue / 100)) * productSelected.product.price) * productSelected.units).toFixed(2)
                 }
@@ -435,15 +460,20 @@
                             }
                         });
                     }
-                    //Adicionar um produto ao histórico de produtos (this.userStore.userInfo.products)
-                    this.userStore.userInfo.userCart.forEach(product => {
+                    //Adicionar um produto ao histórico de produtos
+                    this.userStore.userInfo.userCart.giftshop.forEach(product => {
                         let d = new Date()
                         product.date = `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()} `
-                    });
-                    //Quando a compra for bem sucedida, os produtos que estavam no carrinho passam para o historido de produtos do utilizador (userInfo.products)
-                    this.userStore.userInfo.userCart.forEach(product => {
                         this.userStore.userInfo.products.push(product)
                     });
+
+                    this.userStore.userInfo.userCart.tickets.forEach(ticket => {
+                        this.ticketStore.addPurchasedTicket(ticket)
+                    })
+
+                    this.userStore.userInfo.userCart.workshops.forEach(workshop => {
+                        this.ticketStore.addPurchasedWorkshop(workshop)
+                    })
                 }
             
                 //Esvaziar o carrinho
@@ -453,10 +483,8 @@
                 this.discount = 0
                 this.selectProduct = 0
                 this.selectTicket = 0
-                this.userStore.userInfo.userCart = []
-                this.userStore.cart = []
-                this.ticketStore.purchasedTickets = []
-                this.ticketStore.purchasedWorkshops = []
+                this.userStore.userInfo.userCart = {tickets: [], workshops: [], giftshop: []}
+                this.userStore.cart = {tickets: [], workshops: [], giftshop: []}
                 alert('Compra feita com sucesso!')
                 
             }
@@ -467,9 +495,7 @@
 </script>
 
 <style lang="scss" scoped>
-.cart-icon{
-    position: absolute;
-}
+
 
 .cart{
     width: 450px;

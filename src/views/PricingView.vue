@@ -493,13 +493,11 @@
         },
         addTickets(tickets) {
             tickets.forEach(ticket => {
-                this.ticketStore.addPurchasedTicket(ticket);
-                this.userStore.addItem(ticket)
-
                 if (this.userStore.isAuthenticated) {
-                    this.userStore.userInfo.userCart.push(ticket)
+                    this.userStore.userInfo.userCart.tickets.push(ticket)
+                    this.userStore.addItem(ticket)
                 } else {
-                    this.userStore.cart.push(ticket)
+                    this.userStore.cart.tickets.push(ticket)
                 }
             });
         },
@@ -528,13 +526,11 @@
         },
         addWorkshops(workshops) {
             workshops.forEach(workshop => {
-                this.ticketStore.addPurchasedWorkshop(workshop);
-                this.userStore.addItem(workshop)
-                
                 if (this.userStore.isAuthenticated) {
-                    this.userStore.userInfo.userCart.push(workshop)
+                    this.userStore.userInfo.userCart.workshops.push(workshop)
+                    this.userStore.addItem(workshop)
                 } else {
-                    this.userStore.cart.push(workshop)
+                    this.userStore.cart.workshops.push(workshop)
                 }
             });
         },

@@ -114,27 +114,6 @@
 
 
          methods:{
-             
-
-              // async loadPhotos() {   
-              // // if (this.photosStore.Photos.length>=this.photosStore.maxPhotos) {
-              // //   return
-                
-              // // }   
-              // try {
-              //   console.log('lll');
-                
-              //     await this.photosStore.pexelsFetchCircusPhotos();
-              //     this.photos = this.photosStore.Photos; // Atualiza o estado local
-              //      console.log("Fetched photos:", this.photos);
-              //      if (this.photosStore.Photos.length<this.photosStore.maxPhotos) {
-              //     this.photosStore.per_page +=10 
-              //   }
-              // } catch (error) {
-              //     console.error('Erro ao buscar os todos:', error);
-              // }
-              // },
-
               verifyAutentication(event){
                   if(this.userStore.isAuthenticated){
                       this.$router.push(`/account/${this.userStore.userInfo.email}`)
@@ -173,8 +152,8 @@ height: 100%;
 .graphic-el-gallery{
   position: absolute; /* ou absolute, dependendo do layout */
   z-index: -1;
-left: 0;
-transform: translateY(-12%);
+  left: 0;
+  transform: translateY(-12%);
 
 }
 /* .gallery-img-container {
@@ -213,20 +192,24 @@ align-self: center;
 display: none;
 position: absolute;
 background-image: url('@/assets/post-background.svg');
-width: 390px;
+width: 500px;
 height: 50px;
 margin-top: -58px;
-margin-left: 7px;
+margin-left: 9.2px;
 }
 
 .post-container:hover .post-details{
-display: flex;
-justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .post-details p{
 margin-top: 22px;
 padding: 0 10px;
+}
+
+.post-details p:nth-of-type(2) {
+  margin-right: 60px;
 }
 
 </style>

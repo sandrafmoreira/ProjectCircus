@@ -23,7 +23,7 @@
       </video>
 
       <!--Forma para o vídeo--> 
-      <svg width="1440" height="1047" viewBox="0 0 1440 1047" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="1550" height="1047" viewBox="0 0 1550 1047" fill="none" xmlns="http://www.w3.org/2000/svg">
 
         <defs>
         <clipPath id="videoShape" clipPathUnits="userSpaceOnUse">
@@ -157,7 +157,7 @@
       <p>Consulta o nosso mapa para localizar todas as áreas do recinto, incluindo workshops, espetáculos e serviços.</p>
     </div>
     <!--Mapa Interativo & Icones-->
-    <div class="interactive-map">
+    <div class="interactive-map img-fluid img-responsive rounded d-block">
       <div class="tooltip" id="main-tent">
         <svg class="interactive-map-icon" width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect id="icon-color" width="60" height="60" rx="30" fill="#E63946"/>
@@ -236,9 +236,9 @@
           <path d="M38.2636 42.5H40.5273C41.6727 42.5 42.6136 41.6136 42.75 40.4955L45 18.0227H38.1818V12.5H35.4955V18.0227H28.7182L29.1273 21.2136C31.4591 21.8545 33.6409 23.0136 34.95 24.2955C36.9136 26.2318 38.2636 28.2364 38.2636 31.5091V42.5ZM15 41.1364V39.7727H35.4955V41.1364C35.4955 41.8727 34.8818 42.5 34.0909 42.5H16.3636C15.6136 42.5 15 41.8727 15 41.1364ZM35.4955 31.5909C35.4955 20.6818 15 20.6818 15 31.5909H35.4955ZM15 34.3182H35.4545V37.0455H15V34.3182Z" fill="white"/>
         </svg>
         <span class="tooltipText">Praça da Alimentação</span>
-      </div>
+      </div>      
       
-      <img src="/src/assets/home_assets/home-interactive-map.svg" class="img-fluid img-responsive rounded d-block" alt="Imagem da Área do Circo">
+      <img style="z-index: -5;" src="/src/assets/home_assets/home-interactive-map.svg" alt="Imagem da Área do Circo">
     </div>
   </section>
 
@@ -511,13 +511,17 @@ padding: 0rem 4rem;
 
 .video-container{
 position: absolute;
-width: 100%;
+width: 2000px;
 height: 100%;
 top: 0;
   z-index: -1;
+  z-index: -1;
+  left: 0;
+z-index: -1;
   left: 0;
   // transform: translateY(-42%);
   // background-image: url('src/assets/home_assets/forma_video.svg');
+
 }
 
 #myVideo{
@@ -528,6 +532,7 @@ width: 100%;
 height: 100%;
 object-fit: cover;
 clip-path: url(#videoShape);
+background-size: cover;
 -webkit-clip-path: url(#videoShape); /* Compatibilidade */
 // mask-image: url(#videoShape); /* Compatível com navegadores modernos */
 // -webkit-mask-image: url(#videoShape); /* Compatível com Safari */
@@ -536,15 +541,15 @@ clip-path: url(#videoShape);
 }
 
 .gradient{
-position: absolute;
-z-index: 1;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-object-fit: cover;
-clip-path: url(#videoShape);
--webkit-clip-path: url(#videoShape);
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  clip-path: url(#videoShape);
+  -webkit-clip-path: url(#videoShape);
 }
 
 // #buyTickets svg{
@@ -713,6 +718,12 @@ margin-left: 5%;
 }
 
 /* Secção "Mapa Interativo" */
+.interactive-map{
+  background-image: url("/src/assets/home_assets/home-interactive-map.svg");
+  background-size: cover;
+  z-index: 10;
+}
+
 .interactive-map-section{
 display: flex;
 flex-direction: column;
@@ -841,7 +852,7 @@ margin-top: 4rem;
 display: none;
 position: absolute;
 background-image: url('@/assets/post-background.svg');
-width: 390px;
+width: 510px;
 height: 50px;
 margin-top: -58px;
 margin-left: 7px;
@@ -855,6 +866,10 @@ justify-content: space-between;
 .post-details p{
 margin-top: 22px;
 padding: 0 10px;
+}
+
+.post-details p:nth-of-type(2) {
+  margin-right: 60px;
 }
 
 /* Secção "Voluntaria-te e vive o Circo" */
@@ -881,17 +896,17 @@ margin-top: 3rem;
 
 .home-page-clown{
 position: absolute;
-margin-left: 30%;
+margin-left: 35%;
 margin-top: -8%;
 }
 
 .btn-contact {
-        background-color: #E63946;
-        color: white;
-        padding: 10px 20px;
-        border-radius: 100px;
-        font-weight: 50px;
-        text-decoration: none;
-    }
+  background-color: #E63946;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 100px;
+  font-weight: 50px;
+  text-decoration: none;
+}
 
 </style>

@@ -77,9 +77,9 @@ import { useUserStore } from '@/stores/users';
             }
 
             if (this.userStore.isAuthenticated) {
-                this.userStore.userInfo.userCart.push(newProduct)
+                this.userStore.userInfo.userCart.giftshop.push(newProduct)
             } else {
-                this.userStore.cart.push(newProduct)
+                this.userStore.cart.giftshop.push(newProduct)
             }
 
             alert("Produto adicionado ao carrinho!")            

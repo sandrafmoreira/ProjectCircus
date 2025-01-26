@@ -7,12 +7,12 @@ export const useUserStore = defineStore("user", {
       isAuthenticated: false, //Verifica se o utilizador está autenticado
       userInfo: [], //Guarda as informações do utilizador
       //Array de utilizadores
-      cart: [], //se o utilizador nao tiver conta, este array servirá para guardar os produtos que deseja comprar
-      users: [{id: 1, email: "ken@123", firstName: "ken", lastName: "lukau", password: "123", badges: [{id: 1, used: false, code: 'fa_de_workshops'},{id: 2, used: false},{id: 3, used: false, code: '#vida_social'}], adminPermission: true, products: [], tickets: [], posts: [], userCart: []},
-      {id: 2, email: "nuno@456", firstName: "nuno", lastName: "nogueira", password: "456", badges: [{id: 1, used: false, code: 'fa_de_workshops'},{id: 2, used: false},{id: 3, used: false, code: '#vida_social'}], adminPermission: true, products: [], tickets: [], posts: [], userCart: []},
-      {id: 3, email: "sandra@789", firstName: "sandra", lastName: "moreira", password: "789", badges: [{id: 1, used: false, code: 'fa_de_workshops'},{id: 2, used: false},{id: 3, used: false, code: '#vida_social'}], adminPermission: true, products: [], tickets: [], posts: [], userCart: []},
-      {id: 4, email: "sofia_monteiro@g", firstName: "sofia", lastName: "monteiro", password: "planta123", badges: [], adminPermission: false, products: [], tickets: [], posts: [], userCart: []},
-      {id: 5, email: "isabel_almeida@g", firstName: "isabel", lastName: "almeida", password: "circo", badges: [], adminPermission: false, products: [], tickets: [], posts: [], userCart: []} 
+      cart: {tickets: [], workshops: [], giftshop: []}, //se o utilizador nao tiver conta, este array servirá para guardar os produtos que deseja comprar
+      users: [{id: 1, email: "ken@123", firstName: "ken", lastName: "lukau", password: "123", badges: [{id: 1, used: false, code: 'fa_de_workshops'},{id: 2, used: false},{id: 3, used: false, code: '#vida_social'}], adminPermission: true, products: [], tickets: [], posts: [], userCart: {tickets: [], workshops: [], giftshop: []}},
+      {id: 2, email: "nuno@456", firstName: "nuno", lastName: "nogueira", password: "456", badges: [{id: 1, used: false, code: 'fa_de_workshops'},{id: 2, used: false},{id: 3, used: false, code: '#vida_social'}], adminPermission: true, products: [], tickets: [], posts: [], userCart: {tickets: [], workshops: [], giftshop: []}},
+      {id: 3, email: "sandra@789", firstName: "sandra", lastName: "moreira", password: "789", badges: [{id: 1, used: false, code: 'fa_de_workshops'},{id: 2, used: false},{id: 3, used: false, code: '#vida_social'}], adminPermission: true, products: [], tickets: [], posts: [], userCart: {tickets: [], workshops: [], giftshop: []}},
+      {id: 4, email: "sofia_monteiro@g", firstName: "sofia", lastName: "monteiro", password: "planta123", badges: [], adminPermission: false, products: [], tickets: [], posts: [], userCart: {tickets: [], workshops: [], giftshop: []}},
+      {id: 5, email: "isabel_almeida@g", firstName: "isabel", lastName: "almeida", password: "circo", badges: [], adminPermission: false, products: [], tickets: [], posts: [], userCart: {tickets: [], workshops: [], giftshop: []}} 
     ],
       userPosts: []
   }
@@ -115,7 +115,7 @@ export const useUserStore = defineStore("user", {
 
     logout() {
       this.isAuthenticated = false;
-      this.cart = this.userInfo.products
+      this.cart = this.userInfo.userCart
       this.userInfo = [];
     },
 
@@ -205,7 +205,6 @@ export const useUserStore = defineStore("user", {
       //Atualizar a variavel `userInfo`
       this.userInfo.tickets.push(newItem)
       //Atualizar os dados na variavel `users`
-      //Iterar pela store dos `users` para encontrar o utilizador que quer alterar as suas informações
       this.users.forEach(user => {
         if (user.id == this.userInfo.id) {
           userFound = true

@@ -6,23 +6,23 @@
 
         <div class="d-flex flex-row">
             <v-tabs v-model="tab" color="primary" direction="vertical" class="left-tabs">
-                <v-tab text="A tua conta" value="1"></v-tab>
-                <v-tab text="Histórico de Produtos" value="2"></v-tab>
-                <v-tab text="Partilhar Conteúdo" value="3"></v-tab>
-                <v-tab text="Editar Conta" value="4"></v-tab>
+                <v-tab text="A tua conta" value="1" color="white"></v-tab>
+                <v-tab text="Histórico de Produtos" value="2" color="white"></v-tab>
+                <v-tab text="Partilhar Conteúdo" value="3" color="white"></v-tab>
+                <v-tab text="Editar Conta" value="4" color="white"></v-tab>
                 <v-tab v-if="userStore.userInfo.adminPermission" text="Administradores" value="5"></v-tab>
             </v-tabs>
 
             <v-tabs-window v-model="tab" class="windows">
                 <v-tabs-window-item value="1">
-                    <h2>{{ this.userStore.fullName }}</h2>
+                    <h2>Olá {{ this.userStore.fullName }}!</h2>
                     <p>Aqui podes consultar e editar os dados da tua conta. <br>Rever os bilhetes e produtos adquiridos durante a nossa <br>estadia, assim como os workshops em que te inscreveste.</p>
                
                     <v-card class="badges-section" flat>
                         <div>
                             <img v-if="!badge1.obtained" src="@/assets/AccountView/badge1-not-obtained.svg" alt="Medalha nº1 não obtida">
                             <img v-else src="@/assets/AccountView/badge1-obtained.svg" alt="Medalha nº1 obtida">
-                            <div class="badge-usage">
+                            <div class="badge-usage" v-if="badge1.obtained">
                                 <p v-if="badge1.used" id="badge-used">Já utilizaste este código!</p>
                                 <p v-else id="badge-not-used">Código: <b>"fa_de_workshops"</b></p>
                             </div>
@@ -36,7 +36,7 @@
                         <div>
                             <img v-if="!badge3.obtained" src="@/assets/AccountView/badge3-not-obtained.svg" alt="Medalha nº3 não obtida">
                             <img v-else src="@/assets/AccountView/badge3-obtained.svg" alt="Medalha nº3 obtida">
-                            <div class="badge-usage">
+                            <div class="badge-usage"  v-if="badge3.obtained">
                                 <p v-if="badge3.used" id="badge-used">Já utilizaste este código!</p>
                                 <p v-else id="badge-not-used">Código: <b>"#vida_social"</b></p>
                             </div>
@@ -48,28 +48,45 @@
                     
                     <h2>Bilhetes adquiridos</h2>
                     <p>Consulta aqui os teus bilhetes adquiridos</p>
-                    <v-card flat>
-                        <v-card-text>
-                            <ul>
-                                <li v-for="ticket in ticketStore.purchasedTickets" :key="ticket.id">
-                                    
-                                    <h3>{{ ticket.title }}</h3>
-                                    <p>{{ ticket.description }}</p>
-                                    <p>{{ ticket.price }}</p>
-                                    <p>{{ ticket.quantity }}</p>
-                                </li>
-                            </ul>
-                            <ul>
-                                <li v-for="workshop in ticketStore.purchasedWorkshops" :key="workshop.id">
-                                    
-                                    <h3>{{ workshop.title }}</h3>
-                                    <p>{{ workshop.description }}</p>
-                                    <p>{{ workshop.price }}</p>
-                                    <p>{{ workshop.quantity }}</p>
-                                </li>
-                            </ul>
-                        </v-card-text>
-                    </v-card>
+                    <div class="card-ticket">
+                        <ul>
+                            <li v-for="ticket in ticketStore.purchasedTickets" :key="ticket.id"  class="bg-card">
+                                <img src="/src/assets/AccountView/Bilhete.png" class="img-ticket-bg" alt="">
+                                <div style="margin-top: 10px; margin-left: 10px; width: 300px;">
+                                    <h3 style="margin-left: 5px;">{{ ticket.title }}</h3>
+                                    <div style="display: flex; justify-content: space-between;">
+                                        <p style="width:80px; margin-left: 5px;">Zona {{ ticket.zone }}</p>
+                                        <p style="font-size: 28px; margin-right: 15px;">{{ ticket.price }}€</p>
+                                    </div>
+                                    <p style="margin-left: 5px; margin-top: 20px;">{{ ticket.description }}</p>
+                                </div>
+                                <div style="margin-left: 10px; margin-top: 15px;">    
+                                    <p style="font-size: 25px;">{{ ticket.selectedDate }}</p>
+                                    <p>Parque da Cidade, Porto</p>
+                                    <p>{{ ticket.quantity }}x {{ ticket.title }}</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-ticket">
+                        <ul>
+                            <li v-for="workshop in ticketStore.purchasedWorkshops" :key="workshop.id" class="bg-card">
+                                <img src="/src/assets/AccountView/Bilhete.png" class="img-ticket-bg" alt="">
+                                <div style="margin-top: 10px; margin-left: 10px; width: 300px;">
+                                    <h3 style="margin-left: 5px;">{{ workshop.title }}</h3>
+                                    <div style="display: flex; justify-content: space-between;">
+                                        <p style="font-size: 28px; margin-left: 180px; margin-top: 10px;">{{ workshop.price }}€</p>
+                                    </div>
+                                    <p style="margin-left: 5px; margin-top: 10px;">{{ workshop.description }}</p>
+                                </div>
+                                <div style="margin-left: 10px; margin-top: 15px;">    
+                                    <p style="font-size: 25px;">{{ workshop.selectedDate }}</p>
+                                    <p>Parque da Cidade, Porto</p>
+                                    <p>{{ workshop.quantity }}x {{ workshop.title }}</p>
+                                </div>
+                            </li>
+                        </ul>
+                      </div>
 
                     <h2>As minhas encomendas</h2>
                     <p>Consulta aqui o estado das tuas encomendas</p>
@@ -86,7 +103,7 @@
                                 </div>
                                 <h3 class="product-card-details-quantity">{{ product.units }}x {{ product.product.name }}</h3>
                                 <div class="product-card-details-price">
-                                    <h3>{{ (product.product.price).toFixed(2) }}€</h3>
+                                    <h3>{{ (product.product.price * product.units).toFixed(2) }}€</h3>
                                     <p>Pedido Efetuado a {{ product.date }}</p>
                                 </div>
                             </div>
@@ -427,4 +444,32 @@ h2 {
     margin-top: 40px;
 }
 
+// purchased tickets
+
+
+.card-ticket {
+    width: 400px;
+    height:100%
+}
+
+
+.img-ticket-bg {
+    position:absolute;
+    z-index: -1;
+    width:500px;
+    height: 200px;
+}
+
+.bg-card {
+    position:relative;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 150px;
+    margin-top: 40px;
+}
+
+
+.bg-card div {
+    padding:20px 20px 20px 10px;
+}
 </style>

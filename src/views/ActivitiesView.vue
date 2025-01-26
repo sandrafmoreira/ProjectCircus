@@ -42,13 +42,13 @@
                 <v-card
                     v-if="card.reveal"
                     class="position-absolute w-100"
-                    height="100%"
+                    height="100%" color="#E9DED0"
                     style="bottom: 0;"
                 >
                     <v-card-text class="pb-0">
                     <!-- <p class="text-h4">Origin</p> -->
 
-                    <p class="text-medium-emphasis">
+                    <p class="text-medium-emphasis" style="font-size: 16px; line-height: 1.7;">
                         {{ card.desc }}
                     </p>
                     </v-card-text>
@@ -66,7 +66,7 @@
             </v-card>
         </div>
 
-        <div class="cont-workshops" >
+        <div class="cont-workshops">
 
             <div class="workshops-intro"  style="margin-left: 60px;">
                 <div class="workshops-intro-text">
@@ -203,6 +203,7 @@
     .cont-workshops {
         width: 100%;
         background-image: url("/src/assets/ActivitiesView/WorkshopBG.png");
+        background-size: cover;
     }
 
     .w-title {
