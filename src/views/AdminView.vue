@@ -416,11 +416,12 @@
 
 <style lang="scss" scoped>
 #admin-title{
-    padding: 10px;
+    padding:0px 10px;
 }
 
 .go-back-section{
-    padding: 40px 10px;
+    padding: 10px 10px;
+    margin-top: 8%;
 }
 
 .go-back-section button{
@@ -435,6 +436,7 @@
     background-color: #F4EDE4;
     border: none !important;
     box-shadow: none !important;
+
 }
 
 .windows {

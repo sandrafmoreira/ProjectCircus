@@ -10,8 +10,13 @@
                     Inscreva-se na nossa newsletter e seja o primeiro a saber sobre espetáculos, promoções e surpresas incríveis. <br> Junte-se ou espetáculo!
                 </p>
                 <div>
+                    
                     <input type="email" placeholder="E-mail" class="form-input">
-
+                    <button>
+                        <v-icon  class="arrowIcon">
+                            mdi-arrow-right
+                        </v-icon>
+                    </button>
         
                 </div>
                 
@@ -92,7 +97,7 @@
 <style lang="scss" scoped>
     .footer {
         background-image: url('/src/assets/footer_Img/grafic_el_footer.svg');
-        position: relative;
+        // position: relative;
         color: white;
         padding: 100px 0 0 0;
         text-align: left;
@@ -116,7 +121,7 @@
 /* Seção da Newsletter */
 .newsletter-content {
     width: 35%;
-    position: relative;
+  position: relative;  
     margin-bottom: 20px;
     
 }
@@ -136,25 +141,23 @@
 .newsletter-content input {
     font-size: 16px; 
     box-sizing: border-box;
-    position: relative;
 }
 
 .newsletter-content button {
-    border-radius: 50%;
-    height: 24%;
+    border-radius: 50px;
+    height: 22%;
     aspect-ratio: 1;
-    transform: translateX(5%);
+    transform: translateY(0%);
     position: absolute;
     right: 0;
-    top: 76.15%;
-    background-color:var(--color-red-btn); /* Vermelho */
+    background-color:var(--color-red-btn); 
     color: white;
     border: none;
     cursor: pointer;
     font-size: 16px;
 }
 
-/* Footer middle section */
+/* secção do meio que contem os parceiros, logo e links */
 .middle-content {
     display: grid;
     grid-template-columns: 35% 35% 22%;
@@ -206,7 +209,7 @@
     width: 100%;
 }
 
-    /* Social media */
+    /* redes sociais */
 .social-content {
     display: flex;
     justify-content: space-between;

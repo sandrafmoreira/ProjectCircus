@@ -185,7 +185,7 @@ color: white;
  display: grid;
  grid-template-columns: 25% 25% 25%;
  justify-content: space-between;
- padding: 7rem 2rem 4rem;
+ padding: 2rem 2rem 4rem;
  
 
 }

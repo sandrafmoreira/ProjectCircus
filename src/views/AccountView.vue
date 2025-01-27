@@ -15,7 +15,7 @@
                 <v-tabs-window-item value="1">
                     <h2>Olá {{ this.userStore.fullName }}!</h2>
                     <p>Aqui podes consultar e editar os dados da tua conta. <br>Rever os bilhetes e produtos adquiridos durante a nossa <br>estadia, assim como os workshops em que te inscreveste.</p>
-               
+                    <br><br>
                     <v-card class="badges-section" flat>
                         <div>
                             <img v-if="!badge1.obtained" src="@/assets/AccountView/badge1-not-obtained.svg" alt="Medalha nº1 não obtida">
@@ -230,19 +230,22 @@
                     </v-slide-group>
                 </v-tabs-window-item>
 
-                <v-tabs-window-item value="4" >
+                <v-tabs-window-item value="4" class="editAccount-tab">
                     <v-card :flat="true">
                         <h2 class="section-title">Editar Conta</h2>
                         <v-card-text>
-                            <v-form @submit.prevent="editInformation" v-model="form">
+                            <v-form @submit.prevent="editInformation" v-model="form" >
                                     <v-text-field v-model="firstName" :rules="[required]"
-                                    variant="plain"></v-text-field>
-                                    <v-text-field  v-model="lastName"  :rules="[required]"  variant="plain"></v-text-field>
-                                    <v-text-field v-model="email"  :rules="[required]"  type="email" variant="plain"></v-text-field>
-                                    <v-text-field v-model="oldPassword" :rules="[required]" label="Old Password" type="password" variant="plain"></v-text-field>
-                                    <v-text-field v-model="newPassword" label="New Password" type="password" variant="plain"></v-text-field>
-                                    <v-btn class="mt-2" type="submit" block>Guardar</v-btn>
-                                    <v-btn class="mt-2" type="submit" @click="removeAccount">Remover Conta</v-btn>
+                                    variant="filled"></v-text-field>
+                                    <v-text-field  v-model="lastName"  :rules="[required]"  variant="filled"></v-text-field>
+                                    <v-text-field v-model="email"  :rules="[required]"  type="email" variant="filled"></v-text-field>
+                                    <v-text-field v-model="oldPassword" :rules="[required]" label="Old Password" type="password" variant="filled"></v-text-field>
+                                    <v-text-field v-model="newPassword" label="New Password" type="password" variant="filled"></v-text-field>
+                                    <div class="editAccount-tab-btns">
+                                        <v-btn class="mt-2" type="submit" block>Guardar</v-btn>
+                                        <v-btn class="mt-2" type="submit" @click="removeAccount">Remover Conta</v-btn>
+                                    </div>
+                                   
                                     <p v-if="error">O email já está a ser utilizado!</p>
                             </v-form>
                         </v-card-text>
@@ -405,6 +408,7 @@ h2 {
     height: 500px;
     padding:100px 100px;
     background-image: url("/src/assets/AccountView/bg-tabs.png");
+    color: #f7f1f1;
 }
 
 .windows {
@@ -441,6 +445,9 @@ h2 {
     padding-bottom: 0;
 }
 
+#post-picture-btn{
+    border-radius: 50px;
+}
 
 // edit account
 
@@ -448,13 +455,34 @@ h2 {
     background-color: transparentize($color: #f7f1f1, $amount: 1);
 }
 
-.v-form{
-    margin-top: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+.editAccount-tab{
+    width: 70%;
 }
 
+.editAccount-tab-btns{
+    display: grid;
+    grid-template-columns: 40% 40%;
+    justify-content: space-between;
+    gap: 2%;
+}
+.editAccount-tab .v-btn:first-child{
+    color: #fff;
+    border-radius: 50px;
+    min-width: 0;
+    background-color: var(--color-red-btn);
+}
+
+.editAccount-tab .v-btn:hover{
+    color: #fff;
+    background-color: var(--color-red-btn-hover);
+}
+.editAccount-tab .v-btn:last-child{
+    border: 2px solid var(--color-red-btn);
+    color:var(--color-red-btn);
+    border-radius: 50px;
+    min-width: 0;
+    background-color: transparentize($color: #000000, $amount: 1);
+}
 .products-history{
     padding: 0;
 }
