@@ -17,25 +17,6 @@ export async function get(query) {
       throw error;
     }
   }
-
- 
-  
-  // modelo para enviar dados para a API se a mesma permitir
-//   export async function post(apiBaseUrl, endpoint, data) {
-//     try {
-//       const response = await fetch(`${apiBaseUrl}/${endpoint}`, {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify(data),
-//       });
-//       return handleResponse(response);
-//     } catch (error) {
-//       console.error(`Error posting to ${endpoint}:`, error);
-//       throw error;
-//     }
-//   }
   
   // lidar com a resposta 
   async function handleResponse(response) {

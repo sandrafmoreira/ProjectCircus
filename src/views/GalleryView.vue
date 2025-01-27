@@ -58,9 +58,6 @@
               </v-row>
           </div>
 
-          <!-- <template>
-          <v-icon icon="mdi-home" />
-          </template> -->
           <customBtn class="view_more " @click="loadPhotos">
               +
           </customBtn>
