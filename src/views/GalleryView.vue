@@ -192,10 +192,10 @@ align-self: center;
 display: none;
 position: absolute;
 background-image: url('@/assets/post-background.svg');
-width: 500px;
+width: 390px;
 height: 50px;
 margin-top: -58px;
-margin-left: 9.2px;
+margin-left: 7px;
 }
 
 .post-container:hover .post-details{

@@ -10,7 +10,7 @@ export const useUserStore = defineStore("user", {
       cart: {tickets: [], workshops: [], giftshop: []}, //se o utilizador nao tiver conta, este array servirá para guardar os produtos que deseja comprar
       users: [{id: 1, email: "ken@123", firstName: "ken", lastName: "lukau", password: "123", badges: [{id: 1, used: false, code: 'fa_de_workshops'},{id: 2, used: false},{id: 3, used: false, code: '#vida_social'}], adminPermission: true, products: [], tickets: [], posts: [], userCart: {tickets: [], workshops: [], giftshop: []}},
       {id: 2, email: "nuno@456", firstName: "nuno", lastName: "nogueira", password: "456", badges: [{id: 1, used: false, code: 'fa_de_workshops'},{id: 2, used: false},{id: 3, used: false, code: '#vida_social'}], adminPermission: true, products: [], tickets: [], posts: [], userCart: {tickets: [], workshops: [], giftshop: []}},
-      {id: 3, email: "sandra@789", firstName: "sandra", lastName: "moreira", password: "789", badges: [{id: 1, used: false, code: 'fa_de_workshops'},{id: 2, used: false},{id: 3, used: false, code: '#vida_social'}], adminPermission: true, products: [], tickets: [], posts: [], userCart: {tickets: [], workshops: [], giftshop: []}},
+      {id: 3, email: "sandra@789", firstName: "sandra", lastName: "moreira", password: "789", badges: [], adminPermission: true, products: [], tickets: [], posts: [], userCart: {tickets: [], workshops: [], giftshop: []}},
       {id: 4, email: "sofia_monteiro@g", firstName: "sofia", lastName: "monteiro", password: "planta123", badges: [], adminPermission: false, products: [], tickets: [], posts: [], userCart: {tickets: [], workshops: [], giftshop: []}},
       {id: 5, email: "isabel_almeida@g", firstName: "isabel", lastName: "almeida", password: "circo", badges: [], adminPermission: false, products: [], tickets: [], posts: [], userCart: {tickets: [], workshops: [], giftshop: []}} 
     ],
@@ -309,7 +309,7 @@ export const useUserStore = defineStore("user", {
 
         //Verificar medalha nº3
         if (i == 2 && !badge3) {
-          if (this.userInfo.posts.length >= 5) {
+          if (this.userInfo.posts.length >= 1) {
             newBadge = {
               id: 3,
               used: false,

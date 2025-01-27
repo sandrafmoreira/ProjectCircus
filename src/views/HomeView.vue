@@ -852,7 +852,7 @@ margin-top: 4rem;
 display: none;
 position: absolute;
 background-image: url('@/assets/post-background.svg');
-width: 510px;
+width: 390px;
 height: 50px;
 margin-top: -58px;
 margin-left: 7px;
