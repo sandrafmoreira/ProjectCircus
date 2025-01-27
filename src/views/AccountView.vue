@@ -2,8 +2,6 @@
     
     <div style="margin-top: 30px;"></div>
     <v-card class="w-100">
-        <!-- <v-toolbar color="primary" title="User Profile"></v-toolbar> -->
-
         <div class="d-flex flex-row">
             <v-tabs v-model="tab" color="primary" direction="vertical" class="left-tabs">
                 <v-tab text="A tua conta" value="1" color="white"></v-tab>
@@ -168,7 +166,6 @@
                     <v-card :flat="true">
                         <h2 class="section-title">Editar Conta</h2>
                         <v-card-text>
-                            <!-- <p style="color: red;">Antes de qualquer alteração, coloque a sua password para confirmar as alterações!</p> -->
                             <v-form @submit.prevent="editInformation" v-model="form">
                                     <v-text-field v-model="firstName" :rules="[required]"
                                     variant="plain"></v-text-field>
@@ -214,7 +211,6 @@ import { useTicketStore } from "@/stores/ticket";
                 postImageSrc: '',
                 userStore: useUserStore(),
                 ticketStore: useTicketStore(),
-
                 photos: [
                 { url: '/src/assets/img/pexels-gesel-792764.jpg', caption: 'Foto de exemplo 1' },
                 { url: '/src/assets/img/pexels-gesel-792764.jpg', caption: 'Foto de exemplo 2' },
@@ -231,6 +227,7 @@ import { useTicketStore } from "@/stores/ticket";
             this.email = this.userStore.userInfo.email;
             this.userStore.verifyBadges()
 
+            //Verificar as medalhas que o utilizador já obteu
             this.userStore.userInfo.badges.forEach(badge => {
                 if (badge.id == 1) {
                     this.badge1.obtained = true

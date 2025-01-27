@@ -4,6 +4,7 @@ import { defineStore } from 'pinia'
 export const useNewsStore = defineStore("news", {
   state: () => {
     return{ 
+      //Array default de artigos
       articles: [
         {id: 1, src:"/src/assets/NewsView/1.png", author: 'Serafim Fernandes', date:'06/12/24', title: 'O circo sustentável', text: 'O circo está a tornar-se um exemplo brilhante de como tradição e inovação podem coexistir. Com práticas que alinham criatividade e responsabilidade ambiental. Os circos modernos estão a mostrar que é possível oferecer entretenimento de qualidade enquanto cuidamos do planeta!'},
         {id: 2, src:"/src/assets/NewsView/2.png", author: 'Maria Costa', date:'08/01/25', title: 'Cenários de materiais reciclados', text: 'Nesta edição, o circo prova que sustentabilidade e criatividade podem andar de mãos dadas. Todos os cenários foram cuidadosamente elaborados com materiais reciclados e reutilizáveis, sem comprometer a beleza e o encanto visual! '},
@@ -21,7 +22,7 @@ export const useNewsStore = defineStore("news", {
   },
 
   getters: {
-    findLastArticle: (state) => state.articles[state.articles.length - 1].id,
+    findLastArticle: (state) => state.articles[state.articles.length - 1].id, 
   },
 
   actions: {
@@ -49,6 +50,9 @@ export const useNewsStore = defineStore("news", {
     },
 
     editArticle(id, title, text, author, date, image) {
+      /**
+       * Editar informações sobre um artigo
+       */
       let articleFound = false //Para detetar se um produto com o mesmo id dentro da store `products` ja foi encontrado!
 
       this.articles.forEach(article => {

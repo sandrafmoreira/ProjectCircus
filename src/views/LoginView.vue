@@ -69,57 +69,43 @@ export default {
 
 <style lang="scss" scoped>
 
-    .form-section {
-        padding-top: 8rem;
+.form-section {
+    padding-top: 8rem;
 
+}
+
+.form-content {
+    margin: auto;
+    width: 30vw;
+}
+
+.form-text h1{
+    margin-bottom: 0.5rem;
+}
+.form-text p{
+    font-size: 1rem;
+    font-weight: 380;
+}
+.login-up-form{
+    margin-top: 2rem;
+}
+
+.v-field__field {
+    cursor: text; 
+    color: #ffff;
+    background-color: antiquewhite !important; 
+    border-radius: 50px;
     }
 
-    .form-content {
-        margin: auto;
-        width: 30vw;
-    }
-
-    .form-text h1{
-        margin-bottom: 0.5rem;
-    }
-    .form-text p{
-        font-size: 1rem;
-        font-weight: 380;
-    }
-    .login-up-form{
-        margin-top: 2rem;
-    }
-
-    .v-field__field {
-        cursor: text; 
-        color: #ffff;
-        background-color: antiquewhite !important; 
-        border-radius: 50px;
-        }
-
-    .graphic-el-sing-up {
-        position:absolute;
-        display: flex;
-        justify-content: space-between;
-
-      // margin-top: 200%;
-      z-index: -50;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        // transform: translateY(-12%);
-    } 
-
-
-
-// #submitBtn{
-//     display: block;
-//     float: left;
-//     height: 45px;
-//     width: 180px;
-//     border-radius: 50px;
-//     margin-top: 15px;
-// }
+.graphic-el-sing-up {
+    position:absolute;
+    display: flex;
+    justify-content: space-between;
+    z-index: -50;
+    left: 0;
+    right: 0;
+    bottom: 0;
+} 
 
 .v-btn.v-btn--density-default {
 height: calc(var(--v-btn-height) + 1px);

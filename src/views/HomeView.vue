@@ -1,20 +1,15 @@
 
 <template>
   
+  <!-- Hero Section -->
   <div class="home-main-section">
     <div class="welcome-text">
         <h2>20ª Edição</h2>
         <h1 class="section-title">Illusionni <br> chega ao Porto</h1>
         <h3 class="section-desc">De 12 a 26 de janeiro, prepare-se para viver <br> experiências illusiónicas no nosso circo!</h3>
-        <!-- <RouterLink id="buyTickets" :to="{name: 'pricing'}">Reserve já os seus bilhetes 
-          <svg width="32px" height="32px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(0)">
-          <g id="SVGRepo_bgCarrier" stroke-width="0"/>
-          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
-          <g id="SVGRepo_iconCarrier"> <path d="M6 12H18M18 12L13 7M18 12L13 17" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
-          </svg>
-        </RouterLink> -->
     </div>
 
+    <!--Video-->
     <div class="video-container">
       <!--Video-->
       <video autoplay muted loop playsinline poster="/src/assets/home_assets/poster.svg" id="myVideo">
@@ -48,7 +43,7 @@
     </div>
   </div>
   
-
+  <!--Secção "Sobre o Evento"-->
   <section class="about-event-section " style="margin-left:60px;">
 
     <div class="about-event-container" >
@@ -85,6 +80,7 @@
 
   </section>
   
+  <!--Secção "Datas Especiais"-->
   <section class="special-dates-section"  style="margin-left:60px;">
       
       <div class="special-dates-container">
@@ -114,8 +110,7 @@
       </div>
   </section>
   
-  <!-- <img id="shape1" src="@/assets/img/forma1_homepage.png" alt=""> -->
-
+  <!--Secção "Os Nossos Espetáculos"-->
   <section class="shows-info-section"  style="margin-left:60px; margin-right: 60px;">
     <div class="shows-info-title">
       <h1 class="section-subtitle">Os nossos espetáculos</h1>
@@ -151,6 +146,7 @@
     </div>
   </section>
 
+  <!--Secção Mapa Interativo-->
   <section class="interactive-map-section">
     <div>
       <h1 class="section-subtitle" >Mapa Interativo</h1>
@@ -242,7 +238,7 @@
     </div>
   </section>
 
-  
+  <!--Secção "Explora o nosso website"-->
   <section class="explore-website-section" style="margin-left:60px;">
     <h1 class="section-subtitle">Explora o nosso website</h1>
     <div class=" explore-website-container"> 
@@ -371,6 +367,7 @@
     
   </section>
 
+  <!--Secção Galeria-->
   <section class="gallery"  style="margin-left:60px; margin-right: 60px;">
     <div class="gallery-title">
       <h1 class="section-subtitle" >Galeria</h1>
@@ -422,6 +419,7 @@
     
   </section>
 
+  <!--Secção Voluntariado-->
   <section class="volunteering-section">
     <h1>Voluntaria-te e vive o Circo!</h1>
     <p>Descobre a magia do circo por dentro e ajuda-nos a criar momentos inesquecíveis!
@@ -510,18 +508,15 @@ padding: 0rem 4rem;
 }
 
 .video-container{
-position: absolute;
-width: 2000px;
-height: 100%;
-top: 0;
+  position: absolute;
+  width: 2000px;
+  height: 100%;
+  top: 0;
   z-index: -1;
   z-index: -1;
   left: 0;
-z-index: -1;
+  z-index: -1;
   left: 0;
-  // transform: translateY(-42%);
-  // background-image: url('src/assets/home_assets/forma_video.svg');
-
 }
 
 #myVideo{
@@ -534,10 +529,6 @@ object-fit: cover;
 clip-path: url(#videoShape);
 background-size: cover;
 -webkit-clip-path: url(#videoShape); /* Compatibilidade */
-// mask-image: url(#videoShape); /* Compatível com navegadores modernos */
-// -webkit-mask-image: url(#videoShape); /* Compatível com Safari */
-// mask-type: alpha; /* Usa o canal alfa para definir a opacidade */
-
 }
 
 .gradient{
@@ -551,10 +542,6 @@ background-size: cover;
   clip-path: url(#videoShape);
   -webkit-clip-path: url(#videoShape);
 }
-
-// #buyTickets svg{
-//   margin-top: 10px;
-// }
 
 /* Secção "Sobre Evento"*/
 .about-event-section {
@@ -610,25 +597,6 @@ position: absolute; /* ou absolute, dependendo do layout */
   
   transform: translateY(-40%);
 }
-
-
-// #buyTickets:hover, #findMoreShows:hover, #exploreGallery:hover{
-//   background-color: #B72636;
-//   transition: background-color 0.5s ease;
-// }
-
-// #findMoreActivities img{
-//   padding-left: 10px;
-//   padding-bottom: -10px;
-// }
-
-// #balloons{
-//   position: absolute;
-//   width: 261px;
-//   height: 361px;
-//   left: 70%;
-//   top: 140%;
-// }
 
 /*Secção "Datas Especiais" */
 .special-dates-section{
