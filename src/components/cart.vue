@@ -213,13 +213,13 @@
                 //Mostrar ou não o carrinho
                 menu: false,
                 //Propriedades para usar um código de desconto
-                promoCode: '',
-                promoCodeValue: 0,
-                usePromoCode1: false,
-                usePromoCode2: false,
-                selectProduct: 0,
-                selectTicket: 0,
-                discount: 0
+                promoCode: '', //String do código
+                promoCodeValue: 0, //Valor do desconto do cógido promocional
+                usePromoCode1: false, //Abrir/fechar v-select para o 1º código
+                usePromoCode2: false, //Abrir/fechar v-select para o 2º código
+                selectProduct: 0, //Guarda o id do produto selecionado
+                selectTicket: 0, //Guarda o id do bilhete adicionado
+                discount: 0 //Valor do valor que é descontado
             }
         },
 
@@ -420,12 +420,16 @@
                  * o utilizador seleciona onde usar o desconto
                  */
                 if (this.promoCode == 'fa_de_workshops') {
+                    //Vai buscar o bilhete selecionado com o id do bilhete na store dos tickets
                     let ticketSelected = this.userStore.userInfo.tickets.find(ticket => ticket.id == id)
 
+                    //Calcular o desconto com base no valor do código de desconto
                     this.discount = ((ticketSelected.price - (1 - (this.promoCodeValue / 100)) * ticketSelected.price) * ticketSelected.quantity).toFixed(2)
                 } else if (this.promoCode == '#vida_social') {
+                    //Vai buscar o bilhete selecionado com o id do bilhete na store dos tickets
                     let productSelected = this.userStore.userInfo.userCart.giftshop.find(product => product.product.id == id)                
                     
+                    //Calcular o desconto com base no valor do código de desconto
                     this.discount = ((productSelected.product.price - (1 - (this.promoCodeValue / 100)) * productSelected.product.price) * productSelected.units).toFixed(2)
                 }
             },
@@ -476,7 +480,7 @@
                     })
                 }
             
-                //Esvaziar o carrinho
+                //Esvaziar o carrinho e as variáveis que gerem a compra do utilizador
                 this.promoCode = ''
                 this.usePromoCode1 = false
                 this.promoCodeValue = 0

@@ -86,7 +86,7 @@ export const useProductStore = defineStore("product", {
   getters:{
     exclusiveProducts: (state) => state.products.filter(product => product.exclusive).length, //Nº de produtos exclusivos
     discountedProducts: (state) => state.products.filter(product => product.discount > 0).length, //Nº de produtos com desconto
-    findLastProduct: (state) => state.products[state.products.length - 1].id,
+    findLastProduct: (state) => state.products[state.products.length - 1].id, //Vai buscar o id do último produto no array
   },
 
   actions: {

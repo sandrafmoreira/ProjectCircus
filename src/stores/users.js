@@ -30,7 +30,7 @@ export const useUserStore = defineStore("user", {
     fullName: (state) => state.userInfo.firstName + " " + state.userInfo.lastName, //Obter o nome completo do utilizador
     usersNum: (state) => state.users.length, //Numero total de utilizadores
     findLastUser: (state) => state.users[state.users.length - 1].id, //ID do utilizador na ultima posicao da store
-    postsNum: (state) => state.userPosts.length
+    postsNum: (state) => state.userPosts.length //Nº total de publicações
 
   },  
 

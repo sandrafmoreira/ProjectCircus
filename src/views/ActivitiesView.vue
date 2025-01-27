@@ -46,7 +46,6 @@
                     style="bottom: 0;"
                 >
                     <v-card-text class="pb-0">
-                    <!-- <p class="text-h4">Origin</p> -->
 
                     <p class="text-medium-emphasis" style="font-size: 16px; line-height: 1.7;">
                         {{ card.desc }}

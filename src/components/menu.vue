@@ -6,6 +6,7 @@
             </button>
         </template>
 
+        <!--Menus-->
         <v-card color="#121B43" class="menu">
             <div class="menu-section">
                 <RouterLink class="menu-links" :to="{name: 'about'}">Illusionni</RouterLink> 

@@ -6,6 +6,7 @@ export const useTicketStore = defineStore("ticket", {
     return {
         purchasedTickets: [],
         purchasedWorkshops: [],
+        //Lista de bilhetes disponíveis
         availableTickets: [
             { id: 1, zone:"C", title: "Adulto", description: "Bilhete individual", price: 12, quantity: 0, discount: 0},
             { id: 2, zone:"C", title: "Criança", description: "Bilhete individual", price: 8, quantity: 0, discount: 0 },
@@ -17,6 +18,7 @@ export const useTicketStore = defineStore("ticket", {
             { id: 8, zone:"A", title: "Criança", description: "Bilhete individual", price: 15, quantity: 0, discount: 0 },
             { id: 9, zone:"A", title: "Pack Familiar", description: "2 adultos 2 crianças", price: 50, quantity: 0, discount: 0 },
         ],
+        //Lista de workshops disponíveis
         availableWorkshops: [
             { id: 1, title: "Malabarismo Sustentável", description: "Limite de pessoas: 30", price: 4, quantity: 0 },
             { id: 2, title: "Oficina de Acrobacias", description: "Limite de pessoas: 15", price: 6, quantity: 0 },

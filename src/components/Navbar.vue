@@ -52,14 +52,6 @@ export default {
   z-index: 1000;
 }
 
-/* .navbar-links {
-  list-style: none;
-  display: flex;
-  gap: 1rem;
-  padding: 0;
-  margin: 0;
-} */
-
 .navbar-links{
 display: flex;
 flex-direction: row;

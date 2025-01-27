@@ -213,13 +213,10 @@ padding-bottom: 4rem;
 
 }
 .history-graphic-el-about img{
- /* height: 80%; */
  position: absolute; 
  z-index: -1;
  left: 0;
- transform: translateY(-30%);
- 
- /* background-image: url('src/assets/about_assets/history_graphic_el.svg'); */
+ transform: translateY(-30%); 
 }
 
 /* editions section------- */

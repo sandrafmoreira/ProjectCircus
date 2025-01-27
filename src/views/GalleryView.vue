@@ -58,9 +58,6 @@
               </v-row>
           </div>
 
-          <!-- <template>
-          <v-icon icon="mdi-home" />
-          </template> -->
           <customBtn class="view_more " @click="loadPhotos">
               +
           </customBtn>
@@ -156,23 +153,6 @@ height: 100%;
   transform: translateY(-12%);
 
 }
-/* .gallery-img-container {
-display: flex;
-flex-wrap: wrap;
-gap: 1rem;
-justify-content: center;
-}
-
-.gallery-img-card {
-border-radius: 8px;
-overflow: hidden;
-transition: transform 0.3s ease-in-out;
-}
-
-.gallery-img-card:hover {
-transform: scale(1.05);
-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-} */
 
 .gallery-img-card{
 border-radius: 2%;
