@@ -45,30 +45,79 @@
                 <v-tabs-window-item value="2">
                     
                     <h2>Bilhetes adquiridos</h2>
-                    <p>Consulta aqui os teus bilhetes adquiridos</p>
-                    <div class="card-ticket">
-                        <ul>
-                            <li v-for="ticket in ticketStore.purchasedTickets" :key="ticket.id"  class="bg-card">
-                                <img src="/src/assets/AccountView/Bilhete.png" class="img-ticket-bg" alt="">
-                                <div style="margin-top: 10px; margin-left: 10px; width: 300px;">
-                                    <h3 style="margin-left: 5px;">{{ ticket.title }}</h3>
-                                    <div style="display: flex; justify-content: space-between;">
-                                        <p style="width:80px; margin-left: 5px;">Zona {{ ticket.zone }}</p>
-                                        <p style="font-size: 28px; margin-right: 15px;">{{ ticket.price }}€</p>
-                                    </div>
-                                    <p style="margin-left: 5px; margin-top: 20px;">{{ ticket.description }}</p>
-                                </div>
-                                <div style="margin-left: 10px; margin-top: 15px;">    
-                                    <p style="font-size: 25px;">{{ ticket.selectedDate }}</p>
-                                    <p>Parque da Cidade, Porto</p>
-                                    <p>{{ ticket.quantity }}x {{ ticket.title }}</p>
-                                </div>
-                            </li>
-                        </ul>
+                    <p>Consulta aqui os teus bilhetes adquiridos.</p>
+
+                    <div class="notification" v-if="userStore.userInfo.badges.length != 0">
+                        <img src="/src/assets/AccountView/notification1_icon1.svg" alt="">
+                        <p><b>Ganhaste um prémio!</b> Verifica o teu email para mais detalhes!</p>
+                        <img src="/src/assets/AccountView/notification1_icon2.svg" alt="">
                     </div>
-                    <div class="card-ticket">
-                        <ul>
-                            <li v-for="workshop in ticketStore.purchasedWorkshops" :key="workshop.id" class="bg-card">
+                    <v-divider></v-divider>
+                    <v-slide-group v-model="ticketSlide"
+                        class="pa-4" selected-class="bg-success"
+                        show-arrows center-active="true"
+                        style="height: 250px; width: 900px;"
+                        v-if="ticketStore.purchasedTickets">
+                        <div class="card-ticket" v-for="ticket in ticketStore.purchasedTickets" :key="ticket.id">
+                                <v-slide-group-item class='bg-card'>
+                                    <img src="/src/assets/AccountView/Bilhete.png" class="img-ticket-bg" alt="Background da card">
+                                    <div class="card-info">
+                                        <div style="margin-top: 10px; margin-left: 10px; width: 300px;">
+                                            <h3 style="margin-left: 5px;">{{ ticket.title }}</h3>
+                                            <div style="display: flex; justify-content: space-between;">
+                                                <p style="width:80px; margin-left: 5px;">Zona {{ ticket.zone }}</p>
+                                                <p style="font-size: 28px; margin-right: 15px;">{{ ticket.price }}€</p>
+                                            </div>
+                                            <p style="margin-left: 5px; margin-top: 20px;">{{ ticket.description }}</p>
+                                        </div>
+                                        <div style="margin-left: 10px; margin-top: 15px;">    
+                                            <p style="font-size: 25px;">{{ ticket.selectedDate }}</p>
+                                            <p>Parque da Cidade, Porto</p>
+                                            <p>{{ ticket.quantity }}x {{ ticket.title }}</p>
+                                        </div>
+                                    </div>
+                                </v-slide-group-item>
+                            </div>
+                    </v-slide-group>
+
+                    <v-divider></v-divider>
+                    
+                    <div class="notification" v-if="ticketStore.purchasedTickets.length > 0">
+                        <img src="/src/assets/AccountView/notification2_icon1.svg" alt="">
+                        <p><b>Parabéns pelos teus primeiros bilhetes!</b> Ficamos à tua espera!</p>
+                        <img src="/src/assets/AccountView/notification2_icon2.svg" alt="">
+                    </div>
+
+                    <v-divider></v-divider>
+
+                    <v-slide-group v-model="workshopSlide"
+                    class="pa-4" selected-class="bg-success"
+                    show-arrows center-active='true'
+                    style="height: 300px; width: 900px;"
+                    v-if="ticketStore.purchasedWorkshops">
+                        <div class="card-ticket" v-for="workshop in ticketStore.purchasedWorkshops">
+                            <v-slide-group-item class="bg-card">
+                                <img src="/src/assets/AccountView/Bilhete.png" class="img-ticket-bg" alt="Background da card">
+                                <div class="card-info">
+                                    <div style="margin-top: 10px; margin-left: 10px; width: 300px; padding-right: 10px;">
+                                        <h3 style="margin-left: 5px;">{{ workshop.title }}</h3>
+                                        <div style="display: flex; justify-content: space-between;">
+                                            <p style="font-size: 28px; margin-left: 180px; margin-top: 10px;">{{ workshop.price }}€</p>
+                                        </div>
+                                        <p style="margin-left: 5px; margin-top: 10px;"> {{ workshop.description }}</p>
+                                    </div>
+                                    <div style="margin-left: 15px; margin-top: 15px;">
+                                        <p style="font-size: 25px;">{{ workshop.selectedDate }}</p>
+                                        <p>Parque da Cidade, Porto</p>
+                                        <p>{{ workshop.quantity }}x {{ workshop.title }}</p>
+                                    </div>
+                                </div>
+                            </v-slide-group-item>
+                        </div>
+                    </v-slide-group>
+
+                        <!-- <div class="card-ticket">
+                            <v-slide-group-item v-for="workshop in ticketStore.purchasedWorkshops" :key="workshop.id"  class="bg-card">
                                 <img src="/src/assets/AccountView/Bilhete.png" class="img-ticket-bg" alt="">
                                 <div style="margin-top: 10px; margin-left: 10px; width: 300px;">
                                     <h3 style="margin-left: 5px;">{{ workshop.title }}</h3>
@@ -82,9 +131,25 @@
                                     <p>Parque da Cidade, Porto</p>
                                     <p>{{ workshop.quantity }}x {{ workshop.title }}</p>
                                 </div>
-                            </li>
-                        </ul>
-                      </div>
+                            </v-slide-group-item>
+                            <ul>
+                                <li v-for="workshop in ticketStore.purchasedWorkshops" :key="workshop.id" class="bg-card">
+                                    <img src="/src/assets/AccountView/Bilhete.png" class="img-ticket-bg" alt="">
+                                    <div style="margin-top: 10px; margin-left: 10px; width: 300px;">
+                                        <h3 style="margin-left: 5px;">{{ workshop.title }}</h3>
+                                        <div style="display: flex; justify-content: space-between;">
+                                            <p style="font-size: 28px; margin-left: 180px; margin-top: 10px;">{{ workshop.price }}€</p>
+                                        </div>
+                                        <p style="margin-left: 5px; margin-top: 10px;">{{ workshop.description }}</p>
+                                    </div>
+                                    <div style="margin-left: 10px; margin-top: 15px;">    
+                                        <p style="font-size: 25px;">{{ workshop.selectedDate }}</p>
+                                        <p>Parque da Cidade, Porto</p>
+                                        <p>{{ workshop.quantity }}x {{ workshop.title }}</p>
+                                    </div>
+                                </li>
+                            </ul>
+                          </div> -->
 
                     <h2>As minhas encomendas</h2>
                     <p>Consulta aqui o estado das tuas encomendas</p>
@@ -135,7 +200,7 @@
                         </v-form>
                     </v-card>
 
-                            <!-- Galeria de Fotos -->
+                    <!-- Galeria de Fotos -->
                     <v-slide-group
                         v-model="model"
                         class="pa-4"
@@ -192,10 +257,12 @@ import { useTicketStore } from "@/stores/ticket";
     export default {
         data() {
             return {
-                 //Editar informações do utilizador
+                ticketSlide: 0,
+                workshopSlide: 0,
                 form: false,
                 tab: 1,
                 id: 0,
+                //Editar informações do utilizador
                 firstName: '',
                 lastName: '',
                 email: '',
@@ -446,7 +513,8 @@ h2 {
 
 .card-ticket {
     width: 400px;
-    height:100%
+    height:100%;
+    margin-right: 150px;
 }
 
 
@@ -457,16 +525,19 @@ h2 {
     height: 200px;
 }
 
-.bg-card {
-    position:relative;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 150px;
-    margin-top: 40px;
-}
-
-
 .bg-card div {
     padding:20px 20px 20px 10px;
 }
+
+.card-info{
+    display: flex;
+}
+
+.notification{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px 0;
+}
+
 </style>
