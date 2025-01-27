@@ -1,7 +1,11 @@
 <template>
     <div>
         <div class="go-back-section">
-            <button @click="back"><img src="@/assets/GiftshopView/left-arrow.svg" alt="Icone de Seta"></button>
+            <button @click="back">
+                <v-icon>
+                    mdi-arrow-left
+                </v-icon>
+            </button>
             <h2>Catálogo / {{ productName }}</h2>
         </div>    
 
@@ -129,6 +133,7 @@ import Footer from '@/components/Footer.vue';
 <style lang="scss" scoped>
 .go-back-section{
     display: flex;
+    margin-top: 5%;
     padding: 40px 50px;
     gap: 30px;
 }

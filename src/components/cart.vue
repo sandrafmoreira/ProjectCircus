@@ -45,7 +45,7 @@
                 <!-- Bilhetes adicionados -->
                 <v-list v-for="ticket in userStore.userInfo.userCart.tickets" :key="ticket.id" class="cart-item">
                     <v-list-tem class="cart-item-image">
-                        <img src="/src/assets/tickets-icon.svg" alt="Icone de bilhete">
+                        <img src="/src/assets/cart_assets/tickets-icon.svg" alt="Icone de bilhete">
                     </v-list-tem>
                     <v-list-item class="cart-item-details">
                         <div class="cart-item-details-main">
@@ -66,7 +66,7 @@
                 <!-- Workshops adicionados -->
                 <v-list v-for="workshop in userStore.userInfo.userCart.workshops" :key="workshop.id" class="cart-item">
                     <v-list-item class="cart-item-image">
-                        <img src="/src/assets/giftshop-ticket-icon.svg" alt="">
+                        <img src="/src/assets/cart_assets/giftshop-ticket-icon.svg" alt="">
                     </v-list-item>
                     <v-list-item class="cart-item-details">
                         <div class="cart-item-details-main">
@@ -110,7 +110,7 @@
 
             <v-list v-for="ticket in userStore.cart.tickets" :key="ticket.id" class="cart-item">
                 <v-list-tem class="cart-item-image">
-                    <img src="/src/assets/tickets-icon.svg" alt="Icone de bilhete">
+                    <img src="/src/assets/cart_assets/tickets-icon.svg" alt="Icone de bilhete">
                 </v-list-tem>
                 <v-list-item class="cart-item-details">
                     <div class="cart-item-details-main">
@@ -131,7 +131,7 @@
 
             <v-list v-for="workshop in userStore.cart.workshops" :key="workshop.id" class="cart-item">
                 <v-list-item class="cart-item-image">
-                    <img src="/src/assets/giftshop-ticket-icon.svg" alt="">
+                    <img src="/src/assets/cart_assets/giftshop-ticket-icon.svg" alt="">
                 </v-list-item>
                 <v-list-item class="cart-item-details">
                     <div class="cart-item-details-main">

@@ -115,32 +115,30 @@
     <div class="shows-info-title">
       <h1 class="section-subtitle">Os nossos espetáculos</h1>
       <RouterLink id="findMoreShows" :to="{name: 'activities'}">
-        <svg width="32px" height="32px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(0)">
-          <g id="SVGRepo_bgCarrier" stroke-width="0"/>
-          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
-          <g id="SVGRepo_iconCarrier"> <path d="M6 12H18M18 12L13 7M18 12L13 17" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
-        </svg>
+        <v-icon  class="Btn_arrowIcon">
+                mdi-arrow-right
+            </v-icon>
       </RouterLink>
     </div>
     <div class="shows-available">
       <div class="show-card">
        
-        <img src="@/assets/img/show1_image.png" id="show_image" alt="">
+        <img src="@/assets/home_assets/show1_image.png" id="show_image" alt="">
         <h4>Luzes</h4>
       </div>
       <div class="show-card">
         
-        <img src="@/assets/img/show2_image.png" id="show_image" alt="">
+        <img src="@/assets/home_assets/show2_image.png" id="show_image" alt="">
         <h4>Circo Verde</h4>
       </div>
       <div class="show-card">
         
-        <img src="@/assets/img/show3_image.png" id="show_image" alt="">
+        <img src="@/assets/home_assets/show3_image.png" id="show_image" alt="">
         <h4>Asas de Seda</h4>
       </div>
       <div class="show-card">
         
-        <img src="@/assets/img/show4_image.png" id="show_image" alt="">
+        <img src="@/assets/home_assets/show4_image.png" id="show_image" alt="">
         <h4>Arte do Equilíbrio</h4>
       </div>
     </div>
@@ -372,31 +370,21 @@
     <div class="gallery-title">
       <h1 class="section-subtitle" >Galeria</h1>
       <RouterLink id="exploreGallery" :to="{name: 'gallery'}">
-        <svg width="32px" height="32px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(0)">
+        <!-- <svg width="32px" height="32px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(0)">
           <g id="SVGRepo_bgCarrier" stroke-width="0"/>
           <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
           <g id="SVGRepo_iconCarrier"> <path d="M6 12H18M18 12L13 7M18 12L13 17" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
-        </svg>
+        </svg> -->
+        <v-icon  class="Btn_arrowIcon">
+                mdi-arrow-right
+            </v-icon>
       </RouterLink>
     </div>
     
     <div class="gallery-section-container "> 
           <div class="gallery-img-container">
               <v-row dense >
-              <!-- Renderiza cada imagem ocupando 2 colunas -->
-              <v-col v-for="post in userStore.userPosts" :key="post.id" cols="4">
-                  <div class="post-container">
-                  <v-img :src="post.image" alt="Imagem"
-                    class="align-end gallery-img-card ma-2" 
-                    id="post-img"
-                    :aspectRatio="1.5"
-                    cover></v-img>
-                  <div class="post-details">
-                    <p><b>{{ post.author }}</b></p>
-                    <p><b>{{ post.caption }}</b></p>
-                  </div>
-                  </div>
-                </v-col>
+              
                 <v-col
                     v-for="photo in photos" :key="photo.id"
                     cols="4">
@@ -407,10 +395,6 @@
                       :aspectRatio="1.5"
                       cover
                       ></v-img>
-                      <div class="post-details">
-                      <p><b>Circo Illusioni</b></p>
-                      <p><b>O nosso circo!</b></p>
-                    </div>
                   </div>
               </v-col>
               </v-row>
@@ -426,7 +410,9 @@
     <br> <br>Se és um especialista em técnicas circenses candidata-te como voluntário para ensinar nos nossos workshops. <br>Entra em contacto.</p>
     <button>
         <RouterLink id="findMoreActivities" :to="{name: 'contacts'}" class="btn-contact">Contactar
-        <img id="arrowIcon" src="@/assets/img/arrow.png" alt="Ícone de seta"/>
+        <v-icon>
+          mdi-arrow-right
+        </v-icon>
         </RouterLink>
     </button>
     <img src="/src/assets/home_assets/palhaço_homepage.svg" alt="" class="home-page-clown">
@@ -819,7 +805,7 @@ margin-top: 4rem;
 .post-details{
 display: none;
 position: absolute;
-background-image: url('@/assets/post-background.svg');
+background-image: url('@/assets/home_assets/post-background.svg');
 width: 390px;
 height: 50px;
 margin-top: -58px;
@@ -875,6 +861,20 @@ margin-top: -8%;
   border-radius: 100px;
   font-weight: 50px;
   text-decoration: none;
+}
+
+#arrowIcon{
+
+  width: 32px;
+    height: 32px;
+    bottom: 0;
+    margin: 10px 10px 0;
+}
+
+.Btn_arrowIcon{
+  color: #fff;
+  left: 8px;
+  transform: translateY(25%);
 }
 
 </style>

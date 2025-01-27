@@ -1,5 +1,4 @@
 import './assets/main.css'
-import './assets/global.css'
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import 'bootstrap/dist/js/bootstrap.bundle.min.js'; // Inclui também o Popper.js

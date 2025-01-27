@@ -144,7 +144,9 @@
                         center-active="true"
                         v-if="photos.length">
                         <v-slide-group-item v-for="(post, index) in userStore.userInfo.posts" :key="index">
-                            <v-card width="200px"  variant:="plain" class="share-gallery-card" flat="true">
+                            <RouterLink :to="{name: 'gallery'}">
+                            <v-card width="200px"  variant:="plain" class="share-gallery-card" flat="true" @click="" >
+                           
                                 <v-img :src="post.image" ></v-img>
                                 <div class="share-gallery-card-actions">
                                     <v-card-text>
@@ -158,6 +160,7 @@
                                 </div>
                                 
                             </v-card>
+                            </RouterLink>
                         </v-slide-group-item>
                     </v-slide-group>
                 </v-tabs-window-item>
@@ -212,10 +215,10 @@ import { useTicketStore } from "@/stores/ticket";
                 userStore: useUserStore(),
                 ticketStore: useTicketStore(),
                 photos: [
-                { url: '/src/assets/img/pexels-gesel-792764.jpg', caption: 'Foto de exemplo 1' },
-                { url: '/src/assets/img/pexels-gesel-792764.jpg', caption: 'Foto de exemplo 2' },
-                { url: '/src/assets/img/pexels-gesel-792764.jpg', caption: 'Foto de exemplo 3' },
-                { url: '/src/assets/img/pexels-gesel-792764.jpg', caption: 'Foto de exemplo 4' }
+                { url: '/src/assets/AccountView/pexels-gesel-792764.jpg', caption: 'Foto de exemplo 1' },
+                { url: '/src/assets/AccountView/pexels-gesel-792764.jpg', caption: 'Foto de exemplo 2' },
+                { url: '/src/assets/AccountView/pexels-gesel-792764.jpg', caption: 'Foto de exemplo 3' },
+                { url:'/src/assets/AccountView/pexels-gesel-792764.jpg', caption: 'Foto de exemplo 4' }
                 ]
             }
         },

@@ -29,7 +29,9 @@
                     <button id="card-btn">
                         <RouterLink id="card-btn-routerlink" :to="{name: 'gift', params: {id: product.id}}">
                             <button>Detalhes</button>
-                            <img src="@/assets/img/arrow.svg" alt="">
+                            <v-icon>
+                            mdi-arrow-right
+                            </v-icon>
                         </RouterLink>
                     </button>
                     <button id="card-cart-icon" @click="addToCart(product)">
@@ -231,7 +233,7 @@ import { useUserStore } from '@/stores/users';
     padding: 8px 0;
 }
 
-#card-cart-icon img{
+.v-icon{
     margin: 0 7px;
 }
 

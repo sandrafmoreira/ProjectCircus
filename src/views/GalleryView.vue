@@ -18,49 +18,54 @@
           <path d="M72.4946 46.3968C300.743 -69.6917 560.133 56.0629 661.899 184.718C661.899 184.718 867.158 447.831 562.711 681.194C258.264 914.556 -12.3731 796.479 -108.744 547.048C-183.682 353.088 -155.754 162.485 72.4946 46.3968Z" fill="#E4CB66"/>
           </svg>
       </div>
-      <customBtn  @click="verifyAutentication">
-          Partilhar
-      </customBtn>
+      <button class="btn-red" @click="verifyAutentication">
+        Partilhar
+      </button>
 
       <div class="gallery-section-container "> 
           <div class="gallery-img-container">
               <v-row dense >
-              <!-- Renderiza cada imagem ocupando 2 colunas -->
+              <!-- imagens publicadas pelo utilizador -->
                 <v-col v-for="post in userStore.userPosts" :key="post.id" cols="4">
                   <div class="post-container">
-                  <v-img :src="post.image" alt="Imagem"
-                    class="align-end gallery-img-card ma-2" 
-                    id="post-img"
-                    :aspectRatio="1.5"
-                    cover></v-img>
-                  <div class="post-details">
-                    <p><b>{{ post.author }}</b></p>
-                    <p><b>{{ post.caption }}</b></p>
-                  </div>
+                    <v-img :src="post.image" alt="Imagem"
+                      class="align-end gallery-img-card ma-2" 
+                      id="post-img"
+                      :aspectRatio="1.5"
+                      cover>
+                      <div class="post-details">
+                        <p><b>{{ post.author }}</b></p>
+                        <p><b>{{ post.caption }}</b></p>
+                      </div>
+                    </v-img>
+                     
                   </div>
                 </v-col>
+                <!-- imagens da API do pexel -->
                 <v-col
                     v-for="photo in photos" :key="photo.id"
                     cols="4">
-                    <div class="post-container">
-                      <v-img
-                      :src="photo.src.original || photo.urls.full" alt="Imagem"
-                      class="align-end gallery-img-card ma-2" 
-                      :aspectRatio="1.5"
-                      cover
-                      ></v-img>
+                  <div class="post-container">
+                    <v-img
+                        :src="photo.src.original || photo.urls.full" alt="Imagem"
+                        class="align-end gallery-img-card ma-2" 
+                        :aspectRatio="1.5"
+                        cover
+                        >
                       <div class="post-details">
-                      <p><b>Circo Illusioni</b></p>
-                      <p><b>O nosso circo!</b></p>
-                    </div>
+                        <p><b>Circo Illusioni</b></p>
+                        <p><b>O nosso circo!</b></p>
+                      </div>
+                      
+                    </v-img>
+                     
                   </div>
               </v-col>
               </v-row>
           </div>
-
-          <customBtn class="view_more " @click="loadPhotos">
-              +
-          </customBtn>
+          <button class="btn-red" @click="loadPhotos">
+            +
+          </button>
           
       </div>
    
@@ -74,7 +79,7 @@
 
 <script>
       
-      import customBtn from '@/components/customBtn.vue';
+
       import { useUserStore } from '@/stores/users' 
       import { usePhotoStore } from '@/stores/photo'
       import Footer from '@/components/Footer.vue';
@@ -82,7 +87,7 @@
   
       export default {
           components:{
-          customBtn,
+     
           Footer
          },
 
@@ -135,14 +140,14 @@ padding-top: 8rem;
 }
 
 .main-section-img,.main-section-text {
-padding-bottom:8rem;
+padding-bottom:4rem;
 padding-top: 20rem;
 height: 100%;
 }
 
 .main-section-img{
   background-image: url('/src/assets/img/gallery_clowns.svg');
-  background-size:unset;
+  background-size:contain;
   background-position:center bottom;
 }
 
@@ -169,18 +174,22 @@ align-self: center;
 }
 
 .post-details{
-display: none;
+display: flex;
+justify-content: space-between;
 position: absolute;
-background-image: url('@/assets/post-background.svg');
-width: 390px;
-height: 50px;
-margin-top: -58px;
-margin-left: 7px;
+background-image: url('@/assets/gallery_assets/post-background.svg');
+width: 100%;
+height: 60px;
+bottom: 0;
+opacity: 0;
+visibility: hidden;
+transition: opacity 0.3s ease-in-out;
 }
 
 .post-container:hover .post-details{
-  display: flex;
-  justify-content: space-between;
+  opacity: 1;
+  visibility: visible;
+ 
 }
 
 .post-details p{

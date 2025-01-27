@@ -47,7 +47,7 @@ export default {
   }
   
   main {
-    padding: 3rem 0rem 0rem;  /* Espaçamento em volta do conteúdo principal */
+    padding: 0rem 0rem 0rem;  /* Espaçamento em volta do conteúdo principal */
     display: flex;
     flex-direction: column;
     gap: 4rem; /* Espaçamento entre as seções */

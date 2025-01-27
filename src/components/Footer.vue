@@ -82,13 +82,9 @@
 </template>
 
 <script>
-import customBtn from '@/components/customBtn.vue';
+
     export default {
         name: 'Footer',
-
-        components: {
-            customBtn
-        },
 
     }
 </script>

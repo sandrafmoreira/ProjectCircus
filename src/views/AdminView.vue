@@ -1,6 +1,9 @@
 <template>
     <div class="go-back-section">
-        <button @click="back"><img src="@/assets/GiftshopView/left-arrow.svg" alt="Icone de Seta"></button>
+        <button @click="back"> 
+            <v-icon>
+                    mdi-arrow-left
+            </v-icon></button>
     </div>
     <h1 id="admin-title">Dashboard de Admins!</h1>
     <v-card class="w-100">
