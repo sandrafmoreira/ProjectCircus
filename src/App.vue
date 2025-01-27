@@ -41,11 +41,10 @@ export default {
     window.addEventListener("scroll", this.handleScrollButton);
   },
 
-};
-
-onUnmounted(() => {
+  unmounted() {
     window.removeEventListener("scroll", this.handleScrollButton)
-  })
+  }
+};
 </script>
 
 <template>
