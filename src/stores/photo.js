@@ -1,6 +1,6 @@
 
 import { defineStore } from "pinia";
-import * as api from "../api/photosApi";
+import * as api from "../api/pexelsApi";
 
 const PEXELS_API_BASE_URL= 'https://api.pexels.com/v1'
 

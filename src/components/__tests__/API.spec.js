@@ -1,6 +1,6 @@
 import { setActivePinia, createPinia } from 'pinia'
 import { usePhotoStore } from '@/stores/photo'
-import * as api from '@/api/photosApi'
+import * as api from '@/api/pexelsApi'
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 
 describe('Photo Store', () => {
