@@ -20,7 +20,32 @@ export default {
     
     Navbar,
   },
+
+  data() {
+    return {
+      isVisible: false
+    }
+  },
+
+  methods: {
+    handleScrollButton() {
+      if (window.pageYOffset > 500) {
+        this.isVisible = true
+      } else {
+        this.isVisible = false
+      }
+    }
+  },
+
+  mounted() {
+    window.addEventListener("scroll", this.handleScrollButton);
+  },
+
 };
+
+onUnmounted(() => {
+    window.removeEventListener("scroll", this.handleScrollButton)
+  })
 </script>
 
 <template>
@@ -33,7 +58,9 @@ export default {
       <RouterView />
     </main>
     
-     
+     <a v-if="isVisible" href="#" class=" scrollButton fixed bottom-4 right-4 bg-">
+      <img src="/src/assets/home_assets/scrollUp.svg" alt="Botao para fazer scroll">
+     </a>
   </div>
 
  
@@ -52,4 +79,10 @@ export default {
     flex-direction: column;
     gap: 4rem; /* Espaçamento entre as seções */
   }
+
+.scrollButton{
+  position: fixed;
+  top: 80%;
+  right: 5%;
+}
 </style>
