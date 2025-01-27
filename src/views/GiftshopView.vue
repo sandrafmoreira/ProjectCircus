@@ -42,6 +42,22 @@
         </section>
     </div>
 
+    <!-- Alerta personalizado de sucesso  -->
+    <div v-if="successVisible" class="success-alert">
+        <div class="cont-success-alert">
+            <img src="@/assets/alerts/Produto.png" alt="" class="img-success-alert" />
+            <button @click="closeSuccessAlert" class="btn-success">X</button>
+        </div>
+    </div>
+    <!-- Alerta personalizado de sucesso  -->
+    <div v-if="errorVisible" class="error-alert">
+        <div class="cont-error-alert">
+            <img src="@/assets/alerts/Produto.png" alt="" class="img-error-alert" />
+            <button @click="closeErrorAlert" class="btn-error">X</button>
+        </div>
+    </div>
+
+
     <Footer></Footer>
 </template>
 
@@ -56,7 +72,9 @@ import { useUserStore } from '@/stores/users';
      data() {
         return {
             productStore: useProductStore(),
-            userStore: useUserStore()
+            userStore: useUserStore(),
+            successVisible: false,
+            errorVisible: false 
             }
      },
 
@@ -67,7 +85,7 @@ import { useUserStore } from '@/stores/users';
              */
             //Verificar se um produto é exclusivo, e se sim, verificar se o utilizador está autenticado
             if (product.exclusive && !this.userStore.isAuthenticated) {
-                alert(`Precisa de se autenticar para ter acesso a este produto!`)
+                this.errorVisible = true; 
                 return
             }
 
@@ -84,8 +102,17 @@ import { useUserStore } from '@/stores/users';
                 this.userStore.cart.giftshop.push(newProduct)
             }
 
-            alert("Produto adicionado ao carrinho!")            
-        }
+            this.successVisible = true;           
+        },
+
+        /* Alertas Personalizados */
+        closeSuccessAlert() {
+            this.successVisible = false;
+        },
+        closeErrorAlert() {
+            this.errorVisible = false;
+        },
+
      },
         
     }
@@ -240,5 +267,65 @@ import { useUserStore } from '@/stores/users';
 #card-cart-icon:hover{
     background-color: #B72636;
 }
+
+
+
+    /* Alerta personalizado */
+    .success-alert {
+    position: fixed;
+    top: 20vh;
+    right: 4vh;
+    z-index: 100;
+    }
+
+
+    .cont-success-alert {
+    position: relative;
+    }
+
+
+    .img-success-alert {
+    width: 30vw;
+    }
+
+
+    .btn-success {
+        background-color: #E63946;
+        color: white;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        border-radius: 100px;
+        padding: 5px 10px;
+    }
+
+    .error-alert {
+    position: fixed;
+    top: 20vh;
+    right: 4vh;
+    z-index: 100;
+    }
+
+
+    .cont-error-alert {
+    position: relative;
+    }
+
+
+    .img-error-alert {
+    width: 30vw;
+    }
+
+
+    .btn-error {
+        background-color: #E63946;
+        color: white;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        border-radius: 100px;
+        padding: 5px 10px;
+    }
+
 
 </style>

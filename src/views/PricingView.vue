@@ -416,6 +416,15 @@
                 
             </div>
 
+            <!-- Alerta personalizado de sucesso  -->
+            <div v-if="successVisible" class="success-alert">
+                <div class="cont-success-alert">
+                    <img src="@/assets/alerts/Bilhetes.png" alt="" class="img-success-alert" />
+                    <button @click="closeSuccessAlert" class="btn-success">X</button>
+                </div>
+            </div>
+
+
         </template>
     </section>
 
@@ -443,8 +452,9 @@
             selectedZone: "",
             selectedDate: "",
             price: 0,
-            selectedTickets: [], //to store selected tickets before adding them to the cart
-            selectedWorkshops: [], //to store selected workshops before adding them to the cart
+            selectedTickets: [], //guardar os bilhetes selecionados durante a seleção de bilhetes antes de adicionar ao carrinho
+            selectedWorkshops: [], //guardar os workshops selecionados durante a seleção de bilhetes antes de adicionar ao carrinho
+            successVisible: false //alerta personalizado
         }
     },
     methods: { 
@@ -455,7 +465,12 @@
                               
         },
 
-        /* Calculate prices logic */
+        /* Alertas Personalizados */ 
+        closeSuccessAlert() {
+            this.successVisible = false;
+        },
+
+        /* Calcular preços */
         getPrice() {
             this.price = 0;
             
@@ -467,35 +482,38 @@
             })
         },
 
-        /* Tickets logic */
-        filteredTickets() {
-            return this.ticketStore.availableTickets.filter(ticket => ticket.zone === this.selectedZone);
+        /* Bilhetes */
+        filteredTickets() { //filtrar bilhetes com a mesma zona
+            return this.ticketStore.availableTickets.filter(ticket => ticket.zone === this.selectedZone); 
         },
+        
         increaseTicket(ticket) {
-            const existsTicket = this.selectedTickets.find(t => t.id === ticket.id);
+            const existsTicket = this.selectedTickets.find(t => t.id === ticket.id)
             if (existsTicket) {
                 existsTicket.quantity++;
             } else {
-                this.selectedTickets.push({ ...ticket, quantity: 1, selectedDate: this.selectedDate });
+                this.selectedTickets.push({ ...ticket, quantity: 1, selectedDate: this.selectedDate }); //guardar os bilhetes selecionados durante a seleção de bilhetes antes de adicionar ao carrinho
             }
         },
         decreaseTicket(ticket) {
             const existsTicket = this.selectedTickets.find(t => t.id === ticket.id);
+            
             if (existsTicket && existsTicket.quantity > 1) {
                 existsTicket.quantity--;
             } else if (existsTicket && existsTicket.quantity === 1) {
                 this.selectedTickets = this.selectedTickets.filter(t => t.id !== ticket.id);
             }
         },
+
         getTicketQuantity(ticketId) {
             const ticket = this.selectedTickets.find(t => t.id === ticketId);
-            return ticket ? ticket.quantity : 0;
+            return ticket ? ticket.quantity : 0; //se existir bilhete então retorna a quantidade senão retorna 0
         },
         addTickets(tickets) {
             tickets.forEach(ticket => {
-                if (this.userStore.isAuthenticated) {
-                    this.userStore.userInfo.userCart.tickets.push(ticket)
-                    this.userStore.addItem(ticket)
+                if (this.userStore.isAuthenticated) { //se o user estiver autenticado
+                    this.userStore.userInfo.userCart.tickets.push(ticket) //adicionar ao carrinho
+                    this.userStore.addItem(ticket) //guarda o tipo de `item` que é
                 } else {
                     this.userStore.cart.tickets.push(ticket)
                 }
@@ -503,40 +521,44 @@
         },
        
 
-        /* Workshops logic */
+        /* Workshops */
         increaseWorkshop(workshop) {
             const existsWorkshop = this.selectedWorkshops.find(w => w.id === workshop.id);
+            
             if (existsWorkshop) {
                 existsWorkshop.quantity++;
             } else {
-                this.selectedWorkshops.push({ ...workshop, quantity: 1, selectedDate: this.selectedDate  });
+                this.selectedWorkshops.push({ ...workshop, quantity: 1, selectedDate: this.selectedDate  }); //guardar os workshops selecionados durante a seleção de bilhetes antes de adicionar ao carrinho
             }   
         },
         decreaseWorkshop(workshop) {
             const existsWorkshop = this.selectedWorkshops.find(w => w.id === workshop.id);
+            
             if (existsWorkshop.quantity > 1) {
                 existsWorkshop.quantity--;
             } else if (existsWorkshop) {
                 this.selectedWorkshops = this.selectedWorkshops.filter(w => w.id !== workshop.id);
             }
         },
+
         getWorkshopQuantity(workshopId) {
             const workshop = this.selectedWorkshops.find(w => w.id === workshopId);
-            return workshop ? workshop.quantity : 0;
+            return workshop ? workshop.quantity : 0; //se existir workshop então retorna a sua quantidade senão retorna 0
         },
+
         addWorkshops(workshops) {
             workshops.forEach(workshop => {
-                if (this.userStore.isAuthenticated) {
-                    this.userStore.userInfo.userCart.workshops.push(workshop)
-                    this.userStore.addItem(workshop)
+                if (this.userStore.isAuthenticated) { //se o user estiver autenticado
+                    this.userStore.userInfo.userCart.workshops.push(workshop) //adicionar ao carrinho
+                    this.userStore.addItem(workshop) //guarda o tipo de `item` que é
                 } else {
-                    this.userStore.cart.workshops.push(workshop)
+                    this.userStore.cart.workshops.push(workshop) 
                 }
             });
         },
 
 
-        /* Select date and seating zone with buttons logic*/
+        /* Selecionar data e zona da bancada com a lógica dos botões */
         selectDate(date) {
             if (this.selectedDate === date) {
                 this.selectedDate = ""; 
@@ -544,10 +566,10 @@
                 this.selectedDate = date; 
             }
         },
-        highlightDateBtn(date) {
+        highlightDateBtn(date) { //estilar o botão da data selecionada
             return {
                 backgroundColor: this.selectedDate === date ? 'white' : '#121B43',
-                color: this.selectedDate === date ? '#121B43' : 'white',
+                color: this.selectedDate === date ? '#121B43' : 'white'
             };
         },
         selectZone(zone) {
@@ -557,10 +579,11 @@
                 this.selectedZone = zone; 
             }
         },
-        highlightZoneBtn(zone) {
+        highlightZoneBtn(zone) { //estilar o botão da zona selecionada
             return {
-                backgroundColor: this.getZoneBtnColor(zone), 
-                outline: this.selectedZone === zone ? '4px solid white' : 'none', 
+                backgroundColor: this.getZoneBtnColor(zone), //obter a cor correta para cada zona
+                outline: this.selectedZone === zone ? '4px solid white' : 'none', //outline apenas para a zona selecionada
+                
                 color: 'white', 
                 borderRadius: '1000px', 
                 padding: '12px 20px', 
@@ -568,8 +591,8 @@
                 boxSizing: 'border-box', 
             };
         },
-        getZoneBtnColor(zone) {
-            const colors = {
+        getZoneBtnColor(zone) { //obter a cor da zona
+            let colors = {
                 A: '#5F977F', 
                 B: '#F39E60',
                 C: '#8EA9D2',
@@ -578,12 +601,11 @@
         },
 
         
-        /* Store tickets and workshops */
+        /* Adicionar bilhetes e workshops */
         handleTickets() {
             this.addTickets(this.selectedTickets);
             this.addWorkshops(this.selectedWorkshops);
-            alert("Bilhetes adicionados ao carrinho!")
-            console.log(this.selectedWorkshops);
+            this.successVisible = true; //para aparecer o alerta personalizado
             
         }
     }
@@ -859,5 +881,31 @@
         height:330px
     }
 
+
+    /* Alerta personalizado */
+    .success-alert {
+    position: fixed; 
+    top: 20vh; 
+    right: 4vh; 
+    z-index: 100; 
+    }
+
+    .cont-success-alert {
+    position: relative; 
+    }
+
+    .img-success-alert {
+    width: 30vw; 
+    }
+
+    .btn-success {
+        background-color: #E63946;
+        color: white;
+        position: absolute; 
+        top: 20px;
+        right: 20px; 
+        border-radius: 100px;
+        padding: 5px 10px;
+    }
 
 </style>

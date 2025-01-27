@@ -1,11 +1,11 @@
 <template>
     <div class="go-back-section">
-        <button @click="back"> 
+        <button @click="back" style="margin-top: 100px;"> 
             <v-icon>
                     mdi-arrow-left
             </v-icon></button>
     </div>
-    <h1 id="admin-title">Dashboard de Admins!</h1>
+    <h1 id="admin-title" style="margin-top: -80px;">Dashboard de Admins!</h1>
     <v-card class="w-100">
         <div class="d-flex flex-row">
             <v-tabs v-model="tab" color="primary" direction="vertical" class="left-tabs">
