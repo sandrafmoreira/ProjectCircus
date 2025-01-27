@@ -70,7 +70,12 @@
       </div>
    
       
-   
+      <div v-if="alertVisible" class="personalizedAlert">
+        <div class="cont-personalizedAlert">
+          <img src="@/assets/alerts/Error msg.png" alt="" class="img-personalizedAlert" />
+          <button @click="closePersonalizedAlert" class="btn-personalizedAlert">X</button>
+        </div>
+      </div>
 
   </section>
 
@@ -99,6 +104,7 @@
               userStore:useUserStore(),
               photos:[],
               maxPhotos:60,
+              alertVisible: false, // verifica se o alerta personalizado esta apresentado
           }
          },
 
@@ -121,9 +127,13 @@
                       this.$router.push(`/account/${this.userStore.userInfo.email}`)
                       
                   }else{
-                      alert('Precisa de se autenticar para aceder a esta funcionalidade!')// usar o component alert
+                      this.alertVisible = true;
                   }
               },
+              closePersonalizedAlert() {
+                this.alertVisible = false;
+              },
+
           }
 
       };
@@ -146,7 +156,7 @@ height: 100%;
 }
 
 .main-section-img{
-  background-image: url('/src/assets/img/gallery_clowns.svg');
+  background-image: url('/src/assets/gallery_assets/gallery_clowns.svg');
   background-size:contain;
   background-position:center bottom;
 }
@@ -200,5 +210,40 @@ padding: 0 10px;
 .post-details p:nth-of-type(2) {
   margin-right: 60px;
 }
+
+
+
+
+/* Alerta Personalizado */
+
+
+.personalizedAlert {
+  position: fixed;
+  top: 20vh;
+  right: 4vh;
+  z-index: 100;
+}
+
+
+.cont-personalizedAlert {
+  position: relative;
+}
+
+
+.img-personalizedAlert {
+  width: 30vw;
+}
+
+
+.btn-personalizedAlert {
+  background-color: #E63946;
+  color: white;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border-radius: 100px;
+  padding: 5px 10px;
+}
+
 
 </style>

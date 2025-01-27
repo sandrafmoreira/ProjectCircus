@@ -32,6 +32,15 @@
 
     </div>
 
+
+    <!-- Alerta personalizado de sucesso  -->
+    <div v-if="successVisible" class="success-alert">
+        <div class="cont-success-alert">
+            <img src="@/assets/alerts/Produto.png" alt="" class="img-success-alert" />
+            <button @click="closeSuccessAlert" class="btn-success">X</button>
+        </div>
+    </div>
+
     <Footer></Footer>
 </template>
 
@@ -56,7 +65,8 @@ import Footer from '@/components/Footer.vue';
                 productPrice: '',
                 productDiscount: 0,
                 productExclusivity: '',
-                productUnits: 0
+                productUnits: 0,
+                successVisible: false //alerta personalizado
                 
             }
         },
@@ -98,7 +108,7 @@ import Footer from '@/components/Footer.vue';
                         this.userStore.cart.giftshop.push(newProduct)
                     }
 
-                    alert("Produto adicionado ao carrinho!")
+                    this.successVisible = true; //para aparecer o alerta personalizado
                     this.productUnits = 0 
                 }
             },
@@ -125,7 +135,13 @@ import Footer from '@/components/Footer.vue';
                     this.productUnits--
 
                 }
-            }
+            },
+
+            /* Alertas Personalizados */
+            closeSuccessAlert() {
+                this.successVisible = false;
+            },
+
         },
     }
 </script>
@@ -222,4 +238,35 @@ import Footer from '@/components/Footer.vue';
 #add-product:hover{
     background-color: #B72636;
 }
+
+
+    /* Alerta personalizado */
+    .success-alert {
+    position: fixed;
+    top: 20vh;
+    right: 4vh;
+    z-index: 100;
+    }
+
+
+    .cont-success-alert {
+    position: relative;
+    }
+
+
+    .img-success-alert {
+    width: 30vw;
+    }
+
+
+    .btn-success {
+        background-color: #E63946;
+        color: white;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        border-radius: 100px;
+        padding: 5px 10px;
+    }
+
 </style>

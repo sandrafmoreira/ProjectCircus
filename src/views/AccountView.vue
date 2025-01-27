@@ -116,41 +116,6 @@
                         </div>
                     </v-slide-group>
 
-                        <!-- <div class="card-ticket">
-                            <v-slide-group-item v-for="workshop in ticketStore.purchasedWorkshops" :key="workshop.id"  class="bg-card">
-                                <img src="/src/assets/AccountView/Bilhete.png" class="img-ticket-bg" alt="">
-                                <div style="margin-top: 10px; margin-left: 10px; width: 300px;">
-                                    <h3 style="margin-left: 5px;">{{ workshop.title }}</h3>
-                                    <div style="display: flex; justify-content: space-between;">
-                                        <p style="font-size: 28px; margin-left: 180px; margin-top: 10px;">{{ workshop.price }}€</p>
-                                    </div>
-                                    <p style="margin-left: 5px; margin-top: 10px;">{{ workshop.description }}</p>
-                                </div>
-                                <div style="margin-left: 10px; margin-top: 15px;">    
-                                    <p style="font-size: 25px;">{{ workshop.selectedDate }}</p>
-                                    <p>Parque da Cidade, Porto</p>
-                                    <p>{{ workshop.quantity }}x {{ workshop.title }}</p>
-                                </div>
-                            </v-slide-group-item>
-                            <ul>
-                                <li v-for="workshop in ticketStore.purchasedWorkshops" :key="workshop.id" class="bg-card">
-                                    <img src="/src/assets/AccountView/Bilhete.png" class="img-ticket-bg" alt="">
-                                    <div style="margin-top: 10px; margin-left: 10px; width: 300px;">
-                                        <h3 style="margin-left: 5px;">{{ workshop.title }}</h3>
-                                        <div style="display: flex; justify-content: space-between;">
-                                            <p style="font-size: 28px; margin-left: 180px; margin-top: 10px;">{{ workshop.price }}€</p>
-                                        </div>
-                                        <p style="margin-left: 5px; margin-top: 10px;">{{ workshop.description }}</p>
-                                    </div>
-                                    <div style="margin-left: 10px; margin-top: 15px;">    
-                                        <p style="font-size: 25px;">{{ workshop.selectedDate }}</p>
-                                        <p>Parque da Cidade, Porto</p>
-                                        <p>{{ workshop.quantity }}x {{ workshop.title }}</p>
-                                    </div>
-                                </li>
-                            </ul>
-                          </div> -->
-
                     <h2>As minhas encomendas</h2>
                     <p>Consulta aqui o estado das tuas encomendas</p>
                     <section class="products-history">
@@ -249,6 +214,27 @@
                                     <p v-if="error">O email já está a ser utilizado!</p>
                             </v-form>
                         </v-card-text>
+                        
+
+                        <!-- Alerta personalizado de Eliminar Conta -->
+                        <div v-if="alertVisible" class="personalizedAlert">
+                            <div class="cont-personalizedAlert">
+                                <img src="@/assets/alerts/eliminar conta.png" alt="" class="img-personalizedAlert" />
+                                <div class="btns-alert">
+                                    <button @click="closePersonalizedAlert" class="btn-cancelar">Cancelar</button>
+                                    <button @click="removeAccount" class="btn-eliminar">Eliminar</button>
+                                </div>
+                               
+                            </div>
+                        </div>
+                        <!-- Alerta personalizado de sucesso  -->
+                        <div v-if="successVisible" class="success-alert">
+                            <div class="cont-success-alert">
+                                <img src="@/assets/alerts/Notificação Sucesso.png" alt="" class="img-success-alert" />
+                                <button @click="closeSuccessAlert" class="btn-success">X</button>
+                            </div>
+                        </div>
+
                     </v-card>
                 </v-tabs-window-item>
             </v-tabs-window>
@@ -289,7 +275,10 @@ import { useTicketStore } from "@/stores/ticket";
                 { url: '/src/assets/AccountView/pexels-gesel-792764.jpg', caption: 'Foto de exemplo 2' },
                 { url: '/src/assets/AccountView/pexels-gesel-792764.jpg', caption: 'Foto de exemplo 3' },
                 { url:'/src/assets/AccountView/pexels-gesel-792764.jpg', caption: 'Foto de exemplo 4' }
-                ]
+                ],
+                alertVisible: false, // verifica se o alerta personalizado esta apresentado
+                successVisible: false, // verifica se o alerta personalizado esta apresentado
+
             }
         },
 
@@ -338,7 +327,7 @@ import { useTicketStore } from "@/stores/ticket";
                     }
                     //Atualizar a variavel `oldPassword` para que o utilizador volta a inseri-la ao editar as suas informações
 
-                    alert("Alterações feitas!")
+                    this.successVisible = true;
 
                 } catch (error) {
                     this.error = true
@@ -346,8 +335,8 @@ import { useTicketStore } from "@/stores/ticket";
             },
 
             removeAccount() {
-                this.userStore.logout()
                 this.userStore.removeAccount(this.id)
+                this.userStore.logout()
                 this.$router.push('/')
             },
 
@@ -375,6 +364,16 @@ import { useTicketStore } from "@/stores/ticket";
 
                 reader.readAsDataURL(this.postImageSrc);
             },
+            showPersonalizedAlert() {
+                this.alertVisible = true;
+            },
+            closePersonalizedAlert() {
+                this.alertVisible = false;
+            },
+            closeSuccessAlert() {
+                this.successVisible = false;
+            }
+
         
         },
         
@@ -570,5 +569,86 @@ h2 {
     gap: 15px;
     padding: 20px 0;
 }
+
+
+
+/* Personalized Alert */
+
+
+.personalizedAlert {
+  position: fixed;
+  top: 25vh;
+  left: 35vw;
+  z-index: 100;
+}
+
+
+.cont-personalizedAlert {
+  position: relative;
+}
+
+
+.img-personalizedAlert {
+  width: 30vw;
+}
+
+
+.btns-alert {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;  
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+
+.btn-cancelar {
+  top: 10px;
+  right: 10px;
+  background-color:white;
+  color:  #B72636;
+  padding: 15px 15px;
+  border-radius: 100px;
+}
+.btn-eliminar {
+  top: 10px;
+  right: 10px;
+  background-color: #B72636;
+  color: white;
+  padding: 15px 15px;
+  border-radius: 100px;
+}
+
+
+.success-alert {
+  position: fixed;
+  top: 20vh;
+  right: 4vh;
+  z-index: 100;
+}
+
+
+.cont-success-alert {
+  position: relative;
+}
+
+
+.img-success-alert {
+  width: 30vw;
+}
+
+
+.btn-success {
+    background-color: #E63946;
+    color: white;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    border-radius: 100px;
+    padding: 5px 10px;
+}
+
+
 
 </style>

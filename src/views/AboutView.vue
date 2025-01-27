@@ -21,7 +21,7 @@
 
 <section class="mission-section"  style="margin-left: 60px; margin-right: 60px;">
 <div class="mission-section-container">
- <!-- <h2 class="section-subtitle">A nossa missão para esta edição!</h2> -->
+ <h2 class="section-subtitle">A nossa missão para esta edição!</h2>
  <div class="mission-goals">
    <div class="goal">
      <img src="/src/assets/about_assets/magic-wand-wizard-svgrepo-com 2.svg" alt="icon">
